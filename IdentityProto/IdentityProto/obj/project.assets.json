@@ -8815,11 +8815,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\loan\\source\\repos\\IdentityProto\\IdentityProto\\IdentityProto.csproj",
+      "projectUniqueName": "D:\\ES\\2eme\\GlobalWiki\\Conception\\WikiTech-Proto\\IdentityProto\\IdentityProto\\IdentityProto.csproj",
       "projectName": "IdentityProto",
-      "projectPath": "C:\\Users\\loan\\source\\repos\\IdentityProto\\IdentityProto\\IdentityProto.csproj",
+      "projectPath": "D:\\ES\\2eme\\GlobalWiki\\Conception\\WikiTech-Proto\\IdentityProto\\IdentityProto\\IdentityProto.csproj",
       "packagesPath": "C:\\Users\\loan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\loan\\source\\repos\\IdentityProto\\IdentityProto\\obj\\",
+      "outputPath": "D:\\ES\\2eme\\GlobalWiki\\Conception\\WikiTech-Proto\\IdentityProto\\IdentityProto\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\loan\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -18,7 +18,7 @@ namespace IdentityProto.Areas.Identity
             builder.ConfigureServices((context, services) => {
                 services.AddDbContext<ApplicationDBContext>(options =>
                     options.UseSqlServer(
-                        context.Configuration.GetConnectionString("ApplicationDBContextConnection")));
+                        context.Configuration.GetConnectionString("DefaultConnection")));
 
                 services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
                     .AddEntityFrameworkStores<ApplicationDBContext>();

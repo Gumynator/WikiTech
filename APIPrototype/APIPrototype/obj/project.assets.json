@@ -8827,11 +8827,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\loan\\source\\repos\\APIPrototype\\APIPrototype\\APIPrototype.csproj",
+      "projectUniqueName": "D:\\ES\\2eme\\GlobalWiki\\Conception\\WikiTech-Proto\\APIPrototype\\APIPrototype\\APIPrototype.csproj",
       "projectName": "APIPrototype",
-      "projectPath": "C:\\Users\\loan\\source\\repos\\APIPrototype\\APIPrototype\\APIPrototype.csproj",
+      "projectPath": "D:\\ES\\2eme\\GlobalWiki\\Conception\\WikiTech-Proto\\APIPrototype\\APIPrototype\\APIPrototype.csproj",
       "packagesPath": "C:\\Users\\loan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\loan\\source\\repos\\APIPrototype\\APIPrototype\\obj\\",
+      "outputPath": "D:\\ES\\2eme\\GlobalWiki\\Conception\\WikiTech-Proto\\APIPrototype\\APIPrototype\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\loan\\AppData\\Roaming\\NuGet\\NuGet.Config",

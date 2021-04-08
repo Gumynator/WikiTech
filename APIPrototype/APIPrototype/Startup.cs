@@ -23,7 +23,7 @@ namespace APIPrototype
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<WikiTechDBContext>(options =>
-                options.UseSqlServer("Server=WIN8-LOAN\\SQLEXPRESS;Database=WikiTechDB;Trusted_Connection=True;"));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddControllers();
 
