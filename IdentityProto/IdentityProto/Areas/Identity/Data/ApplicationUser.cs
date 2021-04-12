@@ -19,11 +19,32 @@ namespace IdentityProto.Areas.Identity.Data
         public int Id_ville { get; set; }
 
         [PersonalData]
+        [Column(TypeName = "Int(32)")]
+        public int Id_genre { get; set; }
+
+        [PersonalData]
         [Column(TypeName = "nvarchar(50)")]
         public string Prenom_aspnetuser { get; set; }
 
         [PersonalData]
         [Column(TypeName = "nvarchar(50)")]
         public string Nom_aspnetuser { get; set; }
+
+        [PersonalData]
+        [Column(TypeName = "bit")]
+        public bool Isactive_aspnetuser { get; set; }
+
+        [PersonalData]
+        [Column(TypeName = "bit")]
+        public bool Isprivate_aspnetuser { get; set; }
+
+        [PersonalData]
+        [Column(TypeName = "Date")]
+        public DateTime Datecreation_aspnetuser { get; set; }
+
+       [PersonalData]
+       [Column(TypeName = "Int(32)")]
+        public int Nbpoint_aspnetuser { get; set; }
+
     }
 }

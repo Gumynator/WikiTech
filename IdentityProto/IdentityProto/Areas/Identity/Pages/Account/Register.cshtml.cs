@@ -50,8 +50,7 @@ namespace IdentityProto.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [DataType(DataType.Text)]
-            [Display(Name = "Grade")]
+
             public string Id_grade { get; set; }
 
             [Required]
@@ -70,6 +69,11 @@ namespace IdentityProto.Areas.Identity.Pages.Account
             public int Id_ville { get; set; }
 
             [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Genre")]
+            public int Id_genre { get; set; }
+
+            [Required]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
@@ -82,30 +86,24 @@ namespace IdentityProto.Areas.Identity.Pages.Account
 
             [DataType(DataType.Password)]
             [Display(Name = "Confirm password")]
-            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            [Compare("Password", ErrorMessage = "Les deux mots de passe ne correspondent pas")]
             public string ConfirmPassword { get; set; }
+
+
+            public bool Isactive_aspnetuser { get; set; }
+
+            [Display(Name = "Is private")]
+            public bool Isprivate_aspnetuser { get; set; }
+
+            public DateTime Datecreation_aspnetuser { get; set; }
+
+            public int Nbpoint_aspnetuser { get; set; }
         }
 
         public async Task OnGetAsync(string returnUrl = null)
         {
             ReturnUrl = returnUrl;
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
-
-            /*
-            string json = "";
-
-            HttpWebRequest request = (HttpWebRequest) WebRequest.Create("https://localhost:44381/api/villes");
-            HttpWebResponse response = (HttpWebResponse) request.GetResponse();
-
-            Stream stream = response.GetResponseStream();
-            StreamReader reader = new StreamReader(stream);
-            {
-                json = reader.ReadToEnd();
-            }
-
-            var result = JsonConvert.DeserializeObject<Ville>(json);
-            var villes = result.ToString();
-            */
 
         }
 
@@ -115,7 +113,11 @@ namespace IdentityProto.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { Id_grade = 1, Id_ville = Input.Id_ville, UserName = Input.Email, Email = Input.Email, Prenom_aspnetuser = Input.Prenom_aspnetuser, Nom_aspnetuser = Input.Nom_aspnetuser };
+                DateTime dateNow = DateTime.Now;
+
+                Console.WriteLine(Input.Id_ville + " " + Input.Id_genre + " " + Input.Isprivate_aspnetuser); // les deux input sont égale à 0
+
+                var user = new ApplicationUser { Id_grade = 1, Id_ville = Input.Id_ville, Id_genre = Input.Id_genre, UserName = Input.Email, Email = Input.Email, Prenom_aspnetuser = Input.Prenom_aspnetuser, Nom_aspnetuser = Input.Nom_aspnetuser, Isactive_aspnetuser = true, Isprivate_aspnetuser = Input.Isprivate_aspnetuser, Datecreation_aspnetuser = dateNow, Nbpoint_aspnetuser = 0};
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
