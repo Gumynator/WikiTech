@@ -43,4 +43,6 @@ C:\Users\Marco\source\repos\StripeProto\StripeProto\obj\Debug\net5.0\StripeProto
 C:\Users\Marco\source\repos\StripeProto\StripeProto\obj\Debug\net5.0\ref\StripeProto.dll
 C:\Users\Marco\source\repos\StripeProto\StripeProto\obj\Debug\net5.0\StripeProto.pdb
 C:\Users\Marco\source\repos\StripeProto\StripeProto\obj\Debug\net5.0\StripeProto.genruntimeconfig.cache
-C:\Users\Marco\source\repos\StripeProto\StripeProto\obj\Debug\net5.0\Razor\Views\Home\charge.cshtml.g.cs
+C:\Users\Marco\source\repos\StripeProto\StripeProto\obj\Debug\net5.0\Razor\Views\Abonnement\charge.cshtml.g.cs
+C:\Users\Marco\source\repos\StripeProto\StripeProto\obj\Debug\net5.0\Razor\Views\Abonnement\Index.cshtml.g.cs
+C:\Users\Marco\source\repos\StripeProto\StripeProto\obj\Debug\net5.0\Razor\Views\Abonnement\Achat.cshtml.g.cs
