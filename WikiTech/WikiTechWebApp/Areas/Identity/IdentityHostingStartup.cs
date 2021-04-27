@@ -16,9 +16,9 @@ namespace WikiTechWebApp.Areas.Identity
         public void Configure(IWebHostBuilder builder)
         {
             builder.ConfigureServices((context, services) => {
-                services.AddDbContext<ApplicationDBContext>(options =>
+                services.AddDbContext<ApplicationDBContextContext>(options =>
                     options.UseSqlServer(
-                        context.Configuration.GetConnectionString("DefaultConnection")));
+                        context.Configuration.GetConnectionString("ApplicationDBContextContextConnection")));
 
                 services.AddDefaultIdentity<ApplicationUser>(options =>
                 {
@@ -27,7 +27,7 @@ namespace WikiTechWebApp.Areas.Identity
                     options.Password.RequireUppercase = false;
                     options.Password.RequireNonAlphanumeric = false;
                     options.Password.RequireDigit = false;
-                }).AddEntityFrameworkStores<ApplicationDBContext>();
+                }).AddEntityFrameworkStores<ApplicationDBContextContext>();
             });
         }
     }

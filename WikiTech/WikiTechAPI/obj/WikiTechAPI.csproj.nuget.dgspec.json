@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\ES\\2eme\\GlobalWiki\\Conception\\WikiTech-Proto\\WikiTechAPI\\WikiTechAPI\\WikiTechAPI.csproj": {}
+    "C:\\loarey\\WikiTech\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj": {}
   },
   "projects": {
-    "D:\\ES\\2eme\\GlobalWiki\\Conception\\WikiTech-Proto\\WikiTechAPI\\WikiTechAPI\\WikiTechAPI.csproj": {
+    "C:\\loarey\\WikiTech\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ES\\2eme\\GlobalWiki\\Conception\\WikiTech-Proto\\WikiTechAPI\\WikiTechAPI\\WikiTechAPI.csproj",
+        "projectUniqueName": "C:\\loarey\\WikiTech\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj",
         "projectName": "WikiTechAPI",
-        "projectPath": "D:\\ES\\2eme\\GlobalWiki\\Conception\\WikiTech-Proto\\WikiTechAPI\\WikiTechAPI\\WikiTechAPI.csproj",
-        "packagesPath": "C:\\Users\\loan\\.nuget\\packages\\",
-        "outputPath": "D:\\ES\\2eme\\GlobalWiki\\Conception\\WikiTech-Proto\\WikiTechAPI\\WikiTechAPI\\obj\\",
+        "projectPath": "C:\\loarey\\WikiTech\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj",
+        "packagesPath": "C:\\Users\\loarey\\.nuget\\packages\\",
+        "outputPath": "C:\\loarey\\WikiTech\\WikiTech\\WikiTechAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\loan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\loarey\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -81,7 +81,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
         }
       }
     }
