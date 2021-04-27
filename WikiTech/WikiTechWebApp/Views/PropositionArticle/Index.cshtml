@@ -1,0 +1,77 @@
+﻿@*
+    //Auteur    : Loris habegger
+    //Date      : 27.04.2021
+    //Fichier   : PropositionArticle.chtml
+    //Perso     : Droit pas encore en place
+
+*@
+
+@using Microsoft.AspNetCore.Identity
+@using WikiTechWebApp.Areas.Identity.Data
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@{
+    ViewData["Title"] = "Proposition d'article";
+}
+
+@if (!SignInManager.IsSignedIn(User))
+{
+
+    <input class="form-control" type="text" placeholder="Disabled readonly input" aria-label="Disabled input example" value="@User" disabled readonly>
+
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Titre de l'article</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">brève description de l'article</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Rédaction de l'article</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+    </div>
+
+    <select class="form-select" size="5" multiple aria-label="multiple select example">
+        <option selected>Selectionnez les tags de l'article</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+        <option value="4">foour</option>
+        <option value="5">Tfivfhree</option>
+        <option value="6">Threedsadsa</option>
+    </select>
+
+
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="Science" checked>
+        <label class="form-check-label" for="exampleRadios1">
+            Science
+        </label>
+
+        <select class="selectpicker">
+            <option>Mustard</option>
+            <option>Ketchup</option>
+            <option>Relish</option>
+        </select>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="Technologie">
+        <label class="form-check-label" for="exampleRadios2">
+            Technologie
+        </label>
+    </div>
+}
+else
+{
+    <div class="mb-3">
+        <p>ne doit pas voir ça </p>
+    </div>
+
+}
