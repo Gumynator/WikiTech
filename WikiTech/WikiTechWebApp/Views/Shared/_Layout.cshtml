@@ -14,10 +14,12 @@
     <script>
         tinymce.init({
             selector: '#TinyArea',
-            skin: 'oxide-dark',
-            content_css: 'dark',
-            toolbar: 'undo redo styleselect bold italic alignleft aligncenter alignright bullist numlist outdent indent code',
-            plugins: 'code'
+            skin: 'oxide',
+            content_css: 'default',
+            toolbar: 'undo redo styleselect bold italic alignleft aligncenter alignright bullist numlist outdent indent table lists code link | fullscreen preview save print | insertfile image media anchor',
+            plugins: 'code emoticons imagetools preview print autosave save image link media table anchor lists checklist wordcount imagetools ',
+            image_caption: true,
+            autosave_interval: '30s'
         });
     </script>
 
