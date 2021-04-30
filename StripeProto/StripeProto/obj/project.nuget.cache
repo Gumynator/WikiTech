@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hGu3DerxSSURLdm7tAniVKwjw2z2WL5KfkJJ09ablNJSfbUEy5HzecMm6FPszFMVnXiaNFGUseZz2BTDy1LZqw==",
+  "dgSpecHash": "px5909OmyfphKkXLzVsxilMk6+KAKF1+Rylaw/Kgk894jXzmNWYvp0u5U2vwdn+YLJ8zPjH07OxukIz/S1ZDCQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Marco\\source\\repos\\StripeProto\\StripeProto\\StripeProto.csproj",
+  "projectFilePath": "C:\\temp\\gitkraken\\WikiTech-Proto\\StripeProto\\StripeProto\\StripeProto.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Marco\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
     "C:\\Users\\Marco\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
