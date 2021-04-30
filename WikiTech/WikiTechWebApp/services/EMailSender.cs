@@ -5,7 +5,7 @@ using SendGrid.Helpers.Mail;
 using System.Threading.Tasks;
 using WikiTechWebApp.services;
 
-namespace WebPWrecover.Services
+namespace WikiTechWebApp.Services
 {
     public class EmailSender : IEmailSender
     {
@@ -26,7 +26,7 @@ namespace WebPWrecover.Services
             var client = new SendGridClient(apiKey);
             var msg = new SendGridMessage()
             {
-                From = new EmailAddress("loan.rey@eduvaud.ch", Options.SendGridUser),
+                From = new EmailAddress("loanrey2000@gmail.com", Options.SendGridUser),
                 Subject = subject,
                 PlainTextContent = message,
                 HtmlContent = message
