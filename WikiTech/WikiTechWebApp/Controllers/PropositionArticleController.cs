@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WikiTechWebApp.Models.DTO;
 
 namespace WikiTechWebApp.Controllers
 {
@@ -30,10 +31,15 @@ namespace WikiTechWebApp.Controllers
         }
 
         // POST: PropositionArticleController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpPost("CreateProposition")]
         public ActionResult Create(IFormCollection collection)
         {
+
+            DTOArticle dtoarticle = new DTOArticle();
+
+            dtoarticle.
+
+
             try
             {
                 return RedirectToAction(nameof(Index));
