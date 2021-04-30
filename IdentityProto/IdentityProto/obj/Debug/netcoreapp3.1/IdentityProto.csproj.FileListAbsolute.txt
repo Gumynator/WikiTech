@@ -601,3 +601,5 @@ C:\Users\M4800\Desktop\GITKRAKEN\clonedeloan\WikiTech-Proto\IdentityProto\Identi
 C:\Users\M4800\Desktop\GITKRAKEN\clonedeloan\WikiTech-Proto\IdentityProto\IdentityProto\obj\Debug\netcoreapp3.1\IdentityProto.dll
 C:\Users\M4800\Desktop\GITKRAKEN\clonedeloan\WikiTech-Proto\IdentityProto\IdentityProto\obj\Debug\netcoreapp3.1\IdentityProto.pdb
 C:\Users\M4800\Desktop\GITKRAKEN\clonedeloan\WikiTech-Proto\IdentityProto\IdentityProto\obj\Debug\netcoreapp3.1\IdentityProto.genruntimeconfig.cache
+D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\IdentityProto\IdentityProto\bin\Debug\netcoreapp3.1\SendGrid.dll
+D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\IdentityProto\IdentityProto\bin\Debug\netcoreapp3.1\StarkbankEcdsa.dll
