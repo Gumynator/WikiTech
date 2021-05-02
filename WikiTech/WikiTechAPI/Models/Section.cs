@@ -9,7 +9,7 @@ namespace WikiTechAPI.Models
 {
     public partial class Section
     {
-        public Section(int idSection)
+        public Section()
         {
             Article = new HashSet<Article>();
         }

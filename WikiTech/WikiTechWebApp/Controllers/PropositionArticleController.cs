@@ -1,16 +1,33 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
 using System.Linq;
+using System.Web;
+using System.Net.Http;
 using System.Threading.Tasks;
-using WikiTechWebApp.Models.DTO;
+using WikiTechAPI.Models;
+using WikiTechWebApp.ApiFunctions;
+using Microsoft.AspNetCore.Hosting.Server;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using Grpc.Core;
+using Newtonsoft.Json;
+using System.Text;
 
 namespace WikiTechWebApp.Controllers
 {
     public class PropositionArticleController : Controller
     {
+
+        static HttpClient client = new HttpClient();
+
+        public PropositionArticleController() 
+        {
+
+            client = ConfigureHttpClient.configureHttpClient(client);
+        }
+
         //[Authorize]
         // GET: PropositionArticleController
         public ActionResult Index()
@@ -32,22 +49,40 @@ namespace WikiTechWebApp.Controllers
 
         // POST: PropositionArticleController/Create
         [HttpPost("CreateProposition")]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<ActionResult> Create([Bind("Id,TitreArticle,DescriptionArticle,TextArticle,IdSection,Referencer,IsqualityArticle")] Article _article)
         {
 
-            DTOArticle dtoarticle = new DTOArticle();
-
-            dtoarticle.
 
 
-            try
+
+            Article currentArticle = _article;
+
+            currentArticle.Id = "00221f02-bfdb-4607-9403-7168e260ea8a"; // sera récupéré quand loggé
+            currentArticle.IdSection = int.Parse(Request.Form["rdsection"]);
+
+            var listreference = currentArticle.Referencer.ToList();
+            var Tags = Request.Form["tags"]; //.count compte les éléments à l'intérrieur
+
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                //Article article = await FunctionArticles.AddArticle(currentArticle); to passe trought another file
+
+                Article resultarticle;
+
+                StringContent content = new StringContent(JsonConvert.SerializeObject(currentArticle), Encoding.UTF8, "application/json");
+
+                using var response = await client.PostAsync(ConfigureHttpClient.apiUrl + "Articles", content);
+                string apiResponse = await response.Content.ReadAsStringAsync();
+                resultarticle = JsonConvert.DeserializeObject<Article>(apiResponse);
+
+                return Redirect(Url.Action("http://google.com"));
             }
-            catch
+            else
             {
-                return View();
+
+                return RedirectToAction("Home/Index");
             }
+
         }
 
         // GET: PropositionArticleController/Edit/5
@@ -91,5 +126,6 @@ namespace WikiTechWebApp.Controllers
                 return View();
             }
         }
+
     }
 }

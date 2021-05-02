@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
-
+using WikiTechAPI.Models;
 
 namespace WikiTechWebApp.Models.DTO
 {
@@ -32,11 +32,11 @@ namespace WikiTechWebApp.Models.DTO
         public string TitreArticle { get; set; }
         [Required]
         public string TextArticle { get; set; }
-        [Required]
+
         public DateTime? DatepublicationArticle { get; set; }
-        [Required]
+
         public bool IsactiveArticle { get; set; }
-        [Required]
+
         public bool IsqualityArticle { get; set; }
         [Required]
         public string DescriptionArticle { get; set; }
