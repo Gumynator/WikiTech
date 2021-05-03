@@ -1,0 +1,27 @@
+﻿@using Microsoft.Extensions.Options
+@inject IOptions<StripeProto.Data.StripeSettings> Stripe
+@{
+    ViewData["Title"] = "Abonnement Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Nos abonnements</h1>
+
+    <form asp-action="Achat" asp-controller="Abonnement" method="POST">
+        Choisisez votre formule d'abonnement
+
+
+
+        <input type="radio" id="Science" name="prix" value="100">
+        <label for="Science">Science</label><br>
+        <input type="radio" id="Technologie" name="prix" value="100">
+        <label for="Technologie">Technologie</label><br>
+        <input type="radio" id="ST" name="prix" value="150">
+        <label for="ST">Science & Technologie</label>
+
+        <button value="send" type="submit">Submit</button>
+    </form>
+
+
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
