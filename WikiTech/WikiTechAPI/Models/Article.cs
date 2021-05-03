@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.IO;
 
 // Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
@@ -36,6 +37,7 @@ namespace WikiTechAPI.Models
         [Required]
         public string DescriptionArticle { get; set; }
 
+        [ForeignKey("Id")]
         public virtual AspNetUsers IdNavigation { get; set; }
         public virtual Section IdSectionNavigation { get; set; }
         public virtual ICollection<Apprecier> Apprecier { get; set; }

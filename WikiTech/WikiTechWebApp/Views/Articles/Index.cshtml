@@ -96,7 +96,7 @@
                         <h3 class="title">@Html.DisplayFor(modelItem => item.TitreArticle)</h3>
                         <p class="text-muted"><span class="glyphicon glyphicon-lock"></span>Contenu réservé au premium</p>
                         <p>@Html.DisplayFor(modelItem => item.DescriptionArticle)</p>
-                        <p class="text-muted">Rédigé par <a href="#">Auteur</a> le @Html.DisplayFor(modelItem => item.DatepublicationArticle)</p>
+                        <p class="text-muted">Rédigé par <a href="#">@Html.DisplayFor(modelItem => item.IdNavigation.PrenomAspnetuser)</a> le @Html.DisplayFor(modelItem => item.DatepublicationArticle)</p>
                         <a asp-action="Details" asp-route-id="@item.IdArticle">->Consulter</a>
                     </div>
                 </div>

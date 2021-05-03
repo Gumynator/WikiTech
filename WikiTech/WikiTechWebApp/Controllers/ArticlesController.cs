@@ -23,7 +23,7 @@ namespace WikiTechWebApp.Controllers
         }
 
         // GET: ArticlesController
-        public ActionResult Index()
+        public IActionResult Index()
         {
 
             IEnumerable<Article> artList;
