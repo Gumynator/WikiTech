@@ -2,15 +2,15 @@
     //Auteur    : Loris habegger
     //Date      : 27.04.2021
     //Fichier   : Index.chtml (proposition d'article)
-    //Perso     : Droit géré dans le controlleur, test user name, image tiny mce
+    //Perso     : Droit géré dans le controlleur, image tiny mce, redirection
     //link to us: https://www.youtube.com/watch?v=r9DgBDdiV5g
 
 *@
 
 @using Microsoft.AspNetCore.Identity
 @using WikiTechWebApp.Areas.Identity.Data
-@using WikiTechWebApp.Models.DTO
-@model WikiTechWebApp.Models.DTO.DTOArticle
+@using WikiTechAPI.Models
+@model WikiTechAPI.Models.Article
 @inject SignInManager<ApplicationUser> signInManager;
 
 
@@ -75,6 +75,7 @@
     $(document).ready(function () {
         getTags();
         getSection();
+
     }
     )
     function getTags() {
@@ -120,7 +121,7 @@
 
         $.each(data, function (key, value) {
             console.log(value);
-            var element = "<input asp-for=\"IdSection\" id=\"Selectsection\" value=\"" + value.idSection + "\" type=\"radio\" classe=\"form-check-input \" name=\"rdsection\"\">" + "   " + value.nomSection + "  ";
+            var element = "<input asp-for=\"IdSection\" id=\"Selectsection\" value=\"" + value.idSection + "\" type=\"radio\" checked classe=\"form-check-input \" name=\"rdsection\"\">" + "   " + value.nomSection + "  ";
             select.append(element);
         })
     }

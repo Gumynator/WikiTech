@@ -2,11 +2,15 @@
     //Auteur    : Loris habegger
     //Date      : 02.05.2021
     //Fichier   : Details.chtml (affichage de l'article)
-    //Perso     : mise en page, récupération du nom des auteurs, controle de qualité ou pas
+    //Perso     : mise en page, récupération du nom des auteurs () modifier la methode dans l'API, controle de qualité ou pas, gestion des droits
 
 *@
 
 @model WikiTechAPI.Models.Article
+@using Microsoft.AspNetCore.Identity
+@using WikiTechWebApp.Areas.Identity.Data
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
 
 @{ ViewData["Title"] = "Details"; }
 
@@ -16,6 +20,26 @@
     <h4>Article</h4>
     <hr />
     <dl class="row">
+        @if (SignInManager.IsSignedIn(User))
+        {
+            @if (Model.IsqualityArticle == true)
+            {
+
+                <p> de qualité + logger</p> 
+            }
+            else
+            {
+
+                <p> pas pas de qualité + logger</p>
+            }
+
+        }
+        else
+        {
+            @Html.DisplayFor(model => model.IsqualityArticle)
+            <p> pas logger</p>
+        }
+
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.TitreArticle)
         </dt>
@@ -56,7 +80,7 @@
             @Html.DisplayNameFor(model => model.IdNavigation)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.IdNavigation.Id)
+            @Html.DisplayFor(model => model.IdNavigation.PrenomAspnetuser)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.IdSectionNavigation)
@@ -78,6 +102,5 @@
 <script>
 
 
-    var myContent = tinymce.get("#TinyArea").getContent({ format: "text" });
 
 </script>

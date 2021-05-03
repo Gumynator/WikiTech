@@ -28,16 +28,17 @@ namespace WikiTechAPI.Controllers
         {
             //return await _context.Article.ToListAsync();
 
-            var testc = await _context.Article.Include(p => p.IdNavigation).ToListAsync();
-            return testc;
+            
+            return await _context.Article.Include(p => p.IdNavigation).ToListAsync();
         }
 
         // GET: api/Articles/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Article>> GetArticle(int id)
         {
-            //var article2 = _context.Article.Include(a => a.IdNavigation).Where(a => a.IdArticle == id).First();
+
             var article = await _context.Article.FindAsync(id);
+            
 
             if (article == null)
             {

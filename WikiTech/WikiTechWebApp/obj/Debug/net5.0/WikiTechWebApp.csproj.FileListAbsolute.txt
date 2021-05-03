@@ -687,3 +687,5 @@ C:\GitKraken\WikiTech-Proto\WikiTech\WikiTechWebApp\obj\Debug\net5.0\Razor\Views
 C:\GitKraken\WikiTech-Proto\WikiTech\WikiTechWebApp\obj\Debug\net5.0\Razor\Views\Articles\Index.cshtml.g.cs
 C:\GitKraken\WikiTech-Proto\WikiTech\WikiTechWebApp\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
 C:\GitKraken\WikiTech-Proto\WikiTech\WikiTechWebApp\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\M4800\Desktop\GITKRAKEN\clonedeloan\WikiTech-Proto\WikiTech\WikiTechWebApp\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\M4800\Desktop\GITKRAKEN\clonedeloan\WikiTech-Proto\WikiTech\WikiTechWebApp\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
