@@ -1,21 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\loarey\\WikiTech\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj": {}
+    "C:\\GitKraken\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj": {}
   },
   "projects": {
-    "C:\\loarey\\WikiTech\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj": {
+    "C:\\GitKraken\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\loarey\\WikiTech\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj",
+        "projectUniqueName": "C:\\GitKraken\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj",
         "projectName": "WikiTechAPI",
-        "projectPath": "C:\\loarey\\WikiTech\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj",
-        "packagesPath": "C:\\Users\\loarey\\.nuget\\packages\\",
-        "outputPath": "C:\\loarey\\WikiTech\\WikiTech\\WikiTechAPI\\obj\\",
+        "projectPath": "C:\\GitKraken\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj",
+        "packagesPath": "C:\\Users\\lorhabegger\\.nuget\\packages\\",
+        "outputPath": "C:\\GitKraken\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "C:\\Users\\loarey\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\lorhabegger\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -81,7 +85,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }

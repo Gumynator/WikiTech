@@ -1,0 +1,83 @@
+﻿@*
+    //Auteur    : Loris habegger
+    //Date      : 02.05.2021
+    //Fichier   : Details.chtml (affichage de l'article)
+    //Perso     : mise en page, récupération du nom des auteurs, controle de qualité ou pas
+
+*@
+
+@model WikiTechAPI.Models.Article
+
+@{ ViewData["Title"] = "Details"; }
+
+<h1>Details</h1>
+
+<div>
+    <h4>Article</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TitreArticle)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TitreArticle)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DescriptionArticle)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DescriptionArticle)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TextArticle)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.Raw(Model.TextArticle)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DatepublicationArticle)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DatepublicationArticle)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IsactiveArticle)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IsactiveArticle)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IsqualityArticle)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IsqualityArticle)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IdNavigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IdNavigation.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IdSectionNavigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IdSectionNavigation.NomSection)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.IdArticle">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<script>
+
+
+    var myContent = tinymce.get("#TinyArea").getContent({ format: "text" });
+
+</script>
