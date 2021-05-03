@@ -32,7 +32,6 @@ namespace WikiTechAPI.Controllers
         public async Task<ActionResult<Section>> GetSection(int id)
         {
             var section = await _context.Section.FindAsync(id);
-            var section2 = _context.Section.Find(id);
 
             if (section == null)
             {

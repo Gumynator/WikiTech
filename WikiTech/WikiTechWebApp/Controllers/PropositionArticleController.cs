@@ -52,9 +52,6 @@ namespace WikiTechWebApp.Controllers
         public async Task<ActionResult> Create([Bind("Id,TitreArticle,DescriptionArticle,TextArticle,IdSection,Referencer,IsqualityArticle")] Article _article)
         {
 
-
-
-
             Article currentArticle = _article;
 
             currentArticle.Id = "00221f02-bfdb-4607-9403-7168e260ea8a"; // sera récupéré quand loggé

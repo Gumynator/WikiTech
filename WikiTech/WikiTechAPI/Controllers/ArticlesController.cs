@@ -31,6 +31,7 @@ namespace WikiTechAPI.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Article>> GetArticle(int id)
         {
+            //var article2 = _context.Article.Include(a => a.IdNavigation).Where(a => a.IdArticle == id).First();
             var article = await _context.Article.FindAsync(id);
 
             if (article == null)

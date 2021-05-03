@@ -14,6 +14,7 @@ namespace WikiTechWebApp.Controllers
     {
 
         static HttpClient client = new HttpClient();
+    
 
         public ArticlesController()
         {
@@ -35,12 +36,14 @@ namespace WikiTechWebApp.Controllers
 
 
         // GET: ArticleController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult DetailsAsync(int id)
         {
 
+            //get article with user of article
             Article article;
-            HttpResponseMessage response = client.GetAsync("Articles/"+id).Result;
-            article = response.Content.ReadAsAsync<Article>().Result;
+            HttpResponseMessage responsearticle = client.GetAsync("Articles/" + id).Result;
+            article = responsearticle.Content.ReadAsAsync<Article>().Result;
+
 
             return View(article);
         }
