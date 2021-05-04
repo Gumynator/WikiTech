@@ -1,0 +1,25 @@
+﻿@using Microsoft.Extensions.Options
+@inject IOptions<StripeProto.Data.StripeSettings> Stripe
+@{
+    ViewData["Title"] = "Achat Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Nos abonnements</h1>
+    <form asp-action="Charge" asp-controller="Abonnement" method="POST">
+        <article>
+            <label>Amount: @ViewBag.prix</label>
+        </article>
+        <script src="//checkout.stripe.com/v2/checkout.js"
+                class="stripe-button"
+                data-key="@Stripe.Value.PublishableKey"
+                data-locale="auto"
+                data-description="Sample Charge">
+        </script>
+        <input type="hidden" name="prix" value="@ViewBag.prix" />
+    </form>
+    
+
+
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
