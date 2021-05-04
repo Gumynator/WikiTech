@@ -1,25 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\GitKraken\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj": {}
+    "C:\\ES\\WikiTech\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj": {}
   },
   "projects": {
-    "C:\\GitKraken\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj": {
+    "C:\\ES\\WikiTech\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\GitKraken\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj",
+        "projectUniqueName": "C:\\ES\\WikiTech\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj",
         "projectName": "WikiTechAPI",
-        "projectPath": "C:\\GitKraken\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj",
-        "packagesPath": "C:\\Users\\lorhabegger\\.nuget\\packages\\",
-        "outputPath": "C:\\GitKraken\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\obj\\",
+        "projectPath": "C:\\ES\\WikiTech\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj",
+        "packagesPath": "C:\\Users\\marpancini\\.nuget\\packages\\",
+        "outputPath": "C:\\ES\\WikiTech\\WikiTech\\WikiTechAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\lorhabegger\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\marpancini\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -89,7 +89,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

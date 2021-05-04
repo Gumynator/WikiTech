@@ -91,5 +91,19 @@ namespace WikiTechWebApp.ApiFunctions
             return resultatReferences;
         }
 
+        ///get abonnement by id
+        internal static async Task<Abonnement> GetAbonnementAsync(HttpClient client, short? id)
+        {
+            Abonnement product = null;
+            HttpResponseMessage response = await client.GetAsync("api/Abonnements/" + id);
+            if (response.IsSuccessStatusCode)
+            {
+                product = await response.Content.ReadAsAsync<Abonnement>();
+            }
+            return product;
+        }
+
+
+
     }
 }
