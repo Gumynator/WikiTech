@@ -25,41 +25,37 @@
             skin: 'oxide',
             content_css: 'default',
             toolbar: 'undo redo styleselect bold italic alignleft aligncenter alignright bullist numlist outdent indent table lists code link | fullscreen preview save print | insertfile image media anchor',
-            plugins: 'code emoticons imagetools preview print autosave save image link media table anchor lists checklist wordcount imagetools ',
-            image_caption: true,
+            plugins: 'code emoticons imagetools preview print autosave save image link media table anchor lists checklist wordcount imagetools paste ',
+            image_caption: false,
             autosave_interval: '30s',
             image_title: true,
-            paste_data_images: true
-            //automatic_uploads: true,
-            //images_upload_url: '/PropositionArticleController/UploadImage',
-            //file_picker_types: 'image',
-            //file_picker_callback: function (cb, value, meta) {
-            //    var input = document.createElement('input');
-            //    input.setAttribute('type', 'file');
-            //    input.setAttribute('accept', 'Image/*');
+            paste_data_images: true,
+            automatic_uploads: true,
+            images_upload_url: '/PropositionArticle/uploadImg',
+            file_picker_types: 'image',
+            file_picker_callback: function (cb, value, meta) {
 
-            //    input.onchange = function () {
-            //        var file = this.files[0];
+                var input = document.createElement('input');
+                input.setAttribute('type', 'file');
+                input.setAttribute('accept', 'image/*');
 
-            //        var reader = new FileReader();
-            //        reader.onload = function () {
+                input.onchange = function () {
+                    var file = this.files[0];
 
-            //            var id = 'blobid' + (new Date()).getTime();
-            //            var blobCache = tinymce.activeEditor.editorUpload.blobCache;
-            //            var base64 = reader.result.split(',')[1];
-            //            var blobInfo = blobCache.create(id, file, base64);
-            //            blobCache.add(blobInfo);
-
-            //            cb(blobInfo.blobUri(), { title: file.name });
-            //        };
-            //        reader.readAsDataURL(file);
-            //    };
-
-            //    input.click();
-            //},
-            //content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+                    var reader = new FileReader();
+                    reader.readAsDataURL(file);
+                    reader.onload = function () {
+                        var id = 'blobid' + (new Date()).getTime();
+                        var blobCache = tinymce.activeEditor.editorUpload.blobCache;
+                        var base64 = reader.result.split(',')[1];
+                        var blobInfo = blobCache.create(id, file, base64);
+                        blobCache.add(blobInfo);
+                        cb(blobInfo.blobUri(), { title: file.name });
+                    };
+                };
+                input.click();
+            }
         });
-
 
     </script>
 </head>

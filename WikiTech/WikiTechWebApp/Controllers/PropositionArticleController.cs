@@ -15,6 +15,7 @@ using Grpc.Core;
 using Newtonsoft.Json;
 using System.Text;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Hosting;
 
 namespace WikiTechWebApp.Controllers
 {
@@ -22,10 +23,10 @@ namespace WikiTechWebApp.Controllers
     {
 
         static HttpClient client = new HttpClient();
-
-        public PropositionArticleController() 
+        private readonly IWebHostEnvironment webhost;
+        public PropositionArticleController(IWebHostEnvironment _webhost) 
         {
-
+            webhost = _webhost;
             client = ConfigureHttpClient.configureHttpClient(client);
         }
 
@@ -130,6 +131,31 @@ namespace WikiTechWebApp.Controllers
             {
                 return View();
             }
+        }
+
+        [HttpPost]
+        public async Task<string> uploadImg(IFormFile imgfile)
+        {
+            string message;
+            var saveimg = Path.Combine(webhost.WebRootPath, "Images", imgfile.FileName);
+            string imgext = Path.GetExtension(imgfile.FileName);
+
+            if (imgext == ".jpg" || imgext == ".png")
+            {
+                using (var uploadimg = new FileStream(saveimg, FileMode.Create))
+                {
+
+                    await imgfile.CopyToAsync(uploadimg);
+                    message = "The selected file" + imgfile.FileName + " est sauvé";
+                }
+
+            }
+            else
+            {
+                message = "seule les extension JPG et PNG sont supportée";
+            }
+            return "filename : " + saveimg + " le message :" + message;
+
         }
 
     }
