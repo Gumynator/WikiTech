@@ -9,7 +9,7 @@ using WikiTechAPI.Models;
 
 namespace WikiTechWebApp.ApiFunctions
 {
-    public class FunctionArticles
+    public class FunctionAPI
     {
 
         //Create a new Article
@@ -55,8 +55,41 @@ namespace WikiTechWebApp.ApiFunctions
 
 
 
+        //Add Tag to an article
+        internal static async Task<List<Referencer>> AddTagToArticle(List<string> _idtags, int _idArticle)
+        {
+
+            var idtags = _idtags;
+            int idArticle = _idArticle;
+
+            List<Referencer> resultatReferences = new List<Referencer>();
 
 
+
+            for (int i = 0; i < idtags.Count; i++)
+            {
+                Referencer currentAdd = new Referencer();
+                String currentTag = idtags[i];
+
+                currentAdd.IdArticle = idArticle;
+                currentAdd.IdTag = Int32.Parse(currentTag);
+
+                Referencer resultRef;
+
+                using (var httpClient = new HttpClient())
+                {
+                    StringContent referenceContent = new StringContent(JsonConvert.SerializeObject(currentAdd), Encoding.UTF8, "application/json");
+
+                    using var ReferenceResponse = await httpClient.PostAsync(ConfigureHttpClient.apiUrl + "Referencers", referenceContent);
+                    string ReferenceApiResponse = await ReferenceResponse.Content.ReadAsStringAsync();
+                    resultRef = JsonConvert.DeserializeObject<Referencer>(ReferenceApiResponse);
+
+                    resultatReferences.Add(resultRef);
+                }
+
+            }
+            return resultatReferences;
+        }
 
     }
 }

@@ -14,6 +14,7 @@ using System.IO;
 using Grpc.Core;
 using Newtonsoft.Json;
 using System.Text;
+using System.Security.Claims;
 
 namespace WikiTechWebApp.Controllers
 {
@@ -52,27 +53,34 @@ namespace WikiTechWebApp.Controllers
         public async Task<ActionResult> Create([Bind("Id,TitreArticle,DescriptionArticle,TextArticle,IdSection,Referencer,IsqualityArticle")] Article _article)
         {
 
-            Article currentArticle = _article;
+            Article currentArticle = _article;            
 
-            currentArticle.Id = "00221f02-bfdb-4607-9403-7168e260ea8a"; // sera récupéré quand loggé
-            currentArticle.IdSection = int.Parse(Request.Form["rdsection"]);
+            var idTags = Request.Form["tags"].ToList(); //.count compte les éléments à l'intérrieur
 
-            var listreference = currentArticle.Referencer.ToList();
-            var Tags = Request.Form["tags"]; //.count compte les éléments à l'intérrieur
+            var IdUser = User.FindFirstValue(ClaimTypes.NameIdentifier); // récupération de l'ID de l'utilisateur courrant
+
+            currentArticle.Id = IdUser;
+            currentArticle.IdSection = int.Parse(Request.Form["rdsection"]); // récupération de l'id de la section selectionnée
 
             if (ModelState.IsValid)
             {
                 //Article article = await FunctionArticles.AddArticle(currentArticle); to passe trought another file
 
                 Article resultarticle;
-
                 StringContent content = new StringContent(JsonConvert.SerializeObject(currentArticle), Encoding.UTF8, "application/json");
 
                 using var response = await client.PostAsync(ConfigureHttpClient.apiUrl + "Articles", content);
                 string apiResponse = await response.Content.ReadAsStringAsync();
+
                 resultarticle = JsonConvert.DeserializeObject<Article>(apiResponse);
 
-                return Redirect(Url.Action("http://google.com"));
+
+                List<Referencer> resultReferences = new List<Referencer>();
+
+                resultReferences = await FunctionAPI.AddTagToArticle(idTags, resultarticle.IdArticle);
+
+
+                return RedirectToAction("ArticlesController", "Index");
             }
             else
             {
