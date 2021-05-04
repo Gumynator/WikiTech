@@ -12,7 +12,7 @@ namespace WikiTechWebApp.ApiFunctions
     public class FunctionAPI
     {
 
-        //Create a new Article
+       /* //Create a new Article
         internal static async Task<Article> AddArticle(Article _article)
         {
 
@@ -53,7 +53,7 @@ namespace WikiTechWebApp.ApiFunctions
             return product;
         }
 
-
+        */
 
         //Add Tag to an article
         internal static async Task<List<Referencer>> AddTagToArticle(List<string> _idtags, int _idArticle)

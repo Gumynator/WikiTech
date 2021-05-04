@@ -80,12 +80,12 @@ namespace WikiTechWebApp.Controllers
                 resultReferences = await FunctionAPI.AddTagToArticle(idTags, resultarticle.IdArticle);
 
 
-                return RedirectToAction("ArticlesController", "Index");
+                return Redirect("/Articles/Index");
             }
             else
             {
 
-                return RedirectToAction("Home/Index");
+                return RedirectToAction(nameof(Index));
             }
 
         }
