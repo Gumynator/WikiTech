@@ -134,19 +134,19 @@ namespace WikiTechWebApp.Controllers
         }
 
         [HttpPost]
-        public async Task<string> uploadImg(IFormFile imgfile)
+        public async Task<string> uploadImg(IFormFile file)
         {
             string message;
-            var saveimg = Path.Combine(webhost.WebRootPath, "Images", imgfile.FileName);
-            string imgext = Path.GetExtension(imgfile.FileName);
+            var saveimg = Path.Combine(webhost.WebRootPath, "images", file.FileName);
+            string imgext = Path.GetExtension(file.FileName);
 
             if (imgext == ".jpg" || imgext == ".png")
             {
                 using (var uploadimg = new FileStream(saveimg, FileMode.Create))
                 {
 
-                    await imgfile.CopyToAsync(uploadimg);
-                    message = "The selected file" + imgfile.FileName + " est sauvé";
+                    await file.CopyToAsync(uploadimg);
+                    message = "The selected file" + file.FileName + " est sauvé";
                 }
 
             }
@@ -154,6 +154,7 @@ namespace WikiTechWebApp.Controllers
             {
                 message = "seule les extension JPG et PNG sont supportée";
             }
+
             return "filename : " + saveimg + " le message :" + message;
 
         }
