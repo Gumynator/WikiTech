@@ -1,4 +1,8 @@
-﻿using System;
+﻿//Auteur    : Loris habegger
+//Date      : 01.05.2021
+//Fichier   : ConfigureHttpClient.cs
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;

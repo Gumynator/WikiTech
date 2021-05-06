@@ -1,4 +1,8 @@
-﻿using System;
+﻿//Auteur    : Loris habegger
+//Date      : 05.05.2021
+//Fichier   : ArticlesController.cs
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -112,5 +116,7 @@ namespace WikiTechAPI.Controllers
         {
             return _context.Article.Any(e => e.IdArticle == id);
         }
+
+
     }
 }

@@ -2,8 +2,8 @@
     //Auteur    : Loris habegger
     //Date      : 01.05.2021
     //Fichier   : Index.chtml (liste d'article)
-    //Perso     : if pour les articles de qualité ou non, mise en page, remplissage des champs, pagination, affichage des auteurs, affichage des tags
-    //link to us:
+    //Perso     : recherche, click sur tag + auteur, affichage des nombre d'article par tag, pagination
+    //use link  : https://docs.microsoft.com/en-us/aspnet/core/data/ef-mvc/sort-filter-page?view=aspnetcore-5.0
 
 *@
 @using Microsoft.AspNetCore.Identity
@@ -39,7 +39,6 @@
                 <div>
                     <hr>
                     <div class="list-group list-group">
-
 
                         <h4 class="" id="sections">Catégorie</h4>
                         <!--<a href="#" class="list-group-item"><span class="badge">14</span> Upcoming Sessions</a>-->
@@ -86,28 +85,28 @@
 
                 @foreach (var item in Model)
                 {
-    <div class="row">
-        <!-- <div class="col-sm-4">
-                <a href="#" class=""><img src="http://placehold.it/1280X720" class="img-responsive"></a>
-            </div>-->
-        <div class="col-sm-8">
-            <h3 class="title">@Html.DisplayFor(modelItem => item.TitreArticle)</h3>
-            @if (item.IsqualityArticle == false)
-            {    // la fonction d'affichage de date sera gérée avec la validation d'article puisque c'est une date de publication
-                <p class="text-muted"><span class="glyphicon glyphicon-calendar"></span> @Html.DisplayFor(modelItem => item.DatepublicationArticle)</p> 
-            }
-                else
-                {
-                    <p class="text-muted"><span class="glyphicon glyphicon-lock"></span>Contenu réservé au premium</p>
-                }
+                    <div class="row">
+                        <!-- <div class="col-sm-4">
+                                <a href="#" class=""><img src="http://placehold.it/1280X720" class="img-responsive"></a>
+                            </div>-->
+                        <div class="col-sm-8">
+                            <h3 class="title">@Html.DisplayFor(modelItem => item.TitreArticle)</h3>
+                            @if (item.IsqualityArticle == false)
+                            {    // la fonction d'affichage de date sera gérée avec la validation d'article puisque c'est une date de publication
+                                <p class="text-muted"><span class="glyphicon glyphicon-calendar"></span> @Html.DisplayFor(modelItem => item.DatepublicationArticle)</p>
+                            }
+                            else
+                            {
+                                <p class="text-muted"><span class="glyphicon glyphicon-lock"></span>Contenu réservé au premium</p>
+                            }
 
-            <p>@Html.DisplayFor(modelItem => item.DescriptionArticle)</p>
-            <p class="text-muted">Rédigé par <a href="AspNetUsers/@Html.DisplayFor(modelItem => item.Id)">@Html.DisplayFor(modelItem => item.IdNavigation.PrenomAspnetuser)</a></p>
-            <a asp-action="Details" asp-route-id="@item.IdArticle">->Consulter</a>
-        </div>
-    </div>
+                            <p>@Html.DisplayFor(modelItem => item.DescriptionArticle)</p>
+                            <p class="text-muted">Rédigé par <a href="AspNetUsers/@Html.DisplayFor(modelItem => item.Id)">@Html.DisplayFor(modelItem => item.IdNavigation.PrenomAspnetuser)</a></p>
+                            <a asp-action="Details" asp-route-id="@item.IdArticle">->Consulter</a>
+                        </div>
+                    </div>
+
                     <hr>}
-
 
                 <nav aria-label="Page navigation example">
                     <ul class="pagination">

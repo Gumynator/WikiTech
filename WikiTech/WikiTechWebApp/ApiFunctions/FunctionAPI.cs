@@ -1,4 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿
+//Auteur    : Loris habegger
+//Date      : 01.05.2021
+//Fichier   : FunctionAPI.cs
+
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,6 +11,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using WikiTechAPI.Models;
+using WikiTechWebApp.Exceptions;
 
 namespace WikiTechWebApp.ApiFunctions
 {
@@ -55,7 +61,7 @@ namespace WikiTechWebApp.ApiFunctions
 
         */
 
-        //Add Tag to an article
+        //Add Tag(s) to an article
         internal static async Task<List<Referencer>> AddTagToArticle(List<string> _idtags, int _idArticle)
         {
 
@@ -64,31 +70,40 @@ namespace WikiTechWebApp.ApiFunctions
 
             List<Referencer> resultatReferences = new List<Referencer>();
 
-
-
-            for (int i = 0; i < idtags.Count; i++)
+            try
             {
-                Referencer currentAdd = new Referencer();
-                String currentTag = idtags[i];
 
-                currentAdd.IdArticle = idArticle;
-                currentAdd.IdTag = Int32.Parse(currentTag);
-
-                Referencer resultRef;
-
-                using (var httpClient = new HttpClient())
+                for (int i = 0; i < idtags.Count; i++)
                 {
-                    StringContent referenceContent = new StringContent(JsonConvert.SerializeObject(currentAdd), Encoding.UTF8, "application/json");
+                    Referencer currentAdd = new Referencer();
+                    String currentTag = idtags[i];
 
-                    using var ReferenceResponse = await httpClient.PostAsync(ConfigureHttpClient.apiUrl + "Referencers", referenceContent);
-                    string ReferenceApiResponse = await ReferenceResponse.Content.ReadAsStringAsync();
-                    resultRef = JsonConvert.DeserializeObject<Referencer>(ReferenceApiResponse);
+                    currentAdd.IdArticle = idArticle;
+                    currentAdd.IdTag = Int32.Parse(currentTag);
 
-                    resultatReferences.Add(resultRef);
+                    Referencer resultRef;
+
+                    using (var httpClient = new HttpClient())
+                    {
+                        StringContent referenceContent = new StringContent(JsonConvert.SerializeObject(currentAdd), Encoding.UTF8, "application/json");
+
+                        using var ReferenceResponse = await httpClient.PostAsync(ConfigureHttpClient.apiUrl + "Referencers", referenceContent);
+                        string ReferenceApiResponse = await ReferenceResponse.Content.ReadAsStringAsync();
+                        resultRef = JsonConvert.DeserializeObject<Referencer>(ReferenceApiResponse);
+
+                        resultatReferences.Add(resultRef);
+                    }
+
                 }
+                return resultatReferences;
 
             }
-            return resultatReferences;
+            catch (ExceptionLiaisonApi e)
+            {
+                Console.WriteLine(e.getMessage());
+                return resultatReferences;
+            }
+
         }
 
     }

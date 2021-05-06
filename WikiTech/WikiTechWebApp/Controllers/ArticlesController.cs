@@ -1,4 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿
+//Auteur    : Loris habegger
+//Date      : 01.05.2021
+//Fichier   : ArticlesController.cs
+
+
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -7,6 +13,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using WikiTechAPI.Models;
 using WikiTechWebApp.ApiFunctions;
+using WikiTechWebApp.Exceptions;
 
 namespace WikiTechWebApp.Controllers
 {
@@ -27,10 +34,21 @@ namespace WikiTechWebApp.Controllers
         {
 
             IEnumerable<Article> artList;
-            HttpResponseMessage response = client.GetAsync("Articles").Result;
-            artList = response.Content.ReadAsAsync<IEnumerable<Article>>().Result;
 
-            return View(artList);
+            try
+            {
+
+                HttpResponseMessage response = client.GetAsync("Articles").Result;
+                artList = response.Content.ReadAsAsync<IEnumerable<Article>>().Result;
+                return View(artList);
+
+            }
+            catch (ExceptionLiaisonApi e)
+            {
+                Console.WriteLine(e.getMessage());
+                return Redirect("/Home/Index");
+            }
+            
 
         }
 
@@ -41,11 +59,21 @@ namespace WikiTechWebApp.Controllers
 
             //get article with user of article
             Article article;
-            HttpResponseMessage responsearticle = client.GetAsync("Articles/" + id).Result;
-            article = responsearticle.Content.ReadAsAsync<Article>().Result;
 
+            try
+            {
+                HttpResponseMessage responsearticle = client.GetAsync("Articles/" + id).Result;
+                article = responsearticle.Content.ReadAsAsync<Article>().Result;
 
-            return View(article);
+                return View(article);
+
+            }
+            catch (ExceptionLiaisonApi e)
+            {
+                Console.WriteLine(e.getMessage());
+                return Redirect("/Home/Index");
+            }
+
         }
 
         // GET: ArticleController/Create
@@ -110,5 +138,17 @@ namespace WikiTechWebApp.Controllers
                 return View();
             }
         }
+
+        /*
+        protected void Like(object sender, EventArgs e)
+        {
+            Console.Write("like");
+        }
+
+        protected void Dislike(object sender, EventArgs e)
+        {
+            Console.Write("dislike");
+        }
+        */
     }
 }

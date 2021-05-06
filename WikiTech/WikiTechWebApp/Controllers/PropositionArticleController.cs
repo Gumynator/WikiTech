@@ -1,4 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿
+//Auteur    : Loris habegger
+//Date      : 06.05.2021
+//Fichier   : PropositionArticleController.cs
+
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Web;
@@ -16,6 +21,10 @@ using Newtonsoft.Json;
 using System.Text;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Authorization;
+using WikiTechWebApp.Exceptions;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Processing;
 
 namespace WikiTechWebApp.Controllers
 {
@@ -30,7 +39,7 @@ namespace WikiTechWebApp.Controllers
             client = ConfigureHttpClient.configureHttpClient(client);
         }
 
-        //[Authorize]
+        [Authorize]
         // GET: PropositionArticleController
         public ActionResult Index()
         {
@@ -38,17 +47,17 @@ namespace WikiTechWebApp.Controllers
         }
 
         // GET: PropositionArticleController/Details/5
-        public ActionResult Details(int id)
+       /* public ActionResult Details(int id)
         {
             return View();
-        }
+        }*/
 
-        // GET: PropositionArticleController/Create
+       /* // GET: PropositionArticleController/Create
         public ActionResult Create()
         {
             return View();
         }
-
+       */
         // POST: PropositionArticleController/Create
         [HttpPost("CreateProposition")]
         public async Task<ActionResult> Create([Bind("Id,TitreArticle,DescriptionArticle,TextArticle,IdSection,Referencer,IsqualityArticle")] Article _article)
@@ -66,22 +75,31 @@ namespace WikiTechWebApp.Controllers
             if (ModelState.IsValid)
             {
                 //Article article = await FunctionArticles.AddArticle(currentArticle); to passe trought another file
+                try
+                {
+                    Article resultarticle;
+                    StringContent content = new StringContent(JsonConvert.SerializeObject(currentArticle), Encoding.UTF8, "application/json");
 
-                Article resultarticle;
-                StringContent content = new StringContent(JsonConvert.SerializeObject(currentArticle), Encoding.UTF8, "application/json");
+                    using var response = await client.PostAsync(ConfigureHttpClient.apiUrl + "Articles", content);
+                    string apiResponse = await response.Content.ReadAsStringAsync();
 
-                using var response = await client.PostAsync(ConfigureHttpClient.apiUrl + "Articles", content);
-                string apiResponse = await response.Content.ReadAsStringAsync();
-
-                resultarticle = JsonConvert.DeserializeObject<Article>(apiResponse);
-
-
-                List<Referencer> resultReferences = new List<Referencer>();
-
-                resultReferences = await FunctionAPI.AddTagToArticle(idTags, resultarticle.IdArticle);
+                    resultarticle = JsonConvert.DeserializeObject<Article>(apiResponse);
 
 
-                return Redirect("/Articles/Index");
+                    List<Referencer> resultReferences = new List<Referencer>();
+
+                    resultReferences = await FunctionAPI.AddTagToArticle(idTags, resultarticle.IdArticle);
+
+
+                    return Redirect("/Articles/Index");
+
+                }
+                catch (ExceptionLiaisonApi e)
+                {
+                    Console.WriteLine(e.getMessage());
+                    return RedirectToAction(nameof(Index));
+                }
+               
             }
             else
             {
@@ -91,12 +109,13 @@ namespace WikiTechWebApp.Controllers
 
         }
 
-        // GET: PropositionArticleController/Edit/5
+       /* // GET: PropositionArticleController/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
-
+       */
+       /*
         // POST: PropositionArticleController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -117,7 +136,8 @@ namespace WikiTechWebApp.Controllers
         {
             return View();
         }
-
+       */
+       /*
         // POST: PropositionArticleController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -132,6 +152,7 @@ namespace WikiTechWebApp.Controllers
                 return View();
             }
         }
+       */
 
         [HttpPost]
         public async Task<string> uploadImg(IFormFile file)
@@ -140,22 +161,37 @@ namespace WikiTechWebApp.Controllers
             var saveimg = Path.Combine(webhost.WebRootPath, "images", file.FileName);
             string imgext = Path.GetExtension(file.FileName);
 
-            if (imgext == ".jpg" || imgext == ".png")
-            {
-                using (var uploadimg = new FileStream(saveimg, FileMode.Create))
-                {
+            //using var image = Image.Load(file.OpenReadStream());
+            //image.Mutate(x => x.Resize(256, 256));
 
-                    await file.CopyToAsync(uploadimg);
-                    message = "The selected file" + file.FileName + " est sauvé";
+            try
+            {
+
+                if (imgext == ".jpg" || imgext == ".png")
+                {
+                    using (var uploadimg = new FileStream(saveimg, FileMode.Create))
+                    {
+
+                        await file.CopyToAsync(uploadimg);
+                        message = "The selected file" + file.FileName + " est sauvé";
+                    }
+
+                }
+                else
+                {
+                    message = "seule les extension JPG et PNG sont supportée";
                 }
 
+                return "filename : " + saveimg + " le message :" + message;
+
             }
-            else
+            catch (ExceptionImg e)
             {
-                message = "seule les extension JPG et PNG sont supportée";
+
+                return e.getMessage();
             }
 
-            return "filename : " + saveimg + " le message :" + message;
+           
 
         }
 

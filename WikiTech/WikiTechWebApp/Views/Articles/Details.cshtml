@@ -3,6 +3,8 @@
     //Date      : 02.05.2021
     //Fichier   : Details.chtml (affichage de l'article)
     //Perso     : controle de qualité ou pas, gestion des droits
+    //use link  : https://stackoverflow.com/questions/8887933/html-button-like-a-asp-net-button
+
 
 *@
 
@@ -16,6 +18,9 @@
 
 
 <body>
+    <p><a asp-action="Index">--retour</a></p>
+    <hr />
+
     @if (Model.IsqualityArticle == true)
     {
         <p> C'est un article de qualité, vous devez être abonné pour le voir. Cette fonctionnalité est en cours de développement !</p>
@@ -25,11 +30,10 @@
         <!-- Page content-->
         <div class="container">
             <div class="row">
-                <!-- Post content-->
                 <div class="col-lg-8">
                     <!-- Title-->
                     <h1 class="mt-4">@Html.DisplayFor(model => model.TitreArticle)</h1>
-                    <!-- Author-->
+                    <!-- auteur-->
                     <p class="lead">
                         by
                         <a href="#!">@Html.DisplayFor(model => model.IdNavigation.PrenomAspnetuser)</a>
@@ -38,18 +42,17 @@
                     <!-- Date and time-->
                     <p>Posted on @Html.DisplayFor(model => model.DatepublicationArticle)</p>
                     <hr />
-                    <!-- Preview image
+                    <!-- image d'article, pas dispo
                     <img class="img-fluid rounded" src="https://via.placeholder.com/900x300" alt="..." />
                     <hr />-->
-                    <!-- Post content-->
+                    <!-- contenu-->
                     <p class="lead">@Html.DisplayFor(model => model.DescriptionArticle)</p>
                     <p>@Html.Raw(Model.TextArticle)</p>
                     <hr />
 
                 </div>
-                <!-- Sidebar widgets column-->
+                <!-- bar latérale-->
                 <div class="col-md-4">
-                    <!-- Categories widget-->
                     <div class="card my-4">
                         <h5 class="card-header">Categories</h5>
                         <div class="card-body">
@@ -58,7 +61,7 @@
                                     <ul class="list-unstyled mb-0" id="tags">
                                         @foreach (var item in Model.Referencer)
                                         {
-                                                <script type="text/javascript">
+                                            <script type="text/javascript">
 
                                             getTags(@Html.Raw(item.IdTag));
 
@@ -75,8 +78,8 @@
                                                     });
                                             }
 
-                                                </script>
-                                            }
+                                            </script>
+                                        }
                                     </ul>
                                 </div>
                             </div>
@@ -86,18 +89,21 @@
             </div>
         </div>
 
-     }
+        <p>
+            <button id="likebutton" runat="server" onserverclick="like">J'aime</button>
+            <button id="dislikebutton" runat="server" onserverclick="dislike">je n'aime pas</button>
+        </p>
+
+}
 </body>
 
 <script>
 
     function createTagSelect(data) {
         var select = $("#tags");
-            console.log(data.nomTag + data.idTag);
+        console.log(data.nomTag + data.idTag);
         var element = "<li><a href=\"tags/" + data.idTag + "\">" + data.nomTag + "</a></li>";
-            select.append(element);
+        select.append(element);
     }
-
-
 
 </script>
