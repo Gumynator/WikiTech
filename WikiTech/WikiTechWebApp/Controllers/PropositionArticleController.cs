@@ -39,7 +39,7 @@ namespace WikiTechWebApp.Controllers
             client = ConfigureHttpClient.configureHttpClient(client);
         }
 
-        [Authorize]
+        //[Authorize]
         // GET: PropositionArticleController
         public ActionResult Index()
         {
@@ -109,91 +109,148 @@ namespace WikiTechWebApp.Controllers
 
         }
 
-       /* // GET: PropositionArticleController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-       */
-       /*
-        // POST: PropositionArticleController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        /* // GET: PropositionArticleController/Edit/5
+         public ActionResult Edit(int id)
+         {
+             return View();
+         }
+        */
+        /*
+         // POST: PropositionArticleController/Edit/5
+         [HttpPost]
+         [ValidateAntiForgeryToken]
+         public ActionResult Edit(int id, IFormCollection collection)
+         {
+             try
+             {
+                 return RedirectToAction(nameof(Index));
+             }
+             catch
+             {
+                 return View();
+             }
+         }
 
-        // GET: PropositionArticleController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-       */
-       /*
-        // POST: PropositionArticleController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-       */
+         // GET: PropositionArticleController/Delete/5
+         public ActionResult Delete(int id)
+         {
+             return View();
+         }
+        */
+        /*
+         // POST: PropositionArticleController/Delete/5
+         [HttpPost]
+         [ValidateAntiForgeryToken]
+         public ActionResult Delete(int id, IFormCollection collection)
+         {
+             try
+             {
+                 return RedirectToAction(nameof(Index));
+             }
+             catch
+             {
+                 return View();
+             }
+         }
+        */
+
+        /* [HttpPost]
+         public async Task<string> uploadImg(IFormFile file)
+         {
+             string message;
+             var saveimg = Path.Combine(webhost.WebRootPath, "images", file.FileName);
+             string imgext = Path.GetExtension(file.FileName);
+
+             //using var image = Image.Load(file.OpenReadStream());
+             //image.Mutate(x => x.Resize(256, 256));
+
+             try
+             {
+
+                 if (imgext == ".jpg" || imgext == ".png")
+                 {
+                     using (var uploadimg = new FileStream(saveimg, FileMode.Create))
+                     {
+
+                         await file.CopyToAsync(uploadimg);
+                         message = "The selected file" + file.FileName + " est sauvé";
+                     }
+
+                 }
+                 else
+                 {
+                     message = "seule les extension JPG et PNG sont supportée";
+                 }
+
+                 return "filename : " + saveimg + " le message :" + message;
+
+             }
+             catch (ExceptionImg e)
+             {
+
+                 return e.getMessage();
+             }
+
+
+
+         }
+        */
 
         [HttpPost]
+        [RequestSizeLimit(2097152)] //2MB
         public async Task<string> uploadImg(IFormFile file)
         {
-            string message;
-            var saveimg = Path.Combine(webhost.WebRootPath, "images", file.FileName);
-            string imgext = Path.GetExtension(file.FileName);
 
-            //using var image = Image.Load(file.OpenReadStream());
-            //image.Mutate(x => x.Resize(256, 256));
+            if (file == null)
+            {
+                Console.WriteLine("image too large");
 
-            try
+                ViewBag.ErrorMessage = string.Format("image is Too large");
+
+                return "Image too large";
+            }
+            else
             {
 
-                if (imgext == ".jpg" || imgext == ".png")
+                try
                 {
-                    using (var uploadimg = new FileStream(saveimg, FileMode.Create))
-                    {
+                    //path to save the file
+                    var saveimg = Path.Combine(webhost.WebRootPath, "images", file.FileName);
 
-                        await file.CopyToAsync(uploadimg);
-                        message = "The selected file" + file.FileName + " est sauvé";
+                    //convert file to img for the resizing
+                    var image = Image.Load(file.OpenReadStream());
+                    var size = image.Size();
+
+                    double currentLargeur = image.Width;
+                    double currentHauteur = image.Height;
+
+                    //resizing dimension
+                    while (currentLargeur > 800 || currentHauteur > 800)
+                    {
+                        currentLargeur = currentLargeur / 1.25;
+                        currentHauteur = currentHauteur / 1.25;
+
                     }
 
+                    int newLargeur = (int)currentLargeur;
+                    int newHauteur = (int)currentHauteur;
+
+                    //resize with nwe value
+                    image.Mutate(x => x.Resize(newLargeur, newHauteur));
+
+
+                    image.Save(saveimg);
+                    return saveimg;
                 }
-                else
+                catch (ExceptionImg e)
                 {
-                    message = "seule les extension JPG et PNG sont supportée";
+
+                    return e.getMessage();
                 }
 
-                return "filename : " + saveimg + " le message :" + message;
-
             }
-            catch (ExceptionImg e)
-            {
-
-                return e.getMessage();
-            }
-
-           
 
         }
-
+       
     }
 }

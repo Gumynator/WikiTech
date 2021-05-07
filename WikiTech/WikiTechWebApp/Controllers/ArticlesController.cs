@@ -29,8 +29,8 @@ namespace WikiTechWebApp.Controllers
 
         }
 
-        // GET: ArticlesController
-        public IActionResult Index()
+        // GET: ArticlesController to restor
+       public IActionResult Index()
         {
 
             IEnumerable<Article> artList;
@@ -52,7 +52,7 @@ namespace WikiTechWebApp.Controllers
 
         }
 
-
+        
         // GET: ArticleController/Details/5
         public ActionResult DetailsAsync(int id)
         {

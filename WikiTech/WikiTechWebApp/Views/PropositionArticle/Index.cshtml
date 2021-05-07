@@ -2,7 +2,7 @@
     //Auteur    : Loris habegger
     //Date      : 27.04.2021
     //Fichier   : Index.chtml (proposition d'article)
-    //Perso     : Droit géré dans le controlleur, image tiny mce,
+    //Perso     : tester si image trop lourde
 
 *@
 
@@ -35,6 +35,16 @@
             @Html.ValidationMessageFor(m => m.DescriptionArticle, "", new { @class = "text-danger" })
         </div>
         <div class="mb-3">
+
+            @if (ViewBag.ErrorMessage != null)
+            {
+                <script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewBag.ErrorMessage");
+            };
+                </script>
+            }
+
             <label for="TinyArea" class="form-label">Rédaction de l'article</label>
             <textarea asp-for="TextArticle" class="form-control" id="TinyArea" rows="20" cols="300"></textarea>
             @Html.ValidationMessageFor(m => m.TextArticle, "", new { @class = "text-danger" })
