@@ -20,5 +20,10 @@ namespace WikiTechAPI.Models
 
         public virtual ICollection<Referencer> Referencer { get; set; }
         public virtual ICollection<Referencer2> Referencer2 { get; set; }
+
+        public static implicit operator Tag(Article v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
