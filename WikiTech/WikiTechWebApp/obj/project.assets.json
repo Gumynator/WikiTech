@@ -58,6 +58,22 @@
           "lib/netstandard2.0/Humanizer.dll": {}
         }
       },
+      "jQuery/1.6.0": {
+        "type": "package"
+      },
+      "jQuery.UI.Combined/1.8.23": {
+        "type": "package",
+        "dependencies": {
+          "jQuery": "1.4.4"
+        }
+      },
+      "jui_pagination/2.0.0": {
+        "type": "package",
+        "dependencies": {
+          "jQuery": "1.6.0",
+          "jQuery.UI.Combined": "1.8.23"
+        }
+      },
       "Microsoft.AspNet.WebApi.Client/5.2.7": {
         "type": "package",
         "dependencies": {
@@ -3693,6 +3709,120 @@
         "lib/netstandard2.0/Humanizer.dll",
         "lib/netstandard2.0/Humanizer.xml",
         "logo.png"
+      ]
+    },
+    "jQuery/1.6.0": {
+      "sha512": "ARsNw9AbyHtzxgucEKXOy15HyzRdLOxchTvdYQYRGixTT6gM3KRnnW0h/auhvqjm9CayeqVf1ihNzhlaKI+yXw==",
+      "type": "package",
+      "path": "jquery/1.6.0",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Content/Scripts/jquery-1.6-vsdoc.js",
+        "Content/Scripts/jquery-1.6.js",
+        "Content/Scripts/jquery-1.6.min.js",
+        "Tools/install.ps1",
+        "Tools/jquery-1.6-vsdoc-para.js",
+        "Tools/uninstall.ps1",
+        "jquery.1.6.0.nupkg.sha512",
+        "jquery.nuspec"
+      ]
+    },
+    "jQuery.UI.Combined/1.8.23": {
+      "sha512": "Wcwj4KAiCcuEoPlbGxiKRvjYTErD6zJhZhJQbkzc/wlLc6AdWutKkbVWk+HbHpY0+abCD+WMbBV15LJWbwGzyQ==",
+      "type": "package",
+      "path": "jquery.ui.combined/1.8.23",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Content/Content/themes/base/images/ui-bg_flat_0_aaaaaa_40x100.png",
+        "Content/Content/themes/base/images/ui-bg_flat_75_ffffff_40x100.png",
+        "Content/Content/themes/base/images/ui-bg_glass_55_fbf9ee_1x400.png",
+        "Content/Content/themes/base/images/ui-bg_glass_65_ffffff_1x400.png",
+        "Content/Content/themes/base/images/ui-bg_glass_75_dadada_1x400.png",
+        "Content/Content/themes/base/images/ui-bg_glass_75_e6e6e6_1x400.png",
+        "Content/Content/themes/base/images/ui-bg_glass_95_fef1ec_1x400.png",
+        "Content/Content/themes/base/images/ui-bg_highlight-soft_75_cccccc_1x100.png",
+        "Content/Content/themes/base/images/ui-icons_222222_256x240.png",
+        "Content/Content/themes/base/images/ui-icons_2e83ff_256x240.png",
+        "Content/Content/themes/base/images/ui-icons_454545_256x240.png",
+        "Content/Content/themes/base/images/ui-icons_888888_256x240.png",
+        "Content/Content/themes/base/images/ui-icons_cd0a0a_256x240.png",
+        "Content/Content/themes/base/jquery-ui.css",
+        "Content/Content/themes/base/jquery.ui.accordion.css",
+        "Content/Content/themes/base/jquery.ui.all.css",
+        "Content/Content/themes/base/jquery.ui.autocomplete.css",
+        "Content/Content/themes/base/jquery.ui.base.css",
+        "Content/Content/themes/base/jquery.ui.button.css",
+        "Content/Content/themes/base/jquery.ui.core.css",
+        "Content/Content/themes/base/jquery.ui.datepicker.css",
+        "Content/Content/themes/base/jquery.ui.dialog.css",
+        "Content/Content/themes/base/jquery.ui.progressbar.css",
+        "Content/Content/themes/base/jquery.ui.resizable.css",
+        "Content/Content/themes/base/jquery.ui.selectable.css",
+        "Content/Content/themes/base/jquery.ui.slider.css",
+        "Content/Content/themes/base/jquery.ui.tabs.css",
+        "Content/Content/themes/base/jquery.ui.theme.css",
+        "Content/Content/themes/base/minified/images/ui-bg_flat_0_aaaaaa_40x100.png",
+        "Content/Content/themes/base/minified/images/ui-bg_flat_75_ffffff_40x100.png",
+        "Content/Content/themes/base/minified/images/ui-bg_glass_55_fbf9ee_1x400.png",
+        "Content/Content/themes/base/minified/images/ui-bg_glass_65_ffffff_1x400.png",
+        "Content/Content/themes/base/minified/images/ui-bg_glass_75_dadada_1x400.png",
+        "Content/Content/themes/base/minified/images/ui-bg_glass_75_e6e6e6_1x400.png",
+        "Content/Content/themes/base/minified/images/ui-bg_glass_95_fef1ec_1x400.png",
+        "Content/Content/themes/base/minified/images/ui-bg_highlight-soft_75_cccccc_1x100.png",
+        "Content/Content/themes/base/minified/images/ui-icons_222222_256x240.png",
+        "Content/Content/themes/base/minified/images/ui-icons_2e83ff_256x240.png",
+        "Content/Content/themes/base/minified/images/ui-icons_454545_256x240.png",
+        "Content/Content/themes/base/minified/images/ui-icons_888888_256x240.png",
+        "Content/Content/themes/base/minified/images/ui-icons_cd0a0a_256x240.png",
+        "Content/Content/themes/base/minified/jquery-ui.min.css",
+        "Content/Content/themes/base/minified/jquery.ui.accordion.min.css",
+        "Content/Content/themes/base/minified/jquery.ui.autocomplete.min.css",
+        "Content/Content/themes/base/minified/jquery.ui.button.min.css",
+        "Content/Content/themes/base/minified/jquery.ui.core.min.css",
+        "Content/Content/themes/base/minified/jquery.ui.datepicker.min.css",
+        "Content/Content/themes/base/minified/jquery.ui.dialog.min.css",
+        "Content/Content/themes/base/minified/jquery.ui.progressbar.min.css",
+        "Content/Content/themes/base/minified/jquery.ui.resizable.min.css",
+        "Content/Content/themes/base/minified/jquery.ui.selectable.min.css",
+        "Content/Content/themes/base/minified/jquery.ui.slider.min.css",
+        "Content/Content/themes/base/minified/jquery.ui.tabs.min.css",
+        "Content/Content/themes/base/minified/jquery.ui.theme.min.css",
+        "Content/Scripts/jquery-ui-1.8.23.js",
+        "Content/Scripts/jquery-ui-1.8.23.min.js",
+        "jquery.ui.combined.1.8.23.nupkg.sha512",
+        "jquery.ui.combined.nuspec"
+      ]
+    },
+    "jui_pagination/2.0.0": {
+      "sha512": "ejncqoyeeDXGcbxs63e4pry+rEfqd+54jjiJwjlc7LhfuIRgM8Vif0pwy+RNUGBmm6fIGPPh1GDdYxEY4PVYhQ==",
+      "type": "package",
+      "path": "jui_pagination/2.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "content/Scripts/jui_pagination/.gitignore",
+        "content/Scripts/jui_pagination/CHANGELOG.md",
+        "content/Scripts/jui_pagination/MIT_LICENSE",
+        "content/Scripts/jui_pagination/README.md",
+        "content/Scripts/jui_pagination/images/bullet_go.png",
+        "content/Scripts/jui_pagination/images/page.png",
+        "content/Scripts/jui_pagination/jquery.jui_pagination.css",
+        "content/Scripts/jui_pagination/jquery.jui_pagination.js",
+        "content/Scripts/jui_pagination/jquery.jui_pagination.min.js",
+        "content/Scripts/jui_pagination/localization/el.js",
+        "content/Scripts/jui_pagination/localization/en.js",
+        "content/Scripts/jui_pagination/screenshots/sample_01.png",
+        "content/Scripts/jui_pagination/screenshots/sample_02.png",
+        "content/Scripts/jui_pagination/screenshots/sample_03.png",
+        "content/Scripts/jui_pagination/screenshots/sample_04.png",
+        "content/Scripts/jui_pagination/screenshots/sample_05.png",
+        "content/Scripts/jui_pagination/screenshots/sample_06.png",
+        "content/Scripts/jui_pagination/screenshots/sample_07.png",
+        "jui_pagination.2.0.0.nupkg.sha512",
+        "jui_pagination.nuspec"
       ]
     },
     "Microsoft.AspNet.WebApi.Client/5.2.7": {
@@ -11076,29 +11206,30 @@
       "System.Collections >= 4.3.0",
       "System.IO.FileSystem >= 4.3.0",
       "System.Net.Http >= 4.3.4",
-      "WikiTechAPI >= 1.0.0"
+      "WikiTechAPI >= 1.0.0",
+      "jui_pagination >= 2.0.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\lorhabegger\\.nuget\\packages\\": {},
+    "C:\\Users\\M4800\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\GitKraken\\WikiTech-Proto\\WikiTech\\WikiTechWebApp\\WikiTechWebApp.csproj",
+      "projectUniqueName": "C:\\Users\\M4800\\Desktop\\GITKRAKEN\\clonedeloan\\WikiTech-Proto\\WikiTech\\WikiTechWebApp\\WikiTechWebApp.csproj",
       "projectName": "WikiTechWebApp",
-      "projectPath": "C:\\GitKraken\\WikiTech-Proto\\WikiTech\\WikiTechWebApp\\WikiTechWebApp.csproj",
-      "packagesPath": "C:\\Users\\lorhabegger\\.nuget\\packages\\",
-      "outputPath": "C:\\GitKraken\\WikiTech-Proto\\WikiTech\\WikiTechWebApp\\obj\\",
+      "projectPath": "C:\\Users\\M4800\\Desktop\\GITKRAKEN\\clonedeloan\\WikiTech-Proto\\WikiTech\\WikiTechWebApp\\WikiTechWebApp.csproj",
+      "packagesPath": "C:\\Users\\M4800\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\M4800\\Desktop\\GITKRAKEN\\clonedeloan\\WikiTech-Proto\\WikiTech\\WikiTechWebApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
         "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\lorhabegger\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\M4800\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
@@ -11114,8 +11245,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\GitKraken\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj": {
-              "projectPath": "C:\\GitKraken\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj"
+            "C:\\Users\\M4800\\Desktop\\GITKRAKEN\\clonedeloan\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj": {
+              "projectPath": "C:\\Users\\M4800\\Desktop\\GITKRAKEN\\clonedeloan\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj"
             }
           }
         }
@@ -11187,6 +11318,10 @@
           "System.Net.Http": {
             "target": "Package",
             "version": "[4.3.4, )"
+          },
+          "jui_pagination": {
+            "target": "Package",
+            "version": "[2.0.0, )"
           }
         },
         "imports": [
@@ -11207,7 +11342,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

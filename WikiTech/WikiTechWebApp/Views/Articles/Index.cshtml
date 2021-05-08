@@ -2,13 +2,12 @@
     //Auteur    : Loris habegger
     //Date      : 01.05.2021
     //Fichier   : Index.chtml (liste d'article)
-    //Perso     : recherche, click sur tag + auteur, affichage des nombre d'article par tag, pagination
+    //ToDo     : recherche, click sur tag + auteur, affichage des nombre d'article par tag, pagination
     //use link  : https://docs.microsoft.com/en-us/aspnet/core/data/ef-mvc/sort-filter-page?view=aspnetcore-5.0
 
 *@
 @using Microsoft.AspNetCore.Identity
 @using WikiTechWebApp.Areas.Identity.Data
-@using WikiTechWebApp.Views.Articles
 @model IEnumerable<WikiTechAPI.Models.Article>
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
@@ -83,20 +82,22 @@
                 </div>
                 <hr>
 
-                @foreach (var item in Model)
-                {
+@foreach (var item in Model)
+
+{
             <div class="row">
-                <!-- <div class="col-sm-4">
-        <a href="#" class=""><img src="http://placehold.it/1280X720" class="img-responsive"></a>
-    </div>-->
+                    <!-- <div class="col-sm-4">
+            <a href="#" class=""><img src="http://placehold.it/1280X720" class="img-responsive"></a>
+        </div>-->
                 <div class="col-sm-8">
                     <h3 class="title">@Html.DisplayFor(modelItem => item.TitreArticle)</h3>
-                    @if (item.IsqualityArticle == false)
-                    {    // la fonction d'affichage de date sera gérée avec la validation d'article puisque c'est une date de publication
-            <p class="text-muted"><span class="glyphicon glyphicon-calendar"></span> @Html.DisplayFor(modelItem => item.DatepublicationArticle)</p> }
-        else
-        {
-            <p class="text-muted"><span class="glyphicon glyphicon-lock"></span>Contenu réservé au premium</p>}
+
+@if (item.IsqualityArticle == false)
+{    // la fonction d'affichage de date sera gérée avec la validation d'article puisque c'est une date de publication
+                    <p class="text-muted"><span class="glyphicon glyphicon-calendar"></span> @Html.DisplayFor(modelItem => item.DatepublicationArticle)</p> }
+else
+{
+                    <p class="text-muted"><span class="glyphicon glyphicon-lock"></span>Contenu réservé au premium</p>}
 
                     <p>@Html.DisplayFor(modelItem => item.DescriptionArticle)</p>
                     <p class="text-muted">Rédigé par <a href="AspNetUsers/@Html.DisplayFor(modelItem => item.Id)">@Html.DisplayFor(modelItem => item.IdNavigation.PrenomAspnetuser)</a></p>
@@ -104,27 +105,9 @@
                 </div>
             </div>
 
-                            <hr>}
+            <hr>
+}
 
-                <nav aria-label="Page navigation example">
-        <ul class="pagination">
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                    <span class="sr-only">Previous</span>
-                </a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
             </div>
         </div>
     </div>
@@ -132,9 +115,6 @@
     <br>
     <br>
 </body>
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}
 
 <script>
 

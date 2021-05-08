@@ -39,7 +39,7 @@ namespace WikiTechWebApp.Controllers
             client = ConfigureHttpClient.configureHttpClient(client);
         }
 
-        //[Authorize]
+        [Authorize]
         // GET: PropositionArticleController
         public ActionResult Index()
         {

@@ -48,6 +48,8 @@
           "System.IO.FileSystem": "4.3.0",
           "System.Net.Http": "4.3.4",
           "WikiTechAPI": "1.0.0",
+          "jui_pagination": "2.0.0",
+          "System.Web.Services": "4.0.0.0",
           "Microsoft.AspNetCore.Antiforgery": "5.0.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions.Reference": "5.0.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "5.0.0.0",
@@ -394,6 +396,18 @@
             "assemblyVersion": "2.8.0.0",
             "fileVersion": "2.8.26.1919"
           }
+        }
+      },
+      "jQuery/1.6.0": {},
+      "jQuery.UI.Combined/1.8.23": {
+        "dependencies": {
+          "jQuery": "1.6.0"
+        }
+      },
+      "jui_pagination/2.0.0": {
+        "dependencies": {
+          "jQuery": "1.6.0",
+          "jQuery.UI.Combined": "1.8.23"
         }
       },
       "Microsoft.AspNet.WebApi.Client/5.2.7": {
@@ -2928,6 +2942,17 @@
           "WikiTechAPI.dll": {}
         }
       },
+      "System.Web.Services/4.0.0.0": {
+        "runtime": {
+          "System.Web.Services.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.8.3752.0"
+          }
+        },
+        "compile": {
+          "System.Web.Services.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Antiforgery/5.0.0.0": {
         "compile": {
           "Microsoft.AspNetCore.Antiforgery.dll": {}
@@ -4613,6 +4638,27 @@
       "path": "humanizer.core/2.8.26",
       "hashPath": "humanizer.core.2.8.26.nupkg.sha512"
     },
+    "jQuery/1.6.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ARsNw9AbyHtzxgucEKXOy15HyzRdLOxchTvdYQYRGixTT6gM3KRnnW0h/auhvqjm9CayeqVf1ihNzhlaKI+yXw==",
+      "path": "jquery/1.6.0",
+      "hashPath": "jquery.1.6.0.nupkg.sha512"
+    },
+    "jQuery.UI.Combined/1.8.23": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Wcwj4KAiCcuEoPlbGxiKRvjYTErD6zJhZhJQbkzc/wlLc6AdWutKkbVWk+HbHpY0+abCD+WMbBV15LJWbwGzyQ==",
+      "path": "jquery.ui.combined/1.8.23",
+      "hashPath": "jquery.ui.combined.1.8.23.nupkg.sha512"
+    },
+    "jui_pagination/2.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ejncqoyeeDXGcbxs63e4pry+rEfqd+54jjiJwjlc7LhfuIRgM8Vif0pwy+RNUGBmm6fIGPPh1GDdYxEY4PVYhQ==",
+      "path": "jui_pagination/2.0.0",
+      "hashPath": "jui_pagination.2.0.0.nupkg.sha512"
+    },
     "Microsoft.AspNet.WebApi.Client/5.2.7": {
       "type": "package",
       "serviceable": true,
@@ -6155,6 +6201,11 @@
     },
     "WikiTechAPI/1.0.0": {
       "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "System.Web.Services/4.0.0.0": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
