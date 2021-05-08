@@ -1,4 +1,8 @@
-﻿using System;
+﻿//Auteur    : Loris habegger
+//Date      : 05.05.2021
+//Fichier   : ArticlesController.cs
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -6,6 +10,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WikiTechAPI.Models;
+using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
+using System.Text.Json.Serialization;
 
 namespace WikiTechAPI.Controllers
 {
@@ -24,15 +30,19 @@ namespace WikiTechAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Article>>> GetArticle()
         {
-            return await _context.Article.ToListAsync();
+            //return await _context.Article.ToListAsync();
+
+            
+            return await _context.Article.Include(p => p.IdNavigation).ToListAsync();
         }
 
         // GET: api/Articles/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Article>> GetArticle(int id)
         {
-            //var article2 = _context.Article.Include(a => a.IdNavigation).Where(a => a.IdArticle == id).First();
-            var article = await _context.Article.FindAsync(id);
+
+            var article = await _context.Article.Include(p => p.IdNavigation).Include(r => r.Referencer).FirstOrDefaultAsync(i => i.IdArticle == id);
+
 
             if (article == null)
             {
@@ -106,5 +116,7 @@ namespace WikiTechAPI.Controllers
         {
             return _context.Article.Any(e => e.IdArticle == id);
         }
+
+
     }
 }

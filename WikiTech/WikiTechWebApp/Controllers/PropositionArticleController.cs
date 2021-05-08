@@ -1,4 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿
+//Auteur    : Loris habegger
+//Date      : 06.05.2021
+//Fichier   : PropositionArticleController.cs
+
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Web;
@@ -14,6 +19,12 @@ using System.IO;
 using Grpc.Core;
 using Newtonsoft.Json;
 using System.Text;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Authorization;
+using WikiTechWebApp.Exceptions;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Processing;
 
 namespace WikiTechWebApp.Controllers
 {
@@ -21,14 +32,14 @@ namespace WikiTechWebApp.Controllers
     {
 
         static HttpClient client = new HttpClient();
-
-        public PropositionArticleController() 
+        private readonly IWebHostEnvironment webhost;
+        public PropositionArticleController(IWebHostEnvironment _webhost) 
         {
-
+            webhost = _webhost;
             client = ConfigureHttpClient.configureHttpClient(client);
         }
 
-        //[Authorize]
+        [Authorize]
         // GET: PropositionArticleController
         public ActionResult Index()
         {
@@ -36,93 +47,210 @@ namespace WikiTechWebApp.Controllers
         }
 
         // GET: PropositionArticleController/Details/5
-        public ActionResult Details(int id)
+       /* public ActionResult Details(int id)
         {
             return View();
-        }
+        }*/
 
-        // GET: PropositionArticleController/Create
+       /* // GET: PropositionArticleController/Create
         public ActionResult Create()
         {
             return View();
         }
-
+       */
         // POST: PropositionArticleController/Create
         [HttpPost("CreateProposition")]
         public async Task<ActionResult> Create([Bind("Id,TitreArticle,DescriptionArticle,TextArticle,IdSection,Referencer,IsqualityArticle")] Article _article)
         {
 
-            Article currentArticle = _article;
+            Article currentArticle = _article;            
 
-            currentArticle.Id = "00221f02-bfdb-4607-9403-7168e260ea8a"; // sera récupéré quand loggé
-            currentArticle.IdSection = int.Parse(Request.Form["rdsection"]);
+            var idTags = Request.Form["tags"].ToList(); //.count compte les éléments à l'intérrieur
 
-            var listreference = currentArticle.Referencer.ToList();
-            var Tags = Request.Form["tags"]; //.count compte les éléments à l'intérrieur
+            var IdUser = User.FindFirstValue(ClaimTypes.NameIdentifier); // récupération de l'ID de l'utilisateur courrant
+
+            currentArticle.Id = IdUser;
+            currentArticle.IdSection = int.Parse(Request.Form["rdsection"]); // récupération de l'id de la section selectionnée
 
             if (ModelState.IsValid)
             {
                 //Article article = await FunctionArticles.AddArticle(currentArticle); to passe trought another file
+                try
+                {
+                    Article resultarticle;
+                    StringContent content = new StringContent(JsonConvert.SerializeObject(currentArticle), Encoding.UTF8, "application/json");
 
-                Article resultarticle;
+                    using var response = await client.PostAsync(ConfigureHttpClient.apiUrl + "Articles", content);
+                    string apiResponse = await response.Content.ReadAsStringAsync();
 
-                StringContent content = new StringContent(JsonConvert.SerializeObject(currentArticle), Encoding.UTF8, "application/json");
+                    resultarticle = JsonConvert.DeserializeObject<Article>(apiResponse);
 
-                using var response = await client.PostAsync(ConfigureHttpClient.apiUrl + "Articles", content);
-                string apiResponse = await response.Content.ReadAsStringAsync();
-                resultarticle = JsonConvert.DeserializeObject<Article>(apiResponse);
 
-                return Redirect(Url.Action("http://google.com"));
+                    List<Referencer> resultReferences = new List<Referencer>();
+
+                    resultReferences = await FunctionAPI.AddTagToArticle(idTags, resultarticle.IdArticle);
+
+
+                    return Redirect("/Articles/Index");
+
+                }
+                catch (ExceptionLiaisonApi e)
+                {
+                    Console.WriteLine(e.getMessage());
+                    return RedirectToAction(nameof(Index));
+                }
+               
             }
             else
             {
 
-                return RedirectToAction("Home/Index");
-            }
-
-        }
-
-        // GET: PropositionArticleController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: PropositionArticleController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
                 return RedirectToAction(nameof(Index));
             }
-            catch
-            {
-                return View();
-            }
+
         }
 
-        // GET: PropositionArticleController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
+        /* // GET: PropositionArticleController/Edit/5
+         public ActionResult Edit(int id)
+         {
+             return View();
+         }
+        */
+        /*
+         // POST: PropositionArticleController/Edit/5
+         [HttpPost]
+         [ValidateAntiForgeryToken]
+         public ActionResult Edit(int id, IFormCollection collection)
+         {
+             try
+             {
+                 return RedirectToAction(nameof(Index));
+             }
+             catch
+             {
+                 return View();
+             }
+         }
 
-        // POST: PropositionArticleController/Delete/5
+         // GET: PropositionArticleController/Delete/5
+         public ActionResult Delete(int id)
+         {
+             return View();
+         }
+        */
+        /*
+         // POST: PropositionArticleController/Delete/5
+         [HttpPost]
+         [ValidateAntiForgeryToken]
+         public ActionResult Delete(int id, IFormCollection collection)
+         {
+             try
+             {
+                 return RedirectToAction(nameof(Index));
+             }
+             catch
+             {
+                 return View();
+             }
+         }
+        */
+
+        /* [HttpPost]
+         public async Task<string> uploadImg(IFormFile file)
+         {
+             string message;
+             var saveimg = Path.Combine(webhost.WebRootPath, "images", file.FileName);
+             string imgext = Path.GetExtension(file.FileName);
+
+             //using var image = Image.Load(file.OpenReadStream());
+             //image.Mutate(x => x.Resize(256, 256));
+
+             try
+             {
+
+                 if (imgext == ".jpg" || imgext == ".png")
+                 {
+                     using (var uploadimg = new FileStream(saveimg, FileMode.Create))
+                     {
+
+                         await file.CopyToAsync(uploadimg);
+                         message = "The selected file" + file.FileName + " est sauvé";
+                     }
+
+                 }
+                 else
+                 {
+                     message = "seule les extension JPG et PNG sont supportée";
+                 }
+
+                 return "filename : " + saveimg + " le message :" + message;
+
+             }
+             catch (ExceptionImg e)
+             {
+
+                 return e.getMessage();
+             }
+
+
+
+         }
+        */
+
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        [RequestSizeLimit(2097152)] //2MB
+        public async Task<string> uploadImg(IFormFile file)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
 
+            if (file == null)
+            {
+                Console.WriteLine("image too large");
+
+                ViewBag.ErrorMessage = string.Format("image is Too large");
+
+                return "Image too large";
+            }
+            else
+            {
+
+                try
+                {
+                    //path to save the file
+                    var saveimg = Path.Combine(webhost.WebRootPath, "images", file.FileName);
+
+                    //convert file to img for the resizing
+                    var image = Image.Load(file.OpenReadStream());
+                    var size = image.Size();
+
+                    double currentLargeur = image.Width;
+                    double currentHauteur = image.Height;
+
+                    //resizing dimension
+                    while (currentLargeur > 800 || currentHauteur > 800)
+                    {
+                        currentLargeur = currentLargeur / 1.25;
+                        currentHauteur = currentHauteur / 1.25;
+
+                    }
+
+                    int newLargeur = (int)currentLargeur;
+                    int newHauteur = (int)currentHauteur;
+
+                    //resize with nwe value
+                    image.Mutate(x => x.Resize(newLargeur, newHauteur));
+
+
+                    image.Save(saveimg);
+                    return saveimg;
+                }
+                catch (ExceptionImg e)
+                {
+
+                    return e.getMessage();
+                }
+
+            }
+
+        }
+       
     }
 }

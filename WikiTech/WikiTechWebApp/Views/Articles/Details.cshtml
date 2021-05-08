@@ -2,82 +2,108 @@
     //Auteur    : Loris habegger
     //Date      : 02.05.2021
     //Fichier   : Details.chtml (affichage de l'article)
-    //Perso     : mise en page, récupération du nom des auteurs, controle de qualité ou pas
+    //ToDo     : bouton like (backend)
+    //use link  : https://stackoverflow.com/questions/8887933/html-button-like-a-asp-net-button
+
 
 *@
 
 @model WikiTechAPI.Models.Article
+@using Microsoft.AspNetCore.Identity
+@using WikiTechWebApp.Areas.Identity.Data
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
 
 @{ ViewData["Title"] = "Details"; }
 
-<h1>Details</h1>
 
-<div>
-    <h4>Article</h4>
+<body>
+    <p><a asp-action="Index">--retour</a></p>
     <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.TitreArticle)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.TitreArticle)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DescriptionArticle)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DescriptionArticle)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.TextArticle)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.Raw(Model.TextArticle)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DatepublicationArticle)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DatepublicationArticle)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.IsactiveArticle)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.IsactiveArticle)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.IsqualityArticle)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.IsqualityArticle)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.IdNavigation)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.IdNavigation.Id)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.IdSectionNavigation)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.IdSectionNavigation.NomSection)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.IdArticle">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
 
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
+    @if (Model.IsqualityArticle == true)
+    {
+        <p> C'est un article de qualité, vous devez être abonné pour le voir. Cette fonctionnalité est en cours de développement !</p>
+    }
+    else
+    {
+        <!-- Page content-->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <!-- Title-->
+                    <h1 class="mt-4">@Html.DisplayFor(model => model.TitreArticle)</h1>
+                    <!-- auteur-->
+                    <p class="lead">
+                        by
+                        <a href="#!">@Html.DisplayFor(model => model.IdNavigation.PrenomAspnetuser)</a>
+                    </p>
+                    <hr />
+                    <!-- Date and time-->
+                    <p>Posted on @Html.DisplayFor(model => model.DatepublicationArticle)</p>
+                    <hr />
+                    <!-- image d'article, pas dispo
+                    <img class="img-fluid rounded" src="https://via.placeholder.com/900x300" alt="..." />
+                    <hr />-->
+                    <!-- contenu-->
+                    <p class="lead">@Html.DisplayFor(model => model.DescriptionArticle)</p>
+                    <p>@Html.Raw(Model.TextArticle)</p>
+                    <hr />
+
+                </div>
+                <!-- bar latérale-->
+                <div class="col-md-4">
+                    <div class="card my-4">
+                        <h5 class="card-header">Categories</h5>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <ul class="list-unstyled mb-0" id="tags">
+                                        @foreach (var item in Model.Referencer)
+                                        {
+                                            <script type="text/javascript">
+
+                                            getTags(@Html.Raw(item.IdTag));
+
+                                            function getTags(id) {
+                                                $.ajax(
+                                                    {
+                                                        url: "http://localhost:59601/Api/Tags/" + id,
+                                                        type: "GET",
+                                                        dataType: "JSON",
+                                                        contentType: "application/json",
+                                                        success: function (data) {
+                                                            createTagSelect(data);
+                                                        }
+                                                    });
+                                            }
+
+                                            </script>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p>
+            <button id="likebutton" runat="server" onserverclick="like">J'aime</button>
+            <button id="dislikebutton" runat="server" onserverclick="dislike">je n'aime pas</button>
+        </p>
+
 }
+</body>
 
 <script>
 
-
-    var myContent = tinymce.get("#TinyArea").getContent({ format: "text" });
+    function createTagSelect(data) {
+        var select = $("#tags");
+        console.log(data.nomTag + data.idTag);
+        var element = "<li><a href=\"tags/" + data.idTag + "\">" + data.nomTag + "</a></li>";
+        select.append(element);
+    }
 
 </script>

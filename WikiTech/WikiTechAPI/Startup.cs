@@ -25,7 +25,8 @@ namespace WikiTechAPI
             services.AddDbContext<WikiTechDBContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddControllers();
+            //AddNewtonsoftJson, use to ingore max JSON transaction
+            services.AddControllers().AddNewtonsoftJson(p => p.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
             services.AddCors(option =>
             {
