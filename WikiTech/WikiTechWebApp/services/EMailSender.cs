@@ -26,7 +26,7 @@ namespace WikiTechWebApp.Services
             var client = new SendGridClient(apiKey);
             var msg = new SendGridMessage()
             {
-                From = new EmailAddress("loanrey2000@gmail.com", Options.SendGridUser),
+                From = new EmailAddress("No-Reply@wikitech.ch", Options.SendGridUser),
                 Subject = subject,
                 PlainTextContent = message,
                 HtmlContent = message
@@ -36,7 +36,7 @@ namespace WikiTechWebApp.Services
             // Disable click tracking.
             // See https://sendgrid.com/docs/User_Guide/Settings/tracking.html
             msg.SetClickTracking(false, false);
-
+            //var result = client.SendEmailAsync(msg);
             return client.SendEmailAsync(msg);
         }
     }
