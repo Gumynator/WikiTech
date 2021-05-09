@@ -1,4 +1,7 @@
-﻿using System;
+﻿//Auteur    : Pancini Marco
+//Date      : 11.04.2021
+//Fichier   : AbonnementsController.cs
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -41,7 +44,7 @@ namespace WikiTechWebApp.Controllers
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
         //Auteur : Pancini Marco
         //Création : 11.04.2021
-        //Modification : 19.04.2021
+        //Modification : 09.05.2021
         //Description : Fonction Temporaire, qui permet la récupération du prix lors de la séléction de l'abonnement
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
         [Authorize]
