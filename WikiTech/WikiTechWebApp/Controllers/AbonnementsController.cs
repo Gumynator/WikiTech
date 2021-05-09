@@ -24,6 +24,7 @@ namespace WikiTechWebApp.Controllers
         public AbonnementsController()
         {
             client = ConfigureHttpClient.configureHttpClient(client);
+            client.DefaultRequestHeaders.Add("ApiKey", "61c08ad1-0823-4c38-9853-700675e3c8fc");
         }
 
         // GET: Abonnements
@@ -50,7 +51,7 @@ namespace WikiTechWebApp.Controllers
             decimal price = subscription.PrixAbonnement;
             string name = subscription.NomAbonnement;
             //passer l'id de l'abonnement au controller
-            ViewBag.price = price ;
+            ViewBag.price = price;
             ViewBag.Displayprice = price;
             ViewBag.id = id;
             ViewBag.name = name;
@@ -65,14 +66,14 @@ namespace WikiTechWebApp.Controllers
         // Cette fonction va être modifier pour utiliser l'API et ainsi utiliser les ID des abonnements au lieu d'entrer les données en dures
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
         [Authorize]
-        public async Task<IActionResult> ChargeAsync(int? id, PayModelView data)
+        public async Task<IActionResult> ChargeAsync(int? id, AbonnementsModelView data)
         {
             var IdUser = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var customers = new CustomerService();
             var charges = new ChargeService();
             var user = await FunctionAPI.GetUserByIdAsync(client, IdUser);
             var subscription = await FunctionAPI.GetAbonnementByIdAsync(client, id);
-            var price = Convert.ToInt32(subscription.PrixAbonnement)*100;
+            var price = Convert.ToInt32(subscription.PrixAbonnement) * 100;
             var description = subscription.NomAbonnement;
 
             var customer = customers.Create(new CustomerCreateOptions
@@ -101,7 +102,7 @@ namespace WikiTechWebApp.Controllers
                 string BalanceTransactionId = charge.BalanceTransactionId;
 
                 Facture newFacture = new Facture();
-                newFacture.MontantFacture = price/100;
+                newFacture.MontantFacture = price / 100;
                 newFacture.DateFacture = DateTime.Now.Date;
                 newFacture.TitreFacture = subscription.NomAbonnement;
                 newFacture.Id = user.Id;

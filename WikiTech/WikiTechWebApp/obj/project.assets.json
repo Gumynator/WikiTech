@@ -11260,34 +11260,11 @@
     ]
   },
   "packageFolders": {
-<<<<<<< HEAD
-    "C:\\Users\\M4800\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
-=======
     "C:\\Users\\Marco\\.nuget\\packages\\": {}
->>>>>>> Marco
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
-      "projectUniqueName": "C:\\Users\\M4800\\Desktop\\GITKRAKEN\\clonedeloan\\WikiTech-Proto\\WikiTech\\WikiTechWebApp\\WikiTechWebApp.csproj",
-      "projectName": "WikiTechWebApp",
-      "projectPath": "C:\\Users\\M4800\\Desktop\\GITKRAKEN\\clonedeloan\\WikiTech-Proto\\WikiTech\\WikiTechWebApp\\WikiTechWebApp.csproj",
-      "packagesPath": "C:\\Users\\M4800\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\M4800\\Desktop\\GITKRAKEN\\clonedeloan\\WikiTech-Proto\\WikiTech\\WikiTechWebApp\\obj\\",
-      "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-      ],
-      "configFilePaths": [
-        "C:\\Users\\M4800\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
-=======
       "projectUniqueName": "C:\\temp\\gitkraken\\WikiTech-Proto\\WikiTech\\WikiTechWebApp\\WikiTechWebApp.csproj",
       "projectName": "WikiTechWebApp",
       "projectPath": "C:\\temp\\gitkraken\\WikiTech-Proto\\WikiTech\\WikiTechWebApp\\WikiTechWebApp.csproj",
@@ -11297,7 +11274,6 @@
       "configFilePaths": [
         "C:\\Users\\Marco\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
->>>>>>> Marco
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -11310,13 +11286,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-<<<<<<< HEAD
-            "C:\\Users\\M4800\\Desktop\\GITKRAKEN\\clonedeloan\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj": {
-              "projectPath": "C:\\Users\\M4800\\Desktop\\GITKRAKEN\\clonedeloan\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj"
-=======
             "C:\\temp\\gitkraken\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj": {
               "projectPath": "C:\\temp\\gitkraken\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj"
->>>>>>> Marco
             }
           }
         }
@@ -11416,11 +11387,7 @@
             "privateAssets": "all"
           }
         },
-<<<<<<< HEAD
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
-=======
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
->>>>>>> Marco
       }
     }
   }
