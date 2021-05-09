@@ -11,23 +11,23 @@ namespace WikiTechAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AspNetUsersController : ControllerBase
+    public class UtilisateursController : ControllerBase
     {
         private readonly WikiTechDBContext _context;
 
-        public AspNetUsersController(WikiTechDBContext context)
+        public UtilisateursController(WikiTechDBContext context)
         {
             _context = context;
         }
 
-        // GET: api/AspNetUsers
+        // GET: api/Utilisateurs
         [HttpGet]
         public async Task<ActionResult<IEnumerable<AspNetUsers>>> GetAspNetUsers()
         {
             return await _context.AspNetUsers.ToListAsync();
         }
 
-        // GET: api/AspNetUsers/5
+        // GET: api/Utilisateurs/5
         [HttpGet("{id}")]
         public async Task<ActionResult<AspNetUsers>> GetAspNetUsers(string id)
         {
@@ -41,7 +41,7 @@ namespace WikiTechAPI.Controllers
             return aspNetUsers;
         }
 
-        // PUT: api/AspNetUsers/5
+        // PUT: api/Utilisateurs/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
@@ -56,6 +56,7 @@ namespace WikiTechAPI.Controllers
 
             try
             {
+
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
@@ -73,9 +74,7 @@ namespace WikiTechAPI.Controllers
             return NoContent();
         }
 
-        
-
-        // POST: api/AspNetUsers
+        // POST: api/Utilisateurs
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
@@ -101,7 +100,7 @@ namespace WikiTechAPI.Controllers
             return CreatedAtAction("GetAspNetUsers", new { id = aspNetUsers.Id }, aspNetUsers);
         }
 
-        // DELETE: api/AspNetUsers/5
+        // DELETE: api/Utilisateurs/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<AspNetUsers>> DeleteAspNetUsers(string id)
         {

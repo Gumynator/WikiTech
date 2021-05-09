@@ -1,0 +1,52 @@
+﻿@using Microsoft.AspNetCore.Authorization
+@model WikiTechAPI.Models.Postulation
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+
+<h1>Index</h1>
+
+<h4>Postulation</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreatePostulation" methode="POST">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group">
+                    <label asp-for="Id" class="control-label"></label>
+                    <select asp-for="Id" class="form-control" asp-items="ViewBag.Id"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DatePostulation" class="control-label"></label>
+                    <input asp-for="DatePostulation" class="form-control" />
+                    <span asp-validation-for="DatePostulation" class="text-danger"></span>
+                </div>*@
+            @*<div class="form-group">
+                    <label asp-for="TextPostulation" class="control-label"></label>
+                    <input asp-for="TextPostulation" class="form-control" />
+                    <span asp-validation-for="TextPostulation" class="text-danger"></span>
+                </div>*@
+            <div class="mb-3">
+                <label asp-for="TextPostulation" for="TinyArea" class="form-label">Rédaction de la postulation</label>
+                <textarea asp-for="TextPostulation" class="form-control" id="TinyArea" rows="20" cols="500"></textarea>
+                @Html.ValidationMessageFor(m => m.TextPostulation, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Postuler" class="btn btn-primary" />
+
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
