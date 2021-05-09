@@ -106,5 +106,32 @@ namespace WikiTechWebApp.ApiFunctions
 
         }
 
+        ///get abonnement by id
+        internal static async Task<Abonnement> GetAbonnementByIdAsync(HttpClient client, int? id)
+        {
+            Abonnement subscription = null;
+            HttpResponseMessage response = await client.GetAsync("Abonnements/" + id);
+            if (response.IsSuccessStatusCode)
+            {
+
+                subscription = await response.Content.ReadAsAsync<Abonnement>();
+            }
+
+            return subscription;
+        }
+
+        internal static async Task<AspNetUsers> GetUserByIdAsync(HttpClient client, string? id)
+        {
+            AspNetUsers user = null;
+            HttpResponseMessage response = await client.GetAsync("AspNetUsers/" + id);
+            if (response.IsSuccessStatusCode)
+            {
+
+                user = await response.Content.ReadAsAsync<AspNetUsers>();
+            }
+
+            return user;
+        }
+
     }
 }
