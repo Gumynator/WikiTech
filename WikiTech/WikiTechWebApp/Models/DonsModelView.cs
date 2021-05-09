@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace WikiTechWebApp.Models
 {
-    public class PayModelView
+    public class DonsModelView
     {
         public string Token { get; set; }
-        //public string Email { get; set; }
+        public decimal Total { get; set; }
     }
 }

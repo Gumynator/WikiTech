@@ -1,12 +1,12 @@
 ﻿@using Microsoft.Extensions.Options
 @inject IOptions<Stripe.Data.StripeSettings> Stripe
-@model WikiTechWebApp.Models.PayModelView
+@model WikiTechWebApp.Models.AbonnementsModelView
 @{
-    ViewData["Title"] = "Achat Page";
+    ViewData["Title"] = "Achat";
 }
 
 <div class="text-center">
-    <h1 class="display-4" row>Nos abonnements</h1>
+    <h1 class="display-4" row>Souscription à @ViewBag.name</h1>
     <!--  action="/Abonnements/Charge/?searchID=@ViewBag.id" -->
     <!--
             <form asp-action="Charge" asp-route-id="@ViewBag.id" method="POST">

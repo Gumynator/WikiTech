@@ -1,0 +1,113 @@
+﻿@using Microsoft.Extensions.Options
+@inject IOptions<Stripe.Data.StripeSettings> Stripe
+@model WikiTechWebApp.Models.DonsModelView
+@{
+    ViewData["Title"] = "Page de don";
+}
+
+<div class="text-center">
+    <h1 class="display-4" row>Faire un don</h1>
+    <!--  action="/Abonnements/Charge/?searchID=@ViewBag.id" -->
+    <!--
+            <form asp-action="Charge" asp-route-id="@ViewBag.id" method="POST">
+        <article>
+            <label>Amount: @ViewBag.Displayprice</label>
+        </article>
+        <script src="//checkout.stripe.com/v2/checkout.js"
+                class="stripe-button"
+                data-key="@Stripe.Value.PublishableKey"
+                data-locale="auto"
+                data-description="@ViewBag.name">
+        </script>
+    </form>
+
+        -->
+
+    <i class="fab fa-cc-stripe fa-2x"></i> <i class="fab fa-cc-visa fa-2x"></i> <i class="fab fa-cc-mastercard fa-2x"></i>
+    <script script src="https://js.stripe.com/v3/"></script>
+    <form asp-action="Charge" asp-controller="Dons" method="post" id="payment-form">
+        <label for="card-number">Credit Card Number</label>
+        <div class="input-group mb-2">
+            <span id="card-number" class="form-control">
+
+            </span>
+        </div>
+        <label for="card-cvc">CVC Number</label>
+        <div class="input-group mb-2">
+            <span id="card-cvc" class="form-control">
+
+            </span>
+        </div>
+        <label for="card-exp">Expiration</label>
+        <div class="input-group mb-2">
+            <span id="card-exp" class="form-control">
+
+            </span>
+        </div>
+        <input class="StripeToken" asp-for="Token" type="text" hidden />
+        <label >Montant du don</label>
+        <input asp-for="Total" />
+        <div id="card-errors" role="alert" class="text-danger"></div>
+        <button type="submit" class="btn btn-danger">Payer</button>
+    </form>
+</div>
+
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script>
+    $(document).ready(function () {
+        //Création du client stripe
+        var stripe = Stripe("pk_test_51IfOQ4IKm6lyjUFXpU3dSBFG9UXOCWg5KoWxzZKK1E8Y48gXMbi4PoDQjQoM0Z1Iabbeow3F4eUYlehqlIsofGlb00j3Ef3bSc");
+        var elements = stripe.elements();
+
+        var style = {
+            base: {
+                'lineHeight': '1.35',
+                'fonSize': '1.11rem',
+                'color': '#495057',
+                'fontFamily': 'apple-system,BlinkMacSystemFont,"Segoe UI" ,Roboto,"Helvetica Neue",Arial,sans-serif'
+            }
+        };
+        //Numero carte
+        var card = elements.create('cardNumber', {
+            'placeholder': '',
+            'style': style
+        });
+        card.mount('#card-number');
+
+        //CVC
+        var cvc = elements.create('cardCvc', {
+            'placeholder': '',
+            'style': style
+        });
+        cvc.mount('#card-cvc');
+
+        //Date expiration
+        var exp = elements.create('cardExpiry', {
+            'placeholder': '',
+            'style': style
+        });
+        exp.mount('#card-exp');
+
+        var form = document.getElementById('payment-form');
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+            stripe.createToken(card).then(function (result) {
+                if (result.error) {
+                    var errorElement = document.getElementById('card-errors');
+                    errorElement.textContent = result.error.message;
+                } else {
+                    stripeTokenHandler(result.token);
+                    console.log(result.token);
+                }
+            });
+        });
+        function stripeTokenHandler(token) {
+            $(".StripeToken").val(token.id);
+            form.submit();
+        }
+    });
+
+
+</script>
+
