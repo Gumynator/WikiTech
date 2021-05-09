@@ -230,7 +230,7 @@ namespace WikiTechAPI.Models
 
                 entity.Property(e => e.CreditAspnetuser).HasColumnName("Credit_aspnetuser");
 
-                entity.Property(e => e.CvvcarteAspnetuser).HasColumnName("Cvvcarte__aspnetuser");
+                entity.Property(e => e.CvvcarteAspnetuser).HasColumnName("Cvvcarte_aspnetuser");
 
                 entity.Property(e => e.DatecreationAspnetuser)
                     .HasColumnName("Datecreation_aspnetuser")
@@ -256,7 +256,7 @@ namespace WikiTechAPI.Models
 
                 entity.Property(e => e.IsactiveAspnetuser).HasColumnName("Isactive_aspnetuser");
 
-                entity.Property(e => e.IsprivateAspnetuser).HasColumnName("Isprivate__aspnetuser");
+                entity.Property(e => e.IsprivateAspnetuser).HasColumnName("Isprivate_aspnetuser");
 
                 entity.Property(e => e.NbpointAspnetuser).HasColumnName("Nbpoint_aspnetuser");
 

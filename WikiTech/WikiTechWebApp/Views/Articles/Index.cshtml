@@ -1,0 +1,174 @@
+﻿@*
+    //Auteur    : Loris habegger
+    //Date      : 01.05.2021
+    //Fichier   : Index.chtml (liste d'article)
+    //ToDo     : recherche, click sur tag + auteur, affichage des nombre d'article par tag, pagination
+    //use link  : https://docs.microsoft.com/en-us/aspnet/core/data/ef-mvc/sort-filter-page?view=aspnetcore-5.0
+
+*@
+@using Microsoft.AspNetCore.Identity
+@using WikiTechWebApp.Areas.Identity.Data
+@model IEnumerable<WikiTechAPI.Models.Article>
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+
+@{ViewData["Title"] = "View";}
+
+
+<!--
+ <h1>Articles</h1>
+
+ <a asp-action="Create">Create New</a>
+</p>
+-->
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <h4 class="">Search</h4>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div>
+                    <hr>
+                    <div class="list-group list-group">
+
+                        <h4 class="" id="sections">Catégorie</h4>
+                        <!--<a href="#" class="list-group-item"><span class="badge">14</span> Upcoming Sessions</a>-->
+
+                        <hr class="">
+                        <h4 class="" id="tags">Tags (all) à devenir TOP 10</h4>
+                        <!--<a href="#" class="list-group-item"><span class="badge">3</span> Second item</a>-->
+
+                    </div>
+                </div>
+                <div class="hidden-sm hidden-xs">
+                    <hr>
+                    <div class="well">
+
+                        <h4>Membre Premium</h4>
+                        <p>Accès explusif à un maximum d'article</p>
+                        <button class="btn btn-sm btn-warning">Abonnement</button>
+                        <hr>
+                        @if (!SignInManager.IsSignedIn(User))
+                        {
+            <p class="text-center ">Déjà Membre ? <a href="Identity/Account/Login">Connexion</a></p>}
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-9">
+
+                <div class="well hidden-xs">
+
+                    <div class="row">
+
+                        <div class="col-xs-4">
+
+                            <select class="form-control">
+                                <option>Ajouté récement</option>
+                                <option>A-Z</option>
+                                <option>Z-A</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+
+@foreach (var item in Model)
+
+{
+            <div class="row">
+                    <!-- <div class="col-sm-4">
+            <a href="#" class=""><img src="http://placehold.it/1280X720" class="img-responsive"></a>
+        </div>-->
+                <div class="col-sm-8">
+                    <h3 class="title">@Html.DisplayFor(modelItem => item.TitreArticle)</h3>
+
+@if (item.IsqualityArticle == false)
+{    // la fonction d'affichage de date sera gérée avec la validation d'article puisque c'est une date de publication
+                    <p class="text-muted"><span class="glyphicon glyphicon-calendar"></span> @Html.DisplayFor(modelItem => item.DatepublicationArticle)</p> }
+else
+{
+                    <p class="text-muted"><span class="glyphicon glyphicon-lock"></span>Contenu réservé au premium</p>}
+
+                    <p>@Html.DisplayFor(modelItem => item.DescriptionArticle)</p>
+                    <p class="text-muted">Rédigé par <a href="AspNetUsers/@Html.DisplayFor(modelItem => item.Id)">@Html.DisplayFor(modelItem => item.IdNavigation.PrenomAspnetuser)</a></p>
+                    <a asp-action="Details" asp-route-id="@item.IdArticle">->Consulter</a>
+                </div>
+            </div>
+
+            <hr>
+}
+
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <br>
+</body>
+
+<script>
+
+    $(document).ready(function () {
+        getTags();
+        getSection();
+
+    }
+    )
+    function getTags() {
+        $.ajax(
+            {
+                url: "http://localhost:59601/Api/Tags/",
+                type: "GET",
+                dataType: "JSON",
+                contentType: "application/json",
+                success: function (data) {
+                    console.log(data);
+                    createTagSelect(data);
+                }
+            });
+    }
+
+    function createTagSelect(data) {
+        var select = $("#tags");
+
+        $.each(data, function (key, value) {
+            console.log(value);
+            var element = "<a href=\"tags/" + value.idTag + "\" class=\"list-group-item\"><span class=\"badge\">nb</span>" + value.nomTag + "</a>";
+            select.append(element);
+        })
+    }
+
+    function getSection() {
+        $.ajax(
+            {
+                url: "http://localhost:59601/Api/Sections",
+                type: "GET",
+                dataType: "JSON",
+                contentType: "application/json",
+                success: function (data) {
+                    console.log(data);
+                    createSectionSelect(data);
+                }
+            });
+    }
+
+    function createSectionSelect(data) {
+        var select = $("#sections");
+
+        $.each(data, function (key, value) {
+            console.log(value);
+            var element = "<a href=\"sections/" + value.idSection + "\" class=\"list-group-item\"><span class=\"badge\">nb</span>" + value.nomSection + "</a>";
+            select.append(element);
+        })
+    }
+</script>

@@ -5,7 +5,7 @@ using SendGrid.Helpers.Mail;
 using System.Threading.Tasks;
 using WikiTechWebApp.services;
 
-namespace WebPWrecover.Services
+namespace WikiTechWebApp.Services
 {
     public class EmailSender : IEmailSender
     {
@@ -26,7 +26,7 @@ namespace WebPWrecover.Services
             var client = new SendGridClient(apiKey);
             var msg = new SendGridMessage()
             {
-                From = new EmailAddress("loan.rey@eduvaud.ch", Options.SendGridUser),
+                From = new EmailAddress("No-Reply@wikitech.ch", Options.SendGridUser),
                 Subject = subject,
                 PlainTextContent = message,
                 HtmlContent = message
@@ -36,7 +36,7 @@ namespace WebPWrecover.Services
             // Disable click tracking.
             // See https://sendgrid.com/docs/User_Guide/Settings/tracking.html
             msg.SetClickTracking(false, false);
-
+            //var result = client.SendEmailAsync(msg);
             return client.SendEmailAsync(msg);
         }
     }
