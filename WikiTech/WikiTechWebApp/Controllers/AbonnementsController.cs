@@ -2,13 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Stripe;
 using WikiTechAPI.Models;
+using WikiTechWebApp.Models;
 using WikiTechWebApp.ApiFunctions;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WikiTechWebApp.Controllers
 {
@@ -16,54 +21,64 @@ namespace WikiTechWebApp.Controllers
     {
         private readonly WikiTechDBContext _context;
         static HttpClient client = new HttpClient();
-
-
         public AbonnementsController()
         {
             client = ConfigureHttpClient.configureHttpClient(client);
-
         }
 
         // GET: Abonnements
+        [Authorize]
         public IActionResult Index()
         {
-
-            //IEnumerable<Article> abonnementList;
-            //HttpResponseMessage response = client.GetAsync("Abonnements").Result;
-            //abonnementList = response.Content.ReadAsAsync<IEnumerable<Article>>().Result;
-
-            //return View(abonnementList);
-
             IEnumerable<Abonnement> AbonnementList;
             HttpResponseMessage response = client.GetAsync("Abonnements").Result;
             AbonnementList = response.Content.ReadAsAsync<IEnumerable<Abonnement>>().Result;
 
             return View(AbonnementList);
-
         }
 
-        public async Task<IActionResult> Achat(short? idAbonnement)
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //Auteur : Pancini Marco
+        //Création : 11.04.2021
+        //Modification : 19.04.2021
+        //Description : Fonction Temporaire, qui permet la récupération du prix lors de la séléction de l'abonnement
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////
+        [Authorize]
+        public async Task<IActionResult> Achat(int? id)
         {
-            var abonnement = await FunctionAPI.GetAbonnementAsync(client, idAbonnement);
-
-
-
+            var subscription = await FunctionAPI.GetAbonnementByIdAsync(client, id);
+            decimal price = subscription.PrixAbonnement;
+            string name = subscription.NomAbonnement;
+            //passer l'id de l'abonnement au controller
+            ViewBag.price = price ;
+            ViewBag.Displayprice = price;
+            ViewBag.id = id;
+            ViewBag.name = name;
             return View();
         }
 
-        public async Task<IActionResult> ChargeAsync(string stripeEmail, string stripeToken, int subscriptionID, string userID)
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //Auteur : Pancini Marco
+        //Création : 11.04.2021
+        //Modification : 09.05.2021
+        //Description : Fonction Charge, qui permet l'utilisation de l'API Stripe et envoie d'email
+        // Cette fonction va être modifier pour utiliser l'API et ainsi utiliser les ID des abonnements au lieu d'entrer les données en dures
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////
+        [Authorize]
+        public async Task<IActionResult> ChargeAsync(int? id, PayModelView data)
         {
+            var IdUser = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var customers = new CustomerService();
             var charges = new ChargeService();
-            var user = await _context.AspNetUsers.FindAsync(userID);
-            var subscription = await _context.Abonnement.FindAsync(subscriptionID);
-            var price = Convert.ToInt32(subscription.PrixAbonnement);
+            var user = await FunctionAPI.GetUserByIdAsync(client, IdUser);
+            var subscription = await FunctionAPI.GetAbonnementByIdAsync(client, id);
+            var price = Convert.ToInt32(subscription.PrixAbonnement)*100;
             var description = subscription.NomAbonnement;
 
             var customer = customers.Create(new CustomerCreateOptions
             {
-                Email = stripeEmail,
-                Source = stripeToken
+                Email = user.UserName,
+                Source = data.Token
             });
 
             var charge = charges.Create(new ChargeCreateOptions
@@ -72,7 +87,7 @@ namespace WikiTechWebApp.Controllers
                 Description = description,
                 Currency = "CHF",
                 Customer = customer.Id,
-                ReceiptEmail = stripeEmail,
+                ReceiptEmail = user.UserName,
                 Metadata = new Dictionary<string, string>
                 {
                     {"OrderId" , "111" },
@@ -83,11 +98,27 @@ namespace WikiTechWebApp.Controllers
             //Confirmation validation du payement 
             if (charge.Status == "succeeded")
             {
-
                 string BalanceTransactionId = charge.BalanceTransactionId;
 
-                ///creation du contenu de l'email
-                
+                Facture newFacture = new Facture();
+                newFacture.MontantFacture = price/100;
+                newFacture.DateFacture = DateTime.Now.Date;
+                newFacture.TitreFacture = subscription.NomAbonnement;
+                newFacture.Id = user.Id;
+                HttpResponseMessage postFacture = await client.PostAsJsonAsync("Factures", newFacture);
+
+                user.IdAbonnement = subscription.IdAbonnement;
+                HttpResponseMessage putUser = await client.PutAsJsonAsync("AspNetUsers/" + user.Id, user);
+                if (putUser.IsSuccessStatusCode)
+                {
+
+                    user = await putUser.Content.ReadAsAsync<AspNetUsers>();
+                }
+
+
+                ViewBag.nom = subscription.NomAbonnement;
+                ViewBag.prix = subscription.PrixAbonnement;
+
 
                 return View();
             }

@@ -11,48 +11,48 @@ namespace WikiTechAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AbonnementsController : ControllerBase
+    public class FacturesController : ControllerBase
     {
         private readonly WikiTechDBContext _context;
 
-        public AbonnementsController(WikiTechDBContext context)
+        public FacturesController(WikiTechDBContext context)
         {
             _context = context;
         }
 
-        // GET: api/Abonnements
+        // GET: api/Factures
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Abonnement>>> GetAbonnement()
+        public async Task<ActionResult<IEnumerable<Facture>>> GetFacture()
         {
-            return await _context.Abonnement.ToListAsync();
+            return await _context.Facture.ToListAsync();
         }
 
-        // GET: api/Abonnements/5
+        // GET: api/Factures/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Abonnement>> GetAbonnement(int id)
+        public async Task<ActionResult<Facture>> GetFacture(int id)
         {
-            var abonnement = await _context.Abonnement.FindAsync(id);
+            var facture = await _context.Facture.FindAsync(id);
 
-            if (abonnement == null)
+            if (facture == null)
             {
                 return NotFound();
             }
 
-            return abonnement;
+            return facture;
         }
 
-        // PUT: api/Abonnements/5
+        // PUT: api/Factures/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAbonnement(int id, Abonnement abonnement)
+        public async Task<IActionResult> PutFacture(int id, Facture facture)
         {
-            if (id != abonnement.IdAbonnement)
+            if (id != facture.IdFacture)
             {
                 return BadRequest();
             }
 
-            _context.Entry(abonnement).State = EntityState.Modified;
+            _context.Entry(facture).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +60,7 @@ namespace WikiTechAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!AbonnementExists(id))
+                if (!FactureExists(id))
                 {
                     return NotFound();
                 }
@@ -73,37 +73,37 @@ namespace WikiTechAPI.Controllers
             return NoContent();
         }
 
-        // POST: api/Abonnements
+        // POST: api/Factures
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Abonnement>> PostAbonnement(Abonnement abonnement)
+        public async Task<ActionResult<Facture>> PostFacture(Facture facture)
         {
-            _context.Abonnement.Add(abonnement);
+            _context.Facture.Add(facture);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetAbonnement", new { id = abonnement.IdAbonnement }, abonnement);
+            return CreatedAtAction("GetFacture", new { id = facture.IdFacture }, facture);
         }
 
-        // DELETE: api/Abonnements/5
+        // DELETE: api/Factures/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Abonnement>> DeleteAbonnement(int id)
+        public async Task<ActionResult<Facture>> DeleteFacture(int id)
         {
-            var abonnement = await _context.Abonnement.FindAsync(id);
-            if (abonnement == null)
+            var facture = await _context.Facture.FindAsync(id);
+            if (facture == null)
             {
                 return NotFound();
             }
 
-            _context.Abonnement.Remove(abonnement);
+            _context.Facture.Remove(facture);
             await _context.SaveChangesAsync();
 
-            return abonnement;
+            return facture;
         }
 
-        private bool AbonnementExists(int id)
+        private bool FactureExists(int id)
         {
-            return _context.Abonnement.Any(e => e.IdAbonnement == id);
+            return _context.Facture.Any(e => e.IdFacture == id);
         }
     }
 }
