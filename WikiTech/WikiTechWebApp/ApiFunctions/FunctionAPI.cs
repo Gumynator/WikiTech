@@ -91,5 +91,18 @@ namespace WikiTechWebApp.ApiFunctions
             return resultatReferences;
         }
 
+        internal static async Task<AspNetUsers> GetUserByIdAsync(HttpClient client, string? id)
+        {
+            AspNetUsers user = null;
+            HttpResponseMessage response = await client.GetAsync("AspNetUsers/" + id);
+            if (response.IsSuccessStatusCode)
+            {
+
+                user = await response.Content.ReadAsAsync<AspNetUsers>();
+            }
+
+            return user;
+        }
+
     }
 }

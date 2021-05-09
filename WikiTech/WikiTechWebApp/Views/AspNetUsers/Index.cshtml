@@ -1,0 +1,75 @@
+﻿@model IEnumerable<WikiTechAPI.Models.AspNetUsers>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<head>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+  
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+</head>
+
+<h1>Liste des utilisateurs</h1>
+<table id="table_users" class="table">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NomAspnetuser)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrenomAspnetuser)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DatecreationAspnetuser)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NbpointAspnetuser)
+        </th>
+        <th>
+           Compte bloqué
+        </th>
+
+    
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomAspnetuser)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrenomAspnetuser)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DatecreationAspnetuser)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NbpointAspnetuser)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LockoutEnd)
+            </td>
+
+            <td>
+                <a asp-action="EditActive" asp-route-id="@item.Id">Active</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+<script>$(document).ready(function () {
+    $('#table_users').DataTable();
+    });</script>
