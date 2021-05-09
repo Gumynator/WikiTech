@@ -1,0 +1,10 @@
+﻿@using Microsoft.Extensions.Options
+@model WikiTechAPI.Models.Abonnement
+@{
+    ViewData["Title"] = "Abonnement";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Merci de votre abonnement à: @ViewBag.Nom prix :  <strong>@ViewBag.Prix CHF</strong> </h2>
+
+<a href="../../Home">Retour à l'accueil</a>

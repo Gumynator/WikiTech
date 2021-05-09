@@ -8,7 +8,10 @@
     @if (SignInManager.IsSignedIn(User))
     {
         <li class="nav-item">
-            <a class="nav-link text-dark" id="ProposerArticle" href="PropositionArticle" title="ProposerArticle">Proposez !</a>
+            <a class="nav-link text-dark" id="Articles" href="@Url.Action("Index", "Articles", new { area = "Articles" }) title="Articles">Articles</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" id="ProposerArticle" href="@Url.Action("Index", "PropositionArticle", new { area = "PropositionArticle" }) title="ProposerArticle">Proposez !</a>
         </li>
         <li class="nav-item">
             <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
@@ -21,9 +24,11 @@
     }
     else
     {
-
         <li class="nav-item">
-            <a class="nav-link text-dark" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
+            <a class="nav-link text-dark" id="Articles" href="@Url.Action("Index", "Articles", new { area = "Articles" }) title="Articles">Articles</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" id="register" asp-area="Identity" asp-page="/Account/Register">s'inscrire</a>
         </li>
         <li class="nav-item">
             <a class="nav-link text-dark" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>

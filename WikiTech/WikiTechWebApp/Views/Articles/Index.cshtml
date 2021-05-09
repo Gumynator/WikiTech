@@ -2,8 +2,8 @@
     //Auteur    : Loris habegger
     //Date      : 01.05.2021
     //Fichier   : Index.chtml (liste d'article)
-    //Perso     : if pour les articles de qualité ou non, mise en page, remplissage des champs, pagination, affichage des auteurs, affichage des tags
-    //link to us:
+    //ToDo     : recherche, click sur tag + auteur, affichage des nombre d'article par tag, pagination
+    //use link  : https://docs.microsoft.com/en-us/aspnet/core/data/ef-mvc/sort-filter-page?view=aspnetcore-5.0
 
 *@
 @using Microsoft.AspNetCore.Identity
@@ -12,14 +12,16 @@
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 
+
 @{ViewData["Title"] = "View";}
 
 
-<h1>Articles</h1>
+<!--
+ <h1>Articles</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
+ <a asp-action="Create">Create New</a>
 </p>
+-->
 <body>
     <div class="container">
         <div class="row">
@@ -38,7 +40,6 @@
                     <hr>
                     <div class="list-group list-group">
 
-
                         <h4 class="" id="sections">Catégorie</h4>
                         <!--<a href="#" class="list-group-item"><span class="badge">14</span> Upcoming Sessions</a>-->
 
@@ -48,16 +49,17 @@
 
                     </div>
                 </div>
-
                 <div class="hidden-sm hidden-xs">
                     <hr>
                     <div class="well">
 
-                        <h4>Premium Membership</h4>
-                        <p>Gain unlimited access to our entire course library.</p>
-                        <button class="btn btn-sm btn-warning">Learn more</button>
+                        <h4>Membre Premium</h4>
+                        <p>Accès explusif à un maximum d'article</p>
+                        <button class="btn btn-sm btn-warning">Abonnement</button>
                         <hr>
-                        <p class="text-center ">Already a member? <a href="Identity/Account/Login">Connexion</a></p>
+                        @if (!SignInManager.IsSignedIn(User))
+                        {
+            <p class="text-center ">Déjà Membre ? <a href="Identity/Account/Login">Connexion</a></p>}
                     </div>
                 </div>
 
@@ -71,9 +73,7 @@
                         <div class="col-xs-4">
 
                             <select class="form-control">
-                                <option>Featured</option>
-                                <option>Recently Added</option>
-                                <option>Next Upcoming Session</option>
+                                <option>Ajouté récement</option>
                                 <option>A-Z</option>
                                 <option>Z-A</option>
                             </select>
@@ -82,41 +82,32 @@
                 </div>
                 <hr>
 
-                @foreach (var item in Model)
-                {
-                    <div class="row">
-                        <!-- <div class="col-sm-4">
-                                <a href="#" class=""><img src="http://placehold.it/1280X720" class="img-responsive"></a>
-                            </div>-->
-                        <div class="col-sm-8">
-                            <h3 class="title">@Html.DisplayFor(modelItem => item.TitreArticle)</h3>
-                            @if (SignInManager.IsSignedIn(User))
-                            {
-                                <p class="text-muted"><span class="glyphicon glyphicon-calendar"></span>Le : @Html.DisplayFor(modelItem => item.DatepublicationArticle)</p>
-                            }
-                            else
-                            {
-                                <p class="text-muted"><span class="glyphicon glyphicon-lock"></span>Contenu réservé au premium</p>
-                            }
+@foreach (var item in Model)
 
-                            <p>@Html.DisplayFor(modelItem => item.DescriptionArticle)</p>
-                            <p class="text-muted">Rédigé par <a href="AspNetUsers/@Html.DisplayFor(modelItem => item.Id)">@Html.DisplayFor(modelItem => item.IdNavigation.PrenomAspnetuser)</a></p>
-                            <a asp-action="Details" asp-route-id="@item.IdArticle">->Consulter</a>
-                        </div>
-                    </div>
-                    <hr>
-                }
+{
+            <div class="row">
+                    <!-- <div class="col-sm-4">
+            <a href="#" class=""><img src="http://placehold.it/1280X720" class="img-responsive"></a>
+        </div>-->
+                <div class="col-sm-8">
+                    <h3 class="title">@Html.DisplayFor(modelItem => item.TitreArticle)</h3>
 
+@if (item.IsqualityArticle == false)
+{    // la fonction d'affichage de date sera gérée avec la validation d'article puisque c'est une date de publication
+                    <p class="text-muted"><span class="glyphicon glyphicon-calendar"></span> @Html.DisplayFor(modelItem => item.DatepublicationArticle)</p> }
+else
+{
+                    <p class="text-muted"><span class="glyphicon glyphicon-lock"></span>Contenu réservé au premium</p>}
 
-                <ul class="pagination pagination-lg pull-right">
-                    <li><a href="#">«</a></li>
-                    <li class="active"><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">»</a></li>
-                </ul>
+                    <p>@Html.DisplayFor(modelItem => item.DescriptionArticle)</p>
+                    <p class="text-muted">Rédigé par <a href="AspNetUsers/@Html.DisplayFor(modelItem => item.Id)">@Html.DisplayFor(modelItem => item.IdNavigation.PrenomAspnetuser)</a></p>
+                    <a asp-action="Details" asp-route-id="@item.IdArticle">->Consulter</a>
+                </div>
+            </div>
+
+            <hr>
+}
+
             </div>
         </div>
     </div>
@@ -124,9 +115,6 @@
     <br>
     <br>
 </body>
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}
 
 <script>
 
@@ -139,7 +127,7 @@
     function getTags() {
         $.ajax(
             {
-                url: "http://localhost:59601/Api/Tags",
+                url: "http://localhost:59601/Api/Tags/",
                 type: "GET",
                 dataType: "JSON",
                 contentType: "application/json",

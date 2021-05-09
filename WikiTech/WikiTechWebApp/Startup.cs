@@ -1,15 +1,18 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Stripe;
+using Stripe.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
 using WikiTechWebApp.services;
 using WikiTechWebApp.Services;
 
@@ -30,11 +33,19 @@ namespace WikiTechWebApp
             services.AddTransient<IEmailSender, EmailSender>();
             services.Configure<AuthMessageSenderOptions>(Configuration);
             services.AddControllersWithViews();
+
+            // omitted for clarity
+            services.AddHttpContextAccessor();
+
+            ///StripeSettings
+            services.Configure<StripeSettings>(Configuration.GetSection("Stripe"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            //stripe configuration de la clef d'api
+            StripeConfiguration.ApiKey = Configuration.GetSection("Stripe")["SecretKey"];
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

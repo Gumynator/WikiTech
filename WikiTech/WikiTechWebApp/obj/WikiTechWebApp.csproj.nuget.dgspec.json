@@ -1,25 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "C:\\GitKraken\\WikiTech-Proto\\WikiTech\\WikiTechWebApp\\WikiTechWebApp.csproj": {}
+    "D:\\ES\\2eme\\GlobalWiki\\Conception\\WikiTech-Proto\\WikiTech\\WikiTechWebApp\\WikiTechWebApp.csproj": {}
   },
   "projects": {
-    "C:\\GitKraken\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj": {
+    "D:\\ES\\2eme\\GlobalWiki\\Conception\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\GitKraken\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj",
+        "projectUniqueName": "D:\\ES\\2eme\\GlobalWiki\\Conception\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj",
         "projectName": "WikiTechAPI",
-        "projectPath": "C:\\GitKraken\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj",
-        "packagesPath": "C:\\Users\\lorhabegger\\.nuget\\packages\\",
-        "outputPath": "C:\\GitKraken\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\obj\\",
+        "projectPath": "D:\\ES\\2eme\\GlobalWiki\\Conception\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj",
+        "packagesPath": "C:\\Users\\loan\\.nuget\\packages\\",
+        "outputPath": "D:\\ES\\2eme\\GlobalWiki\\Conception\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\lorhabegger\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\loan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -69,6 +65,10 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[3.1.5, )"
+            },
+            "SixLabors.ImageSharp": {
+              "target": "Package",
+              "version": "[1.0.3, )"
             }
           },
           "imports": [
@@ -89,26 +89,22 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\GitKraken\\WikiTech-Proto\\WikiTech\\WikiTechWebApp\\WikiTechWebApp.csproj": {
+    "D:\\ES\\2eme\\GlobalWiki\\Conception\\WikiTech-Proto\\WikiTech\\WikiTechWebApp\\WikiTechWebApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\GitKraken\\WikiTech-Proto\\WikiTech\\WikiTechWebApp\\WikiTechWebApp.csproj",
+        "projectUniqueName": "D:\\ES\\2eme\\GlobalWiki\\Conception\\WikiTech-Proto\\WikiTech\\WikiTechWebApp\\WikiTechWebApp.csproj",
         "projectName": "WikiTechWebApp",
-        "projectPath": "C:\\GitKraken\\WikiTech-Proto\\WikiTech\\WikiTechWebApp\\WikiTechWebApp.csproj",
-        "packagesPath": "C:\\Users\\lorhabegger\\.nuget\\packages\\",
-        "outputPath": "C:\\GitKraken\\WikiTech-Proto\\WikiTech\\WikiTechWebApp\\obj\\",
+        "projectPath": "D:\\ES\\2eme\\GlobalWiki\\Conception\\WikiTech-Proto\\WikiTech\\WikiTechWebApp\\WikiTechWebApp.csproj",
+        "packagesPath": "C:\\Users\\loan\\.nuget\\packages\\",
+        "outputPath": "D:\\ES\\2eme\\GlobalWiki\\Conception\\WikiTech-Proto\\WikiTech\\WikiTechWebApp\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\lorhabegger\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\loan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -121,8 +117,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\GitKraken\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj": {
-                "projectPath": "C:\\GitKraken\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj"
+              "D:\\ES\\2eme\\GlobalWiki\\Conception\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj": {
+                "projectPath": "D:\\ES\\2eme\\GlobalWiki\\Conception\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj"
               }
             }
           }
@@ -153,11 +149,19 @@
               "target": "Package",
               "version": "[5.0.4, )"
             },
+            "Microsoft.AspNetCore.Mvc.Core": {
+              "target": "Package",
+              "version": "[2.2.5, )"
+            },
             "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
               "target": "Package",
               "version": "[3.1.14, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
               "version": "[5.0.4, )"
             },
@@ -179,6 +183,10 @@
               "target": "Package",
               "version": "[5.11.0, )"
             },
+            "Stripe.net": {
+              "target": "Package",
+              "version": "[39.45.0, )"
+            },
             "System.Collections": {
               "target": "Package",
               "version": "[4.3.0, )"
@@ -190,6 +198,10 @@
             "System.Net.Http": {
               "target": "Package",
               "version": "[4.3.4, )"
+            },
+            "jui_pagination": {
+              "target": "Package",
+              "version": "[2.0.0, )"
             }
           },
           "imports": [
@@ -210,7 +222,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

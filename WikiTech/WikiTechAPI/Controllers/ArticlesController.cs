@@ -1,4 +1,8 @@
-﻿using System;
+﻿//Auteur    : Loris habegger
+//Date      : 05.05.2021
+//Fichier   : ArticlesController.cs
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -37,8 +41,8 @@ namespace WikiTechAPI.Controllers
         public async Task<ActionResult<Article>> GetArticle(int id)
         {
 
-            var article = await _context.Article.FindAsync(id);
-            
+            var article = await _context.Article.Include(p => p.IdNavigation).Include(r => r.Referencer).FirstOrDefaultAsync(i => i.IdArticle == id);
+
 
             if (article == null)
             {
@@ -112,5 +116,7 @@ namespace WikiTechAPI.Controllers
         {
             return _context.Article.Any(e => e.IdArticle == id);
         }
+
+
     }
 }
