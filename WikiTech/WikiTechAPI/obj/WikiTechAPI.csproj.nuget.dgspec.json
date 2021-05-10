@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\ES\\WikiTech\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj": {}
+    "C:\\temp\\gitkraken\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj": {}
   },
   "projects": {
-    "C:\\ES\\WikiTech\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj": {
+    "C:\\temp\\gitkraken\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\ES\\WikiTech\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj",
+        "projectUniqueName": "C:\\temp\\gitkraken\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj",
         "projectName": "WikiTechAPI",
-        "projectPath": "C:\\ES\\WikiTech\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj",
-        "packagesPath": "C:\\Users\\marpancini\\.nuget\\packages\\",
-        "outputPath": "C:\\ES\\WikiTech\\WikiTech\\WikiTechAPI\\obj\\",
+        "projectPath": "C:\\temp\\gitkraken\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj",
+        "packagesPath": "C:\\Users\\Marco\\.nuget\\packages\\",
+        "outputPath": "C:\\temp\\gitkraken\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\marpancini\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Marco\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
