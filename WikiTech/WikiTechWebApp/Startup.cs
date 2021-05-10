@@ -34,7 +34,6 @@ namespace WikiTechWebApp
             services.Configure<AuthMessageSenderOptions>(Configuration);
             services.AddControllersWithViews();
 
-            // omitted for clarity
             services.AddHttpContextAccessor();
 
             ///StripeSettings

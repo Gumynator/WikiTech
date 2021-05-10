@@ -1,8 +1,12 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
 <<<<<<< Updated upstream
     "C:\\loarey\\WikiTech\\WikiTech\\WikiTechWebApp\\WikiTechWebApp.csproj": {}
+=======
+    "C:\\temp\\gitkraken\\WikiTech-Proto\\WikiTech\\WikiTechWebApp\\WikiTechWebApp.csproj": {}
+>>>>>>> main
   },
   "projects": {
     "C:\\loarey\\WikiTech\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj": {
@@ -10,6 +14,7 @@
       "restore": {
         "projectUniqueName": "C:\\loarey\\WikiTech\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj",
         "projectName": "WikiTechAPI",
+<<<<<<< HEAD
         "projectPath": "C:\\loarey\\WikiTech\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj",
         "packagesPath": "C:\\Users\\loarey\\.nuget\\packages\\",
         "outputPath": "C:\\loarey\\WikiTech\\WikiTech\\WikiTechAPI\\obj\\",
@@ -37,6 +42,14 @@
 =======
           "C:\\Users\\loan\\AppData\\Roaming\\NuGet\\NuGet.Config",
 >>>>>>> Stashed changes
+=======
+        "projectPath": "C:\\temp\\gitkraken\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj",
+        "packagesPath": "C:\\Users\\Marco\\.nuget\\packages\\",
+        "outputPath": "C:\\temp\\gitkraken\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Marco\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> main
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -111,7 +124,10 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
 <<<<<<< Updated upstream
+=======
+>>>>>>> main
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
@@ -121,6 +137,7 @@
       "restore": {
         "projectUniqueName": "C:\\loarey\\WikiTech\\WikiTech\\WikiTechWebApp\\WikiTechWebApp.csproj",
         "projectName": "WikiTechWebApp",
+<<<<<<< HEAD
         "projectPath": "C:\\loarey\\WikiTech\\WikiTech\\WikiTechWebApp\\WikiTechWebApp.csproj",
         "packagesPath": "C:\\Users\\loarey\\.nuget\\packages\\",
         "outputPath": "C:\\loarey\\WikiTech\\WikiTech\\WikiTechWebApp\\obj\\",
@@ -149,6 +166,14 @@
 =======
           "C:\\Users\\loan\\AppData\\Roaming\\NuGet\\NuGet.Config",
 >>>>>>> Stashed changes
+=======
+        "projectPath": "C:\\temp\\gitkraken\\WikiTech-Proto\\WikiTech\\WikiTechWebApp\\WikiTechWebApp.csproj",
+        "packagesPath": "C:\\Users\\Marco\\.nuget\\packages\\",
+        "outputPath": "C:\\temp\\gitkraken\\WikiTech-Proto\\WikiTech\\WikiTechWebApp\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Marco\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> main
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -162,6 +187,7 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
+<<<<<<< HEAD
 <<<<<<< Updated upstream
               "C:\\loarey\\WikiTech\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj": {
                 "projectPath": "C:\\loarey\\WikiTech\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj"
@@ -169,6 +195,10 @@
               "D:\\ES\\2eme\\GlobalWiki\\Conception\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj": {
                 "projectPath": "D:\\ES\\2eme\\GlobalWiki\\Conception\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj"
 >>>>>>> Stashed changes
+=======
+              "C:\\temp\\gitkraken\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj": {
+                "projectPath": "C:\\temp\\gitkraken\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj"
+>>>>>>> main
               }
             }
           }
@@ -272,11 +302,15 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
 <<<<<<< Updated upstream
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
 =======
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
 >>>>>>> Stashed changes
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+>>>>>>> main
         }
       }
     }

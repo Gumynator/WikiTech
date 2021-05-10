@@ -131,11 +131,35 @@ namespace WikiTechWebApp.ApiFunctions
             }
 
             return user;
+        }
+
+        internal static async Task<Ville> GetVilleByIdAsync(HttpClient client, int? id)
+        {
+            Ville ville = null;
+            HttpResponseMessage response = await client.GetAsync("Villes/" + id);
+            if (response.IsSuccessStatusCode)
+            {
+
+=======
+                ville = await response.Content.ReadAsAsync<Ville>();
+            }
+
+            return ville;
+        }
+
+        internal static async Task<Facture> GetFacturesByUserIdAsync(HttpClient client, string? userId)
+        {
+            Facture factures = null;
+            HttpResponseMessage response = await client.GetAsync("Factures/FacturesByUserId/" + userId);
+            if (response.IsSuccessStatusCode)
+            {
+
+                factures = await response.Content.ReadAsAsync<Facture>();
+            }
+
+            return factures;
         }
 
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
     }
 }
