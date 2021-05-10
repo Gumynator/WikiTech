@@ -133,6 +133,19 @@ namespace WikiTechWebApp.ApiFunctions
             return user;
         }
 
+        internal static async Task<Ville> GetVilleByIdAsync(HttpClient client, int? id)
+        {
+            Ville ville = null;
+            HttpResponseMessage response = await client.GetAsync("Villes/" + id);
+            if (response.IsSuccessStatusCode)
+            {
+
+                ville = await response.Content.ReadAsAsync<Ville>();
+            }
+
+            return ville;
+        }
+
 
     }
 }
