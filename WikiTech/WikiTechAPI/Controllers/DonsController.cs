@@ -21,7 +21,25 @@ namespace WikiTechAPI.Controllers
         }
 
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //Auteur : Pancini Marco
+        //Création : 07.05.2021
+        //Modification : 10.05.2021
+        //Description : Fonction qui permet de récupérer les dons d'un utilisateur
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////
+        [HttpGet("GetDonsByUserId/{userID}")]
+        public async Task<ActionResult<IEnumerable<Don>>> GetDonsByUserId(string userID)
+        {
+            var query = (from don in await _context.Don.ToListAsync()
+                         where userID.Equals(don.Id)
+                         select don).ToList();
+            if (query == null)
+            {
+                return NotFound();
+            }
 
+            return query;
+        }
 
         // GET: api/Dons
         [HttpGet]

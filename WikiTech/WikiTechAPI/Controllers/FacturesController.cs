@@ -20,8 +20,15 @@ namespace WikiTechAPI.Controllers
             _context = context;
         }
 
-        [HttpGet("FactureByUserId/{userID}")]
-        public async Task<ActionResult<IEnumerable<Facture>>> GetFactureByUserId(string userID)
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //Auteur : Pancini Marco
+        //Création : 07.05.2021
+        //Modification : 10.05.2021
+        //Description : Fonction qui permet de récupérer les factures d'un utilisateur
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////
+        [HttpGet("FacturesByUserId/{userID}")]
+        public async Task<ActionResult<IEnumerable<Facture>>> GetFacturesByUserId(string userID)
         {
             var query = (from facture in await _context.Facture.ToListAsync()
                         where userID.Equals(facture.Id)

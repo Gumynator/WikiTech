@@ -37,6 +37,33 @@ namespace WikiTechWebApp.Controllers
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
         //Auteur : Pancini Marco
+        //Création : 07.05.2021
+        //Modification : 10.05.2021
+        //Description : Fonction qui permet de récupérer les dons d'un utilisateur via l'API
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////
+        [Authorize]
+        public async Task<ActionResult<IEnumerable<Don>>> MesDons()
+        {
+            var IdUser = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            IEnumerable<Don> donsList = null;
+            HttpResponseMessage response = await client.GetAsync("Dons/GetDonsByUserId/" + IdUser);
+            if (response.IsSuccessStatusCode)
+            {
+
+                donsList = response.Content.ReadAsAsync<IEnumerable<Don>>().Result;
+
+            }
+
+            return View(donsList);
+            //IEnumerable<Facture> FactureList;
+            //HttpResponseMessage response = client.GetAsync("Factures/").Result;
+            //FactureList = response.Content.ReadAsAsync<IEnumerable<Facture>>().Result;
+
+
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //Auteur : Pancini Marco
         //Création : 06.05.2021
         //Modification : 10.05.2021
         //Description : Fonction Charge qui permet le paiement d'un don par l'utilisateur en utilisant l'API Stripe
