@@ -24,6 +24,7 @@ namespace WikiTechWebApp.Controllers
         public AspNetUsersController(IHttpContextAccessor httpContextAccessor)
         {
             client = ConfigureHttpClient.configureHttpClient(client);
+            client.DefaultRequestHeaders.Add("ApiKey", "61c08ad1-0823-4c38-9853-700675e3c8fc");
 
             //_context = context;
         }
