@@ -133,5 +133,9 @@ namespace WikiTechWebApp.ApiFunctions
             return user;
         }
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     }
 }
