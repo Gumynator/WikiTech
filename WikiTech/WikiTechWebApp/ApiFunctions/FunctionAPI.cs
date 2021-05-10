@@ -119,7 +119,7 @@ namespace WikiTechWebApp.ApiFunctions
 
             return subscription;
         }
-
+/*
         internal static async Task<AspNetUsers> GetUserByIdAsync(HttpClient client, string? id)
         {
             AspNetUsers user = null;
@@ -132,7 +132,7 @@ namespace WikiTechWebApp.ApiFunctions
 
             return user;
         }
-
+*/
         internal static async Task<AspNetUsers> GetUserByIdAsync(HttpClient client, string? id)
         {
             AspNetUsers user = null;

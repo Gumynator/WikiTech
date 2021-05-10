@@ -19,10 +19,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js"></script>
 
 
-
-
     <script>
-
 
         $(document).ready(function () {
             $('.selectpicker').selectpicker();
@@ -72,15 +69,13 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-primary border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">Wikitech</a>
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">Wikitech</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <partial name="_LoginPartial.cshtml" />
-                    <a class="nav-link text-dark" asp-controller="Abonnements" asp-action="Index">Abonnement</a>
-                    <a class="nav-link text-dark" asp-controller="Dons" asp-action="Index">Don</a>
                 </div>
             </div>
         </nav>
