@@ -8950,19 +8950,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\loan\\.nuget\\packages\\": {}
+    "C:\\Users\\Marco\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\ES\\2eme\\GlobalWiki\\Conception\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj",
+      "projectUniqueName": "C:\\temp\\gitkraken\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj",
       "projectName": "WikiTechAPI",
-      "projectPath": "D:\\ES\\2eme\\GlobalWiki\\Conception\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj",
-      "packagesPath": "C:\\Users\\loan\\.nuget\\packages\\",
-      "outputPath": "D:\\ES\\2eme\\GlobalWiki\\Conception\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\obj\\",
+      "projectPath": "C:\\temp\\gitkraken\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj",
+      "packagesPath": "C:\\Users\\Marco\\.nuget\\packages\\",
+      "outputPath": "C:\\temp\\gitkraken\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\loan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Marco\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -9037,16 +9037,8 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file D:\\ES\\2eme\\GlobalWiki\\Conception\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }
