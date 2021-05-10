@@ -22,6 +22,7 @@ namespace WikiTechWebApp.Controllers
         public PostulationsController(IHttpContextAccessor httpContextAccessor,IEmailSender sender)
         {
             client = ConfigureHttpClient.configureHttpClient(client);
+            //client.DefaultRequestHeaders.Add("ApiKey", "61c08ad1-0823-4c38-9853-700675e3c8fc");
             _sender = sender;
         }
         // GET: PostulationsController
@@ -50,7 +51,7 @@ namespace WikiTechWebApp.Controllers
             postulation.DatePostulation=DateTime.Today;
             var usernameq = await FunctionAPI.GetUserByIdAsync(client, IdUser);
             //var postulation = new Postulation(){DatePostulation = DateTime.Today,Id = id,,,};
-            var postTask = client.PostAsJsonAsync<Postulation>("postulations", postulation);
+            var postTask = client.PostAsJsonAsync<Postulation>("Postulations", postulation);
             postTask.Wait();
 
             var result = postTask.Result;

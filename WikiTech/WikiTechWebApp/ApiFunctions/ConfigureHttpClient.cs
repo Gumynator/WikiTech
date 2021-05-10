@@ -1,4 +1,4 @@
-﻿//Auteur    : Loris habegger
+//Auteur    : Loris habegger
 //Date      : 01.05.2021
 //Fichier   : ConfigureHttpClient.cs
 
@@ -27,6 +27,7 @@ namespace WikiTechWebApp.ApiFunctions
             client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
             return client;
+
 
         }
     }

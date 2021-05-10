@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "C:\\GitKraken\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj": {}
   },
   "projects": {
@@ -22,6 +23,45 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+=======
+<<<<<<< HEAD
+    "C:\\loarey\\WikiTech\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj": {}
+  },
+  "projects": {
+    "C:\\loarey\\WikiTech\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\loarey\\WikiTech\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj",
+        "projectName": "WikiTechAPI",
+        "projectPath": "C:\\loarey\\WikiTech\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj",
+        "packagesPath": "C:\\Users\\loarey\\.nuget\\packages\\",
+        "outputPath": "C:\\loarey\\WikiTech\\WikiTech\\WikiTechAPI\\obj\\",
+=======
+    "C:\\temp\\gitkraken\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj": {}
+  },
+  "projects": {
+    "C:\\temp\\gitkraken\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\temp\\gitkraken\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj",
+        "projectName": "WikiTechAPI",
+        "projectPath": "C:\\temp\\gitkraken\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj",
+        "packagesPath": "C:\\Users\\Marco\\.nuget\\packages\\",
+        "outputPath": "C:\\temp\\gitkraken\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\obj\\",
+>>>>>>> main
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+<<<<<<< HEAD
+          "C:\\Users\\loarey\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+=======
+          "C:\\Users\\Marco\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> main
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+>>>>>>> main
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -56,17 +96,17 @@
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[3.1.13, )"
+              "version": "[3.1.14, )"
             },
             "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
-              "version": "[3.1.13, )"
+              "version": "[3.1.14, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[3.1.13, )"
+              "version": "[3.1.14, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
