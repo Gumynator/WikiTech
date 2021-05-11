@@ -20,10 +20,13 @@ namespace WikiTechWebApp.Areas.Identity.Pages.Account.Manage
             SignInManager<ApplicationUser> signInManager)
         {
             _userManager = userManager;
-            _signInManager = signInManager;
+            _signInManager = signInManager; 
+            
         }
 
         public string Username { get; set; }
+        public string Address { get; set; }
+        public string FirstName { get; set; }
 
         [TempData]
         public string StatusMessage { get; set; }
@@ -34,21 +37,28 @@ namespace WikiTechWebApp.Areas.Identity.Pages.Account.Manage
         public class InputModel
         {
             [Phone]
-            [Display(Name = "Phone number")]
+            [Display(Name = "Téléphone")]
             public string PhoneNumber { get; set; }
+            public string Address { get; set; }
+            public string FirstName { get; set; }
         }
 
         private async Task LoadAsync(ApplicationUser user)
         {
             var userName = await _userManager.GetUserNameAsync(user);
-            var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
+            var phoneNumber = await _userManager.GetPhoneNumberAsync(user);  
+            var userId = await _userManager.GetUserIdAsync(user);
 
+            var firstName = user.Prenom_aspnetuser;
             Username = userName;
 
             Input = new InputModel
             {
-                PhoneNumber = phoneNumber
+                PhoneNumber = phoneNumber,
+                FirstName = firstName
             };
+
+           
         }
 
         public async Task<IActionResult> OnGetAsync()
@@ -87,6 +97,17 @@ namespace WikiTechWebApp.Areas.Identity.Pages.Account.Manage
                     return RedirectToPage();
                 }
             }
+
+            //var firstName = user.Prenom_aspnetuser;
+            //if (Input.PhoneNumber != firstName)
+            //{
+            //    var setFirstNameResult = await _userManager.SetPhoneNumberAsync(user, Input.PhoneNumber);
+            //    if (!setFirstNameResult.Succeeded)
+            //    {
+            //        StatusMessage = "Unexpected error when trying to set address number.";
+            //        return RedirectToPage();
+            //    }
+            //}
 
             await _signInManager.RefreshSignInAsync(user);
             StatusMessage = "Your profile has been updated";

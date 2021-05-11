@@ -26,7 +26,7 @@ namespace WikiTechWebApp.Services
             var client = new SendGridClient(apiKey);
             var msg = new SendGridMessage()
             {
-                From = new EmailAddress("No-Reply@wikitech.ch", Options.SendGridUser),
+                From = new EmailAddress("loanrey2000@gmail.com", "No-reply@wikitech.ch"),
                 Subject = subject,
                 PlainTextContent = message,
                 HtmlContent = message

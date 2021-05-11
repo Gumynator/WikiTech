@@ -20,6 +20,27 @@ namespace WikiTechAPI.Controllers
             _context = context;
         }
 
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //Auteur : Pancini Marco
+        //Création : 07.05.2021
+        //Modification : 10.05.2021
+        //Description : Fonction qui permet de récupérer les factures d'un utilisateur
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////
+        [HttpGet("FacturesByUserId/{userID}")]
+        public async Task<ActionResult<IEnumerable<Facture>>> GetFacturesByUserId(string userID)
+        {
+            var query = (from facture in await _context.Facture.ToListAsync()
+                        where userID.Equals(facture.Id)
+                        select facture).ToList();
+            if (query == null)
+            {
+                return NotFound();
+            }
+
+            return query;
+        }
+
         // GET: api/Factures
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Facture>>> GetFacture()
