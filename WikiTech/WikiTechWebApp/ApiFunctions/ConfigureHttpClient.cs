@@ -1,4 +1,4 @@
-﻿//Auteur    : Loris habegger
+//Auteur    : Loris habegger
 //Date      : 01.05.2021
 //Fichier   : ConfigureHttpClient.cs
 
@@ -23,9 +23,9 @@ namespace WikiTechWebApp.ApiFunctions
             }
             client.BaseAddress = new Uri(apiUrl);
             client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Add("ApiKey", "61c08ad1-0823-4c38-9853-700675e3c8fc");
             client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
-            client.DefaultRequestHeaders.Add("ApiKey", "61c08ad1-0823-4c38-9853-700675e3c8fc");
             return client;
 
 

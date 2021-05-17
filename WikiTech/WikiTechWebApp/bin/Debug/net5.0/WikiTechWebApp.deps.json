@@ -1024,15 +1024,22 @@
       "Microsoft.Data.Sqlite.Core/5.0.4": {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
       "Microsoft.Data.Sqlite.Core/3.1.14": {
 >>>>>>> Stashed changes
 =======
+>>>>>>> main
 >>>>>>> main
         "dependencies": {
           "SQLitePCLRaw.core": "2.0.4"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.Data.Sqlite.dll": {
+<<<<<<< HEAD
+            "assemblyVersion": "5.0.4.0",
+            "fileVersion": "5.0.421.11803"
+=======
 <<<<<<< HEAD
 <<<<<<< Updated upstream
             "assemblyVersion": "5.0.4.0",
@@ -1044,6 +1051,7 @@
 =======
             "assemblyVersion": "5.0.4.0",
             "fileVersion": "5.0.421.11803"
+>>>>>>> main
 >>>>>>> main
           }
         },
@@ -1124,8 +1132,11 @@
         }
       },
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
+>>>>>>> main
 >>>>>>> main
       "Microsoft.EntityFrameworkCore.Sqlite/5.0.4": {
         "dependencies": {
@@ -1139,6 +1150,13 @@
           "Microsoft.DotNet.PlatformAbstractions": "3.1.6",
           "Microsoft.EntityFrameworkCore.Relational": "5.0.4",
           "Microsoft.Extensions.DependencyModel": "5.0.0"
+<<<<<<< HEAD
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.EntityFrameworkCore.Sqlite.dll": {
+            "assemblyVersion": "5.0.4.0",
+            "fileVersion": "5.0.421.11803"
+=======
 <<<<<<< HEAD
         },
         "runtime": {
@@ -1170,6 +1188,7 @@
           "lib/netstandard2.1/Microsoft.EntityFrameworkCore.Sqlite.dll": {
             "assemblyVersion": "5.0.4.0",
             "fileVersion": "5.0.421.11803"
+>>>>>>> main
 >>>>>>> main
           }
         },
@@ -1258,6 +1277,8 @@
       "Microsoft.Extensions.DependencyModel/5.0.0": {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
       "Microsoft.Extensions.DependencyInjection.Abstractions/3.1.14": {},
       "Microsoft.Extensions.DependencyModel/3.1.6": {
         "dependencies": {
@@ -1265,6 +1286,7 @@
         },
 >>>>>>> Stashed changes
 =======
+>>>>>>> main
 >>>>>>> main
         "runtime": {
           "lib/netstandard2.0/Microsoft.Extensions.DependencyModel.dll": {
@@ -5170,6 +5192,9 @@
       "sha512": "sha512-BhAeNgg0Wz/TIXhl/I1mXppCmKiLDE53nthK388CT5+GJB64QgvulvpoWFLx14hZgFSdzGxieVVQZPlZqHA2HA==",
       "path": "microsoft.data.sqlite.core/5.0.4",
       "hashPath": "microsoft.data.sqlite.core.5.0.4.nupkg.sha512"
+<<<<<<< HEAD
+=======
+>>>>>>> main
 >>>>>>> main
     },
     "Microsoft.DotNet.PlatformAbstractions/3.1.6": {
@@ -5225,6 +5250,21 @@
       "path": "microsoft.entityframeworkcore.sqlite/5.0.4",
       "hashPath": "microsoft.entityframeworkcore.sqlite.5.0.4.nupkg.sha512"
     },
+<<<<<<< HEAD
+    "Microsoft.EntityFrameworkCore.Sqlite/5.0.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-UAnKmF9oO+LWb1KEZRv6wXjXnKjvHSZVCcu34Q6t9cCpXv9AKTIUkk/IZxTLVRXvtv0BFCTjTouB+EHmPuWdxQ==",
+      "path": "microsoft.entityframeworkcore.sqlite/5.0.4",
+      "hashPath": "microsoft.entityframeworkcore.sqlite.5.0.4.nupkg.sha512"
+    },
+    "Microsoft.EntityFrameworkCore.Sqlite.Core/5.0.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rcNIIyon8HEidlMDO7DMr7CHPesadHUU+BWamw1dL6fhtwCZzMnZOc6ZWZHzlHFF5JduCd7OydWVTHMNwPQOwQ==",
+      "path": "microsoft.entityframeworkcore.sqlite.core/5.0.4",
+      "hashPath": "microsoft.entityframeworkcore.sqlite.core.5.0.4.nupkg.sha512"
+=======
     "Microsoft.EntityFrameworkCore.Sqlite.Core/5.0.4": {
       "type": "package",
       "serviceable": true,
@@ -5249,6 +5289,7 @@
       "path": "microsoft.entityframeworkcore.sqlite.core/3.1.14",
       "hashPath": "microsoft.entityframeworkcore.sqlite.core.3.1.14.nupkg.sha512"
 >>>>>>> Stashed changes
+>>>>>>> main
     },
     "Microsoft.EntityFrameworkCore.SqlServer/3.1.14": {
       "type": "package",
