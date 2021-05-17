@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\PRoj\\WikiTech-Proto\\WikiTech\\WikiTechWebApp\\WikiTechWebApp.csproj": {}
+    "C:\\GitHub\\WikiTech\\WikiTechWebApp\\WikiTechWebApp.csproj": {}
   },
   "projects": {
-    "E:\\PRoj\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj": {
+    "C:\\GitHub\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\PRoj\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj",
+        "projectUniqueName": "C:\\GitHub\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj",
         "projectName": "WikiTechAPI",
-        "projectPath": "E:\\PRoj\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj",
+        "projectPath": "C:\\GitHub\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj",
         "packagesPath": "C:\\Users\\lorhabegger\\.nuget\\packages\\",
-        "outputPath": "E:\\PRoj\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\obj\\",
+        "outputPath": "C:\\GitHub\\WikiTech\\WikiTechAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -107,14 +107,14 @@
         }
       }
     },
-    "E:\\PRoj\\WikiTech-Proto\\WikiTech\\WikiTechWebApp\\WikiTechWebApp.csproj": {
+    "C:\\GitHub\\WikiTech\\WikiTechWebApp\\WikiTechWebApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\PRoj\\WikiTech-Proto\\WikiTech\\WikiTechWebApp\\WikiTechWebApp.csproj",
+        "projectUniqueName": "C:\\GitHub\\WikiTech\\WikiTechWebApp\\WikiTechWebApp.csproj",
         "projectName": "WikiTechWebApp",
-        "projectPath": "E:\\PRoj\\WikiTech-Proto\\WikiTech\\WikiTechWebApp\\WikiTechWebApp.csproj",
+        "projectPath": "C:\\GitHub\\WikiTech\\WikiTechWebApp\\WikiTechWebApp.csproj",
         "packagesPath": "C:\\Users\\lorhabegger\\.nuget\\packages\\",
-        "outputPath": "E:\\PRoj\\WikiTech-Proto\\WikiTech\\WikiTechWebApp\\obj\\",
+        "outputPath": "C:\\GitHub\\WikiTech\\WikiTechWebApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -137,8 +137,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "E:\\PRoj\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj": {
-                "projectPath": "E:\\PRoj\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj"
+              "C:\\GitHub\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj": {
+                "projectPath": "C:\\GitHub\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj"
               }
             }
           }

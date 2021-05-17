@@ -9655,11 +9655,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\PRoj\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj",
+      "projectUniqueName": "C:\\GitHub\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj",
       "projectName": "WikiTechAPI",
-      "projectPath": "E:\\PRoj\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj",
+      "projectPath": "C:\\GitHub\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj",
       "packagesPath": "C:\\Users\\lorhabegger\\.nuget\\packages\\",
-      "outputPath": "E:\\PRoj\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\obj\\",
+      "outputPath": "C:\\GitHub\\WikiTech\\WikiTechAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

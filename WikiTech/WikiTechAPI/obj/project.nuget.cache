@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Tl42R67JSMHl5LVVHhZbguHrU/LNvTYNTC54iIFJuQRuQ82JzCP5wwFsl6Gls6DONzt+1dxmcZ020LPrR6UKZQ==",
+  "dgSpecHash": "OQBiGA1WsiU2NB/Bao6DeF5bWkn14b1Bh2GJSu1CgVFKWL1FMyizkLikaoYNETIXf2SGwFhZH5rX9ueMlwrzvw==",
   "success": true,
-  "projectFilePath": "E:\\PRoj\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj",
+  "projectFilePath": "C:\\GitHub\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\lorhabegger\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\lorhabegger\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",
