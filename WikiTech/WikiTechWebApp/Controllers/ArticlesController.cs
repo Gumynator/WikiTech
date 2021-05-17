@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -26,7 +27,6 @@ namespace WikiTechWebApp.Controllers
         public ArticlesController()
         {
             client = ConfigureHttpClient.configureHttpClient(client);
-            client.DefaultRequestHeaders.Add("ApiKey", "61c08ad1-0823-4c38-9853-700675e3c8fc");
 
         }
 
@@ -60,13 +60,38 @@ namespace WikiTechWebApp.Controllers
 
             //get article with user of article
             Article article;
+            Changement changement;
+            dynamic dynamicmodel = new ExpandoObject(); //for return multiple 1 object with multiple object
+
 
             try
             {
                 HttpResponseMessage responsearticle = client.GetAsync("Articles/" + id).Result;
                 article = responsearticle.Content.ReadAsAsync<Article>().Result;
 
-                return View(article);
+                dynamicmodel.Article = article;
+
+                var listeChangements = article.Changement;
+
+                List<Changement> resultatChangement = new List<Changement>();
+
+                foreach (var item in listeChangements)
+                {
+
+
+                    HttpResponseMessage responsechangement = client.GetAsync("Changements/" + item.IdChangement).Result;
+                    changement = responsechangement.Content.ReadAsAsync<Changement>().Result;
+
+                    resultatChangement.Add(changement);
+
+                }
+
+
+
+                dynamicmodel.Changement = resultatChangement;
+
+
+                return View(dynamicmodel);
 
             }
             catch (ExceptionLiaisonApi e)

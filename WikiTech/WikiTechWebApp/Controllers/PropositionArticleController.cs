@@ -25,6 +25,7 @@ using Microsoft.AspNetCore.Authorization;
 using WikiTechWebApp.Exceptions;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Processing;
+using System.Dynamic;
 
 namespace WikiTechWebApp.Controllers
 {
@@ -37,7 +38,6 @@ namespace WikiTechWebApp.Controllers
         {
             webhost = _webhost;
             client = ConfigureHttpClient.configureHttpClient(client);
-            client.DefaultRequestHeaders.Add("ApiKey", "61c08ad1-0823-4c38-9853-700675e3c8fc");
         }
 
         [Authorize]
@@ -70,7 +70,7 @@ namespace WikiTechWebApp.Controllers
 
             var IdUser = User.FindFirstValue(ClaimTypes.NameIdentifier); // récupération de l'ID de l'utilisateur courrant
 
-            currentArticle.DatepublicationArticle = DateTime.Now; //à changer car elle sera attribuée lors de la validation quand il y en aura une
+            //currentArticle.DatepublicationArticle = DateTime.Now; //à changer car elle sera attribuée lors de la validation quand il y en aura une
 
             currentArticle.Id = IdUser;
             currentArticle.IdSection = int.Parse(Request.Form["rdsection"]); // récupération de l'id de la section selectionnée
@@ -254,6 +254,69 @@ namespace WikiTechWebApp.Controllers
             }
 
         }
-       
+
+
+        [Authorize]
+        // GET: PropositionArticleController
+        public ActionResult Approbation()
+        {
+
+            IEnumerable<Article> artList;
+            IEnumerable<Changement> changementliste;
+
+            dynamic dynamicmodel = new ExpandoObject();
+
+            try
+            {
+
+                HttpResponseMessage response = client.GetAsync("Articles/nodate").Result;
+                artList = response.Content.ReadAsAsync<IEnumerable<Article>>().Result;
+
+                dynamicmodel.Article = artList;
+
+                HttpResponseMessage responsechangement = client.GetAsync("Changements/nodate").Result;
+                changementliste = responsechangement.Content.ReadAsAsync<IEnumerable<Changement>>().Result;
+
+                dynamicmodel.Changement = changementliste;
+
+
+                return View(dynamicmodel);
+
+            }
+            catch (ExceptionLiaisonApi e)
+            {
+                Console.WriteLine(e.getMessage());
+                return Redirect("/Home/Index");
+            }
+            return View();
+        }
+
+
+
+        
+        [Authorize]
+        // GET: the article detail for decision
+        public ActionResult approbationArticleDetail(int id)
+        {
+
+            //get article with user of article
+            Article article;
+          
+            try
+            {
+                HttpResponseMessage responsearticle = client.GetAsync("Articles/" + id).Result;
+                article = responsearticle.Content.ReadAsAsync<Article>().Result;
+
+
+                return View(article);
+
+            }
+            catch (ExceptionLiaisonApi e)
+            {
+                Console.WriteLine(e.getMessage());
+                return Redirect("/Home/Index");
+            }
+        }
+
     }
 }

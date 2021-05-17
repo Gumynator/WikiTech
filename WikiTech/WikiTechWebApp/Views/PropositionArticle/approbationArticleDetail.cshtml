@@ -1,0 +1,23 @@
+﻿@*
+    //Auteur    : Loris habegger
+    //Date      : 16.05.2021
+    //Fichier   : ApprobationArticleDetail.chtml (Article à valider)
+
+*@
+
+
+@model WikiTechAPI.Models.Article
+@using Microsoft.AspNetCore.Identity
+@using WikiTechWebApp.Areas.Identity.Data
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<body>
+
+    <h1>Définir un statut à l'article</h1>
+    <br/>
+
+
+    @Html.DisplayFor(a => a.TitreArticle)
+
+</body>

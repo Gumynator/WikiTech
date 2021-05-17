@@ -25,7 +25,6 @@ namespace WikiTechWebApp.Controllers
         {
             
             client = ConfigureHttpClient.configureHttpClient(client);
-            client.DefaultRequestHeaders.Add("ApiKey", "61c08ad1-0823-4c38-9853-700675e3c8fc");
 
             //_context = context;
         }
@@ -100,14 +99,14 @@ namespace WikiTechWebApp.Controllers
             {
                 return NotFound();
             }
-            return View();
+            return View(aspNetUsers);
         }
 
         // POST: AspNetUsers/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-    
-   
+
+        [HttpPost]
         public async Task<IActionResult> Edit(string id, [Bind("Id,IdGrade,IdAbonnement,IdVille,IdGenre,NomAspnetuser,PrenomAspnetuser,UserName,IsactiveAspnetuser,IsprivateAspnetuser,AdresseAspnetuser,DatecreationAspnetuser,NbpointAspnetuser,NumcarteAspnetuser,CvvcarteAspnetuser,ExpirationcarteAspnetuser,CreditAspnetuser,IbanAspnetuser,NormalizedUserName,Email,NormalizedEmail,EmailConfirmed,PasswordHash,SecurityStamp,ConcurrencyStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEnd,LockoutEnabled,AccessFailedCount")] AspNetUsers aspNetUsers)
         {
             if (id != aspNetUsers.Id)

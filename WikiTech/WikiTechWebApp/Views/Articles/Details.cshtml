@@ -8,11 +8,12 @@
 
 *@
 
-@model WikiTechAPI.Models.Article
+@*@model WikiTechAPI.Models.Article*@
 @using Microsoft.AspNetCore.Identity
 @using WikiTechWebApp.Areas.Identity.Data
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
+@model dynamic
 
 @{ ViewData["Title"] = "Details"; }
 
@@ -21,7 +22,7 @@
     <p><a asp-action="Index">--retour</a></p>
     <hr />
 
-    @if (Model.IsqualityArticle == true)
+    @if (Model.Article.IsqualityArticle == true)
     {
         <p> C'est un article de qualité, vous devez être abonné pour le voir. Cette fonctionnalité est en cours de développement !</p>
     }
@@ -32,22 +33,22 @@
             <div class="row">
                 <div class="col-lg-8">
                     <!-- Title-->
-                    <h1 class="mt-4">@Html.DisplayFor(model => model.TitreArticle)</h1>
+                    <h1 class="mt-4">@Model.Article.TitreArticle</h1>
                     <!-- auteur-->
                     <p class="lead">
                         by
-                        <a href="#!">@Html.DisplayFor(model => model.IdNavigation.PrenomAspnetuser)</a>
+                        <a href="#!">@Model.Article.IdNavigation.PrenomAspnetuser</a>
                     </p>
                     <hr />
                     <!-- Date and time-->
-                    <p>Posted on @Html.DisplayFor(model => model.DatepublicationArticle)</p>
+                    <p>Posted on @Model.Article.DatepublicationArticle</p>
                     <hr />
                     <!-- image d'article, pas dispo
                     <img class="img-fluid rounded" src="https://via.placeholder.com/900x300" alt="..." />
                     <hr />-->
                     <!-- contenu-->
-                    <p class="lead">@Html.DisplayFor(model => model.DescriptionArticle)</p>
-                    <p>@Html.Raw(Model.TextArticle)</p>
+                    <p class="lead">@Model.Article.DescriptionArticle</p>
+                    <p>@Html.Raw(Model.Article.TextArticle)</p>
                     <hr />
 
                 </div>
@@ -59,7 +60,7 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <ul class="list-unstyled mb-0" id="tags">
-                                        @foreach (var item in Model.Referencer)
+                                        @foreach (var item in Model.Article.Referencer)
                                         {
                                             <script type="text/javascript">
 
@@ -91,14 +92,49 @@
         </div>
 
         <p>
-            <button id="likebutton" runat="server" onserverclick="like">J'aime</button>
-            <button id="dislikebutton" runat="server" onserverclick="dislike">je n'aime pas</button>
+            <button type="button" class="btn btn-outline-primary" id="likebutton" runat="server" onserverclick="like">J'aime</button>
+            <button type="button" class="btn btn-outline-secondary" id="dislikebutton" runat="server" onserverclick="dislike">Je n'aime pas</button>
+            <button type="button" class="btn btn-outline-warning" id="modification" runat="server" onserverclick="propModif">Proposer une modif !</button>
         </p>
 
-}
+        <hr />
+
+        <h2>Historique des changements effectués sur l'article</h2>
+        <br/>
+
+
+        <table id="Changement" class="display">
+            <thead>
+                <tr>
+                    <th>Auteur</th>
+                    <th>Modification</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var changement in Model.Changement)
+                {
+                    <tr>
+                        <td>@changement.IdNavigation.PrenomAspnetuser</td>
+                        <td>@changement.TitreChangement</td>
+                        <td>@changement.DatepublicationChangement</td>
+                    </tr>
+
+                }
+
+            </tbody>
+        </table>
+
+    }
 </body>
 
 <script>
+
+    $(document).ready(function () {
+
+        $('#Changement').DataTable();
+    });
+
 
     function createTagSelect(data) {
         var select = $("#tags");

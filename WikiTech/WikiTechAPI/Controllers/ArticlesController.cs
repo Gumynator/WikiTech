@@ -41,7 +41,7 @@ namespace WikiTechAPI.Controllers
         public async Task<ActionResult<Article>> GetArticle(int id)
         {
 
-            var article = await _context.Article.Include(p => p.IdNavigation).Include(r => r.Referencer).FirstOrDefaultAsync(i => i.IdArticle == id);
+            var article = await _context.Article.Include(p => p.IdNavigation).Include(r => r.Referencer).Include(c => c.Changement).FirstOrDefaultAsync(i => i.IdArticle == id);
 
 
             if (article == null)
@@ -51,6 +51,16 @@ namespace WikiTechAPI.Controllers
 
             return article;
         }
+
+        //get article with no approbation date
+        [HttpGet]
+        [Route("nodate")]
+        public async Task<ActionResult<IEnumerable<Article>>> GetArticleNoDate()
+        {
+
+            return await _context.Article.Where(d => d.DatepublicationArticle == null).Include(p => p.IdNavigation).ToListAsync();
+        }
+
 
         // PUT: api/Articles/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
