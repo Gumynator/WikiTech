@@ -244,7 +244,7 @@ namespace WikiTechWebApp.Controllers
                     resultarticle = JsonConvert.DeserializeObject<Article>(apiResponse);
 
 
-                    return Redirect("/Articles/" + currentArticle.IdArticle);
+                    return Redirect("/Articles/Details/" + currentArticle.IdArticle);
 
                 }
                 catch (ExceptionLiaisonApi e)
@@ -258,14 +258,24 @@ namespace WikiTechWebApp.Controllers
         public async Task<ActionResult> supprimerArticle(int id)
         {
 
-            Article currentArticle = new Article();
-            currentArticle.IdArticle = Int32.Parse(Request.Form["IdArticle"]);
+            try
+            {
+                using var response = await client.DeleteAsync(ConfigureHttpClient.apiUrl + "Articles/" + id);
+                string apiResponse = await response.Content.ReadAsStringAsync();
+
+                //need to delete reference table
+
+                return Redirect("/Home/Index");
+
+            }
+            catch (ExceptionLiaisonApi e)
+            {
+                Console.WriteLine(e.getMessage());
+                return Redirect("/Home/Index");
+            }
 
 
-            return RedirectToAction(nameof(Index));
-
-
-
+       
         }
 
 

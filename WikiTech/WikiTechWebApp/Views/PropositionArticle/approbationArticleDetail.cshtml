@@ -61,7 +61,7 @@
 
     <p> l'article est proposé par : <a href="AModifier">@Html.DisplayFor(a => a.IdNavigation.PrenomAspnetuser)</a></p>
 
-    <form asp-action="validerArticle" methode="POST">
+    <form action="" methode="POST">
 
         <input type="text" name="IdArticle" hidden value="@Html.DisplayFor(a => a.IdArticle)" />
         <input type="text" name="IdSection" hidden value="@Html.DisplayFor(a => a.IdSection)" />
@@ -84,15 +84,12 @@
             @Html.ValidationMessageFor(m => m.TextArticle, "", new { @class = "text-danger" })
         </div>
 
-        <input class="btn btn-outline-success" type="submit" value="valider">
-
-        @*<button class="btn btn-outline-danger" value="supprimerArticle" onclick="location.href='@Url.Action("supprimerArticle", "PropositionArticleController")'>*@
-
-
+        <input class="btn btn-outline-success" type="submit" value="valider" formaction="validerArticle">
+        <br/>
+        <a class="btn btn-outline-danger" value="supprimerArticle" asp-action="supprimerArticle" asp-route-id="@Model.IdArticle" /> delete </a>
 
     </form>
-
-    <a value="supprimerArticle" asp-action="supprimerArticle" asp-route-id="58" /> delete </a>
+    
 
 </body>
 
