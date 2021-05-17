@@ -1,4 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Auteur : Pancini Marco
+//Création : 05.05.2021
+//Modification : 10.05.2021
+//Description : Class d'apiKey middleware qui permet la centralisation de toutes les requêtes faites sur l'api
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;

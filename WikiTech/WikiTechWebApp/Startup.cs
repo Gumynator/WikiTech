@@ -34,11 +34,11 @@ namespace WikiTechWebApp
             services.Configure<AuthMessageSenderOptions>(Configuration);
             services.AddControllersWithViews();
 
-            // omitted for clarity
             services.AddHttpContextAccessor();
 
             ///StripeSettings
             services.Configure<StripeSettings>(Configuration.GetSection("Stripe"));
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

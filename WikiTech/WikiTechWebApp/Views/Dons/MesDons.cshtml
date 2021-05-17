@@ -1,0 +1,49 @@
+﻿@model IEnumerable<WikiTechAPI.Models.Don>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    @*<a asp-action="Create">Create New</a>*@
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MontantDon)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateDon)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MessageDon)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MontantDon)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateDon)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MessageDon)
+                </td>
+                <td>
+                    @*<a asp-action="Edit" asp-route-id="@item.IdDon">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.IdDon">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.IdDon">Delete</a>*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

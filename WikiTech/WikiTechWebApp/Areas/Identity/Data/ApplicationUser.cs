@@ -10,6 +10,8 @@ namespace WikiTechWebApp.Areas.Identity.Data
     // Add profile data for application users by adding properties to the ApplicationUser class
     public class ApplicationUser : IdentityUser
     {
+       
+
         [PersonalData]
         [Column(TypeName = "Int(32)")]
         public int Id_grade { get; set; }
