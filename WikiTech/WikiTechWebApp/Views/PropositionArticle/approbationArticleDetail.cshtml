@@ -14,10 +14,85 @@
 
 <body>
 
-    <h1>Définir un statut à l'article</h1>
-    <br/>fff
+    <script>
+
+        tinymce.init({
+            selector: '#TinyArea',
+            skin: 'oxide',
+            content_css: 'default',
+            toolbar: 'undo redo styleselect bold italic alignleft aligncenter alignright bullist numlist outdent indent table lists code link | fullscreen preview save print | insertfile image anchor',
+            plugins: 'code emoticons imagetools preview print autosave save image link media table anchor lists checklist wordcount imagetools paste ',
+            image_caption: false,
+            autosave_interval: '30s',
+            image_title: true,
+            paste_data_images: true,
+            automatic_uploads: true,
+            images_upload_url: '/PropositionArticle/uploadImg',
+            file_picker_types: 'image',
+            file_picker_callback: function (cb, value, meta) {
+
+                var input = document.createElement('input');
+                input.setAttribute('type', 'file');
+                input.setAttribute('accept', 'image/*');
+
+                input.onchange = function () {
+                    var file = this.files[0];
+
+                    var reader = new FileReader();
+                    reader.readAsDataURL(file);
+                    reader.onload = function () {
+                        var id = 'blobid' + (new Date()).getTime();
+                        var blobCache = tinymce.activeEditor.editorUpload.blobCache;
+                        var base64 = reader.result.split(',')[1];
+                        var blobInfo = blobCache.create(id, file, base64);
+                        blobCache.add(blobInfo);
+                        cb(blobInfo.blobUri(), { title: file.name });
+                    };
+                };
+                input.click();
+            }
+        });
 
 
-    @Html.DisplayFor(a => a.TitreArticle)
+    </script>
+
+
+    <h1>Définir un statut à l'article pour l'article : </h1>
+
+    <p> l'article est proposé par : <a href="AModifier">@Html.DisplayFor(a => a.IdNavigation.PrenomAspnetuser)</a></p>
+
+    <form asp-action="validerArticle" methode="POST">
+
+        <input type="text" name="IdArticle" hidden value="@Html.DisplayFor(a => a.IdArticle)" />
+        <input type="text" name="IdSection" hidden value="@Html.DisplayFor(a => a.IdSection)" />
+        <input type="text" name="IdAuteur" hidden value="@Html.DisplayFor(a => a.Id)" />
+
+        <div class="mb-3">
+            <label for="titlearea" class="form-label">Titre de l'article</label>
+            <textarea asp-for="TitreArticle" class="form-control" id="titlearea" rows="1">@Html.DisplayFor(a => a.TitreArticle)</textarea>
+            @Html.ValidationMessageFor(m => m.TitreArticle, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="mb-3">
+            <label for="descarea" class="form-label">Description de l'article</label>
+            <textarea asp-for="DescriptionArticle" class="form-control" id="descarea" rows="3">@Html.DisplayFor(a => a.DescriptionArticle)</textarea>
+            @Html.ValidationMessageFor(m => m.DescriptionArticle, "", new { @class = "text-danger" })
+        </div>
+        <div class="mb-3">
+            <label for="TinyArea" class="form-label">Rédaction de l'article</label>
+            <textarea asp-for="TextArticle" class="form-control" id="TinyArea" rows="20" cols="300">@Html.DisplayFor(a => a.TextArticle)</textarea>
+            @Html.ValidationMessageFor(m => m.TextArticle, "", new { @class = "text-danger" })
+        </div>
+
+        <input class="btn btn-outline-success" type="submit" value="valider">
+
+        @*<button class="btn btn-outline-danger" value="supprimerArticle" onclick="location.href='@Url.Action("supprimerArticle", "PropositionArticleController")'>*@
+
+
+
+    </form>
+
+    <a value="supprimerArticle" asp-action="supprimerArticle" asp-route-id="58" /> delete </a>
 
 </body>
+

@@ -47,18 +47,7 @@ namespace WikiTechWebApp.Controllers
             return View();
         }
 
-        // GET: PropositionArticleController/Details/5
-       /* public ActionResult Details(int id)
-        {
-            return View();
-        }*/
 
-       /* // GET: PropositionArticleController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-       */
         // POST: PropositionArticleController/Create
         [HttpPost("CreateProposition")]
         public async Task<ActionResult> Create([Bind("Id,TitreArticle,DescriptionArticle,TextArticle,IdSection,Referencer,IsqualityArticle")] Article _article)
@@ -112,92 +101,6 @@ namespace WikiTechWebApp.Controllers
 
         }
 
-        /* // GET: PropositionArticleController/Edit/5
-         public ActionResult Edit(int id)
-         {
-             return View();
-         }
-        */
-        /*
-         // POST: PropositionArticleController/Edit/5
-         [HttpPost]
-         [ValidateAntiForgeryToken]
-         public ActionResult Edit(int id, IFormCollection collection)
-         {
-             try
-             {
-                 return RedirectToAction(nameof(Index));
-             }
-             catch
-             {
-                 return View();
-             }
-         }
-
-         // GET: PropositionArticleController/Delete/5
-         public ActionResult Delete(int id)
-         {
-             return View();
-         }
-        */
-        /*
-         // POST: PropositionArticleController/Delete/5
-         [HttpPost]
-         [ValidateAntiForgeryToken]
-         public ActionResult Delete(int id, IFormCollection collection)
-         {
-             try
-             {
-                 return RedirectToAction(nameof(Index));
-             }
-             catch
-             {
-                 return View();
-             }
-         }
-        */
-
-        /* [HttpPost]
-         public async Task<string> uploadImg(IFormFile file)
-         {
-             string message;
-             var saveimg = Path.Combine(webhost.WebRootPath, "images", file.FileName);
-             string imgext = Path.GetExtension(file.FileName);
-
-             //using var image = Image.Load(file.OpenReadStream());
-             //image.Mutate(x => x.Resize(256, 256));
-
-             try
-             {
-
-                 if (imgext == ".jpg" || imgext == ".png")
-                 {
-                     using (var uploadimg = new FileStream(saveimg, FileMode.Create))
-                     {
-
-                         await file.CopyToAsync(uploadimg);
-                         message = "The selected file" + file.FileName + " est sauvé";
-                     }
-
-                 }
-                 else
-                 {
-                     message = "seule les extension JPG et PNG sont supportée";
-                 }
-
-                 return "filename : " + saveimg + " le message :" + message;
-
-             }
-             catch (ExceptionImg e)
-             {
-
-                 return e.getMessage();
-             }
-
-
-
-         }
-        */
 
         [HttpPost]
         [RequestSizeLimit(2097152)] //2MB
@@ -291,9 +194,6 @@ namespace WikiTechWebApp.Controllers
             return View();
         }
 
-
-
-        
         [Authorize]
         // GET: the article detail for decision
         public ActionResult approbationArticleDetail(int id)
@@ -317,6 +217,57 @@ namespace WikiTechWebApp.Controllers
                 return Redirect("/Home/Index");
             }
         }
+
+
+        [Authorize]
+        [HttpPost]
+        public async Task<ActionResult> validerArticle([Bind("IdArticle,TitreArticle,DescriptionArticle,TextArticle,IdSection,Referencer,IsqualityArticle")] Article _article)
+        {
+
+            Article currentArticle = _article;
+
+
+            currentArticle.DatepublicationArticle = DateTime.Now; //^Date de la validation
+
+            currentArticle.IdArticle = Int32.Parse(Request.Form["IdArticle"]);
+            currentArticle.IdSection = Int32.Parse(Request.Form["IdSection"]); 
+            currentArticle.Id = Request.Form["IdAuteur"];
+
+
+            try
+                {
+                    Article resultarticle;
+
+                    using var response = await client.PutAsJsonAsync(ConfigureHttpClient.apiUrl + "Articles/" + currentArticle.IdArticle, currentArticle);
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+
+                    resultarticle = JsonConvert.DeserializeObject<Article>(apiResponse);
+
+
+                    return Redirect("/Articles/" + currentArticle.IdArticle);
+
+                }
+                catch (ExceptionLiaisonApi e)
+                {
+                    Console.WriteLine(e.getMessage());
+                    return RedirectToAction(nameof(Index));
+                }
+        }
+
+        [Authorize]
+        public async Task<ActionResult> supprimerArticle(int id)
+        {
+
+            Article currentArticle = new Article();
+            currentArticle.IdArticle = Int32.Parse(Request.Form["IdArticle"]);
+
+
+            return RedirectToAction(nameof(Index));
+
+
+
+        }
+
 
     }
 }

@@ -50,7 +50,6 @@
           "System.Net.Http": "4.3.4",
           "WikiTechAPI": "1.0.0",
           "jui_pagination": "2.0.0",
-          "System.Web.Services": "4.0.0.0",
           "Microsoft.AspNetCore.Antiforgery": "5.0.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions.Reference": "5.0.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "5.0.0.0",
@@ -3025,17 +3024,6 @@
         },
         "compile": {
           "WikiTechAPI.dll": {}
-        }
-      },
-      "System.Web.Services/4.0.0.0": {
-        "runtime": {
-          "System.Web.Services.dll": {
-            "assemblyVersion": "4.0.0.0",
-            "fileVersion": "4.8.3752.0"
-          }
-        },
-        "compile": {
-          "System.Web.Services.dll": {}
         }
       },
       "Microsoft.AspNetCore.Antiforgery/5.0.0.0": {
@@ -6412,11 +6400,6 @@
     },
     "WikiTechAPI/1.0.0": {
       "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "System.Web.Services/4.0.0.0": {
-      "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
