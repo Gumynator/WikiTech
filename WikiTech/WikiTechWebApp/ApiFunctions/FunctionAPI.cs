@@ -18,48 +18,48 @@ namespace WikiTechWebApp.ApiFunctions
     public class FunctionAPI
     {
 
-       /* //Create a new Article
-        internal static async Task<Article> AddArticle(Article _article)
-        {
+        /* //Create a new Article
+         internal static async Task<Article> AddArticle(Article _article)
+         {
 
-            Article resultarticle;
+             Article resultarticle;
 
-            using (var httpClient = new HttpClient())
-            {
-                StringContent content = new StringContent(JsonConvert.SerializeObject(_article), Encoding.UTF8, "application/json");
+             using (var httpClient = new HttpClient())
+             {
+                 StringContent content = new StringContent(JsonConvert.SerializeObject(_article), Encoding.UTF8, "application/json");
 
-                using var response = await httpClient.PostAsync(ConfigureHttpClient.apiUrl + "Articles", content);
-                string apiResponse = await response.Content.ReadAsStringAsync();
-                resultarticle = JsonConvert.DeserializeObject<Article>(apiResponse);
-            }
-            return resultarticle;
-        }
+                 using var response = await httpClient.PostAsync(ConfigureHttpClient.apiUrl + "Articles", content);
+                 string apiResponse = await response.Content.ReadAsStringAsync();
+                 resultarticle = JsonConvert.DeserializeObject<Article>(apiResponse);
+             }
+             return resultarticle;
+         }
 
-        ///get all articles - inutile
-        internal static async Task<Article[]> GetArticlesAsync(HttpClient client)
-        {
-            Article[] product = null;
-            HttpResponseMessage response = await client.GetAsync("api/Articles");
-            if (response.IsSuccessStatusCode)
-            {
-                product = await response.Content.ReadAsAsync<Article[]>();
-            }
-            return product;
-        }
+         ///get all articles - inutile
+         internal static async Task<Article[]> GetArticlesAsync(HttpClient client)
+         {
+             Article[] product = null;
+             HttpResponseMessage response = await client.GetAsync("api/Articles");
+             if (response.IsSuccessStatusCode)
+             {
+                 product = await response.Content.ReadAsAsync<Article[]>();
+             }
+             return product;
+         }
 
-        ///get article by id - inutile
-        internal static async Task<Article> GetArticleAsync(HttpClient client, short? id)
-        {
-            Article product = null;
-            HttpResponseMessage response = await client.GetAsync("api/Article/" + id);
-            if (response.IsSuccessStatusCode)
-            {
-                product = await response.Content.ReadAsAsync<Article>();
-            }
-            return product;
-        }
+         ///get article by id - inutile
+         internal static async Task<Article> GetArticleAsync(HttpClient client, short? id)
+         {
+             Article product = null;
+             HttpResponseMessage response = await client.GetAsync("api/Article/" + id);
+             if (response.IsSuccessStatusCode)
+             {
+                 product = await response.Content.ReadAsAsync<Article>();
+             }
+             return product;
+         }
 
-        */
+         */
 
         //Add Tag(s) to an article
         internal static async Task<List<Referencer>> AddTagToArticle(List<string> _idtags, int _idArticle)
@@ -85,6 +85,7 @@ namespace WikiTechWebApp.ApiFunctions
 
                     using (var httpClient = new HttpClient())
                     {
+                        httpClient.DefaultRequestHeaders.Add("ApiKey", "61c08ad1-0823-4c38-9853-700675e3c8fc");
                         StringContent referenceContent = new StringContent(JsonConvert.SerializeObject(currentAdd), Encoding.UTF8, "application/json");
 
                         using var ReferenceResponse = await httpClient.PostAsync(ConfigureHttpClient.apiUrl + "Referencers", referenceContent);
@@ -141,13 +142,14 @@ namespace WikiTechWebApp.ApiFunctions
             HttpResponseMessage response = await client.GetAsync("Villes/" + id);
             if (response.IsSuccessStatusCode)
             {
-
                 ville = await response.Content.ReadAsAsync<Ville>();
             }
 
+            ville = await response.Content.ReadAsAsync<Ville>();
+
+
             return ville;
         }
-
 
 
         internal static async Task<Facture> GetFacturesByUserIdAsync(HttpClient client, string? userId)
@@ -162,7 +164,5 @@ namespace WikiTechWebApp.ApiFunctions
 
             return factures;
         }
-
-
     }
 }

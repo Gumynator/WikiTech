@@ -24,14 +24,14 @@ namespace WikiTechAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Changement>>> GetChangement()
         {
-            return await _context.Changement.ToListAsync();
+            return await _context.Changement.Include(p => p.IdNavigation).ToListAsync();
         }
 
         // GET: api/Changements/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Changement>> GetChangement(int id)
         {
-            var changement = await _context.Changement.FindAsync(id);
+            var changement = await _context.Changement.Include(p => p.IdNavigation).FirstOrDefaultAsync(i => i.IdChangement == id);
 
             if (changement == null)
             {
@@ -39,6 +39,15 @@ namespace WikiTechAPI.Controllers
             }
 
             return changement;
+        }
+
+        //get article with no approbation date
+        [HttpGet]
+        [Route("nodate")]
+        public async Task<ActionResult<IEnumerable<Changement>>> GetchangeNoDate()
+        {
+
+            return await _context.Changement.Where(d => d.DatepublicationChangement == null).Include(p => p.IdNavigation).ToListAsync();
         }
 
         // PUT: api/Changements/5

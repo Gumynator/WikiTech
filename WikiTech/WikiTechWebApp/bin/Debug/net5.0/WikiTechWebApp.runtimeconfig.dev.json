@@ -3,19 +3,14 @@
     "additionalProbingPaths": [
 <<<<<<< Updated upstream
 <<<<<<< HEAD
+      "C:\\Users\\marpancini\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\marpancini\\.nuget\\packages",
+      "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+=======
       "C:\\Users\\lorhabegger\\.dotnet\\store\\|arch|\\|tfm|",
       "C:\\Users\\lorhabegger\\.nuget\\packages",
       "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
       "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet"
-=======
-<<<<<<< Updated upstream
-      "C:\\Users\\loarey\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\loarey\\.nuget\\packages",
-      "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-=======
-      "C:\\Users\\loan\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\loan\\.nuget\\packages"
->>>>>>> Stashed changes
 >>>>>>> main
 =======
       "C:\\Users\\loan\\.dotnet\\store\\|arch|\\|tfm|",

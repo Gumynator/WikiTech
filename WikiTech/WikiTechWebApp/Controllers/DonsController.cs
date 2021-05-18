@@ -115,6 +115,7 @@ namespace WikiTechWebApp.Controllers
                     newDon.Id = user.Id;
                     HttpResponseMessage postDons = await client.PostAsJsonAsync("Dons", newDon);
 
+
                     ViewBag.nom = "Dons";
                     ViewBag.prix = price;
 

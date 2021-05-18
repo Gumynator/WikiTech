@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30711.63
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WikiTechAPI", "WikiTechAPI\WikiTechAPI.csproj", "{3A486A58-7EE3-4770-B855-EE126329FD57}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WikiTechWebApp", "WikiTechWebApp\WikiTechWebApp.csproj", "{5643AA37-91D9-4CF3-A96B-87790AC259CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WikiTechWebApp", "WikiTechWebApp\WikiTechWebApp.csproj", "{5643AA37-91D9-4CF3-A96B-87790AC259CF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,0 +1,85 @@
+﻿@*
+    //Auteur    : Loris habegger
+    //Date      : 16.05.2021
+    //Fichier   : Approbation.chtml (listes d'élément à valider)
+
+*@
+
+@using Microsoft.AspNetCore.Identity
+@using WikiTechWebApp.Areas.Identity.Data
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@model dynamic
+
+<body>
+
+
+    <h1> interface de validation des nouveaux articles et modifications</h1>
+
+
+
+    <table id="validation" class="display">
+        <thead>
+            <tr>
+                <th>Auteur</th>
+                <th>Titre</th>
+                <th>brève descrpition</th>
+                <th>Aperçu</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var article in Model.Article)
+            {
+                <tr>
+                    <td>@article.IdNavigation.PrenomAspnetuser</td>
+                    <td>@article.TitreArticle</td>
+                    <td>@article.DescriptionArticle</td>
+                    <td><a asp-action="approbationArticleDetail" asp-route-id="@article.IdArticle">->Consulter</a></td>
+                </tr>
+
+            }
+
+        </tbody>
+    </table>
+
+    <hr />
+
+    <table id="validation" class="display">
+        <thead>
+            <tr>
+                <th>Auteur</th>
+                <th>Titre</th>
+                <th>brève descrpition</th>
+                <th>Aperçu</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var changement in Model.Changement)
+            {
+                <tr>
+                    <td>@changement.IdNavigation.PrenomAspnetuser</td>
+                    <td>@changement.TitreChangement</td>
+                    <td>@changement.ResumeChangement</td>
+                    <td><a href=""> -> </a></td>
+                </tr>
+
+            }
+
+
+        </tbody>
+    </table>
+
+
+
+
+
+</body>
+
+
+<script>
+
+    $(document).ready(function () {
+
+        $('table').DataTable();
+    });
+</script>

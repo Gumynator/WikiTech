@@ -1,12 +1,8 @@
 <<<<<<< Updated upstream
 <<<<<<< HEAD
-#pragma checksum "C:\GitKraken\WikiTech-Proto\WikiTech\WikiTechAPI\Views\Shared\_ValidationScriptsPartial.cshtml" "{ff1816ec-aa5e-4d10-87f7-6f4963833460}" "9eb468fb4b25bc6ad91d6b1bb06c95bd39c3b25c"
+#pragma checksum "C:\ES\WikiTech\WikiTech\WikiTechAPI\Views\Shared\_ValidationScriptsPartial.cshtml" "{ff1816ec-aa5e-4d10-87f7-6f4963833460}" "9eb468fb4b25bc6ad91d6b1bb06c95bd39c3b25c"
 =======
-<<<<<<< Updated upstream
-#pragma checksum "C:\loarey\WikiTech\WikiTech\WikiTechAPI\Views\Shared\_ValidationScriptsPartial.cshtml" "{ff1816ec-aa5e-4d10-87f7-6f4963833460}" "9eb468fb4b25bc6ad91d6b1bb06c95bd39c3b25c"
-=======
-#pragma checksum "D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\Views\Shared\_ValidationScriptsPartial.cshtml" "{ff1816ec-aa5e-4d10-87f7-6f4963833460}" "9eb468fb4b25bc6ad91d6b1bb06c95bd39c3b25c"
->>>>>>> Stashed changes
+#pragma checksum "C:\GitHub\WikiTech\WikiTechAPI\Views\Shared\_ValidationScriptsPartial.cshtml" "{ff1816ec-aa5e-4d10-87f7-6f4963833460}" "9eb468fb4b25bc6ad91d6b1bb06c95bd39c3b25c"
 >>>>>>> main
 =======
 #pragma checksum "D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\Views\Shared\_ValidationScriptsPartial.cshtml" "{ff1816ec-aa5e-4d10-87f7-6f4963833460}" "9eb468fb4b25bc6ad91d6b1bb06c95bd39c3b25c"
@@ -56,13 +52,9 @@ namespace AspNetCore
             WriteLiteral("<environment names=\"Development\">\r\n    ");
 <<<<<<< Updated upstream
 <<<<<<< HEAD
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9eb468fb4b25bc6ad91d6b1bb06c95bd39c3b25c3491", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9eb468fb4b25bc6ad91d6b1bb06c95bd39c3b25c3478", async() => {
 =======
-<<<<<<< Updated upstream
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9eb468fb4b25bc6ad91d6b1bb06c95bd39c3b25c3482", async() => {
-=======
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9eb468fb4b25bc6ad91d6b1bb06c95bd39c3b25c3511", async() => {
->>>>>>> Stashed changes
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9eb468fb4b25bc6ad91d6b1bb06c95bd39c3b25c3473", async() => {
 >>>>>>> main
 =======
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9eb468fb4b25bc6ad91d6b1bb06c95bd39c3b25c3511", async() => {
@@ -82,13 +74,9 @@ namespace AspNetCore
             WriteLiteral("\r\n    ");
 <<<<<<< Updated upstream
 <<<<<<< HEAD
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9eb468fb4b25bc6ad91d6b1bb06c95bd39c3b25c4534", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9eb468fb4b25bc6ad91d6b1bb06c95bd39c3b25c4521", async() => {
 =======
-<<<<<<< Updated upstream
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9eb468fb4b25bc6ad91d6b1bb06c95bd39c3b25c4525", async() => {
-=======
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9eb468fb4b25bc6ad91d6b1bb06c95bd39c3b25c4554", async() => {
->>>>>>> Stashed changes
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9eb468fb4b25bc6ad91d6b1bb06c95bd39c3b25c4516", async() => {
 >>>>>>> main
 =======
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9eb468fb4b25bc6ad91d6b1bb06c95bd39c3b25c4554", async() => {

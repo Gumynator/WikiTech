@@ -31,10 +31,14 @@
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
 <<<<<<< Updated upstream
     <PkgMicrosoft_CodeAnalysis_Analyzers Condition=" '$(PkgMicrosoft_CodeAnalysis_Analyzers)' == '' ">C:\Users\lorhabegger\.nuget\packages\microsoft.codeanalysis.analyzers\2.9.4</PkgMicrosoft_CodeAnalysis_Analyzers>
+<<<<<<< HEAD
     <PkgMicrosoft_EntityFrameworkCore_Tools Condition=" '$(PkgMicrosoft_EntityFrameworkCore_Tools)' == '' ">C:\Users\lorhabegger\.nuget\packages\microsoft.entityframeworkcore.tools\3.1.14</PkgMicrosoft_EntityFrameworkCore_Tools>
 =======
     <PkgMicrosoft_CodeAnalysis_Analyzers Condition=" '$(PkgMicrosoft_CodeAnalysis_Analyzers)' == '' ">C:\Users\loan\.nuget\packages\microsoft.codeanalysis.analyzers\2.9.4</PkgMicrosoft_CodeAnalysis_Analyzers>
     <PkgMicrosoft_EntityFrameworkCore_Tools Condition=" '$(PkgMicrosoft_EntityFrameworkCore_Tools)' == '' ">C:\Users\loan\.nuget\packages\microsoft.entityframeworkcore.tools\3.1.15</PkgMicrosoft_EntityFrameworkCore_Tools>
 >>>>>>> Stashed changes
+=======
+    <PkgMicrosoft_EntityFrameworkCore_Tools Condition=" '$(PkgMicrosoft_EntityFrameworkCore_Tools)' == '' ">C:\Users\lorhabegger\.nuget\packages\microsoft.entityframeworkcore.tools\3.1.15</PkgMicrosoft_EntityFrameworkCore_Tools>
+>>>>>>> main
   </PropertyGroup>
 </Project>

@@ -1,18 +1,22 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
 <<<<<<< Updated upstream
     "C:\\GitKraken\\WikiTech-Proto\\WikiTech\\WikiTechWebApp\\WikiTechWebApp.csproj": {}
+=======
+    "C:\\GitHub\\WikiTech\\WikiTechWebApp\\WikiTechWebApp.csproj": {}
+>>>>>>> main
   },
   "projects": {
-    "C:\\GitKraken\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj": {
+    "C:\\GitHub\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\GitKraken\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj",
+        "projectUniqueName": "C:\\GitHub\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj",
         "projectName": "WikiTechAPI",
-        "projectPath": "C:\\GitKraken\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj",
+        "projectPath": "C:\\GitHub\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj",
         "packagesPath": "C:\\Users\\lorhabegger\\.nuget\\packages\\",
-        "outputPath": "C:\\GitKraken\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\obj\\",
+        "outputPath": "C:\\GitHub\\WikiTech\\WikiTechAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -64,6 +68,14 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.15, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Core": {
+              "target": "Package",
+              "version": "[2.2.5, )"
+            },
             "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
               "target": "Package",
               "version": "[3.1.15, )"
@@ -113,6 +125,7 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
 <<<<<<< Updated upstream
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
@@ -126,14 +139,25 @@
     },
     "D:\\ES\\2eme\\GlobalWiki\\Conception\\WikiTech-Proto\\WikiTech\\WikiTechWebApp\\WikiTechWebApp.csproj": {
 >>>>>>> Stashed changes
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\GitHub\\WikiTech\\WikiTechWebApp\\WikiTechWebApp.csproj": {
+>>>>>>> main
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\GitKraken\\WikiTech-Proto\\WikiTech\\WikiTechWebApp\\WikiTechWebApp.csproj",
+        "projectUniqueName": "C:\\GitHub\\WikiTech\\WikiTechWebApp\\WikiTechWebApp.csproj",
         "projectName": "WikiTechWebApp",
+<<<<<<< HEAD
 <<<<<<< Updated upstream
         "projectPath": "C:\\GitKraken\\WikiTech-Proto\\WikiTech\\WikiTechWebApp\\WikiTechWebApp.csproj",
+=======
+        "projectPath": "C:\\GitHub\\WikiTech\\WikiTechWebApp\\WikiTechWebApp.csproj",
+>>>>>>> main
         "packagesPath": "C:\\Users\\lorhabegger\\.nuget\\packages\\",
-        "outputPath": "C:\\GitKraken\\WikiTech-Proto\\WikiTech\\WikiTechWebApp\\obj\\",
+        "outputPath": "C:\\GitHub\\WikiTech\\WikiTechWebApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -165,6 +189,7 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
+<<<<<<< HEAD
 <<<<<<< Updated upstream
               "C:\\GitKraken\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj": {
                 "projectPath": "C:\\GitKraken\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj"
@@ -172,6 +197,10 @@
               "D:\\ES\\2eme\\GlobalWiki\\Conception\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj": {
                 "projectPath": "D:\\ES\\2eme\\GlobalWiki\\Conception\\WikiTech-Proto\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj"
 >>>>>>> Stashed changes
+=======
+              "C:\\GitHub\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj": {
+                "projectPath": "C:\\GitHub\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj"
+>>>>>>> main
               }
             }
           }
@@ -201,10 +230,13 @@
             "Microsoft.AspNetCore.Identity.UI": {
               "target": "Package",
               "version": "[3.1.15, )"
+<<<<<<< HEAD
             },
             "Microsoft.AspNetCore.Mvc.Core": {
               "target": "Package",
               "version": "[2.2.5, )"
+=======
+>>>>>>> main
             },
             "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
               "target": "Package",
@@ -226,7 +258,7 @@
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
-              "version": "[3.1.5, )"
+              "version": "[5.0.2, )"
             },
             "SendGrid": {
               "target": "Package",
@@ -275,11 +307,15 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
 <<<<<<< Updated upstream
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
 =======
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
 >>>>>>> Stashed changes
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
+>>>>>>> main
         }
       }
     }

@@ -85,17 +85,17 @@
     }
     )
     function getVilles() {
-        var request = new XMLHttpRequest();     
-        request.open('GET', 'http://localhost:59601/Api/villes')
-        request.setRequestHeader("ApiKey", "61c08ad1-0823-4c38-9853-700675e3c8fc")
-    
-        request.onload = function () {
-            // Begin accessing JSON data here
-            var data = JSON.parse(this.response)
-            createVilleSelect(data);
-        }
-        request.send()
-     
+        $.ajax(
+            {
+                url: "http://localhost:59601/Api/villes",
+                type: "GET",                
+                dataType: "JSON",
+                contentType: "application/json",
+                headers: { "ApiKey": "61c08ad1-0823-4c38-9853-700675e3c8fc" },
+                success: function (data) {
+                    createVilleSelect(data);
+                }
+            });
 
     }
 
@@ -108,17 +108,17 @@
     }
 
     function getGenres() {
-        var request = new XMLHttpRequest();
-        request.open('GET', 'http://localhost:59601/Api/genres')
-        request.setRequestHeader("ApiKey", "61c08ad1-0823-4c38-9853-700675e3c8fc")
-
-        request.onload = function () {
-            // Begin accessing JSON data here
-            var data = JSON.parse(this.response)
-            createGenreSelect(data);
-        }
-        request.send()
-        
+        $.ajax(
+            {
+                url: "http://localhost:59601/Api/genres",
+                type: "GET",
+                dataType: "JSON",
+                contentType: "application/json",
+                headers: { "ApiKey": "61c08ad1-0823-4c38-9853-700675e3c8fc" },
+                success: function (data) {
+                    createGenreSelect(data);
+                }
+            });
     }
 
     function createGenreSelect(data) {
