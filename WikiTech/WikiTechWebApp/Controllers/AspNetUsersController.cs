@@ -25,7 +25,6 @@ namespace WikiTechWebApp.Controllers
         {
             
             client = ConfigureHttpClient.configureHttpClient(client);
-            client.DefaultRequestHeaders.Add("ApiKey", "61c08ad1-0823-4c38-9853-700675e3c8fc");
 
             //_context = context;
         }
@@ -57,7 +56,8 @@ namespace WikiTechWebApp.Controllers
             {
                 return NotFound();
             }
-
+            ViewBag.returnUrl = Request.Headers["Referer"].ToString();
+           
             return View(aspNetUsers);
         }
 
