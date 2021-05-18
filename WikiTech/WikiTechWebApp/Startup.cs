@@ -38,6 +38,7 @@ namespace WikiTechWebApp
 
             ///StripeSettings
             services.Configure<StripeSettings>(Configuration.GetSection("Stripe"));
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

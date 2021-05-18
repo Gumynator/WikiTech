@@ -2,20 +2,19 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <UserSecretsId>d6fad783-e4d3-463d-844b-50930a4a1e47</UserSecretsId>
+    <UserSecretsId>404f7d5a-c013-46be-b8b6-06acc827ef20</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Grpc.Core" Version="2.37.1" />
     <PackageReference Include="jui_pagination" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.4" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.4" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.14" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.4" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.4" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.4">
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.15" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.15" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.15" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.15" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.15" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.15">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
