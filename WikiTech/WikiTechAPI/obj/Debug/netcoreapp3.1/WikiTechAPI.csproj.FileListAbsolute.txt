@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 C:\GitKraken\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\GitKraken\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\appsettings.json
@@ -339,6 +340,8 @@ C:\loarey\WikiTech\WikiTech\WikiTechAPI\obj\Debug\netcoreapp3.1\WikiTechAPI.dll
 C:\loarey\WikiTech\WikiTech\WikiTechAPI\obj\Debug\netcoreapp3.1\WikiTechAPI.pdb
 C:\loarey\WikiTech\WikiTech\WikiTechAPI\obj\Debug\netcoreapp3.1\WikiTechAPI.genruntimeconfig.cache
 =======
+=======
+>>>>>>> Stashed changes
 D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\appsettings.Development.json
 D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\appsettings.json
 D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\WikiTechAPI.exe
@@ -486,6 +489,7 @@ D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\n
 D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\obj\Debug\netcoreapp3.1\WikiTechAPI.csprojAssemblyReference.cache
 D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\obj\Debug\netcoreapp3.1\WikiTechAPI.AssemblyInfoInputs.cache
 D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\obj\Debug\netcoreapp3.1\WikiTechAPI.AssemblyInfo.cs
 D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\obj\Debug\netcoreapp3.1\WikiTechAPI.csproj.CoreCompileInputs.cache
@@ -506,6 +510,7 @@ D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\obj\Debug\n
 D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\obj\Debug\netcoreapp3.1\WikiTechAPI.dll
 D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\obj\Debug\netcoreapp3.1\WikiTechAPI.pdb
 D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\obj\Debug\netcoreapp3.1\WikiTechAPI.genruntimeconfig.cache
+<<<<<<< Updated upstream
 D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\obj\Debug\netcoreapp3.1\WikiTechAPI.csprojAssemblyReference.cache
 >>>>>>> Stashed changes
 =======
@@ -679,3 +684,5 @@ C:\temp\gitkraken\WikiTech-Proto\WikiTech\WikiTechAPI\obj\Debug\netcoreapp3.1\Wi
 C:\temp\gitkraken\WikiTech-Proto\WikiTech\WikiTechAPI\obj\Debug\netcoreapp3.1\WikiTechAPI.genruntimeconfig.cache
 >>>>>>> main
 >>>>>>> main
+=======
+>>>>>>> Stashed changes
