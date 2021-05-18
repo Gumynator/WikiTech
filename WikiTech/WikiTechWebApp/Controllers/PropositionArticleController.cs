@@ -26,6 +26,7 @@ using WikiTechWebApp.Exceptions;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Processing;
 using System.Dynamic;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 namespace WikiTechWebApp.Controllers
 {
@@ -33,9 +34,11 @@ namespace WikiTechWebApp.Controllers
     {
 
         static HttpClient client = new HttpClient();
+        static IEmailSender _sender;
         private readonly IWebHostEnvironment webhost; //utilisé pou l'enregistrement de l'image
-        public PropositionArticleController(IWebHostEnvironment _webhost) 
+        public PropositionArticleController(IWebHostEnvironment _webhost, IEmailSender sender) 
         {
+            _sender = sender;
             webhost = _webhost;
             client = ConfigureHttpClient.configureHttpClient(client);
         }
@@ -199,7 +202,6 @@ namespace WikiTechWebApp.Controllers
         public ActionResult approbationArticleDetail(int id)
         {
 
-            //get article with user of article
             Article article;
           
             try
@@ -243,6 +245,12 @@ namespace WikiTechWebApp.Controllers
 
                     resultarticle = JsonConvert.DeserializeObject<Article>(apiResponse);
 
+                    var usernameq = await FunctionAPI.GetUserByIdAsync(client, currentArticle.Id);
+
+                    //envoie du mail d'état
+                    await _sender.SendEmailAsync(usernameq.Email, "Postulation confirmée", "Bonjour, nous vous confirmons la bonne réception de votre postulation");
+
+                    //fonction d'ajout de point pour le valideur et l'auteur
 
                     return Redirect("/Articles/Details/" + currentArticle.IdArticle);
 
@@ -263,7 +271,7 @@ namespace WikiTechWebApp.Controllers
                 using var response = await client.DeleteAsync(ConfigureHttpClient.apiUrl + "Articles/" + id);
                 string apiResponse = await response.Content.ReadAsStringAsync();
 
-                //need to delete reference table
+                //Reference (tags) is deleting by cascade
 
                 return Redirect("/Home/Index");
 

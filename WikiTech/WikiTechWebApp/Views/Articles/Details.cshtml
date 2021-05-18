@@ -2,7 +2,7 @@
     //Auteur    : Loris habegger
     //Date      : 02.05.2021
     //Fichier   : Details.chtml (affichage de l'article)
-    //ToDo     : bouton like (backend)
+    //ToDo      : bouton like (backend)
     //use link  : https://stackoverflow.com/questions/8887933/html-button-like-a-asp-net-button
 
 
@@ -92,9 +92,10 @@
         </div>
 
         <p>
-            <button type="button" class="btn btn-outline-primary" id="likebutton" runat="server" onserverclick="like">J'aime</button>
-            <button type="button" class="btn btn-outline-secondary" id="dislikebutton" runat="server" onserverclick="dislike">Je n'aime pas</button>
-            <button type="button" class="btn btn-outline-warning" id="modification" runat="server" onserverclick="propModif">Proposer une modif !</button>
+            <a class="btn btn-outline-primary" value="supprimerArticle" asp-action="like"> Jaime </a>
+            <a class="btn btn-outline-danger" value="supprimerArticle" asp-action="dislike"> j'aime pas </a>
+            <a class="btn btn-outline-warning" value="supprimerArticle" asp-controller="Articles" asp-action="PropositionModification" asp-route-id="@Model.Article.IdArticle"> Proposer une modif!</a>
+
         </p>
 
         <hr />

@@ -1,7 +1,7 @@
 ﻿@*
     //Auteur    : Loris habegger
-    //Date      : 16.05.2021
-    //Fichier   : ApprobationArticleDetail.chtml (Article à valider)
+    //Date      : 18.05.2021
+    //Fichier   : PropositionModification.chtml (page de proposition d'une modification sur un article existant)
 
 *@
 
@@ -57,11 +57,11 @@
     </script>
 
 
-    <h1>Définir un statut à l'article pour l'article : </h1>
+    <h1>Proposez une nouvelle modifications pour cet article </h1>
 
-    <p> l'article est proposé par : <a href="AModifier">@Html.DisplayFor(a => a.IdNavigation.PrenomAspnetuser)</a></p>
+    <p> l'article a été rédigé par : <a href="AModifier">@Html.DisplayFor(a => a.IdNavigation.PrenomAspnetuser)</a></p>
 
-    <form asp-action="validerArticle" methode="POST">
+    <form asp-action="sendModification" methode="POST">
 
         <input type="text" name="IdArticle" hidden value="@Html.DisplayFor(a => a.IdArticle)" />
         <input type="text" name="IdSection" hidden value="@Html.DisplayFor(a => a.IdSection)" />
@@ -85,11 +85,9 @@
         </div>
 
         <input class="btn btn-outline-success" type="submit" value="valider">
-        <a class="btn btn-outline-danger" value="supprimerArticle" asp-action="supprimerArticle" asp-route-id="@Model.IdArticle" /> delete </a>
-
 
     </form>
-    
+
 
 </body>
 

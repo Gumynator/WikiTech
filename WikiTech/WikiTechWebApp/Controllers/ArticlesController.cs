@@ -4,6 +4,7 @@
 //Fichier   : ArticlesController.cs
 
 
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -176,5 +177,32 @@ namespace WikiTechWebApp.Controllers
             Console.Write("dislike");
         }
         */
+
+        [Authorize]
+        // GET: the article detail for decision
+        public ActionResult PropositionModification(int id)
+        {
+
+            Article article;
+
+            try
+            {
+                HttpResponseMessage responsearticle = client.GetAsync("Articles/" + id).Result;
+                article = responsearticle.Content.ReadAsAsync<Article>().Result;
+
+
+                return View(article);
+                
+
+            }
+            catch (ExceptionLiaisonApi e)
+            {
+                Console.WriteLine(e.getMessage());
+                return Redirect("/Home/Index");
+            }
+        }
+
+
+
     }
 }
