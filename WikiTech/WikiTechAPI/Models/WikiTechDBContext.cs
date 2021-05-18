@@ -364,8 +364,7 @@ namespace WikiTechAPI.Models
                     .HasName("PK_DON");
 
                 entity.Property(e => e.IdDon)
-                    .HasColumnName("Id_don")
-                    .ValueGeneratedNever();
+                    .HasColumnName("Id_don");
 
                 entity.Property(e => e.DateDon)
                     .HasColumnName("Date_don")

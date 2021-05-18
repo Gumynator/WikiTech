@@ -88,9 +88,10 @@
         $.ajax(
             {
                 url: "http://localhost:59601/Api/villes",
-                type: "GET",
+                type: "GET",                
                 dataType: "JSON",
                 contentType: "application/json",
+                headers: { "ApiKey": "61c08ad1-0823-4c38-9853-700675e3c8fc" },
                 success: function (data) {
                     createVilleSelect(data);
                 }
@@ -113,6 +114,7 @@
                 type: "GET",
                 dataType: "JSON",
                 contentType: "application/json",
+                headers: { "ApiKey": "61c08ad1-0823-4c38-9853-700675e3c8fc" },
                 success: function (data) {
                     createGenreSelect(data);
                 }

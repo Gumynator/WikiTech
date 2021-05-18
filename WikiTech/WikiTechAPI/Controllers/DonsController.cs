@@ -55,19 +55,19 @@ namespace WikiTechAPI.Controllers
             return await _context.Don.ToListAsync();
         }
 
-        //// GET: api/Dons/5
-        //[HttpGet("{id}")]
-        //public async Task<ActionResult<Don>> GetDon(int id)
-        //{
-        //    var don = await _context.Don.FindAsync(id);
+        // GET: api/Dons/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Don>> GetDon(int id)
+        {
+            var don = await _context.Don.FindAsync(id);
 
-        //    if (don == null)
-        //    {
-        //        return NotFound();
-        //    }
+            if (don == null)
+            {
+                return NotFound();
+            }
 
-        //    return don;
-        //}
+            return don;
+        }
 
         // PUT: api/Dons/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
@@ -101,6 +101,19 @@ namespace WikiTechAPI.Controllers
             return NoContent();
         }
 
+
+        //// POST: api/Dons
+        //// To protect from overposting attacks, enable the specific properties you want to bind to, for
+        //// more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        //[HttpPost]
+        //public async Task<ActionResult<Don>> PostDon(Don don)
+        //{
+        //    _context.Don.Add(don);
+        //    await _context.SaveChangesAsync();
+
+        //    return CreatedAtAction("GetDon", new { id = don.IdDon }, don);
+        //}
+
         // POST: api/Dons
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
@@ -112,7 +125,7 @@ namespace WikiTechAPI.Controllers
             {
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateException)
+            catch (DbUpdateException e)
             {
                 if (DonExists(don.IdDon))
                 {
