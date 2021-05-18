@@ -37,7 +37,7 @@
                     <!-- auteur-->
                     <p class="lead">
                         by
-                        <a asp-controller="AspNetUsers" asp-action="Details" asp-route-id="@ViewBag.id">@Html.DisplayFor(model => model.IdNavigation.PrenomAspnetuser)</a>                       
+                        <a asp-controller="AspNetUsers" asp-action="Details" asp-route-id="@ViewBag.id">@Model.Article.IdNavigation.PrenomAspnetuser</a>                       
                     </p>
                     <hr />
                     <!-- Date and time-->
