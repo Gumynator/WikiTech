@@ -14,10 +14,19 @@
             <a class="nav-link text-white" id="ProposerArticle" href="@Url.Action("Index", "PropositionArticle", new { area = "PropositionArticle" }) title="ProposerArticle">Proposez !</a>
         </li>
         <li class="nav-item">
+            <a class="nav-link text-white" asp-controller="PropositionArticle" asp-action="Approbation">Approbation</a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link text-white" asp-controller="Abonnements" asp-action="Index">Abonnement</a>
         </li>
         <li class="nav-item">
             <a class="nav-link text-white" asp-controller="Dons" asp-action="Index">Don</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" asp-controller="Factures" asp-action="Index">Mes Factures</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" asp-controller="Dons" asp-action="MesDons">Mes Dons</a>
         </li>
         <li class="nav-item">
             <a id="manage" class="nav-link text-white" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
@@ -28,8 +37,10 @@
             </form>
         </li>
 
-        
-        
+
+
+
+
     }
     else
     {
