@@ -36,7 +36,7 @@
                     <!-- auteur-->
                     <p class="lead">
                         by
-                        <a href="#!">@Html.DisplayFor(model => model.IdNavigation.PrenomAspnetuser)</a>
+                        <a asp-controller="AspNetUsers" asp-action="Details" asp-route-id="@ViewBag.id">@Html.DisplayFor(model => model.IdNavigation.PrenomAspnetuser)</a>                       
                     </p>
                     <hr />
                     <!-- Date and time-->
@@ -72,6 +72,7 @@
                                                         type: "GET",
                                                         dataType: "JSON",
                                                         contentType: "application/json",
+                                                        headers: { "ApiKey": "61c08ad1-0823-4c38-9853-700675e3c8fc"},
                                                         success: function (data) {
                                                             createTagSelect(data);
                                                         }

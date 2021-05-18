@@ -1,5 +1,5 @@
-﻿
-//Auteur    : Loris habegger
+
+//Auteur    : Loris habegger, Marco Pancini
 //Date      : 01.05.2021
 //Fichier   : FunctionAPI.cs
 
@@ -131,8 +131,10 @@ namespace WikiTechWebApp.ApiFunctions
             }
 
             return user;
-        }
-
+        }
+
+
+
         internal static async Task<Ville> GetVilleByIdAsync(HttpClient client, int? id)
         {
             Ville ville = null;
@@ -140,13 +142,14 @@ namespace WikiTechWebApp.ApiFunctions
             if (response.IsSuccessStatusCode)
             {
 
-=======
                 ville = await response.Content.ReadAsAsync<Ville>();
             }
 
             return ville;
-        }
-
+        }
+
+
+
         internal static async Task<Facture> GetFacturesByUserIdAsync(HttpClient client, string? userId)
         {
             Facture factures = null;

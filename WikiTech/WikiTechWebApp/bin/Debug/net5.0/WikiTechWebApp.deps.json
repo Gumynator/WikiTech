@@ -31,17 +31,10 @@
           "Microsoft.AspNetCore.Identity.UI": "3.1.14",
           "Microsoft.AspNetCore.Mvc.Core": "2.2.5",
           "Microsoft.AspNetCore.Mvc.NewtonsoftJson": "3.1.14",
-<<<<<<< Updated upstream
-          "Microsoft.EntityFrameworkCore.SqlServer": "5.0.4",
-          "Microsoft.EntityFrameworkCore.Sqlite": "5.0.4",
-          "Microsoft.EntityFrameworkCore.Tools": "5.0.4",
-          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "5.0.2",
-=======
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.14",
           "Microsoft.EntityFrameworkCore.Sqlite": "3.1.14",
           "Microsoft.EntityFrameworkCore.Tools": "3.1.14",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "3.1.5",
->>>>>>> Stashed changes
           "SendGrid": "9.23.0",
           "ServiceStack": "5.11.0",
           "Stripe.net": "39.45.0",
@@ -304,7 +297,7 @@
           "System.Text.Encoding.Reference": "5.0.0.0",
           "System.Text.Encoding.Extensions.Reference": "5.0.0.0",
           "System.Text.Encodings.Web.Reference": "5.0.0.0",
-          "System.Text.Json": "5.0.0.0",
+          "System.Text.Json.Reference": "5.0.0.0",
           "System.Text.RegularExpressions.Reference": "5.0.0.0",
           "System.Threading.Channels": "5.0.0.0",
           "System.Threading.Reference": "5.0.0.0",
@@ -592,19 +585,11 @@
           "Microsoft.AspNetCore.ResponseCaching.Abstractions": "2.2.0",
           "Microsoft.AspNetCore.Routing": "2.2.0",
           "Microsoft.AspNetCore.Routing.Abstractions": "2.2.0",
-<<<<<<< Updated upstream
-          "Microsoft.Extensions.DependencyInjection": "5.0.1",
-          "Microsoft.Extensions.DependencyModel": "5.0.0",
-          "Microsoft.Extensions.FileProviders.Abstractions": "5.0.0",
-          "Microsoft.Extensions.Logging.Abstractions": "5.0.0",
-          "System.Diagnostics.DiagnosticSource": "5.0.1",
-=======
           "Microsoft.Extensions.DependencyInjection": "3.1.14",
           "Microsoft.Extensions.DependencyModel": "3.1.6",
           "Microsoft.Extensions.FileProviders.Abstractions": "3.1.14",
           "Microsoft.Extensions.Logging.Abstractions": "3.1.14",
           "System.Diagnostics.DiagnosticSource": "4.7.1",
->>>>>>> Stashed changes
           "System.Threading.Tasks.Extensions": "4.5.4"
         }
       },
@@ -977,6 +962,7 @@
         }
       },
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       "Microsoft.Data.SqlClient.SNI.runtime/2.0.1": {
         "runtimeTargets": {
           "runtimes/win-arm/native/Microsoft.Data.SqlClient.SNI.dll": {
@@ -1024,15 +1010,26 @@
       "Microsoft.Data.Sqlite.Core/5.0.4": {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
       "Microsoft.Data.Sqlite.Core/3.1.14": {
 >>>>>>> Stashed changes
 =======
 >>>>>>> main
+>>>>>>> main
+=======
+      "Microsoft.Data.Sqlite.Core/3.1.14": {
+>>>>>>> Stashed changes
         "dependencies": {
-          "SQLitePCLRaw.core": "2.0.4"
+          "SQLitePCLRaw.core": "2.0.2"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.Data.Sqlite.dll": {
+<<<<<<< Updated upstream
+<<<<<<< HEAD
+            "assemblyVersion": "5.0.4.0",
+            "fileVersion": "5.0.421.11803"
+=======
 <<<<<<< HEAD
 <<<<<<< Updated upstream
             "assemblyVersion": "5.0.4.0",
@@ -1045,6 +1042,11 @@
             "assemblyVersion": "5.0.4.0",
             "fileVersion": "5.0.421.11803"
 >>>>>>> main
+>>>>>>> main
+=======
+            "assemblyVersion": "3.1.14.0",
+            "fileVersion": "3.100.1421.16508"
+>>>>>>> Stashed changes
           }
         },
         "compile": {
@@ -1123,9 +1125,13 @@
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Relational.dll": {}
         }
       },
+<<<<<<< Updated upstream
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
+>>>>>>> main
 >>>>>>> main
       "Microsoft.EntityFrameworkCore.Sqlite/5.0.4": {
         "dependencies": {
@@ -1146,6 +1152,15 @@
             "assemblyVersion": "5.0.4.0",
             "fileVersion": "5.0.421.11803"
 =======
+<<<<<<< HEAD
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.EntityFrameworkCore.Sqlite.dll": {
+            "assemblyVersion": "5.0.4.0",
+            "fileVersion": "5.0.421.11803"
+=======
+=======
+>>>>>>> Stashed changes
       "Microsoft.EntityFrameworkCore.Sqlite/3.1.14": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Sqlite.Core": "3.1.14",
@@ -1163,6 +1178,7 @@
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Sqlite.dll": {
             "assemblyVersion": "3.1.14.0",
             "fileVersion": "3.100.1421.16508"
+<<<<<<< Updated upstream
 >>>>>>> Stashed changes
 =======
         },
@@ -1171,10 +1187,13 @@
             "assemblyVersion": "5.0.4.0",
             "fileVersion": "5.0.421.11803"
 >>>>>>> main
+>>>>>>> main
+=======
+>>>>>>> Stashed changes
           }
         },
         "compile": {
-          "lib/netstandard2.1/Microsoft.EntityFrameworkCore.Sqlite.dll": {}
+          "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Sqlite.dll": {}
         }
       },
       "Microsoft.EntityFrameworkCore.SqlServer/3.1.14": {
@@ -1254,22 +1273,31 @@
         }
       },
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       "Microsoft.Extensions.DependencyInjection.Abstractions/5.0.0": {},
       "Microsoft.Extensions.DependencyModel/5.0.0": {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> Stashed changes
       "Microsoft.Extensions.DependencyInjection.Abstractions/3.1.14": {},
       "Microsoft.Extensions.DependencyModel/3.1.6": {
         "dependencies": {
           "System.Text.Json": "4.7.2"
         },
+<<<<<<< Updated upstream
 >>>>>>> Stashed changes
 =======
 >>>>>>> main
+>>>>>>> main
+=======
+>>>>>>> Stashed changes
         "runtime": {
           "lib/netstandard2.0/Microsoft.Extensions.DependencyModel.dll": {
-            "assemblyVersion": "5.0.0.0",
-            "fileVersion": "5.0.20.51904"
+            "assemblyVersion": "3.1.6.0",
+            "fileVersion": "3.100.620.31604"
           }
         },
         "compile": {
@@ -1878,42 +1906,42 @@
           "lib/netcoreapp3.1/SixLabors.ImageSharp.dll": {}
         }
       },
-      "SQLitePCLRaw.bundle_e_sqlite3/2.0.4": {
+      "SQLitePCLRaw.bundle_e_sqlite3/2.0.2": {
         "dependencies": {
-          "SQLitePCLRaw.core": "2.0.4",
-          "SQLitePCLRaw.lib.e_sqlite3": "2.0.4",
-          "SQLitePCLRaw.provider.dynamic_cdecl": "2.0.4"
+          "SQLitePCLRaw.core": "2.0.2",
+          "SQLitePCLRaw.lib.e_sqlite3": "2.0.2",
+          "SQLitePCLRaw.provider.dynamic_cdecl": "2.0.2"
         },
         "runtime": {
-          "lib/netcoreapp3.1/SQLitePCLRaw.batteries_v2.dll": {
-            "assemblyVersion": "2.0.4.976",
-            "fileVersion": "2.0.4.976"
+          "lib/netcoreapp3.0/SQLitePCLRaw.batteries_v2.dll": {
+            "assemblyVersion": "2.0.2.669",
+            "fileVersion": "2.0.2.669"
           },
-          "lib/netcoreapp3.1/SQLitePCLRaw.nativelibrary.dll": {
-            "assemblyVersion": "2.0.4.976",
-            "fileVersion": "2.0.4.976"
+          "lib/netcoreapp3.0/SQLitePCLRaw.nativelibrary.dll": {
+            "assemblyVersion": "2.0.2.669",
+            "fileVersion": "2.0.2.669"
           }
         },
         "compile": {
-          "lib/netcoreapp3.1/SQLitePCLRaw.batteries_v2.dll": {},
-          "lib/netcoreapp3.1/SQLitePCLRaw.nativelibrary.dll": {}
+          "lib/netcoreapp3.0/SQLitePCLRaw.batteries_v2.dll": {},
+          "lib/netcoreapp3.0/SQLitePCLRaw.nativelibrary.dll": {}
         }
       },
-      "SQLitePCLRaw.core/2.0.4": {
+      "SQLitePCLRaw.core/2.0.2": {
         "dependencies": {
           "System.Memory": "4.5.4"
         },
         "runtime": {
           "lib/netstandard2.0/SQLitePCLRaw.core.dll": {
-            "assemblyVersion": "2.0.4.976",
-            "fileVersion": "2.0.4.976"
+            "assemblyVersion": "2.0.2.669",
+            "fileVersion": "2.0.2.669"
           }
         },
         "compile": {
           "lib/netstandard2.0/SQLitePCLRaw.core.dll": {}
         }
       },
-      "SQLitePCLRaw.lib.e_sqlite3/2.0.4": {
+      "SQLitePCLRaw.lib.e_sqlite3/2.0.2": {
         "runtimeTargets": {
           "runtimes/alpine-x64/native/libe_sqlite3.so": {
             "rid": "alpine-x64",
@@ -1932,11 +1960,6 @@
           },
           "runtimes/linux-armel/native/libe_sqlite3.so": {
             "rid": "linux-armel",
-            "assetType": "native",
-            "fileVersion": "0.0.0.0"
-          },
-          "runtimes/linux-mips64/native/libe_sqlite3.so": {
-            "rid": "linux-mips64",
             "assetType": "native",
             "fileVersion": "0.0.0.0"
           },
@@ -1982,14 +2005,14 @@
           }
         }
       },
-      "SQLitePCLRaw.provider.dynamic_cdecl/2.0.4": {
+      "SQLitePCLRaw.provider.dynamic_cdecl/2.0.2": {
         "dependencies": {
-          "SQLitePCLRaw.core": "2.0.4"
+          "SQLitePCLRaw.core": "2.0.2"
         },
         "runtime": {
           "lib/netstandard2.0/SQLitePCLRaw.provider.dynamic_cdecl.dll": {
-            "assemblyVersion": "2.0.4.976",
-            "fileVersion": "2.0.4.976"
+            "assemblyVersion": "2.0.2.669",
+            "fileVersion": "2.0.2.669"
           }
         },
         "compile": {
@@ -2049,11 +2072,7 @@
           "System.Threading.Tasks": "4.3.0"
         }
       },
-<<<<<<< Updated upstream
-      "System.Collections.Immutable/5.0.0": {},
-=======
       "System.Collections.Immutable/1.7.1": {},
->>>>>>> Stashed changes
       "System.Collections.NonGeneric/4.3.0": {
         "dependencies": {
           "System.Diagnostics.Debug": "4.3.0",
@@ -2080,11 +2099,7 @@
           "System.Runtime": "4.3.1"
         }
       },
-<<<<<<< Updated upstream
-      "System.ComponentModel.Annotations/5.0.0": {},
-=======
       "System.ComponentModel.Annotations/4.7.0": {},
->>>>>>> Stashed changes
       "System.ComponentModel.Primitives/4.3.0": {
         "dependencies": {
           "System.ComponentModel": "4.3.0",
@@ -2671,11 +2686,7 @@
           "System.Runtime": "4.3.1"
         }
       },
-<<<<<<< Updated upstream
-      "System.Reflection.Metadata/5.0.0": {},
-=======
       "System.Reflection.Metadata/1.6.0": {},
->>>>>>> Stashed changes
       "System.Reflection.Primitives/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "5.0.0",
@@ -2993,6 +3004,7 @@
         }
       },
       "System.Text.Encodings.Web/4.5.0": {},
+      "System.Text.Json/4.7.2": {},
       "System.Text.RegularExpressions/4.3.0": {
         "dependencies": {
           "System.Runtime": "4.3.1"
@@ -3116,17 +3128,10 @@
       "WikiTechAPI/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Mvc.NewtonsoftJson": "3.1.14",
-<<<<<<< Updated upstream
-          "Microsoft.EntityFrameworkCore": "5.0.4",
-          "Microsoft.EntityFrameworkCore.SqlServer": "5.0.4",
-          "Microsoft.EntityFrameworkCore.Sqlite": "5.0.4",
-          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "5.0.2",
-=======
           "Microsoft.EntityFrameworkCore": "3.1.14",
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.14",
           "Microsoft.EntityFrameworkCore.Sqlite": "3.1.14",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "3.1.5",
->>>>>>> Stashed changes
           "SixLabors.ImageSharp": "1.0.3"
         },
         "runtime": {
@@ -4660,7 +4665,7 @@
         },
         "compileOnly": true
       },
-      "System.Text.Json/5.0.0.0": {
+      "System.Text.Json.Reference/5.0.0.0": {
         "compile": {
           "System.Text.Json.dll": {}
         },
@@ -5143,21 +5148,13 @@
       "path": "microsoft.data.sqlclient/1.1.3",
       "hashPath": "microsoft.data.sqlclient.1.1.3.nupkg.sha512"
     },
-<<<<<<< Updated upstream
-    "Microsoft.Data.Sqlite.Core/5.0.4": {
-      "type": "package",
-      "serviceable": true,
-<<<<<<< HEAD
-      "sha512": "sha512-BhAeNgg0Wz/TIXhl/I1mXppCmKiLDE53nthK388CT5+GJB64QgvulvpoWFLx14hZgFSdzGxieVVQZPlZqHA2HA==",
-      "path": "microsoft.data.sqlite.core/5.0.4",
-      "hashPath": "microsoft.data.sqlite.core.5.0.4.nupkg.sha512"
-=======
     "Microsoft.Data.Sqlite.Core/3.1.14": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-sm7IMvNCh9ePasIExswSUa6BB25oOfNhC1S/wSjWqbdgPjOZDpYS+OM0Kza5aB7Es+6olvJGjRsPzyPAyCH9qQ==",
       "path": "microsoft.data.sqlite.core/3.1.14",
       "hashPath": "microsoft.data.sqlite.core.3.1.14.nupkg.sha512"
+<<<<<<< Updated upstream
 >>>>>>> Stashed changes
 =======
       "sha512": "sha512-MalWSIMdwLZoNXxjmFmeRrFgaUXbEADkYNGm6HM33pculFv8gKt53s1Frs+kTfVPWMYjocd4gqwz92KrkcLfXA==",
@@ -5170,7 +5167,12 @@
       "sha512": "sha512-BhAeNgg0Wz/TIXhl/I1mXppCmKiLDE53nthK388CT5+GJB64QgvulvpoWFLx14hZgFSdzGxieVVQZPlZqHA2HA==",
       "path": "microsoft.data.sqlite.core/5.0.4",
       "hashPath": "microsoft.data.sqlite.core.5.0.4.nupkg.sha512"
+<<<<<<< HEAD
+=======
 >>>>>>> main
+>>>>>>> main
+=======
+>>>>>>> Stashed changes
     },
     "Microsoft.DotNet.PlatformAbstractions/3.1.6": {
       "type": "package",
@@ -5214,10 +5216,19 @@
       "path": "microsoft.entityframeworkcore.relational/3.1.14",
       "hashPath": "microsoft.entityframeworkcore.relational.3.1.14.nupkg.sha512"
     },
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
 >>>>>>> main
+    "Microsoft.EntityFrameworkCore.Sqlite/5.0.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-UAnKmF9oO+LWb1KEZRv6wXjXnKjvHSZVCcu34Q6t9cCpXv9AKTIUkk/IZxTLVRXvtv0BFCTjTouB+EHmPuWdxQ==",
+      "path": "microsoft.entityframeworkcore.sqlite/5.0.4",
+      "hashPath": "microsoft.entityframeworkcore.sqlite.5.0.4.nupkg.sha512"
+    },
+<<<<<<< HEAD
     "Microsoft.EntityFrameworkCore.Sqlite/5.0.4": {
       "type": "package",
       "serviceable": true,
@@ -5231,16 +5242,23 @@
       "sha512": "sha512-rcNIIyon8HEidlMDO7DMr7CHPesadHUU+BWamw1dL6fhtwCZzMnZOc6ZWZHzlHFF5JduCd7OydWVTHMNwPQOwQ==",
       "path": "microsoft.entityframeworkcore.sqlite.core/5.0.4",
       "hashPath": "microsoft.entityframeworkcore.sqlite.core.5.0.4.nupkg.sha512"
+=======
+    "Microsoft.EntityFrameworkCore.Sqlite.Core/5.0.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rcNIIyon8HEidlMDO7DMr7CHPesadHUU+BWamw1dL6fhtwCZzMnZOc6ZWZHzlHFF5JduCd7OydWVTHMNwPQOwQ==",
+      "path": "microsoft.entityframeworkcore.sqlite.core/5.0.4",
+      "hashPath": "microsoft.entityframeworkcore.sqlite.core.5.0.4.nupkg.sha512"
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> Stashed changes
     "Microsoft.EntityFrameworkCore.Sqlite/3.1.14": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-UgWORpbURCgUtauoDv6mVHNUf6jSpPaHjXJZPSYWaKFEf0QEqKSMwcXU++zXacU/vqoZm0TjhBxSJ+ynrGUcVA==",
       "path": "microsoft.entityframeworkcore.sqlite/3.1.14",
       "hashPath": "microsoft.entityframeworkcore.sqlite.3.1.14.nupkg.sha512"
-=======
->>>>>>> main
     },
     "Microsoft.EntityFrameworkCore.Sqlite.Core/3.1.14": {
       "type": "package",
@@ -5248,6 +5266,10 @@
       "sha512": "sha512-qQ3tYnK9Nym5P2oTBRAGUlybnEdsc9GAMw3cBQoEGglZtTj/19a7VyjWBGgYSdW4yYxZaJAhqB28qR2303EHfw==",
       "path": "microsoft.entityframeworkcore.sqlite.core/3.1.14",
       "hashPath": "microsoft.entityframeworkcore.sqlite.core.3.1.14.nupkg.sha512"
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+>>>>>>> main
+=======
 >>>>>>> Stashed changes
     },
     "Microsoft.EntityFrameworkCore.SqlServer/3.1.14": {
@@ -5341,12 +5363,12 @@
       "path": "microsoft.extensions.dependencyinjection.abstractions/3.1.14",
       "hashPath": "microsoft.extensions.dependencyinjection.abstractions.3.1.14.nupkg.sha512"
     },
-    "Microsoft.Extensions.DependencyModel/5.0.0": {
+    "Microsoft.Extensions.DependencyModel/3.1.6": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-umBECCoMC+sOUgm083yFr8SxTobUOcPFH4AXigdO2xJiszCHAnmeDl4qPphJt+oaJ/XIfV1wOjIts2nRnki61Q==",
-      "path": "microsoft.extensions.dependencymodel/5.0.0",
-      "hashPath": "microsoft.extensions.dependencymodel.5.0.0.nupkg.sha512"
+      "sha512": "sha512-/UlDKULIVkLQYn1BaHcy/rc91ApDxJb7T75HcCbGdqwvxhnRQRKM2di1E70iCPMF9zsr6f4EgQTotBGxFIfXmw==",
+      "path": "microsoft.extensions.dependencymodel/3.1.6",
+      "hashPath": "microsoft.extensions.dependencymodel.3.1.6.nupkg.sha512"
     },
     "Microsoft.Extensions.FileProviders.Abstractions/3.1.14": {
       "type": "package",
@@ -5789,33 +5811,33 @@
       "path": "sixlabors.imagesharp/1.0.3",
       "hashPath": "sixlabors.imagesharp.1.0.3.nupkg.sha512"
     },
-    "SQLitePCLRaw.bundle_e_sqlite3/2.0.4": {
+    "SQLitePCLRaw.bundle_e_sqlite3/2.0.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-f5U8Sw0lRym8tTraJ2zm6OqcDrcrEVvcKDtYlKSLs3Ox9SerkwkPXiFXb/uiW0g2tJdUw6oBhsxI/l5DoRxXMg==",
-      "path": "sqlitepclraw.bundle_e_sqlite3/2.0.4",
-      "hashPath": "sqlitepclraw.bundle_e_sqlite3.2.0.4.nupkg.sha512"
+      "sha512": "sha512-OVPI/nh5AqfLCIKhAYqjCa6AHhc7oKApGcGM3UhMRSerFiBx58nSpGwxVFdMgjOCWZR+fA49nzsnKlWp5hFo8w==",
+      "path": "sqlitepclraw.bundle_e_sqlite3/2.0.2",
+      "hashPath": "sqlitepclraw.bundle_e_sqlite3.2.0.2.nupkg.sha512"
     },
-    "SQLitePCLRaw.core/2.0.4": {
+    "SQLitePCLRaw.core/2.0.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-4XlDZpDAsboMD6qZQcz9AaKblKDUTVHF+8f3lvbP7QjoqSRr2Xc0Lm34IK2pjRIYnyFLhI3yOJ5YWfOiCid2yg==",
-      "path": "sqlitepclraw.core/2.0.4",
-      "hashPath": "sqlitepclraw.core.2.0.4.nupkg.sha512"
+      "sha512": "sha512-TFSBX426OelS1tkaVC254NVVlrJIe9YLhWPkEvuqJj2104QpmDmEYOhfdfDJD1E/2SmqDhoRw1ek5cQHj8olcQ==",
+      "path": "sqlitepclraw.core/2.0.2",
+      "hashPath": "sqlitepclraw.core.2.0.2.nupkg.sha512"
     },
-    "SQLitePCLRaw.lib.e_sqlite3/2.0.4": {
+    "SQLitePCLRaw.lib.e_sqlite3/2.0.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-oetvmtDZOE4Nnrtxd8Trapl9geBiu0rDCUXff46qGYjnUwzaU1mZ3OHnfR402tl32rx8gBWg3n5OBRaPJRbsGw==",
-      "path": "sqlitepclraw.lib.e_sqlite3/2.0.4",
-      "hashPath": "sqlitepclraw.lib.e_sqlite3.2.0.4.nupkg.sha512"
+      "sha512": "sha512-S+Tsqe/M7wsc+9HeediI6UHtBKf2X586aRwhi1aBVLGe0WxkAo52O9ZxwEy/v8XMLefcrEMupd2e9CDlIT6QCw==",
+      "path": "sqlitepclraw.lib.e_sqlite3/2.0.2",
+      "hashPath": "sqlitepclraw.lib.e_sqlite3.2.0.2.nupkg.sha512"
     },
-    "SQLitePCLRaw.provider.dynamic_cdecl/2.0.4": {
+    "SQLitePCLRaw.provider.dynamic_cdecl/2.0.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-AY6+vv/4ji1mCkLrS6HP/88rHT9YFKRyg3LUj8RyIk6imJMUFdQDiP8rK8gq0a/0FbqspLjK1t7rtKcr7FXRYA==",
-      "path": "sqlitepclraw.provider.dynamic_cdecl/2.0.4",
-      "hashPath": "sqlitepclraw.provider.dynamic_cdecl.2.0.4.nupkg.sha512"
+      "sha512": "sha512-ZSwacbKJUsxJEZxwT23uZVrGbaIvXcADZDz5Sr66fikO5eehdcceDncjzwzTzWfW13di8gpTpstx3WJSt/Ci5Q==",
+      "path": "sqlitepclraw.provider.dynamic_cdecl/2.0.2",
+      "hashPath": "sqlitepclraw.provider.dynamic_cdecl.2.0.2.nupkg.sha512"
     },
     "starkbank-ecdsa/1.3.1": {
       "type": "package",
@@ -6453,6 +6475,13 @@
       "sha512": "sha512-Xg4G4Indi4dqP1iuAiMSwpiWS54ZghzR644OtsRCm/m/lBMG8dUBhLVN7hLm8NNrNTR+iGbshCPTwrvxZPlm4g==",
       "path": "system.text.encodings.web/4.5.0",
       "hashPath": "system.text.encodings.web.4.5.0.nupkg.sha512"
+    },
+    "System.Text.Json/4.7.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-TcMd95wcrubm9nHvJEQs70rC0H/8omiSGGpU4FQ/ZA1URIqD4pjmFJh2Mfv1yH1eHgJDWTi2hMDXwTET+zOOyg==",
+      "path": "system.text.json/4.7.2",
+      "hashPath": "system.text.json.4.7.2.nupkg.sha512"
     },
     "System.Text.RegularExpressions/4.3.0": {
       "type": "package",
@@ -7820,7 +7849,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "System.Text.Json/5.0.0.0": {
+    "System.Text.Json.Reference/5.0.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""

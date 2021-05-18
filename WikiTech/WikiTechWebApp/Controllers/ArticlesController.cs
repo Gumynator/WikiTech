@@ -25,8 +25,7 @@ namespace WikiTechWebApp.Controllers
 
         public ArticlesController()
         {
-            client = ConfigureHttpClient.configureHttpClient(client);
-            client.DefaultRequestHeaders.Add("ApiKey", "61c08ad1-0823-4c38-9853-700675e3c8fc");
+            client = ConfigureHttpClient.configureHttpClient(client);       
 
         }
 
@@ -60,11 +59,14 @@ namespace WikiTechWebApp.Controllers
 
             //get article with user of article
             Article article;
+            
 
             try
             {
                 HttpResponseMessage responsearticle = client.GetAsync("Articles/" + id).Result;
                 article = responsearticle.Content.ReadAsAsync<Article>().Result;
+                var idArt = article.Id;
+                ViewBag.id = idArt;
 
                 return View(article);
 

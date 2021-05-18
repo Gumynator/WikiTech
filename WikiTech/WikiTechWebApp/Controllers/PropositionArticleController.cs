@@ -32,7 +32,7 @@ namespace WikiTechWebApp.Controllers
     {
 
         static HttpClient client = new HttpClient();
-        private readonly IWebHostEnvironment webhost;
+        private readonly IWebHostEnvironment webhost; //utilisé pou l'enregistrement de l'image
         public PropositionArticleController(IWebHostEnvironment _webhost) 
         {
             webhost = _webhost;
@@ -69,6 +69,8 @@ namespace WikiTechWebApp.Controllers
             var idTags = Request.Form["tags"].ToList(); //.count compte les éléments à l'intérrieur
 
             var IdUser = User.FindFirstValue(ClaimTypes.NameIdentifier); // récupération de l'ID de l'utilisateur courrant
+
+            currentArticle.DatepublicationArticle = DateTime.Now; //à changer car elle sera attribuée lors de la validation quand il y en aura une
 
             currentArticle.Id = IdUser;
             currentArticle.IdSection = int.Parse(Request.Form["rdsection"]); // récupération de l'id de la section selectionnée
