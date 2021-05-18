@@ -145,9 +145,6 @@ namespace WikiTechWebApp.ApiFunctions
                 ville = await response.Content.ReadAsAsync<Ville>();
             }
 
-            ville = await response.Content.ReadAsAsync<Ville>();
-
-
             return ville;
         }
 
