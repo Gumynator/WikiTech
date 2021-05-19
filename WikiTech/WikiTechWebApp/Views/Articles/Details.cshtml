@@ -37,7 +37,7 @@
                     <!-- auteur-->
                     <p class="lead">
                         by
-                        <a asp-controller="AspNetUsers" asp-action="Details" asp-route-id="@ViewBag.id">@Model.Article.IdNavigation.PrenomAspnetuser</a>                       
+                        <a asp-controller="AspNetUsers" asp-action="Details" asp-route-id="@ViewBag.id">@Model.Article.IdNavigation.PrenomAspnetuser</a>
                     </p>
                     <hr />
                     <!-- Date and time-->
@@ -100,33 +100,49 @@
 
         <hr />
 
-        <h2>Historique des changements effectués sur l'article</h2>
-        <br/>
+        @if (Model.Changement != null)
+        {
+            <h2>Historique des changements effectués sur l'article</h2>
+            <br />
 
-
-        <table id="Changement" class="display">
-            <thead>
-                <tr>
-                    <th>Auteur</th>
-                    <th>Modification</th>
-                    <th>Date</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var changement in Model.Changement)
-                {
+            <table id="Changement" class="display">
+                <thead>
                     <tr>
-                        <td>@changement.IdNavigation.PrenomAspnetuser</td>
-                        <td>@changement.TitreChangement</td>
-                        <td>@changement.DatepublicationChangement</td>
+                        <th>Auteur</th>
+                        <th>Modification</th>
+                        <th>Date</th>
                     </tr>
+                </thead>
+                <tbody>
+                    @foreach (var changement in Model.Changement)
+                    {
+                        <tr>
+                            <td>@changement.IdNavigation.PrenomAspnetuser</td>
+                            <td>@changement.ResumeChangement</td>
+                            @if (changement.DatepublicationChangement == null)
+                            {
+                                <td>En attente de validation</td>
+                            }
+                            else
+                            {
+                                <td>@changement.DatepublicationChangement</td>
+                            }
 
-                }
+                        </tr>
 
-            </tbody>
-        </table>
+                    }
+
+                </tbody>
+            </table>
+
+        }
+        else 
+        {
+            <h2>pas de modification pour cet article</h2>
+        }
 
     }
+
 </body>
 
 <script>

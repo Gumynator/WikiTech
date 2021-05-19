@@ -41,13 +41,22 @@ namespace WikiTechAPI.Controllers
             return changement;
         }
 
-        //get article with no approbation date
+        //get change with no approbation date
         [HttpGet]
         [Route("nodate")]
         public async Task<ActionResult<IEnumerable<Changement>>> GetchangeNoDate()
         {
 
             return await _context.Changement.Where(d => d.DatepublicationChangement == null).Include(p => p.IdNavigation).ToListAsync();
+        }
+
+        //get change with date only
+        [HttpGet]
+        [Route("withdate")]
+        public async Task<ActionResult<IEnumerable<Changement>>> GetchangeWithDate()
+        {
+
+            return await _context.Changement.Where(d => d.DatepublicationChangement != null).Include(p => p.IdNavigation).ToListAsync();
         }
 
         // PUT: api/Changements/5

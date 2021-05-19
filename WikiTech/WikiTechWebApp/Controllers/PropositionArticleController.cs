@@ -248,7 +248,7 @@ namespace WikiTechWebApp.Controllers
                     var usernameq = await FunctionAPI.GetUserByIdAsync(client, currentArticle.Id);
 
                     //envoie du mail d'état
-                    await _sender.SendEmailAsync(usernameq.Email, "Postulation confirmée", "Bonjour, nous vous confirmons la bonne réception de votre postulation");
+                    await _sender.SendEmailAsync(usernameq.Email, "Article accepté", "Bonjour, votre article ayant pour titre : " + currentArticle.TitreArticle + " a été validé. Vous pourrez le consulter en ligne");
 
                     //fonction d'ajout de point pour le valideur et l'auteur
 
@@ -266,10 +266,22 @@ namespace WikiTechWebApp.Controllers
         public async Task<ActionResult> supprimerArticle(int id)
         {
 
+            Article article;
+
             try
             {
+                //get article
+                HttpResponseMessage responsearticle = client.GetAsync("Articles/" + id).Result;
+                article = responsearticle.Content.ReadAsAsync<Article>().Result;
+
+                //delete the article
                 using var response = await client.DeleteAsync(ConfigureHttpClient.apiUrl + "Articles/" + id);
                 string apiResponse = await response.Content.ReadAsStringAsync();
+
+
+                var usernameq = await FunctionAPI.GetUserByIdAsync(client, article.Id);
+
+                await _sender.SendEmailAsync(usernameq.Email, "Article pas accepté", "Bonjour, votre article ayant pour titre: " + article.TitreArticle + " n'est pas validé. il ne respecte probablement pas la politique de wikitech");
 
                 //Reference (tags) is deleting by cascade
 

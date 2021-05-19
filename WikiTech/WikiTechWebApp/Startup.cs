@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ServiceStack.Host;
 using Stripe;
 using Stripe.Data;
 using System;
@@ -73,5 +74,7 @@ namespace WikiTechWebApp
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
+
+
     }
 }
