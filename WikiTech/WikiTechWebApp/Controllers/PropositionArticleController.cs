@@ -235,6 +235,8 @@ namespace WikiTechWebApp.Controllers
             currentArticle.IdSection = Int32.Parse(Request.Form["IdSection"]); 
             currentArticle.Id = Request.Form["IdAuteur"];
 
+           string valideurArticle = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
 
             try
                 {
@@ -247,7 +249,7 @@ namespace WikiTechWebApp.Controllers
 
                     var usernameq = await FunctionAPI.GetUserByIdAsync(client, currentArticle.Id);
 
-                    //envoie du mail d'état
+                    //envoie du mail d'état à l'auteur de l'article
                     await _sender.SendEmailAsync(usernameq.Email, "Article accepté", "Bonjour, votre article ayant pour titre : " + currentArticle.TitreArticle + " a été validé. Vous pourrez le consulter en ligne");
 
                     //fonction d'ajout de point pour le valideur et l'auteur
@@ -293,9 +295,119 @@ namespace WikiTechWebApp.Controllers
                 Console.WriteLine(e.getMessage());
                 return Redirect("/Home/Index");
             }
+        }
+
+        [Authorize]
+        // GET: the article detail for decision
+        public ActionResult approbationChangementDetail(int id)
+        {
+
+            Article article;
+            Changement changement;
+            dynamic dynamicmodel = new ExpandoObject();
+
+            try
+            {
+
+                HttpResponseMessage responsechangement = client.GetAsync("Changements/" + id).Result;
+                changement = responsechangement.Content.ReadAsAsync<Changement>().Result;
+
+                dynamicmodel.Changement = changement;
+
+                HttpResponseMessage responsearticle = client.GetAsync("Articles/" + changement.IdArticle).Result;
+                article = responsearticle.Content.ReadAsAsync<Article>().Result;
+
+                dynamicmodel.Article = article;
+
+                return View(dynamicmodel);
+
+            }
+            catch (ExceptionLiaisonApi e)
+            {
+                Console.WriteLine(e.getMessage());
+                return Redirect("/Home/Index");
+            }
+
+        }
 
 
-       
+        [Authorize]
+        [HttpPost]
+        public async Task<ActionResult> validerChangement()
+        {
+
+            Changement currentchangement = new Changement();
+
+            currentchangement.DatepublicationChangement = DateTime.Now; //Date de la validation
+            currentchangement.IdChangement = Int32.Parse(Request.Form["IdChangement"]);
+            currentchangement.IdArticle = Int32.Parse(Request.Form["IdArticle"]);
+            currentchangement.TextChangement = Request.Form["TextChangement"];
+            currentchangement.DescriptionChangement = Request.Form["DescriptionChangement"];
+            currentchangement.TitreChangement = Request.Form["TitreChangement"];
+            currentchangement.Id = Request.Form["IdAuteurChangement"];
+            currentchangement.ResumeChangement = Request.Form["resumeChange"];
+
+            string valideurChangement = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            try
+            {
+                Changement resultatChangement;
+
+                using var response = await client.PutAsJsonAsync(ConfigureHttpClient.apiUrl + "Changements/" + currentchangement.IdChangement, currentchangement);
+                string apiResponse = await response.Content.ReadAsStringAsync();
+
+                resultatChangement = JsonConvert.DeserializeObject<Changement>(apiResponse);
+
+                var usernameq = await FunctionAPI.GetUserByIdAsync(client, currentchangement.Id);
+
+                //envoie du mail d'état à l'auteur du changement
+                await _sender.SendEmailAsync(usernameq.Email, "Changement accepté", "Bonjour, votre changement ayant pour titre : " + currentchangement.TitreChangement + " a été validé. Vous pourrez le consulter en ligne");
+
+                //fonction d'ajout de point pour le valideur et l'auteur
+
+                return Redirect("/Articles/Details/" + currentchangement.IdArticle);
+
+            }
+            catch (ExceptionLiaisonApi e)
+            {
+                Console.WriteLine(e.getMessage());
+                return RedirectToAction(nameof(Index));
+            }
+        }
+
+        [Authorize]
+        public async Task<ActionResult> supprimerChangement(int id)
+        {
+
+            Changement currentchangement = new Changement();
+
+            currentchangement.IdChangement = id;
+
+            try
+            {
+                //get Changement
+                HttpResponseMessage responsearticle = client.GetAsync("Changements/" + currentchangement.IdChangement).Result;
+                currentchangement = responsearticle.Content.ReadAsAsync<Changement>().Result;
+
+                //delete the Changement
+                using var response = await client.DeleteAsync(ConfigureHttpClient.apiUrl + "Changements/" + currentchangement.IdChangement);
+                string apiResponse = await response.Content.ReadAsStringAsync();
+
+
+                var usernameq = await FunctionAPI.GetUserByIdAsync(client, currentchangement.Id);
+
+                await _sender.SendEmailAsync(usernameq.Email, "Changement pas accepté", "Bonjour, votre Changement ayant pour titre: " + currentchangement.TitreChangement + " n'est pas validé. il ne respecte probablement pas la politique de wikitech");
+
+                //Reference (tags) is deleting by cascade
+
+                return Redirect("/Home/Index");
+
+            }
+            catch (ExceptionLiaisonApi e)
+            {
+                Console.WriteLine(e.getMessage());
+                return Redirect("/Home/Index");
+            }
         }
 
 
