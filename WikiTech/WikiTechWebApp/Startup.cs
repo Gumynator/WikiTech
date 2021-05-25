@@ -53,9 +53,7 @@ namespace WikiTechWebApp
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
+                app.UseStatusCodePagesWithRedirects("/Error/{0}"); ///home/error is use in developpement mode (use HomeController)
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();

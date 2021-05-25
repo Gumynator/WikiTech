@@ -252,7 +252,10 @@ namespace WikiTechWebApp.Controllers
                     //envoie du mail d'état à l'auteur de l'article
                     await _sender.SendEmailAsync(usernameq.Email, "Article accepté", "Bonjour, votre article ayant pour titre : " + currentArticle.TitreArticle + " a été validé. Vous pourrez le consulter en ligne");
 
-                    //fonction d'ajout de point pour le valideur et l'auteur
+                    //fonction d'ajout de point pour le valideur
+                    FunctionAPI.IncreasePointForUser(client, valideurArticle, 2);
+                    //fonction d'ajout de point pour l'auteur
+                    FunctionAPI.IncreasePointForUser(client, currentArticle.Id, 5);
 
                     return Redirect("/Articles/Details/" + currentArticle.IdArticle);
 
@@ -269,6 +272,7 @@ namespace WikiTechWebApp.Controllers
         {
 
             Article article;
+            string valideurArticle = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             try
             {
@@ -284,6 +288,9 @@ namespace WikiTechWebApp.Controllers
                 var usernameq = await FunctionAPI.GetUserByIdAsync(client, article.Id);
 
                 await _sender.SendEmailAsync(usernameq.Email, "Article pas accepté", "Bonjour, votre article ayant pour titre: " + article.TitreArticle + " n'est pas validé. il ne respecte probablement pas la politique de wikitech");
+
+                //fonction d'ajout de point pour le valideur
+                FunctionAPI.IncreasePointForUser(client, valideurArticle, 2);
 
                 //Reference (tags) is deleting by cascade
 
@@ -363,7 +370,10 @@ namespace WikiTechWebApp.Controllers
                 //envoie du mail d'état à l'auteur du changement
                 await _sender.SendEmailAsync(usernameq.Email, "Changement accepté", "Bonjour, votre changement ayant pour titre : " + currentchangement.TitreChangement + " a été validé. Vous pourrez le consulter en ligne");
 
-                //fonction d'ajout de point pour le valideur et l'auteur
+                //fonction d'ajout de point pour le valideur
+                FunctionAPI.IncreasePointForUser(client, valideurChangement, 2);
+                //fonction d'ajout de point pour l'auteur
+                FunctionAPI.IncreasePointForUser(client, currentchangement.Id, 5);
 
                 return Redirect("/Articles/Details/" + currentchangement.IdArticle);
 
@@ -380,8 +390,8 @@ namespace WikiTechWebApp.Controllers
         {
 
             Changement currentchangement = new Changement();
-
             currentchangement.IdChangement = id;
+            string valideurChangement = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             try
             {
@@ -397,6 +407,9 @@ namespace WikiTechWebApp.Controllers
                 var usernameq = await FunctionAPI.GetUserByIdAsync(client, currentchangement.Id);
 
                 await _sender.SendEmailAsync(usernameq.Email, "Changement pas accepté", "Bonjour, votre Changement ayant pour titre: " + currentchangement.TitreChangement + " n'est pas validé. il ne respecte probablement pas la politique de wikitech");
+
+                //fonction d'ajout de point pour le valideur
+                FunctionAPI.IncreasePointForUser(client, valideurChangement, 2);
 
                 //Reference (tags) is deleting by cascade
 

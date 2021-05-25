@@ -73,7 +73,27 @@ namespace WikiTechAPI.Controllers
             return NoContent();
         }
 
-        
+        //used in functionAPI
+        //from body to force search parameter in the body and not in the URL
+        [HttpPut("{id}")]
+        [Route("addpoint/{id}")]
+        public async Task<IActionResult> AddPointAspnNetUser (string id, [FromBody] int nbPointToAdd)
+        {
+            var currentAspNetUser = await _context.AspNetUsers.FindAsync(id);
+            currentAspNetUser.NbpointAspnetuser += nbPointToAdd;
+
+            Grade currentGrade = _context.Grade.Where(p => currentAspNetUser.NbpointAspnetuser >= p.MinpointGrade).OrderByDescending(p => p.MinpointGrade).FirstOrDefault();
+
+            if (currentAspNetUser.IdGrade != currentGrade.IdGrade)
+            {
+                currentAspNetUser.IdGrade = currentGrade.IdGrade;
+            }
+
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
 
         // POST: api/AspNetUsers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
