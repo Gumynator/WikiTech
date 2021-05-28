@@ -7,6 +7,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using WikiTechAPI.Middleware;
+using DinkToPdf.Contracts;
+using DinkToPdf;
+using Wkhtmltopdf.NetCore;
 
 namespace WikiTechAPI
 {
@@ -24,6 +27,8 @@ namespace WikiTechAPI
         {
             services.AddDbContext<WikiTechDBContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddWkhtmltopdf("wkhtmltopdf");
 
             //AddNewtonsoftJson, use to ingore max JSON transaction
             services.AddControllers().AddNewtonsoftJson(p => p.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
@@ -55,7 +60,7 @@ namespace WikiTechAPI
 
             app.UseAuthorization();
 
-            app.UseMiddleware<ApiKeyMiddleware>();
+            //app.UseMiddleware<ApiKeyMiddleware>();
 
 
             app.UseEndpoints(endpoints =>
