@@ -11,7 +11,8 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using WikiTechAPI.Models;
 using WikiTechWebApp.ApiFunctions;
 using WikiTechWebApp.Services;
-
+using WikiTechWebApp.Exceptions;
+using System.Dynamic;
 
 namespace WikiTechWebApp.Controllers
 {
@@ -128,6 +129,32 @@ namespace WikiTechWebApp.Controllers
             {
                 return View();
             }
+        }
+
+        [Authorize]
+        // GET: PropositionArticleController
+        public ActionResult ListPostulations()
+        {
+
+            IEnumerable<Postulation> postulationList;
+            dynamic dynamicmodel = new ExpandoObject();
+
+            try
+            {
+                
+                HttpResponseMessage response = client.GetAsync("Postulations").Result;
+                postulationList = response.Content.ReadAsAsync<IEnumerable<Postulation>>().Result;
+                dynamicmodel.Postulation = postulationList;
+
+                return View(dynamicmodel);
+
+            }
+            catch (ExceptionLiaisonApi e)
+            {
+                Console.WriteLine(e.getMessage());
+                return Redirect("/Home/Index");
+            }
+            return View();
         }
     }
 }

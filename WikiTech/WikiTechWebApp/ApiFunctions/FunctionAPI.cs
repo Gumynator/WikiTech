@@ -164,5 +164,20 @@ namespace WikiTechWebApp.ApiFunctions
 
             return factures;
         }
+
+        internal static async Task<Genre> GetGenreByIdAsync(HttpClient client, int? id)
+        {
+            Genre genre = null;
+            HttpResponseMessage response = await client.GetAsync("Genres/" + id);
+            if (response.IsSuccessStatusCode)
+            {
+                genre = await response.Content.ReadAsAsync<Genre>();
+            }
+
+            genre = await response.Content.ReadAsAsync<Genre>();
+
+
+            return genre;
+        }
     }
 }

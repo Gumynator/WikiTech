@@ -18,7 +18,10 @@ namespace WikiTechWebApp.Services
 
         public Task SendEmailAsync(string email, string subject, string message)
         {
-            return Execute(Options.SendGridKey, subject, message, email);
+            var SendGridKey = "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";
+
+            //return Execute(Options.SendGridKey, subject, message, email);
+            return Execute(SendGridKey, subject, message, email);
         }
 
         public Task Execute(string apiKey, string subject, string message, string email)

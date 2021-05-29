@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using WikiTechAPI.Models;
 using WikiTechWebApp.ApiFunctions;
+using System.Dynamic;
 
 namespace WikiTechWebApp.Controllers
 {
@@ -49,16 +50,39 @@ namespace WikiTechWebApp.Controllers
                 return NotFound();
             }
 
+            
             AspNetUsers aspNetUsers;
+            IEnumerable<Article> articleListe;
             HttpResponseMessage responseuser = client.GetAsync("AspNetUsers/" + id).Result;
             aspNetUsers = responseuser.Content.ReadAsAsync<AspNetUsers>().Result;
+            Genre genre;
+            HttpResponseMessage response = await client.GetAsync("Genres/" + aspNetUsers.IdGenre);
+            genre = await response.Content.ReadAsAsync<Genre>();
+
+            Grade grade;
+            HttpResponseMessage responseGrade = await client.GetAsync("Grades/" + aspNetUsers.IdGrade);
+            
+            grade = await responseGrade.Content.ReadAsAsync<Grade>();
+
+            HttpResponseMessage responseArticleByUser = client.GetAsync("Articles/byuser/?_id=" + id).Result;
+            articleListe = responseArticleByUser.Content.ReadAsAsync<IEnumerable<Article>>().Result;
+
+            
+
+
             if (aspNetUsers == null)
             {
                 return NotFound();
             }
             ViewBag.returnUrl = Request.Headers["Referer"].ToString();
+
+            dynamic dynamicModel = new ExpandoObject();
+            dynamicModel.Article = articleListe;
+            dynamicModel.Grade = grade;
+            dynamicModel.AspNetUsers = aspNetUsers;
+            dynamicModel.Genre = genre;
            
-            return View(aspNetUsers);
+            return View(dynamicModel);
         }
 
         // GET: AspNetUsers/Create

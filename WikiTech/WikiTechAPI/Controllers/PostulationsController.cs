@@ -20,11 +20,13 @@ namespace WikiTechAPI.Controllers
             _context = context;
         }
 
+        
+
         // GET: api/Postulations
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Postulation>>> GetPostulation()
         {
-            return await _context.Postulation.ToListAsync();
+            return await _context.Postulation.Include(p => p.IdNavigation).ToListAsync();
         }
 
         // GET: api/Postulations/5

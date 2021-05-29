@@ -61,6 +61,13 @@ namespace WikiTechAPI.Controllers
             return await _context.Article.Where(d => d.DatepublicationArticle == null).Include(p => p.IdNavigation).ToListAsync();
         }
 
+        [HttpGet("_id")]
+        [Route("byuser")]
+        public async Task<ActionResult<IEnumerable<Article>>> GetArticlebyUser(string _id)
+        {
+
+            return await _context.Article.Where(d => d.Id == _id).ToListAsync();
+        }
 
         // PUT: api/Articles/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
