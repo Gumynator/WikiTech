@@ -27,6 +27,8 @@ namespace WikiTechAPI.Controllers
             return await _context.AspNetUsers.ToListAsync();
         }
 
+
+
         // GET: api/AspNetUsers/5
         [HttpGet("{id}")]
         public async Task<ActionResult<AspNetUsers>> GetAspNetUsers(string id)
@@ -40,6 +42,9 @@ namespace WikiTechAPI.Controllers
 
             return aspNetUsers;
         }
+
+
+        
 
         // PUT: api/AspNetUsers/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
