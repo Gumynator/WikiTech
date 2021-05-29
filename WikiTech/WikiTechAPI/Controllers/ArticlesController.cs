@@ -65,9 +65,18 @@ namespace WikiTechAPI.Controllers
         [Route("byuser")]
         public async Task<ActionResult<IEnumerable<Article>>> GetArticlebyUser(string _id)
         {
-
+     
             return await _context.Article.Where(d => d.Id == _id).ToListAsync();
         }
+       
+        //get article with date only
+        [HttpGet]
+        [Route("withdate")]
+        public async Task<ActionResult<IEnumerable<Article>>> GetArticleWithDate()
+        {
+            return await _context.Article.Where(d => d.DatepublicationArticle != null).Include(p => p.IdNavigation).ToListAsync();
+        }
+
 
         // PUT: api/Articles/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for

@@ -18,8 +18,7 @@ namespace WikiTechWebApp.Services
 
         public Task SendEmailAsync(string email, string subject, string message)
         {
-            var SendGridKey = "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";
-
+            var SendGridKey = "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"; //ti change for go on azure
             //return Execute(Options.SendGridKey, subject, message, email);
             return Execute(SendGridKey, subject, message, email);
         }

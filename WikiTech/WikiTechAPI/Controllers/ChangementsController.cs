@@ -1,4 +1,8 @@
-﻿using System;
+﻿//Auteur    : Loris habegger
+//Date      : 18.05.2021
+//Fichier   : ChangementController.cs
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -41,7 +45,7 @@ namespace WikiTechAPI.Controllers
             return changement;
         }
 
-        //get article with no approbation date
+        //get change with no approbation date
         [HttpGet]
         [Route("nodate")]
         public async Task<ActionResult<IEnumerable<Changement>>> GetchangeNoDate()
@@ -50,11 +54,20 @@ namespace WikiTechAPI.Controllers
             return await _context.Changement.Where(d => d.DatepublicationChangement == null).Include(p => p.IdNavigation).ToListAsync();
         }
 
+        //get change with date only
+        [HttpGet]
+        [Route("withdate")]
+        public async Task<ActionResult<IEnumerable<Changement>>> GetchangeWithDate()
+        {
+
+            return await _context.Changement.Where(d => d.DatepublicationChangement != null).Include(p => p.IdNavigation).ToListAsync();
+        }
+
         // PUT: api/Changements/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutChangement(int id, Changement changement)
+        public async Task<IActionResult> PutChangement(int id, [FromBody] Changement changement)
         {
             if (id != changement.IdChangement)
             {
@@ -66,6 +79,15 @@ namespace WikiTechAPI.Controllers
             try
             {
                 await _context.SaveChangesAsync();
+
+                Article articleToModify = _context.Article.Find(changement.IdArticle);
+
+                articleToModify.TitreArticle = changement.TitreChangement;
+                articleToModify.TextArticle = changement.TextChangement;
+                articleToModify.DescriptionArticle = changement.DescriptionChangement;
+
+                await _context.SaveChangesAsync();
+
             }
             catch (DbUpdateConcurrencyException)
             {

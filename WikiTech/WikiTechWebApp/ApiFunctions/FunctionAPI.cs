@@ -164,20 +164,13 @@ namespace WikiTechWebApp.ApiFunctions
 
             return factures;
         }
-
-        internal static async Task<Genre> GetGenreByIdAsync(HttpClient client, int? id)
+        internal static async void IncreasePointForUser(HttpClient client, string _idUser, int _nbPointToAdd)
         {
-            Genre genre = null;
-            HttpResponseMessage response = await client.GetAsync("Genres/" + id);
-            if (response.IsSuccessStatusCode)
-            {
-                genre = await response.Content.ReadAsAsync<Genre>();
-            }
 
-            genre = await response.Content.ReadAsAsync<Genre>();
+            using var response = await client.PutAsJsonAsync(ConfigureHttpClient.apiUrl + "AspNetUsers/addpoint/" + _idUser, _nbPointToAdd);
+            string apiResponse = await response.Content.ReadAsStringAsync();
 
 
-            return genre;
         }
     }
 }

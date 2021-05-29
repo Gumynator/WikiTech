@@ -70,7 +70,6 @@ namespace WikiTechWebApp.Controllers
                 Console.WriteLine(result.StatusCode);
             }
 
-
             return View("ValidationPostulation");
         }
 
