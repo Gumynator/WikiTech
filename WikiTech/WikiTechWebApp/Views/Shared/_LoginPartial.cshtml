@@ -47,6 +47,7 @@
     }
     else
     {
+
         <li class="nav-item">
             <a class="nav-link text-white" id="Articles" href="@Url.Action("Index", "Articles", new { area = "Articles" }) title="Articles">Articles</a>
         </li>
@@ -55,6 +56,9 @@
         </li>
         <li class="nav-item">
             <a class="nav-link text-white" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+        </li>
+        <li class="nav-item">
+            <a class="navbar-brand" asp-controller="Home" asp-action="Contact">contact</a>
         </li>
     }
 </ul>

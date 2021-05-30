@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ServiceStack.Host;
 using Stripe;
 using Stripe.Data;
 using System;
@@ -52,9 +53,7 @@ namespace WikiTechWebApp
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
+                app.UseStatusCodePagesWithRedirects("/Error/{0}"); ///home/error is use in developpement mode (use HomeController)
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
@@ -73,5 +72,7 @@ namespace WikiTechWebApp
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
+
+
     }
 }

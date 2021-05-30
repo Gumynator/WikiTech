@@ -161,5 +161,13 @@ namespace WikiTechWebApp.ApiFunctions
 
             return factures;
         }
+        internal static async void IncreasePointForUser(HttpClient client, string _idUser, int _nbPointToAdd)
+        {
+
+            using var response = await client.PutAsJsonAsync(ConfigureHttpClient.apiUrl + "AspNetUsers/addpoint/" + _idUser, _nbPointToAdd);
+            string apiResponse = await response.Content.ReadAsStringAsync();
+
+
+        }
     }
 }

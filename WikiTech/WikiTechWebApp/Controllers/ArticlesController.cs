@@ -7,11 +7,14 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
 using System.Net.Http;
+using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 using WikiTechAPI.Models;
 using WikiTechWebApp.ApiFunctions;
@@ -40,7 +43,7 @@ namespace WikiTechWebApp.Controllers
             try
             {
 
-                HttpResponseMessage response = client.GetAsync("Articles").Result;
+                HttpResponseMessage response = client.GetAsync("Articles/withdate").Result;
                 artList = response.Content.ReadAsAsync<IEnumerable<Article>>().Result;
                 return View(artList);
 
@@ -202,6 +205,53 @@ namespace WikiTechWebApp.Controllers
                 Console.WriteLine(e.getMessage());
                 return Redirect("/Home/Index");
             }
+        }
+
+        [Authorize]
+        [HttpPost]
+        // GET: the article detail for decision
+        public async Task<ActionResult> sendModificationAsync(int idArticle)
+        {
+
+            Changement currentchangement = new Changement();
+
+            currentchangement.IdArticle = Int32.Parse(Request.Form["IdArticle"]);
+            currentchangement.TextChangement = Request.Form["TextArticle"];
+            currentchangement.DescriptionChangement = Request.Form["DescriptionArticle"];
+            currentchangement.TitreChangement = Request.Form["TitreArticle"];
+            currentchangement.Id = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            currentchangement.ResumeChangement = Request.Form["ResumeChangement"];
+
+            if (ModelState.IsValid)
+            {
+                
+                try
+                {
+                    Changement resultChangement;
+                    StringContent content = new StringContent(JsonConvert.SerializeObject(currentchangement), Encoding.UTF8, "application/json");
+
+                    using var response = await client.PostAsync(ConfigureHttpClient.apiUrl + "Changements", content);
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+
+                    resultChangement = JsonConvert.DeserializeObject<Changement>(apiResponse);
+
+
+                    return Redirect("/Articles/Index");
+
+                }
+                catch (ExceptionLiaisonApi e)
+                {
+                    Console.WriteLine(e.getMessage());
+                    return RedirectToAction(nameof(Index));
+                }
+            }
+            else
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+
+
         }
 
 

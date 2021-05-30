@@ -57,31 +57,34 @@
     </script>
 
 
-    <h1>Proposez une nouvelle modifications pour cet article </h1>
+    <h1>Proposez une nouvelle modifications pour le contenu de cet article </h1>
 
     <p> l'article a été rédigé par : <a href="AModifier">@Html.DisplayFor(a => a.IdNavigation.PrenomAspnetuser)</a></p>
 
     <form asp-action="sendModification" methode="POST">
 
         <input type="text" name="IdArticle" hidden value="@Html.DisplayFor(a => a.IdArticle)" />
-        <input type="text" name="IdSection" hidden value="@Html.DisplayFor(a => a.IdSection)" />
-        <input type="text" name="IdAuteur" hidden value="@Html.DisplayFor(a => a.Id)" />
 
         <div class="mb-3">
             <label for="titlearea" class="form-label">Titre de l'article</label>
-            <textarea asp-for="TitreArticle" class="form-control" id="titlearea" rows="1">@Html.DisplayFor(a => a.TitreArticle)</textarea>
+            <textarea asp-for="TitreArticle" class="form-control" name="TitreArticle" id="titlearea" rows="1">@Html.DisplayFor(a => a.TitreArticle)</textarea>
             @Html.ValidationMessageFor(m => m.TitreArticle, "", new { @class = "text-danger" })
         </div>
 
         <div class="mb-3">
             <label for="descarea" class="form-label">Description de l'article</label>
-            <textarea asp-for="DescriptionArticle" class="form-control" id="descarea" rows="3">@Html.DisplayFor(a => a.DescriptionArticle)</textarea>
+            <textarea asp-for="DescriptionArticle" class="form-control" name="DescriptionArticle" id="descarea" rows="3">@Html.DisplayFor(a => a.DescriptionArticle)</textarea>
             @Html.ValidationMessageFor(m => m.DescriptionArticle, "", new { @class = "text-danger" })
         </div>
         <div class="mb-3">
             <label for="TinyArea" class="form-label">Rédaction de l'article</label>
-            <textarea asp-for="TextArticle" class="form-control" id="TinyArea" rows="20" cols="300">@Html.DisplayFor(a => a.TextArticle)</textarea>
+            <textarea asp-for="TextArticle" class="form-control" name="TextArticle" id="TinyArea" rows="20" cols="300">@Html.DisplayFor(a => a.TextArticle)</textarea>
             @Html.ValidationMessageFor(m => m.TextArticle, "", new { @class = "text-danger" })
+        </div>
+        <div class="mb-3">
+            <label for="descarea" class="form-label">Resumé du changement</label>
+            <textarea class="form-control" name="ResumeChangement" id="resumarea" rows="2"></textarea>
+            @Html.ValidationMessageFor(m => m.DescriptionArticle, "", new { @class = "text-danger" })
         </div>
 
         <input class="btn btn-outline-success" type="submit" value="valider">
