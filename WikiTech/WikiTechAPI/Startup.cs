@@ -30,8 +30,8 @@ namespace WikiTechAPI
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             //DinkToPdf
-            var context = new CustomAssemblyLoadContext();
-            context.LoadUnmanagedLibrary(Path.Combine(Directory.GetCurrentDirectory(), "libwkhtmltox.dll"));
+            //var context = new CustomAssemblyLoadContext();
+            //context.LoadUnmanagedLibrary(Path.Combine(Directory.GetCurrentDirectory(), "libwkhtmltox.dll"));
             services.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
 
             //AddNewtonsoftJson, use to ingore max JSON transaction
