@@ -1,0 +1,54 @@
+﻿@*
+    //Auteur    : Loan Rey
+    //Date      : 27.05.2021
+    //Fichier   : ListPostulations.chtml
+
+*@
+
+@using Microsoft.AspNetCore.Identity
+@using WikiTechWebApp.Areas.Identity.Data
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@model dynamic
+
+<body>
+
+
+    <h1> Postulations en attentes</h1>
+
+
+
+    <table id="validation" class="display">
+        <thead>
+            <tr>
+                <th>Utilisateur</th>
+                <th>Date</th>
+                <th>Contenu</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var postulation in Model.Postulation)
+            {
+                <tr>
+                    <td>@postulation.IdNavigation.PrenomAspnetuser</td>
+                    <td>@postulation.DatePostulation</td>
+                    <td>@postulation.TextPostulation</td>
+                    <td><a asp-action="Detail" asp-route-id="@postulation.IdPostulation">->Consulter</a></td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+
+    <hr />
+
+</body>
+
+
+<script>
+
+    $(document).ready(function () {
+
+        $('table').DataTable();
+    });
+</script>
