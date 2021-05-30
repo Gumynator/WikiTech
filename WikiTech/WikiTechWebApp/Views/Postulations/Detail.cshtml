@@ -1,0 +1,34 @@
+﻿@model WikiTechAPI.Models.Postulation
+@using Microsoft.AspNetCore.Identity
+@using WikiTechWebApp.Areas.Identity.Data
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+<body>
+
+
+    <h1>Promotion de l'utilisateur : </h1>
+
+    <p> L'utilisateur est : @Html.DisplayFor(a => a.IdNavigation.PrenomAspnetuser)</p>
+
+    <form asp-action="validerPostulation" asp-route-id="@Model.IdPostulation" methode="POST">
+
+        <input type="text" name="IdPostulation" hidden value="@Html.DisplayFor(a => a.IdPostulation)" />
+        <input type="text" name="IdAuteur" hidden value="@Html.DisplayFor(a => a.Id)" />
+
+        <div class="mb-3">
+            <label for="titlearea" class="form-label">Date de postulation</label>
+            <textarea asp-for="DatePostulation" class="form-control" id="titlearea" rows="1">@Html.DisplayFor(a => a.DatePostulation)</textarea>
+        </div>
+        <div class="mb-3">
+            <label for="TinyArea" class="form-label">Raison de la postulation</label>
+            <textarea asp-for="TextPostulation" class="form-control" id="TinyArea" rows="20" cols="300">@Html.DisplayFor(a => a.TextPostulation)</textarea>
+        </div>
+
+        <input class="btn btn-outline-success" type="submit" value="Accepter">        
+        <a class="btn btn-outline-danger" value="refuserPostulation" asp-action="refuserPostulation" asp-route-id="@Model.IdPostulation" /> Rejeter </a>
+
+
+    </form>
+
+
+</body>
