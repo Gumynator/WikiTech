@@ -7,6 +7,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using WikiTechAPI.Middleware;
+using DinkToPdf.Contracts;
+using DinkToPdf;
+using System.IO;
+using WikiTechAPI.Utility;
 
 namespace WikiTechAPI
 {
@@ -24,6 +28,11 @@ namespace WikiTechAPI
         {
             services.AddDbContext<WikiTechDBContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            //DinkToPdf
+            var context = new CustomAssemblyLoadContext();
+            context.LoadUnmanagedLibrary(Path.Combine(Directory.GetCurrentDirectory(), "libwkhtmltox.dll"));
+            services.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
 
             //AddNewtonsoftJson, use to ingore max JSON transaction
             services.AddControllers().AddNewtonsoftJson(p => p.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
@@ -56,6 +65,7 @@ namespace WikiTechAPI
             app.UseAuthorization();
 
             app.UseMiddleware<ApiKeyMiddleware>();
+            app.UseStaticFiles();
 
 
             app.UseEndpoints(endpoints =>

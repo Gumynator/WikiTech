@@ -16,15 +16,18 @@ using WikiTechAPI.Models;
 using WikiTechWebApp.Models;
 using WikiTechWebApp.ApiFunctions;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 namespace WikiTechWebApp.Controllers
 {
     public class AbonnementsController : Controller
     {
+        static IEmailSender _sender;
         //private readonly WikiTechDBContext _context;
         static HttpClient client = new HttpClient();
-        public AbonnementsController()
+        public AbonnementsController(IEmailSender sender)
         {
+            _sender = sender;
             client = ConfigureHttpClient.configureHttpClient(client);
         }
 
@@ -63,7 +66,7 @@ namespace WikiTechWebApp.Controllers
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
         //Auteur : Pancini Marco
         //Création : 11.04.2021
-        //Modification : 10.05.2021
+        //Modification : 30.05.2021
         //Description : Fonction Charge qui permet le paiement d'un abonnement par l'utilisateur en utilisant l'API Stripe
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
         [Authorize]
@@ -112,9 +115,10 @@ namespace WikiTechWebApp.Controllers
                     newFacture.DateFacture = DateTime.Now.Date;
                     newFacture.TitreFacture = subscription.NomAbonnement;
                     newFacture.Id = user.Id;
+                    FunctionAPI.IncreasePointForUser(client, user.Id, 2);
                     HttpResponseMessage postFacture = await client.PostAsJsonAsync("Factures", newFacture);
-
                     user.IdAbonnement = subscription.IdAbonnement;
+                    await _sender.SendEmailAsync(user.Email, "Paiement de l'abonnement " + subscription.NomAbonnement + " confirmé", "Bonjour, votre paiement à l'abonnement " + subscription.NomAbonnement + " pour le prix de " + subscription.PrixAbonnement+"CHF a été fait avec succès");
                     HttpResponseMessage putUser = await client.PutAsJsonAsync("AspNetUsers/" + user.Id, user);
                     if (putUser.IsSuccessStatusCode)
                     {
@@ -125,7 +129,7 @@ namespace WikiTechWebApp.Controllers
                     charge.Metadata.Add("IdFacture", Convert.ToString(newFacture.IdFacture));
                     ViewBag.nom = subscription.NomAbonnement;
                     ViewBag.prix = subscription.PrixAbonnement;
-
+                    //HttpResponseMessage postPdfFacture = await client.PostAsJsonAsync("PdfCreator/", newFacture);
 
                     return View();
                 }
@@ -140,131 +144,5 @@ namespace WikiTechWebApp.Controllers
                 return View("Erreur");
             }
         }
-
-
-    //    // GET: Abonnements/Details/5
-    //    public async Task<IActionResult> Details(int? id)
-    //    {
-    //        if (id == null)
-    //        {
-    //            return NotFound();
-    //        }
-
-    //        var abonnement = await _context.Abonnement
-    //            .FirstOrDefaultAsync(m => m.IdAbonnement == id);
-    //        if (abonnement == null)
-    //        {
-    //            return NotFound();
-    //        }
-
-    //        return View(abonnement);
-    //    }
-
-    //    // GET: Abonnements/Create
-    //    public IActionResult Create()
-    //    {
-    //        return View();
-    //    }
-
-    //    // POST: Abonnements/Create
-    //    // To protect from overposting attacks, enable the specific properties you want to bind to.
-    //    // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-    //    [HttpPost]
-    //    [ValidateAntiForgeryToken]
-    //    public async Task<IActionResult> Create([Bind("IdAbonnement,NomAbonnement,PrixAbonnement")] Abonnement abonnement)
-    //    {
-    //        if (ModelState.IsValid)
-    //        {
-    //            _context.Add(abonnement);
-    //            await _context.SaveChangesAsync();
-    //            return RedirectToAction(nameof(Index));
-    //        }
-    //        return View(abonnement);
-    //    }
-
-    //    // GET: Abonnements/Edit/5
-    //    public async Task<IActionResult> Edit(int? id)
-    //    {
-    //        if (id == null)
-    //        {
-    //            return NotFound();
-    //        }
-
-    //        var abonnement = await _context.Abonnement.FindAsync(id);
-    //        if (abonnement == null)
-    //        {
-    //            return NotFound();
-    //        }
-    //        return View(abonnement);
-    //    }
-
-    //    // POST: Abonnements/Edit/5
-    //    // To protect from overposting attacks, enable the specific properties you want to bind to.
-    //    // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-    //    [HttpPost]
-    //    [ValidateAntiForgeryToken]
-    //    public async Task<IActionResult> Edit(int id, [Bind("IdAbonnement,NomAbonnement,PrixAbonnement")] Abonnement abonnement)
-    //    {
-    //        if (id != abonnement.IdAbonnement)
-    //        {
-    //            return NotFound();
-    //        }
-
-    //        if (ModelState.IsValid)
-    //        {
-    //            try
-    //            {
-    //                _context.Update(abonnement);
-    //                await _context.SaveChangesAsync();
-    //            }
-    //            catch (DbUpdateConcurrencyException)
-    //            {
-    //                if (!AbonnementExists(abonnement.IdAbonnement))
-    //                {
-    //                    return NotFound();
-    //                }
-    //                else
-    //                {
-    //                    throw;
-    //                }
-    //            }
-    //            return RedirectToAction(nameof(Index));
-    //        }
-    //        return View(abonnement);
-    //    }
-
-    //    // GET: Abonnements/Delete/5
-    //    public async Task<IActionResult> Delete(int? id)
-    //    {
-    //        if (id == null)
-    //        {
-    //            return NotFound();
-    //        }
-
-    //        var abonnement = await _context.Abonnement
-    //            .FirstOrDefaultAsync(m => m.IdAbonnement == id);
-    //        if (abonnement == null)
-    //        {
-    //            return NotFound();
-    //        }
-
-    //        return View(abonnement);
-    //    }
-
-    //    // POST: Abonnements/Delete/5
-    //    [HttpPost, ActionName("Delete")]
-    //    [ValidateAntiForgeryToken]
-    //    public async Task<IActionResult> DeleteConfirmed(int id)
-    //    {
-    //        var abonnement = await _context.Abonnement.FindAsync(id);
-    //        _context.Abonnement.Remove(abonnement);
-    //        await _context.SaveChangesAsync();
-    //        return RedirectToAction(nameof(Index));
-    //    }
-
-    //    private bool AbonnementExists(int id)
-    //    {
-    //        return _context.Abonnement.Any(e => e.IdAbonnement == id);
-    //    }
     }
 }

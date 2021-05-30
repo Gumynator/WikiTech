@@ -16,6 +16,7 @@ using WikiTechAPI.Models;
 using WikiTechWebApp.Models;
 using WikiTechWebApp.ApiFunctions;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 namespace WikiTechWebApp.Controllers
 {
@@ -23,9 +24,11 @@ namespace WikiTechWebApp.Controllers
     {
         //private readonly WikiTechDBContext _context;
         static HttpClient client = new HttpClient();
-        public DonsController()
+        static IEmailSender _sender;
+        public DonsController(IEmailSender sender)
         {
             client = ConfigureHttpClient.configureHttpClient(client);
+            _sender = sender;
         }
 
         // GET: Dons
@@ -39,7 +42,7 @@ namespace WikiTechWebApp.Controllers
         //Auteur : Pancini Marco
         //Création : 07.05.2021
         //Modification : 10.05.2021
-        //Description : Fonction qui permet de récupérer les dons d'un utilisateur via l'API
+        //Description : Fonction qui permet de récupérer les Factures d'un utilisateur via l'API
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
         [Authorize]
         public async Task<ActionResult<IEnumerable<Don>>> MesDons()
@@ -55,6 +58,60 @@ namespace WikiTechWebApp.Controllers
             }
 
             return View(donsList);
+            //IEnumerable<Facture> FactureList;
+            //HttpResponseMessage response = client.GetAsync("Factures/").Result;
+            //FactureList = response.Content.ReadAsAsync<IEnumerable<Facture>>().Result;
+
+
+        }
+
+        // GET: Factures/GetPdf/5
+        public async Task<IActionResult> GetPdf(int? id)
+        {
+            Don dons = null;
+            HttpResponseMessage response = await client.GetAsync("Dons/" + id);
+            if (response.IsSuccessStatusCode)
+            {
+
+                dons = await response.Content.ReadAsAsync<Don>();
+            }
+            HttpResponseMessage postPdfDon = await client.PostAsJsonAsync("PdfCreator/CreatePdfDon/", dons);
+            string url = client.BaseAddress.AbsoluteUri;
+            url = url.Remove(22, 4);
+
+            using (var result = await client.GetAsync(url + "pdfdons/" + dons.IdDon + ".pdf"))
+            {
+                if (result.IsSuccessStatusCode)
+                {
+                    var file = await result.Content.ReadAsByteArrayAsync();
+                    return File(file, "application/pdf", dons.IdDon + ".pdf");
+                }
+
+            }
+            return null;
+            //récuperer le fichier 
+            //var filecontent = await postPdfFacture.Content.ReadAsByteArrayAsync();
+            //return File(filecontent, "application/pdf", factures.IdFacture + ".pdf");
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //Auteur : Pancini Marco
+        //Création : 07.05.2021
+        //Modification : 10.05.2021
+        //Description : Fonction qui fait une requête à l'api afin de récupérer les 20 meilleures dons trier de façon décroissante
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////
+        public async Task<ActionResult<IEnumerable<Donateurs>>> DonateursAsync()
+        {
+            IEnumerable<Donateurs> donList = null;
+            HttpResponseMessage response = await client.GetAsync("Dons/GetAllDons/");
+            if (response.IsSuccessStatusCode)
+            {
+
+                donList = response.Content.ReadAsAsync<IEnumerable<Donateurs>>().Result;
+
+            }
+
+            return View(donList);
             //IEnumerable<Facture> FactureList;
             //HttpResponseMessage response = client.GetAsync("Factures/").Result;
             //FactureList = response.Content.ReadAsAsync<IEnumerable<Facture>>().Result;
@@ -113,13 +170,14 @@ namespace WikiTechWebApp.Controllers
                     newDon.DateDon = DateTime.Now.Date;
                     newDon.MessageDon = description;
                     newDon.Id = user.Id;
+                    FunctionAPI.IncreasePointForUser(client, user.Id, 2);
                     HttpResponseMessage postDons = await client.PostAsJsonAsync("Dons", newDon);
-
+                    await _sender.SendEmailAsync(user.Email, "Don à WikiTech ", "Bonjour, merci de pour votre don à WikiTech de "+newDon.MontantDon+" CHF.");
 
                     ViewBag.nom = "Dons";
                     ViewBag.prix = price;
 
-
+                    
                     return View();
                 }
                 else
@@ -135,135 +193,5 @@ namespace WikiTechWebApp.Controllers
             }
         }
 
-        //// GET: Dons/Details/5
-        //public async Task<IActionResult> Details(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var don = await _context.Don
-        //        .Include(d => d.IdNavigation)
-        //        .FirstOrDefaultAsync(m => m.IdDon == id);
-        //    if (don == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return View(don);
-        //}
-
-        //// GET: Dons/Create
-        //public IActionResult Create()
-        //{
-        //    ViewData["Id"] = new SelectList(_context.AspNetUsers, "Id", "Id");
-        //    return View();
-        //}
-
-        //// POST: Dons/Create
-        //// To protect from overposting attacks, enable the specific properties you want to bind to.
-        //// For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Create([Bind("IdDon,Id,MontantDon,DateDon,MessageDon")] Don don)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        _context.Add(don);
-        //        await _context.SaveChangesAsync();
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    ViewData["Id"] = new SelectList(_context.AspNetUsers, "Id", "Id", don.Id);
-        //    return View(don);
-        //}
-
-        //// GET: Dons/Edit/5
-        //public async Task<IActionResult> Edit(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var don = await _context.Don.FindAsync(id);
-        //    if (don == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    ViewData["Id"] = new SelectList(_context.AspNetUsers, "Id", "Id", don.Id);
-        //    return View(don);
-        //}
-
-        //// POST: Dons/Edit/5
-        //// To protect from overposting attacks, enable the specific properties you want to bind to.
-        //// For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Edit(int id, [Bind("IdDon,Id,MontantDon,DateDon,MessageDon")] Don don)
-        //{
-        //    if (id != don.IdDon)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    if (ModelState.IsValid)
-        //    {
-        //        try
-        //        {
-        //            _context.Update(don);
-        //            await _context.SaveChangesAsync();
-        //        }
-        //        catch (DbUpdateConcurrencyException)
-        //        {
-        //            if (!DonExists(don.IdDon))
-        //            {
-        //                return NotFound();
-        //            }
-        //            else
-        //            {
-        //                throw;
-        //            }
-        //        }
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    ViewData["Id"] = new SelectList(_context.AspNetUsers, "Id", "Id", don.Id);
-        //    return View(don);
-        //}
-
-        //// GET: Dons/Delete/5
-        //public async Task<IActionResult> Delete(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var don = await _context.Don
-        //        .Include(d => d.IdNavigation)
-        //        .FirstOrDefaultAsync(m => m.IdDon == id);
-        //    if (don == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return View(don);
-        //}
-
-        //// POST: Dons/Delete/5
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> DeleteConfirmed(int id)
-        //{
-        //    var don = await _context.Don.FindAsync(id);
-        //    _context.Don.Remove(don);
-        //    await _context.SaveChangesAsync();
-        //    return RedirectToAction(nameof(Index));
-        //}
-
-        //private bool DonExists(int id)
-        //{
-        //    return _context.Don.Any(e => e.IdDon == id);
-        //}
     }
 }
