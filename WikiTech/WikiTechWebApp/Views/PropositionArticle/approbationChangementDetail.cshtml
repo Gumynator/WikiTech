@@ -1,0 +1,130 @@
+﻿@*
+    //Auteur    : Loris habegger
+    //Date      : 16.05.2021
+    //Fichier   : ApprobationChangeDetail.chtml (Changement à valider)
+
+*@
+
+
+@model dynamic
+@using Microsoft.AspNetCore.Identity
+@using WikiTechWebApp.Areas.Identity.Data
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+
+<body>
+
+    <script>
+
+        tinymce.init({
+            selector: '#TinyArea',
+            skin: 'oxide',
+            content_css: 'default',
+            toolbar: 'undo redo styleselect bold italic alignleft aligncenter alignright bullist numlist outdent indent table lists code link | fullscreen preview save print | insertfile image anchor',
+            plugins: 'code emoticons imagetools preview print autosave save image link media table anchor lists checklist wordcount imagetools paste ',
+            image_caption: false,
+            autosave_interval: '30s',
+            image_title: true,
+            paste_data_images: true,
+            automatic_uploads: true,
+            images_upload_url: '/PropositionArticle/uploadImg',
+            file_picker_types: 'image',
+            file_picker_callback: function (cb, value, meta) {
+
+                var input = document.createElement('input');
+                input.setAttribute('type', 'file');
+                input.setAttribute('accept', 'image/*');
+
+                input.onchange = function () {
+                    var file = this.files[0];
+
+                    var reader = new FileReader();
+                    reader.readAsDataURL(file);
+                    reader.onload = function () {
+                        var id = 'blobid' + (new Date()).getTime();
+                        var blobCache = tinymce.activeEditor.editorUpload.blobCache;
+                        var base64 = reader.result.split(',')[1];
+                        var blobInfo = blobCache.create(id, file, base64);
+                        blobCache.add(blobInfo);
+                        cb(blobInfo.blobUri(), { title: file.name });
+                    };
+                };
+                input.click();
+            }
+        });
+
+
+    </script>
+
+
+    <h1>Définir un statut pour le changement : </h1>
+
+    <h3>Brève description d'du changement : <b>@Model.Changement.ResumeChangement</b></h3>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                </br>
+
+                <h3><b>Article de base : </b></h3>
+
+                <p> Le changement est proposé par : <a href="AModifier"><b>@Model.Article.IdNavigation.PrenomAspnetuser</b></a></p>
+
+                <input type="text" name="IdArticle" hidden value="@Model.Article.IdArticle" />
+                <input type="text" name="IdAuteur" hidden value="@Model.Article.Id" />
+
+                <div class="mb-3">
+                    <label for="titlearea" class="form-label"><b>Titre de l'article</b></label>
+                    <p> @Model.Article.TitreArticle </p>
+                </div>
+
+                <div class="mb-3">
+                    <label for="descarea" class="form-label"><b>Description de l'article</b></label>
+                    <p> @Model.Article.DescriptionArticle </p>
+                </div>
+                <div class="mb-3">
+                    <label for="TinyArea" class="form-label"><b>Contenu de l'article</b></label>
+                    <p> @Model.Article.TextArticle </p>
+                </div>
+                
+            </div>
+            <div class="col">
+                </br>
+
+                <h3><b>Article modifié : </b></h3>
+                <p> Le changement est proposé par : <a href="AModifier"><b>@Model.Changement.IdNavigation.PrenomAspnetuser</b></a></p>
+                <form asp-action="validerChangement" methode="POST">
+
+                    <input type="text" name="IdChangement" hidden value="@Model.Changement.IdChangement" />
+                    <input type="text" name="IdAuteurChangement" hidden value="@Model.Changement.Id" />
+                    <input type="text" name="IdArticle" hidden value="@Model.Changement.IdArticle" />
+                    <input type="text" name="resumeChange" hidden value="@Model.Changement.ResumeChangement" />
+
+                    <div class="mb-3">
+                        <label for="titlearea" class="form-label"><b>Titre de l'article</b></label>
+                        <textarea class="form-control" id="titlearea" name="TitreChangement" rows="1">@Model.Changement.TitreChangement</textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="descarea" class="form-label"><b>Description de l'article</b></label>
+                        <textarea class="form-control" id="descarea" name="DescriptionChangement" rows="3">@Model.Changement.DescriptionChangement</textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="TinyArea" class="form-label"><b>Rédaction de l'article</b></label>
+                        <textarea class="form-control" id="TinyArea" rows="20" cols="300" name="TextChangement">@Model.Changement.TextChangement</textarea>
+                    </div>
+
+                    <input class="btn btn-outline-success" type="submit" value="valider">
+                    <a class="btn btn-outline-danger" value="supprimerArticle" asp-action="supprimerChangement" asp-route-id="@Model.Changement.IdChangement" /> delete </a>
+                </form>
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
