@@ -1,0 +1,41 @@
+﻿@model IEnumerable<WikiTechWebApp.Models.Donateurs>
+
+@{
+    ViewData["Title"] = "Donateurs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Donateurs</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MontantDon)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NomAspnetuser)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateDon)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MontantDon)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomAspnetuser)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateDon)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

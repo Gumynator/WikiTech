@@ -38,9 +38,7 @@
                 @Html.DisplayFor(modelItem => item.TitreFacture)
             </td>
             <td>
-                @*<a asp-action="Edit" asp-route-id="@item.IdFacture">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdFacture">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdFacture">Delete</a>*@
+                <a asp-action="GetPdf" asp-route-id="@item.IdFacture">Pdf</a>
             </td>
         </tr>
 }

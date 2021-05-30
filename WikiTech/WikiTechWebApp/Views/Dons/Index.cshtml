@@ -7,22 +7,6 @@
 
 <div class="text-center">
     <h1 class="display-4" row>Faire un don</h1>
-    <!--  action="/Abonnements/Charge/?searchID=@ViewBag.id" -->
-    <!--
-            <form asp-action="Charge" asp-route-id="@ViewBag.id" method="POST">
-        <article>
-            <label>Amount: @ViewBag.Displayprice</label>
-        </article>
-        <script src="//checkout.stripe.com/v2/checkout.js"
-                class="stripe-button"
-                data-key="@Stripe.Value.PublishableKey"
-                data-locale="auto"
-                data-description="@ViewBag.name">
-        </script>
-    </form>
-
-        -->
-
     <i class="fab fa-cc-stripe fa-2x"></i> <i class="fab fa-cc-visa fa-2x"></i> <i class="fab fa-cc-mastercard fa-2x"></i>
     <script script src="https://js.stripe.com/v3/"></script>
     <form asp-action="Charge" asp-controller="Dons" method="post" id="payment-form">

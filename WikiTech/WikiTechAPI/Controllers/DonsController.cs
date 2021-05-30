@@ -41,6 +41,31 @@ namespace WikiTechAPI.Controllers
             return query;
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //Auteur : Pancini Marco
+        //Création : 25.05.2021
+        //Modification : 29.05.2021
+        //Description : Fonction qui permet de récupérer les 20 premier dons par valeur décroissante
+        //ainsi que le nom/prenom de l'utilisateur concerné
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////
+        [HttpGet("GetAllDons/")]
+        public async Task<ActionResult<IEnumerable<object>>> GetAllDons()
+        {
+            var query = (from don in await _context.Don.ToListAsync()
+                         join user in _context.AspNetUsers
+                         on don.Id equals user.Id
+                         orderby don.MontantDon descending
+                         select new { MontantDon = don.MontantDon,
+                             DateDon = don.DateDon,
+                             NomAspnetuser = user.NomAspnetuser+ user.PrenomAspnetuser }).Take(20).ToList();
+            if (query == null)
+            {
+                return NotFound();
+            }
+
+            return query;
+        }
+
         // GET: api/Dons
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Don>>> GetDon()
