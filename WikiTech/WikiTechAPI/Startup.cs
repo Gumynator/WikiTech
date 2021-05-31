@@ -11,6 +11,8 @@ using DinkToPdf.Contracts;
 using DinkToPdf;
 using System.IO;
 using WikiTechAPI.Utility;
+using System;
+using System.Runtime.InteropServices;
 
 namespace WikiTechAPI
 {
@@ -30,8 +32,26 @@ namespace WikiTechAPI
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             //DinkToPdf
-            var context = new CustomAssemblyLoadContext();
-            context.LoadUnmanagedLibrary(Path.Combine(Directory.GetCurrentDirectory(), "libwkhtmltox.dll"));
+            CustomAssemblyLoadContext context = new CustomAssemblyLoadContext();
+            var architectureFolder = (IntPtr.Size == 8) ? "64 bit" : "32 bit";
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                var wkHtmlToPdfPath = Path.Combine(Directory.GetCurrentDirectory(), $"libs\\{architectureFolder}\\libwkhtmltox.dylib");
+                context.LoadUnmanagedLibrary(wkHtmlToPdfPath);
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                var wkHtmlToPdfPath = Path.Combine(Directory.GetCurrentDirectory(), $"libs\\{architectureFolder}\\libwkhtmltox.so");
+                context.LoadUnmanagedLibrary(wkHtmlToPdfPath);
+            }
+            else // RuntimeInformation.IsOSPlatform(OSPlatform.Windows)
+            {
+                var wkHtmlToPdfPath = Path.Combine(Directory.GetCurrentDirectory(), $"libs\\{architectureFolder}\\libwkhtmltox.dll");
+                context.LoadUnmanagedLibrary(wkHtmlToPdfPath);
+            }
+            //var context = new CustomAssemblyLoadContext();
+            //context.LoadUnmanagedLibrary(Path.Combine(Directory.GetCurrentDirectory(), "libwkhtmltox.dll"));
             services.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
 
             //AddNewtonsoftJson, use to ingore max JSON transaction

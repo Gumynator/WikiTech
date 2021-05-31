@@ -65,7 +65,12 @@ namespace WikiTechWebApp.Controllers
 
         }
 
-        // GET: Factures/GetPdf/5
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //Auteur : Pancini Marco
+        //Création : 27.04.2021
+        //Modification : 30.05.2021
+        //Description : Function qui demande à l'api de créer stocker et envoyer le pdf d'une facture
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////
         public async Task<IActionResult> GetPdf(int? id)
         {
             Don dons = null;
@@ -77,7 +82,7 @@ namespace WikiTechWebApp.Controllers
             }
             HttpResponseMessage postPdfDon = await client.PostAsJsonAsync("PdfCreator/CreatePdfDon/", dons);
             string url = client.BaseAddress.AbsoluteUri;
-            url = url.Remove(22, 4);
+            url = url.Remove(37, 4);
 
             using (var result = await client.GetAsync(url + "pdfdons/" + dons.IdDon + ".pdf"))
             {
@@ -96,8 +101,8 @@ namespace WikiTechWebApp.Controllers
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
         //Auteur : Pancini Marco
-        //Création : 07.05.2021
-        //Modification : 10.05.2021
+        //Création : 27.05.2021
+        //Modification : 29.05.2021
         //Description : Fonction qui fait une requête à l'api afin de récupérer les 20 meilleures dons trier de façon décroissante
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
         public async Task<ActionResult<IEnumerable<Donateurs>>> DonateursAsync()

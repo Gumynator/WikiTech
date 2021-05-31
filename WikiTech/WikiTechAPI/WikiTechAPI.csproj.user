@@ -12,7 +12,7 @@
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
     <ActiveDebugProfile>newProfile1</ActiveDebugProfile>
     <WebStackScaffolding_IsViewGenerationSelected>True</WebStackScaffolding_IsViewGenerationSelected>
-    <NameOfLastUsedPublishProfile>WikiTechAPI5 - Web Deploy</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>WikiTechAPI - Web Deploy</NameOfLastUsedPublishProfile>
     <WebStackScaffolding_DbContextDialogWidth>650</WebStackScaffolding_DbContextDialogWidth>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

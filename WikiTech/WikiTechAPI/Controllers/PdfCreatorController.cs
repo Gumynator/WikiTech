@@ -1,5 +1,5 @@
 ﻿//Auteur    : Pancini Marco
-//Date      : 17.05.2021
+//Date      : 24.05.2021
 //Fichier   : PdfCreatorController.cs
 using DinkToPdf;
 using DinkToPdf.Contracts;
@@ -31,7 +31,7 @@ namespace WikiTechAPI.Controllers
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
         //Auteur : Pancini Marco
-        //Création : 28.04.2021
+        //Création : 25.04.2021
         //Modification : 30.05.2021
         //Description : Function qui permet la génération, le stockage dans le wwwroot, et le download du pdf d'une facture
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -80,7 +80,7 @@ namespace WikiTechAPI.Controllers
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
         //Auteur : Pancini Marco
-        //Création : 28.04.2021
+        //Création : 26.04.2021
         //Modification : 30.05.2021
         //Description : Function qui permet la génération, le stockage dans le wwwroot, et le download du pdf d'un don
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
