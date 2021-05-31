@@ -43,8 +43,8 @@ namespace WikiTechAPI.Controllers
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
         //Auteur : Pancini Marco
-        //Création : 25.05.2021
-        //Modification : 29.05.2021
+        //Création : 27.05.2021
+        //Modification : 28.05.2021
         //Description : Fonction qui permet de récupérer les 20 premier dons par valeur décroissante
         //ainsi que le nom/prenom de l'utilisateur concerné
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
