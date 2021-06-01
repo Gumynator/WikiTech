@@ -507,3 +507,7 @@ D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\obj\Debug\n
 D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\obj\Debug\netcoreapp3.1\WikiTechAPI.dll
 D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\obj\Debug\netcoreapp3.1\WikiTechAPI.pdb
 D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\obj\Debug\netcoreapp3.1\WikiTechAPI.genruntimeconfig.cache
+C:\Users\M4800\Desktop\GitDesktop\WikiTech\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\Assets\PdfStyles.css
+C:\Users\M4800\Desktop\GitDesktop\WikiTech\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\libs\32 bit\libwkhtmltox.dll
+C:\Users\M4800\Desktop\GitDesktop\WikiTech\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\libs\64 bit\libwkhtmltox.dll
+C:\Users\M4800\Desktop\GitDesktop\WikiTech\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\DinkToPdf.dll

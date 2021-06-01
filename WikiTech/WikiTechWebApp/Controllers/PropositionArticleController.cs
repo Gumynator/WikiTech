@@ -33,6 +33,9 @@ namespace WikiTechWebApp.Controllers
     public class PropositionArticleController : Controller
     {
 
+        const int POINT_VALIDEUR = 2;
+        const int POINT_CREATEUR = 5;
+
         static HttpClient client = new HttpClient();
         static IEmailSender _sender;
         private readonly IWebHostEnvironment webhost; //utilisé pou l'enregistrement de l'image
@@ -175,7 +178,7 @@ namespace WikiTechWebApp.Controllers
             try
             {
 
-                HttpResponseMessage response = client.GetAsync("Articles/nodate").Result;
+                HttpResponseMessage response = client.GetAsync("Articles/toactive").Result;
                 artList = response.Content.ReadAsAsync<IEnumerable<Article>>().Result;
 
                 dynamicmodel.Article = artList;
@@ -234,6 +237,7 @@ namespace WikiTechWebApp.Controllers
             currentArticle.IdArticle = Int32.Parse(Request.Form["IdArticle"]);
             currentArticle.IdSection = Int32.Parse(Request.Form["IdSection"]); 
             currentArticle.Id = Request.Form["IdAuteur"];
+            currentArticle.IsactiveArticle = true;
 
            string valideurArticle = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
@@ -253,9 +257,9 @@ namespace WikiTechWebApp.Controllers
                     await _sender.SendEmailAsync(usernameq.Email, "Article accepté", "Bonjour, votre article ayant pour titre : " + currentArticle.TitreArticle + " a été validé. Vous pourrez le consulter en ligne");
 
                     //fonction d'ajout de point pour le valideur
-                    FunctionAPI.IncreasePointForUser(client, valideurArticle, 2);
+                    FunctionAPI.IncreasePointForUser(client, valideurArticle, POINT_VALIDEUR);
                     //fonction d'ajout de point pour l'auteur
-                    FunctionAPI.IncreasePointForUser(client, currentArticle.Id, 5);
+                    FunctionAPI.IncreasePointForUser(client, currentArticle.Id, POINT_CREATEUR); 
 
                     return Redirect("/Articles/Details/" + currentArticle.IdArticle);
 
@@ -290,7 +294,7 @@ namespace WikiTechWebApp.Controllers
                 await _sender.SendEmailAsync(usernameq.Email, "Article pas accepté", "Bonjour, votre article ayant pour titre: " + article.TitreArticle + " n'est pas validé. il ne respecte probablement pas la politique de wikitech");
 
                 //fonction d'ajout de point pour le valideur
-                FunctionAPI.IncreasePointForUser(client, valideurArticle, 2);
+                FunctionAPI.IncreasePointForUser(client, valideurArticle, POINT_VALIDEUR);
 
                 //Reference (tags) is deleting by cascade
 
@@ -371,9 +375,9 @@ namespace WikiTechWebApp.Controllers
                 await _sender.SendEmailAsync(usernameq.Email, "Changement accepté", "Bonjour, votre changement ayant pour titre : " + currentchangement.TitreChangement + " a été validé. Vous pourrez le consulter en ligne");
 
                 //fonction d'ajout de point pour le valideur
-                FunctionAPI.IncreasePointForUser(client, valideurChangement, 2);
+                FunctionAPI.IncreasePointForUser(client, valideurChangement, POINT_VALIDEUR); 
                 //fonction d'ajout de point pour l'auteur
-                FunctionAPI.IncreasePointForUser(client, currentchangement.Id, 5);
+                FunctionAPI.IncreasePointForUser(client, currentchangement.Id, POINT_CREATEUR);
 
                 return Redirect("/Articles/Details/" + currentchangement.IdArticle);
 
@@ -409,7 +413,7 @@ namespace WikiTechWebApp.Controllers
                 await _sender.SendEmailAsync(usernameq.Email, "Changement pas accepté", "Bonjour, votre Changement ayant pour titre: " + currentchangement.TitreChangement + " n'est pas validé. il ne respecte probablement pas la politique de wikitech");
 
                 //fonction d'ajout de point pour le valideur
-                FunctionAPI.IncreasePointForUser(client, valideurChangement, 2);
+                FunctionAPI.IncreasePointForUser(client, valideurChangement, POINT_VALIDEUR);
 
                 //Reference (tags) is deleting by cascade
 

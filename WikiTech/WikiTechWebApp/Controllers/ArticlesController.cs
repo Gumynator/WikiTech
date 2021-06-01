@@ -43,7 +43,7 @@ namespace WikiTechWebApp.Controllers
             try
             {
 
-                HttpResponseMessage response = client.GetAsync("Articles/withdate").Result;
+                HttpResponseMessage response = client.GetAsync("Articles/beactive").Result;
                 artList = response.Content.ReadAsAsync<IEnumerable<Article>>().Result;
                 return View(artList);
 
@@ -249,12 +249,67 @@ namespace WikiTechWebApp.Controllers
             {
                 return RedirectToAction(nameof(Index));
             }
-
-
-
         }
 
 
+        //[Authorize]
+        //// GET: the article detail for decision
+        //public ActionResult disableArticleeeeee(int id)
+        //{
+
+        //    Article article;
+
+        //    try
+        //    {
+        //        HttpResponseMessage responsearticle = client.GetAsync("Articles/" + id).Result;
+        //        article = responsearticle.Content.ReadAsAsync<Article>().Result;
+
+
+        //        return View(article);
+
+
+        //    }
+        //    catch (ExceptionLiaisonApi e)
+        //    {
+        //        Console.WriteLine(e.getMessage());
+        //        return Redirect("/Home/Index");
+        //    }
+        //}
+
+        [Authorize]
+        // GET: the article detail for decision
+        public async Task<ActionResult> disableArticleeeeee(int id)
+        {
+
+            Article article;
+
+            try
+            {
+                //HttpResponseMessage responsearticle = client.GetAsync("Articles/disable" + id).Result;
+                //article = responsearticle.Content.ReadAsAsync<Article>().Result;
+
+                Article resultarticle;
+
+                HttpResponseMessage responsearticle = client.GetAsync("Articles/" + id).Result;
+                article = responsearticle.Content.ReadAsAsync<Article>().Result;
+
+
+                using var response = await client.PutAsJsonAsync(ConfigureHttpClient.apiUrl + "Articles/disable" + id, article);
+                string apiResponse = await response.Content.ReadAsStringAsync();
+
+                resultarticle = JsonConvert.DeserializeObject<Article>(apiResponse);
+
+
+                return RedirectToAction(nameof(Index));
+
+
+            }
+            catch (ExceptionLiaisonApi e)
+            {
+                Console.WriteLine(e.getMessage());
+                return RedirectToAction(nameof(Index));
+            }
+        }
 
     }
 }

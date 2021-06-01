@@ -54,11 +54,11 @@ namespace WikiTechAPI.Controllers
 
         //get article with no approbation date
         [HttpGet]
-        [Route("nodate")]
-        public async Task<ActionResult<IEnumerable<Article>>> GetArticleNoDate()
+        [Route("toactive")]
+        public async Task<ActionResult<IEnumerable<Article>>> GetArticleNoActivated()
         {
 
-            return await _context.Article.Where(d => d.DatepublicationArticle == null).Include(p => p.IdNavigation).ToListAsync();
+            return await _context.Article.Where(d => d.IsactiveArticle == false).Include(p => p.IdNavigation).ToListAsync();
         }
 
         [HttpGet("_id")]
@@ -71,10 +71,10 @@ namespace WikiTechAPI.Controllers
        
         //get article with date only
         [HttpGet]
-        [Route("withdate")]
-        public async Task<ActionResult<IEnumerable<Article>>> GetArticleWithDate()
+        [Route("beactive")]
+        public async Task<ActionResult<IEnumerable<Article>>> GetArticleIsActive()
         {
-            return await _context.Article.Where(d => d.DatepublicationArticle != null).Include(p => p.IdNavigation).ToListAsync();
+            return await _context.Article.Where(d => d.IsactiveArticle == true).Include(p => p.IdNavigation).ToListAsync();
         }
 
 
@@ -143,6 +143,25 @@ namespace WikiTechAPI.Controllers
             return _context.Article.Any(e => e.IdArticle == id);
         }
 
+
+        [HttpPut("{id}")]
+        [Route("disable")]
+        public async Task<ActionResult<Article>> DisableArticle(int id, [FromBody]Article article)
+        {
+
+            Article articleToModify = _context.Article.Find(article.IdArticle);
+
+
+            if (article == null)
+            {
+                return NotFound();
+            }
+
+            articleToModify.IsactiveArticle = false;
+            await _context.SaveChangesAsync();
+
+            return article;
+        }
 
     }
 }

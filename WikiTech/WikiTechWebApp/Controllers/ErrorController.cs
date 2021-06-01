@@ -1,4 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿
+//Auteur    : Loris habegger
+//Date      : 26.05.2021
+//Fichier   : errorController.cs (controller d'erreur comme erreur 404)
+
+
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
