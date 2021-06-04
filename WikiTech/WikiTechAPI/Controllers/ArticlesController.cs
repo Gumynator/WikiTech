@@ -58,7 +58,7 @@ namespace WikiTechAPI.Controllers
         public async Task<ActionResult<IEnumerable<Article>>> GetArticleNoActivated()
         {
 
-            return await _context.Article.Where(d => d.IsactiveArticle == false).Include(p => p.IdNavigation).ToListAsync();
+            return await _context.Article.Where(d => d.DatepublicationArticle == null).Include(p => p.IdNavigation).ToListAsync();
         }
 
         [HttpGet("_id")]
@@ -144,15 +144,15 @@ namespace WikiTechAPI.Controllers
         }
 
 
-        [HttpPut("{id}")]
-        [Route("disable")]
-        public async Task<ActionResult<Article>> DisableArticle(int id, [FromBody]Article article)
+
+        [HttpPost("{id}/disable")]
+        public async Task<ActionResult<Article>> DisableArticle(int id, [FromBody] int _id)
         {
 
-            Article articleToModify = _context.Article.Find(article.IdArticle);
+            Article articleToModify = _context.Article.Find(id);
 
 
-            if (article == null)
+            if (articleToModify == null)
             {
                 return NotFound();
             }
@@ -160,7 +160,25 @@ namespace WikiTechAPI.Controllers
             articleToModify.IsactiveArticle = false;
             await _context.SaveChangesAsync();
 
-            return article;
+            return articleToModify;
+        }
+
+        [HttpPost("{id}/enable")]
+        public async Task<ActionResult<Article>> enableArticle(int id, [FromBody] int _id)
+        {
+
+            Article articleToModify = _context.Article.Find(id);
+
+
+            if (articleToModify == null)
+            {
+                return NotFound();
+            }
+
+            articleToModify.IsactiveArticle = true;
+            await _context.SaveChangesAsync();
+
+            return articleToModify;
         }
 
     }

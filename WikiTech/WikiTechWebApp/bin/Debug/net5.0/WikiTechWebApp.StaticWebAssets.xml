@@ -1,4 +1,4 @@
 ﻿<StaticWebAssets Version="1.0">
-  <ContentRoot BasePath="/Identity" Path="C:\Users\M4800\.nuget\packages\microsoft.aspnetcore.identity.ui\3.1.15\staticwebassets\V4\" />
-  <ContentRoot BasePath="_content/WikiTechAPI" Path="C:\Users\M4800\Desktop\GitDesktop\WikiTech\WikiTech\WikiTechAPI\wwwroot\" />
+  <ContentRoot BasePath="/Identity" Path="C:\Users\lorhabegger\.nuget\packages\microsoft.aspnetcore.identity.ui\3.1.15\staticwebassets\V4\" />
+  <ContentRoot BasePath="_content/WikiTechAPI" Path="C:\GitHub\WikiTech\WikiTechAPI\wwwroot\" />
 </StaticWebAssets>
