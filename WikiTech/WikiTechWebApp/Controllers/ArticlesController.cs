@@ -56,6 +56,54 @@ namespace WikiTechWebApp.Controllers
             
         }
 
+        // GET: ArticlesController to restor
+        public IActionResult Indexing(string sortOrder, int _numPage)
+        {
+            int currentPage = _numPage; // to give with de paginate
+
+            if (currentPage == 0)
+            {
+                currentPage = 1;
+            }
+
+            IEnumerable<Article> artList;
+
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+
+            try
+            {
+
+                HttpResponseMessage response = client.GetAsync("Articles/test/" + currentPage).Result;
+                artList = response.Content.ReadAsAsync<IEnumerable<Article>>().Result;
+
+                switch (sortOrder)
+                {
+                    case "name_desc":
+                        artList = artList.OrderByDescending(s => s.TitreArticle);
+                        break;
+                    case "Date":
+                        artList = artList.OrderBy(s => s.DatepublicationArticle);
+                        break;
+                    case "date_desc":
+                        artList = artList.OrderByDescending(s => s.DatepublicationArticle);
+                        break;
+                    default:
+                        artList = artList.OrderBy(s => s.TitreArticle);
+                        break;
+                }
+                return View(artList);
+
+            }
+            catch (ExceptionLiaisonApi e)
+            {
+                Console.WriteLine(e.getMessage());
+                return Redirect("/Home/Index");
+            }
+
+        }
+
+
         public IActionResult AllArticle()
         {
             IEnumerable<Article> artList;

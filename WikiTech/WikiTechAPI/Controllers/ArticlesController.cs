@@ -36,6 +36,8 @@ namespace WikiTechAPI.Controllers
             return await _context.Article.Include(p => p.IdNavigation).ToListAsync();
         }
 
+
+
         // GET: api/Articles/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Article>> GetArticle(int id)
@@ -75,6 +77,19 @@ namespace WikiTechAPI.Controllers
         public async Task<ActionResult<IEnumerable<Article>>> GetArticleIsActive()
         {
             return await _context.Article.Where(d => d.IsactiveArticle == true).Include(p => p.IdNavigation).ToListAsync();
+        }
+
+
+        //get article with date only **PAGINTATION **
+        [HttpGet("test/{nbPage}")]
+        public async Task<ActionResult<IEnumerable<Article>>> GetArticletest(int nbPage)
+        {
+            int nbPerPage = 5; // to put on variable
+            //return await _context.Article.Where(d => d.DatepublicationArticle != null).Include(p => p.IdNavigation).ToListAsync();
+            List<Article> rowArticles = await _context.Article.Where(d => d.IsactiveArticle == true).Include(p => p.IdNavigation).ToListAsync();
+
+            List<Article> subListArticles = rowArticles.GetRange((nbPage - 1) * nbPerPage, nbPerPage);
+            return subListArticles;
         }
 
 
