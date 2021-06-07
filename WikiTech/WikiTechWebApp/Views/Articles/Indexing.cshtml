@@ -8,6 +8,15 @@
 
 
 <h1>Liste des articles</h1>
+<form asp-action="Indexing" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by name: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+            <input type="submit" value="Search" class="btn btn-outline-primary" /> |
+            <a class="btn btn-outline-danger" asp-action="Indexing">Clear</a>
+        </p>
+    </div>
+</form>
 <table>
     <thead>
         <tr>
@@ -23,44 +32,47 @@
             <th>
                 <a asp-action="Indexing" asp-route-sortOrder="@ViewData["DateSortParm"]">@Html.DisplayNameFor(model => model.DatepublicationArticle)</a>
             </th>
-            <th>
-                Etat Article
-            </th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdArticle)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TitreArticle)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdNavigation.PrenomAspnetuser)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DatepublicationArticle)
-            </td>
-            @if (item.IsactiveArticle == false)
-            {
-
-                <th>
-                    <a class="btn btn-outline-dark" value="disableArticleeeeee" asp-controller="Articles" asp-action="enableArticleeeee" asp-route-id="@item.IdArticle"> enable</a>
-                </th>
-
-            }
-            else
-            {
-                <th>
-                    <a class="btn btn-outline-dark" value="disableArticleeeeee" asp-controller="Articles" asp-action="disableArticleeeeee" asp-route-id="@item.IdArticle"> disable</a>
-                </th>
-            }
-
-        </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdArticle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TitreArticle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdNavigation.PrenomAspnetuser)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DatepublicationArticle)
+                </td>
+            </tr>
         }
     </tbody>
 </table>
 
+@ViewData["nbArtTotal"]
+@ViewData["currentPage"]
+
+<a class="btn btn-outline-dark" id="Previous"> Previous</a>
+<a class="btn btn-outline-dark" id="Next"> Next</a>
+
+@*<input id="Button1" type="button" value="button" />*@
+
+<script>
+
+    $('#Next').click(function () {
+
+        location.href = "/Articles/Indexing?currentPage=@((int)ViewData["currentPage"]+1)&&searchString=@ViewData["CurrentFilter"]";
+    });
+
+    $('#Previous').click(function () {
+
+        location.href = "/Articles/Indexing?currentPage=@((int)ViewData["currentPage"]-1)&&searchString=@ViewData["CurrentFilter"]";
+});
+
+</script>

@@ -57,25 +57,43 @@ namespace WikiTechWebApp.Controllers
         }
 
         // GET: ArticlesController to restor
-        public IActionResult Indexing(string sortOrder, int _numPage)
+        public IActionResult Indexing(string sortOrder, string searchString, int currentPage)
         {
-            int currentPage = _numPage; // to give with de paginate
+          //  int currentPage = _numPage; // to give with de paginate
 
             if (currentPage == 0)
             {
                 currentPage = 1;
             }
 
+
             IEnumerable<Article> artList;
 
             ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewData["CurrentFilter"] = searchString;
+            ViewData["CurrentPage"] = currentPage;
+
 
             try
             {
 
-                HttpResponseMessage response = client.GetAsync("Articles/test/" + currentPage).Result;
-                artList = response.Content.ReadAsAsync<IEnumerable<Article>>().Result;
+                if (!String.IsNullOrEmpty(searchString))
+                {
+                    HttpResponseMessage response = client.GetAsync("Articles/testing/" + currentPage + "/" + searchString).Result;
+                    artList = response.Content.ReadAsAsync<IEnumerable<Article>>().Result;
+
+                }
+                else
+                {
+                    HttpResponseMessage response = client.GetAsync("Articles/test/" + currentPage).Result;
+                    artList = response.Content.ReadAsAsync<IEnumerable<Article>>().Result;
+                }
+
+                HttpResponseMessage respage = client.GetAsync("Articles/nbtot").Result;
+                int nbArtTotal = respage.Content.ReadAsAsync<int>().Result;
+
+                ViewData["nbArtTotal"] = nbArtTotal;
 
                 switch (sortOrder)
                 {

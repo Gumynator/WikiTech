@@ -20,6 +20,7 @@ namespace WikiTechAPI.Controllers
     public class ArticlesController : ControllerBase
     {
         private readonly WikiTechDBContext _context;
+        private const int NB_PER_PAGE = 5;
 
         public ArticlesController(WikiTechDBContext context)
         {
@@ -80,15 +81,116 @@ namespace WikiTechAPI.Controllers
         }
 
 
+
+        //get article with date only **PAGINTATION **
+        [HttpGet("nbtot")]
+        public int GetArticleNbTotal()
+        {
+            return _context.Article.Where(d => d.IsactiveArticle == true).Count();
+        }
+
+        //get article with date only **PAGINTATION **
+        [HttpGet("nbtotbysearch")]
+        public int GetArticleNbTotalBySearch(String search)
+        {
+            return _context.Article.Where(d => d.IsactiveArticle == true).Where(s => s.TitreArticle.Contains(search)).Count();
+        }
+
+        //get article with date only **PAGINTATION **
+        [HttpGet("pagetot")]
+        public int GetPageNbTotal()
+        {
+
+            int nbtot = _context.Article.Where(d => d.IsactiveArticle == true).Count();
+            int nbpage;
+
+            if (nbtot % NB_PER_PAGE > 0)
+            {
+                nbpage = nbtot / NB_PER_PAGE + 1;
+            }
+            else
+            {
+                nbpage = nbtot / NB_PER_PAGE;
+            }
+
+            return nbpage;
+        }
+
+        [HttpGet("pagetotbysearch")]
+        public int GetPageNbTotalBySearch(String search)
+        {
+
+            int nbtot = _context.Article.Where(d => d.IsactiveArticle == true).Where(s => s.TitreArticle.Contains(search)).Count();
+            int nbpage;
+
+            if (nbtot % NB_PER_PAGE > 0)
+            {
+                nbpage = nbtot / NB_PER_PAGE + 1;
+            }
+            else
+            {
+                nbpage = nbtot / NB_PER_PAGE;
+            }
+
+            return nbpage;
+        }
+
+
         //get article with date only **PAGINTATION **
         [HttpGet("test/{nbPage}")]
         public async Task<ActionResult<IEnumerable<Article>>> GetArticletest(int nbPage)
         {
-            int nbPerPage = 5; // to put on variable
+            int nbPerPage = NB_PER_PAGE;
+
+            if (nbPage > GetPageNbTotal())
+            {
+                nbPage = GetPageNbTotal();
+            }
+            if (nbPage < 1)
+            {
+                nbPage = 1;
+            }
+
             //return await _context.Article.Where(d => d.DatepublicationArticle != null).Include(p => p.IdNavigation).ToListAsync();
             List<Article> rowArticles = await _context.Article.Where(d => d.IsactiveArticle == true).Include(p => p.IdNavigation).ToListAsync();
 
+            if (nbPage * nbPerPage > GetArticleNbTotal())
+            {
+                nbPerPage -= nbPage * nbPerPage - GetArticleNbTotal();
+            }
+
             List<Article> subListArticles = rowArticles.GetRange((nbPage - 1) * nbPerPage, nbPerPage);
+
+
+            return subListArticles;
+        }
+
+        //get article with date only **Searching by titre**
+        [HttpGet("testing/{nbPage}/{searchstring}")]
+        public async Task<ActionResult<IEnumerable<Article>>> GetArticletesting(int nbPage, String searchstring = "") //="" have by default
+        {
+            int nbPerPage = NB_PER_PAGE;
+
+            if (nbPage > GetPageNbTotalBySearch(searchstring))
+            {
+                nbPage = GetPageNbTotalBySearch(searchstring);
+            }
+            if (nbPage < 1)
+            {
+                nbPage = 1;
+            }
+
+            List<Article> rowArticles;
+
+            rowArticles = await _context.Article.Where(d => d.IsactiveArticle == true).Where(s => s.TitreArticle.Contains(searchstring)).Include(p => p.IdNavigation).ToListAsync();
+
+            if (nbPage * nbPerPage > GetArticleNbTotalBySearch(searchstring))
+            {
+                nbPerPage -= nbPage * nbPerPage - GetArticleNbTotalBySearch(searchstring);
+            }
+
+            List<Article> subListArticles = rowArticles.GetRange((nbPage - 1) * nbPerPage, nbPerPage);
+
             return subListArticles;
         }
 
