@@ -68,7 +68,7 @@ namespace WikiTechWebApp.Controllers
             }
             HttpResponseMessage postPdfFacture = await client.PostAsJsonAsync("PdfCreator/CreatePdfFacture/", factures);
             string url = client.BaseAddress.AbsoluteUri;
-            url = url.Remove(37,4);
+            url = url.Remove(22,4);
 
             using (var result = await client.GetAsync(url + "pdffactures/" + factures.IdFacture + ".pdf"))
             {

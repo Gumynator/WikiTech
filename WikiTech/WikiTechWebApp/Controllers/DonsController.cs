@@ -82,7 +82,7 @@ namespace WikiTechWebApp.Controllers
             }
             HttpResponseMessage postPdfDon = await client.PostAsJsonAsync("PdfCreator/CreatePdfDon/", dons);
             string url = client.BaseAddress.AbsoluteUri;
-            url = url.Remove(37, 4);
+            url = url.Remove(22, 4);
 
             using (var result = await client.GetAsync(url + "pdfdons/" + dons.IdDon + ".pdf"))
             {

@@ -30,15 +30,15 @@ namespace WikiTechAPI.Controllers
         [HttpGet("FacturesByUserId/{userID}")]
         public async Task<ActionResult<IEnumerable<Facture>>> GetFacturesByUserId(string userID)
         {
-            var query = (from facture in await _context.Facture.ToListAsync()
+            var factureByUserId = (from facture in await _context.Facture.ToListAsync()
                         where userID.Equals(facture.Id)
                         select facture).ToList();
-            if (query == null)
+            if (factureByUserId == null)
             {
                 return NotFound();
             }
 
-            return query;
+            return factureByUserId;
         }
 
         // GET: api/Factures
