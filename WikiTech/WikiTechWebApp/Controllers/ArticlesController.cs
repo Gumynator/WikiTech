@@ -57,7 +57,7 @@ namespace WikiTechWebApp.Controllers
         }
 
         // GET: ArticlesController to restor
-        public IActionResult Indexing(string sortOrder, string searchString, int currentPage)
+        public IActionResult Indexing(string sortorder, string searchString, int currentPage)
         {
           //  int currentPage = _numPage; // to give with de paginate
 
@@ -65,51 +65,37 @@ namespace WikiTechWebApp.Controllers
             {
                 currentPage = 1;
             }
+            if (sortorder == null)
+            {
+                sortorder = "atoz";
 
+            }
+            if (searchString == null)
+            {
+                searchString = "";
+
+            }
 
             IEnumerable<Article> artList;
 
-            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
             ViewData["CurrentFilter"] = searchString;
             ViewData["CurrentPage"] = currentPage;
+            ViewData["sortorder"] = sortorder;
 
+            string chainetest = sortorder + searchString;
 
             try
             {
 
-                if (!String.IsNullOrEmpty(searchString))
-                {
-                    HttpResponseMessage response = client.GetAsync("Articles/testing/" + currentPage + "/" + searchString).Result;
-                    artList = response.Content.ReadAsAsync<IEnumerable<Article>>().Result;
-
-                }
-                else
-                {
-                    HttpResponseMessage response = client.GetAsync("Articles/test/" + currentPage).Result;
-                    artList = response.Content.ReadAsAsync<IEnumerable<Article>>().Result;
-                }
+                HttpResponseMessage response = client.GetAsync("Articles/testing/" + currentPage + "/" + chainetest).Result;
+                artList = response.Content.ReadAsAsync<IEnumerable<Article>>().Result;
 
                 HttpResponseMessage respage = client.GetAsync("Articles/nbtot").Result;
                 int nbArtTotal = respage.Content.ReadAsAsync<int>().Result;
 
                 ViewData["nbArtTotal"] = nbArtTotal;
 
-                switch (sortOrder)
-                {
-                    case "name_desc":
-                        artList = artList.OrderByDescending(s => s.TitreArticle);
-                        break;
-                    case "Date":
-                        artList = artList.OrderBy(s => s.DatepublicationArticle);
-                        break;
-                    case "date_desc":
-                        artList = artList.OrderByDescending(s => s.DatepublicationArticle);
-                        break;
-                    default:
-                        artList = artList.OrderBy(s => s.TitreArticle);
-                        break;
-                }
+             
                 return View(artList);
 
             }

@@ -166,32 +166,101 @@ namespace WikiTechAPI.Controllers
         }
 
         //get article with date only **Searching by titre**
-        [HttpGet("testing/{nbPage}/{searchstring}")]
-        public async Task<ActionResult<IEnumerable<Article>>> GetArticletesting(int nbPage, String searchstring = "") //="" have by default
+        [HttpGet("testing/{nbPage}/{chainetest}")]
+        public async Task<ActionResult<IEnumerable<Article>>> GetArticletesting(int nbPage, string chainetest = "") //="" have by default
         {
+
+            string sortorder = chainetest.Substring(0, 4); //ordre de sorting
+            string searchString = chainetest.Substring(4); //recherche
             int nbPerPage = NB_PER_PAGE;
 
-            if (nbPage > GetPageNbTotalBySearch(searchstring))
-            {
-                nbPage = GetPageNbTotalBySearch(searchstring);
-            }
-            if (nbPage < 1)
-            {
-                nbPage = 1;
-            }
-
+            List<Article> ListeArticle;
             List<Article> rowArticles;
 
-            rowArticles = await _context.Article.Where(d => d.IsactiveArticle == true).Where(s => s.TitreArticle.Contains(searchstring)).Include(p => p.IdNavigation).ToListAsync();
 
-            if (nbPage * nbPerPage > GetArticleNbTotalBySearch(searchstring))
+            if (searchString.Length > 0)
             {
-                nbPerPage -= nbPage * nbPerPage - GetArticleNbTotalBySearch(searchstring);
+                //*************ARTICLES+RECHERCHE
+                ListeArticle = await _context.Article.Where(d => d.IsactiveArticle == true).Where(s => s.TitreArticle.Contains(searchString)).Include(p => p.IdNavigation).ToListAsync();
+                //*************ARTICLES+RECHERCHE
+            }
+            else
+            {
+                //*************ARTICLES
+                ListeArticle = await _context.Article.Where(d => d.IsactiveArticle == true).Include(p => p.IdNavigation).ToListAsync();
+                //*************ARTICLES
             }
 
-            List<Article> subListArticles = rowArticles.GetRange((nbPage - 1) * nbPerPage, nbPerPage);
 
-            return subListArticles;
+            //*************SORTAGE
+            IEnumerable<Article> intermediateListeArticle = ListeArticle;
+
+            switch (sortorder)
+            {
+                case "ztoa":
+                    intermediateListeArticle = intermediateListeArticle.OrderByDescending(s => s.TitreArticle);
+                    break;
+                case "atoz":
+                    intermediateListeArticle = intermediateListeArticle.OrderBy(s => s.TitreArticle);
+                    break;
+                case "desc":
+                    intermediateListeArticle = intermediateListeArticle.OrderByDescending(s => s.DatepublicationArticle);
+                    break;
+                case "dasc":
+                    intermediateListeArticle = intermediateListeArticle.OrderBy(s => s.DatepublicationArticle);
+                    break;
+                default:
+                    intermediateListeArticle = intermediateListeArticle.OrderBy(s => s.TitreArticle);
+                    break;
+            }
+
+            ListeArticle = intermediateListeArticle.ToList();
+            //*************SORTAGE
+
+
+            if (searchString.Length > 0)
+            {
+                //*************PAGINATION+SEARCH
+                if (nbPage > GetPageNbTotalBySearch(searchString))
+                {
+                    nbPage = GetPageNbTotalBySearch(searchString);
+                }
+                if (nbPage < 1)
+                {
+                    nbPage = 1;
+                }
+
+                if (nbPage * nbPerPage > GetArticleNbTotalBySearch(searchString))
+                {
+                    nbPerPage -= nbPage * nbPerPage - GetArticleNbTotalBySearch(searchString);
+                }
+
+                rowArticles = ListeArticle.GetRange((nbPage - 1) * nbPerPage, nbPerPage);
+
+                //*************PAGINATION+SEARCH
+            }
+            else
+            {
+                //*************PAGINATION
+                if (nbPage > GetPageNbTotal())
+                {
+                    nbPage = GetPageNbTotal();
+                }
+                if (nbPage < 1)
+                {
+                    nbPage = 1;
+                }
+
+                if (nbPage * nbPerPage > GetArticleNbTotal())
+                {
+                    nbPerPage -= nbPage * nbPerPage - GetArticleNbTotal();
+                }
+
+                rowArticles = ListeArticle.GetRange((nbPage - 1) * nbPerPage, nbPerPage);
+            }
+
+
+            return rowArticles;
         }
 
 

@@ -15,6 +15,14 @@
             <input type="submit" value="Search" class="btn btn-outline-primary" /> |
             <a class="btn btn-outline-danger" asp-action="Indexing">Clear</a>
         </p>
+
+        <select id="sorting">
+            <option value="az" selected>atoz</option>
+            <option value="za">ztoa</option>
+            <option value="dateasc">dasc</option>
+            <option value="datedesc">desc</option>
+        </select>
+        <a class="btn btn-outline-primary" id="appySorting"> appySorting</a>
     </div>
 </form>
 <table>
@@ -24,13 +32,13 @@
                 ID article
             </th>
             <th>
-                <a asp-action="Indexing" asp-route-sortOrder="@ViewData["NameSortParm"]">@Html.DisplayNameFor(model => model.TitreArticle)</a>
+                @Html.DisplayNameFor(model => model.TitreArticle)
             </th>
             <th>
                 auteur article
             </th>
             <th>
-                <a asp-action="Indexing" asp-route-sortOrder="@ViewData["DateSortParm"]">@Html.DisplayNameFor(model => model.DatepublicationArticle)</a>
+                @Html.DisplayNameFor(model => model.DatepublicationArticle)
             </th>
         </tr>
     </thead>
@@ -55,8 +63,10 @@
     </tbody>
 </table>
 
-@ViewData["nbArtTotal"]
-@ViewData["currentPage"]
+<hr />
+Nb d'article    : @ViewData["nbArtTotal"]
+Filtre actuel   : @ViewData["sortorder"]
+
 
 <a class="btn btn-outline-dark" id="Previous"> Previous</a>
 <a class="btn btn-outline-dark" id="Next"> Next</a>
@@ -66,13 +76,24 @@
 <script>
 
     $('#Next').click(function () {
+        var e = document.getElementById("sorting");
+        var strUser = e.options[e.selectedIndex].text;
 
-        location.href = "/Articles/Indexing?currentPage=@((int)ViewData["currentPage"]+1)&&searchString=@ViewData["CurrentFilter"]";
+        location.href = "/Articles/Indexing?currentPage=@((int)ViewData["currentPage"]+1)&&searchString=@ViewData["CurrentFilter"]&&sortorder=" + strUser;
     });
 
     $('#Previous').click(function () {
+        var e = document.getElementById("sorting");
+        var strUser = e.options[e.selectedIndex].text;
 
-        location.href = "/Articles/Indexing?currentPage=@((int)ViewData["currentPage"]-1)&&searchString=@ViewData["CurrentFilter"]";
+        location.href = "/Articles/Indexing?currentPage=@((int)ViewData["currentPage"]-1)&&searchString=@ViewData["CurrentFilter"]&&sortorder=" + strUser;
+    });
+    $('#appySorting').click(function () {
+
+        var e = document.getElementById("sorting");
+        var strUser = e.options[e.selectedIndex].text;
+
+        location.href = "/Articles/Indexing?currentPage=@((int)ViewData["currentPage"]-1)&&searchString=@ViewData["CurrentFilter"]&&sortorder=" + strUser;
 });
 
 </script>
