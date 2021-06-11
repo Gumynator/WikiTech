@@ -57,7 +57,7 @@ namespace WikiTechWebApp.Controllers
         }
 
         // GET: ArticlesController to restor
-        public IActionResult Indexing(string sortorder, string searchString, int currentPage)
+        public IActionResult Indexing(string sortorder, string searchString, int currentPage, int idTag) //passage des super paramètre
         {
           //  int currentPage = _numPage; // to give with de paginate
 
@@ -78,6 +78,7 @@ namespace WikiTechWebApp.Controllers
 
             IEnumerable<Article> artList;
 
+            //envoie des données à le vue
             ViewData["CurrentFilter"] = searchString;
             ViewData["CurrentPage"] = currentPage;
             ViewData["sortorder"] = sortorder;
@@ -87,7 +88,7 @@ namespace WikiTechWebApp.Controllers
             try
             {
 
-                HttpResponseMessage response = client.GetAsync("Articles/testing/" + currentPage + "/" + chainetest).Result;
+                HttpResponseMessage response = client.GetAsync("Articles/testing/" + currentPage + "/" + chainetest + "/" + idTag).Result;
                 artList = response.Content.ReadAsAsync<IEnumerable<Article>>().Result;
 
                 HttpResponseMessage respage = client.GetAsync("Articles/nbtot").Result;

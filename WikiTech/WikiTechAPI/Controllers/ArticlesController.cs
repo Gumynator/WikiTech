@@ -90,10 +90,9 @@ namespace WikiTechAPI.Controllers
         }
 
         //get article with date only **PAGINTATION **
-        [HttpGet("nbtotbysearch")]
-        public int GetArticleNbTotalBySearch(String search)
+        public int GetArticleNbTotalBySearch(List<Article> listArticle)
         {
-            return _context.Article.Where(d => d.IsactiveArticle == true).Where(s => s.TitreArticle.Contains(search)).Count();
+            return listArticle.Count();
         }
 
         //get article with date only **PAGINTATION **
@@ -116,11 +115,10 @@ namespace WikiTechAPI.Controllers
             return nbpage;
         }
 
-        [HttpGet("pagetotbysearch")]
-        public int GetPageNbTotalBySearch(String search)
+        public int GetPageNbTotalBySearch(List<Article> listArticle)
         {
 
-            int nbtot = _context.Article.Where(d => d.IsactiveArticle == true).Where(s => s.TitreArticle.Contains(search)).Count();
+            int nbtot = listArticle.Count();
             int nbpage;
 
             if (nbtot % NB_PER_PAGE > 0)
@@ -166,8 +164,8 @@ namespace WikiTechAPI.Controllers
         }
 
         //get article with date only **Searching by titre**
-        [HttpGet("testing/{nbPage}/{chainetest}")]
-        public async Task<ActionResult<IEnumerable<Article>>> GetArticletesting(int nbPage, string chainetest = "") //="" have by default
+        [HttpGet("testing/{nbPage}/{chainetest}/{idTag}")]
+        public async Task<ActionResult<IEnumerable<Article>>> GetArticletesting(int nbPage, string chainetest, int idTag) //="" have by default
         {
 
             string sortorder = chainetest.Substring(0, 4); //ordre de sorting
@@ -182,14 +180,49 @@ namespace WikiTechAPI.Controllers
             {
                 //*************ARTICLES+RECHERCHE
                 ListeArticle = await _context.Article.Where(d => d.IsactiveArticle == true).Where(s => s.TitreArticle.Contains(searchString)).Include(p => p.IdNavigation).ToListAsync();
+                if (idTag != 0)
+                {
+                    ListeArticle = await _context.Article
+                        .Where(d => d.IsactiveArticle == true)
+                        .Where(s => s.TitreArticle.Contains(searchString))
+                        .Include(p => p.IdNavigation)
+                        .Include(p => p.Referencer)
+                        .Where(p => p.Referencer.Any(x => x.IdTag == idTag))
+                        .ToListAsync();
+                }
+                else
+                {
+                    ListeArticle = await _context.Article.Where(d => d.IsactiveArticle == true).Where(s => s.TitreArticle.Contains(searchString)).Include(p => p.IdNavigation).ToListAsync();
+                }
                 //*************ARTICLES+RECHERCHE
             }
             else
             {
                 //*************ARTICLES
-                ListeArticle = await _context.Article.Where(d => d.IsactiveArticle == true).Include(p => p.IdNavigation).ToListAsync();
+                if (idTag != 0)
+                {
+                    ListeArticle = await _context.Article
+                        .Where(d => d.IsactiveArticle == true)
+                        .Include(p => p.IdNavigation)
+                        .Include(p => p.Referencer)
+                        .Where(p => p.Referencer.Any(x => x.IdTag == idTag))
+                        .ToListAsync();
+                }
+                else
+                {
+                    ListeArticle = await _context.Article.Where(d => d.IsactiveArticle == true).Include(p => p.IdNavigation).ToListAsync();
+                }
                 //*************ARTICLES
             }
+
+
+            //ListeArticle = await _context.Article
+            //    .Where(d => d.IsactiveArticle == true)
+            //    .Include(p => p.IdNavigation)
+            //    .Include(p => p.Referencer)
+            //    .Where(p => p.Referencer.Any(x => x.IdTag == idTag))
+            //    .ToListAsync();
+
 
 
             //*************SORTAGE
@@ -217,48 +250,23 @@ namespace WikiTechAPI.Controllers
             ListeArticle = intermediateListeArticle.ToList();
             //*************SORTAGE
 
-
-            if (searchString.Length > 0)
+            //*************PAGINATION
+            if (nbPage > GetPageNbTotalBySearch(ListeArticle))
             {
-                //*************PAGINATION+SEARCH
-                if (nbPage > GetPageNbTotalBySearch(searchString))
-                {
-                    nbPage = GetPageNbTotalBySearch(searchString);
-                }
-                if (nbPage < 1)
-                {
-                    nbPage = 1;
-                }
-
-                if (nbPage * nbPerPage > GetArticleNbTotalBySearch(searchString))
-                {
-                    nbPerPage -= nbPage * nbPerPage - GetArticleNbTotalBySearch(searchString);
-                }
-
-                rowArticles = ListeArticle.GetRange((nbPage - 1) * nbPerPage, nbPerPage);
-
-                //*************PAGINATION+SEARCH
+                nbPage = GetPageNbTotalBySearch(ListeArticle);
             }
-            else
+            if (nbPage < 1)
             {
-                //*************PAGINATION
-                if (nbPage > GetPageNbTotal())
-                {
-                    nbPage = GetPageNbTotal();
-                }
-                if (nbPage < 1)
-                {
-                    nbPage = 1;
-                }
-
-                if (nbPage * nbPerPage > GetArticleNbTotal())
-                {
-                    nbPerPage -= nbPage * nbPerPage - GetArticleNbTotal();
-                }
-
-                rowArticles = ListeArticle.GetRange((nbPage - 1) * nbPerPage, nbPerPage);
+                nbPage = 1;
             }
 
+            if (nbPage * nbPerPage > GetArticleNbTotalBySearch(ListeArticle))
+            {
+                nbPerPage -= nbPage * nbPerPage - GetArticleNbTotalBySearch(ListeArticle);
+            }
+
+            rowArticles = ListeArticle.GetRange((nbPage - 1) * nbPerPage, nbPerPage);
+            //*************PAGINATION
 
             return rowArticles;
         }

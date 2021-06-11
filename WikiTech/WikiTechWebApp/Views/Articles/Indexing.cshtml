@@ -71,9 +71,66 @@ Filtre actuel   : @ViewData["sortorder"]
 <a class="btn btn-outline-dark" id="Previous"> Previous</a>
 <a class="btn btn-outline-dark" id="Next"> Next</a>
 
+<a onclick="tagger('1')"> test</a>
+
+
+<div>
+    <hr>
+    <div class="list-group list-group">
+
+        <h4 class="" id="sections">Catégorie</h4>
+        <!--<a href="#" class="list-group-item"><span class="badge">14</span> Upcoming Sessions</a>-->
+
+        <hr class="">
+        <h4 class="" id="tags">Tags (all) à devenir TOP 10</h4>
+        <!--<a href="#" class="list-group-item"><span class="badge">3</span> Second item</a>-->
+
+    </div>
+</div>
+
+
 @*<input id="Button1" type="button" value="button" />*@
 
 <script>
+
+    $(document).ready(function () {
+        getTags();
+    }
+    )
+
+    function getTags() {
+        $.ajax(
+            {
+                url: "http://localhost:59601/Api/Tags/",
+                type: "GET",
+                dataType: "JSON",
+                contentType: "application/json",
+                headers: { "ApiKey": "61c08ad1-0823-4c38-9853-700675e3c8fc" },
+                success: function (data) {
+                    console.log(data);
+                    createTagSelect(data);
+                }
+            });
+    }
+
+    function createTagSelect(data) {
+        var select = $("#tags");
+
+        $.each(data, function (key, value) {
+            console.log(value);
+            var element = "<a class=\"list-group-item\" onclick=\"tagger('"+value.idTag+"')\"><span class=\"badge\">nb</span>" + value.nomTag + "</a>";
+            select.append(element);
+        })
+    }
+
+    function tagger(id) {
+        var e = document.getElementById("sorting");
+        var strUser = e.options[e.selectedIndex].text;
+        console.log(id)
+        location.href = "/Articles/Indexing?currentPage=@((int)ViewData["currentPage"]+1)&&searchString=@ViewData["CurrentFilter"]&&sortorder=" + strUser + "&&idTag=" + id;
+
+    }
+
 
     $('#Next').click(function () {
         var e = document.getElementById("sorting");
