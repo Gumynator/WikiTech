@@ -32,22 +32,18 @@
   
   <ItemGroup>
   <None Remove="Assets\PdfStyles.css" />
-  <None Remove="libwkhtmltox.dll" />
-  <None Remove="libwkhtmltox.dylib" />
-  <None Remove="libwkhtmltox.so" />
+  <None Remove="libs\32 bit\libwkhtmltox.dll" />
+  <None Remove="libs\64 bit\libwkhtmltox.dll" />
 </ItemGroup>
 
 <ItemGroup>
   <Content Include="Assets\PdfStyles.css">
     <CopyToOutputDirectory>Always</CopyToOutputDirectory>
   </Content>
-  <Content Include="libwkhtmltox.dll">
+  <Content Include="libs\32 bit\libwkhtmltox.dll">
     <CopyToOutputDirectory>Always</CopyToOutputDirectory>
   </Content>
-  <Content Include="libwkhtmltox.dylib">
-    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-  </Content>
-  <Content Include="libwkhtmltox.so">
+  <Content Include="libs\64 bit\libwkhtmltox.dll">
     <CopyToOutputDirectory>Always</CopyToOutputDirectory>
   </Content>
 </ItemGroup>

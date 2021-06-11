@@ -85,7 +85,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="TinyArea" class="form-label"><b>Contenu de l'article</b></label>
-                    <p> @Model.Article.TextArticle </p>
+                    <p> @Html.Raw(Model.Article.TextArticle) </p>
                 </div>
                 
             </div>

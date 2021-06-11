@@ -52,7 +52,7 @@ namespace WikiTechWebApp.Controllers
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
         //Auteur : Pancini Marco
-        //Création : 28.04.2021
+        //Création : 25.04.2021
         //Modification : 30.05.2021
         //Description : Function qui demande à l'api de créer stocker et envoyer le pdf d'une facture
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -68,7 +68,7 @@ namespace WikiTechWebApp.Controllers
             }
             HttpResponseMessage postPdfFacture = await client.PostAsJsonAsync("PdfCreator/CreatePdfFacture/", factures);
             string url = client.BaseAddress.AbsoluteUri;
-            url = url.Remove(22,4);
+            url = url.Remove(37,4);
 
             using (var result = await client.GetAsync(url + "pdffactures/" + factures.IdFacture + ".pdf"))
             {
