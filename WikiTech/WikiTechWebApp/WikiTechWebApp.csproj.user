@@ -19,11 +19,16 @@
     <WebStackScaffolding_ControllerDialogWidth>650</WebStackScaffolding_ControllerDialogWidth>
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
     <WebStackScaffolding_IsViewGenerationSelected>False</WebStackScaffolding_IsViewGenerationSelected>
+<<<<<<< Updated upstream
 
     <NameOfLastUsedPublishProfile>WikiTechWebApp - Web Deploy</NameOfLastUsedPublishProfile>
 
     <NameOfLastUsedPublishProfile>WikiTechWebApp5 - Web Deploy</NameOfLastUsedPublishProfile>
 
+=======
+    <NameOfLastUsedPublishProfile>WikiTechWebApp - Web Deploy</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>WikiTechWebApp5 - Web Deploy</NameOfLastUsedPublishProfile>
+>>>>>>> Stashed changes
     <WebStackScaffolding_IsViewGenerationSelected>True</WebStackScaffolding_IsViewGenerationSelected>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

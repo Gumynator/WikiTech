@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 C:\GitHub\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\GitHub\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\appsettings.json
 C:\GitHub\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\WikiTechAPI.exe
@@ -334,3 +335,10 @@ C:\Users\M4800\Desktop\GitDesktop\WikiTech\WikiTech\WikiTechAPI\obj\Debug\netcor
 C:\Users\M4800\Desktop\GitDesktop\WikiTech\WikiTech\WikiTechAPI\obj\Debug\netcoreapp3.1\WikiTechAPI.dll
 C:\Users\M4800\Desktop\GitDesktop\WikiTech\WikiTech\WikiTechAPI\obj\Debug\netcoreapp3.1\WikiTechAPI.pdb
 C:\Users\M4800\Desktop\GitDesktop\WikiTech\WikiTech\WikiTechAPI\obj\Debug\netcoreapp3.1\WikiTechAPI.genruntimeconfig.cache
+=======
+C:\loarey\WikiTech\WikiTech\WikiTechAPI\obj\Debug\netcoreapp3.1\WikiTechAPI.AssemblyInfoInputs.cache
+C:\loarey\WikiTech\WikiTech\WikiTechAPI\obj\Debug\netcoreapp3.1\WikiTechAPI.AssemblyInfo.cs
+C:\loarey\WikiTech\WikiTech\WikiTechAPI\obj\Debug\netcoreapp3.1\WikiTechAPI.MvcApplicationPartsAssemblyInfo.cache
+C:\loarey\WikiTech\WikiTech\WikiTechAPI\obj\Debug\netcoreapp3.1\WikiTechAPI.RazorAssemblyInfo.cache
+C:\loarey\WikiTech\WikiTech\WikiTechAPI\obj\Debug\netcoreapp3.1\WikiTechAPI.RazorAssemblyInfo.cs
+>>>>>>> Stashed changes
