@@ -24,7 +24,6 @@ C:\GitHub\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.CS
 C:\GitHub\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.Razor.dll
 C:\GitHub\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.Workspaces.dll
 C:\GitHub\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
-C:\GitHub\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\Microsoft.Data.Sqlite.dll
 C:\GitHub\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\Microsoft.DotNet.PlatformAbstractions.dll
 C:\GitHub\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
 C:\GitHub\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
@@ -521,6 +520,7 @@ C:\GitHub\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\Assets\PdfStyles.css
 C:\GitHub\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\libs\32 bit\libwkhtmltox.dll
 C:\GitHub\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\libs\64 bit\libwkhtmltox.dll
 C:\GitHub\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\DinkToPdf.dll
+<<<<<<< main
 =======
 =======
 <<<<<<< main
@@ -543,3 +543,5 @@ C:\loarey\WikiTech\WikiTech\WikiTechAPI\obj\Debug\netcoreapp3.1\WikiTechAPI.Razo
 >>>>>>> Stashed changes
 >>>>>>> Réparation
 >>>>>>> Réparation
+=======
+>>>>>>> réparé

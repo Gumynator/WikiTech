@@ -55,10 +55,14 @@
           "assetTargetFallback": true,
           "warn": true,
 <<<<<<< main
+<<<<<<< main
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.204\\RuntimeIdentifierGraph.json"
 =======
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
 >>>>>>> Réparation
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.204\\RuntimeIdentifierGraph.json"
+>>>>>>> réparé
         }
       }
     },
@@ -117,10 +121,14 @@
           "assetTargetFallback": true,
           "warn": true,
 <<<<<<< main
+<<<<<<< main
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.204\\RuntimeIdentifierGraph.json"
 =======
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
 >>>>>>> Réparation
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.204\\RuntimeIdentifierGraph.json"
+>>>>>>> réparé
         }
       }
     }

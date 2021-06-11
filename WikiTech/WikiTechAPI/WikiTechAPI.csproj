@@ -12,7 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-<<<<<<< Updated upstream
     <PackageReference Include="DinkToPdf" Version="1.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.15" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
