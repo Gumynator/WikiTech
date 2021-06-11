@@ -1,4 +1,7 @@
 <<<<<<< main
+<<<<<<< main
+=======
+>>>>>>> Réparation
 <<<<<<< Updated upstream
 C:\GitHub\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\GitHub\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\appsettings.json
@@ -520,15 +523,23 @@ C:\GitHub\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\libs\64 bit\libwkhtmltox.
 C:\GitHub\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\DinkToPdf.dll
 =======
 =======
+<<<<<<< main
 =======
 >>>>>>> réparé
+=======
+>>>>>>> Réparation
 C:\loarey\WikiTech\WikiTech\WikiTechAPI\obj\Debug\netcoreapp3.1\WikiTechAPI.AssemblyInfoInputs.cache
 C:\loarey\WikiTech\WikiTech\WikiTechAPI\obj\Debug\netcoreapp3.1\WikiTechAPI.AssemblyInfo.cs
 C:\loarey\WikiTech\WikiTech\WikiTechAPI\obj\Debug\netcoreapp3.1\WikiTechAPI.MvcApplicationPartsAssemblyInfo.cache
 C:\loarey\WikiTech\WikiTech\WikiTechAPI\obj\Debug\netcoreapp3.1\WikiTechAPI.RazorAssemblyInfo.cache
 C:\loarey\WikiTech\WikiTech\WikiTechAPI\obj\Debug\netcoreapp3.1\WikiTechAPI.RazorAssemblyInfo.cs
 <<<<<<< main
+<<<<<<< main
 >>>>>>> Stashed changes
 >>>>>>> Réparation
 =======
 >>>>>>> réparé
+=======
+>>>>>>> Stashed changes
+>>>>>>> Réparation
+>>>>>>> Réparation
