@@ -179,7 +179,7 @@ namespace WikiTechAPI.Controllers
             if (searchString.Length > 0)
             {
                 //*************ARTICLES+RECHERCHE
-                ListeArticle = await _context.Article.Where(d => d.IsactiveArticle == true).Where(s => s.TitreArticle.Contains(searchString)).Include(p => p.IdNavigation).ToListAsync();
+                //check si un tag est setté
                 if (idTag != 0)
                 {
                     ListeArticle = await _context.Article
@@ -214,16 +214,6 @@ namespace WikiTechAPI.Controllers
                 }
                 //*************ARTICLES
             }
-
-
-            //ListeArticle = await _context.Article
-            //    .Where(d => d.IsactiveArticle == true)
-            //    .Include(p => p.IdNavigation)
-            //    .Include(p => p.Referencer)
-            //    .Where(p => p.Referencer.Any(x => x.IdTag == idTag))
-            //    .ToListAsync();
-
-
 
             //*************SORTAGE
             IEnumerable<Article> intermediateListeArticle = ListeArticle;

@@ -7,6 +7,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -59,8 +60,6 @@ namespace WikiTechWebApp.Controllers
         // GET: ArticlesController to restor
         public IActionResult Indexing(string sortorder, string searchString, int currentPage, int idTag) //passage des super paramètre
         {
-          //  int currentPage = _numPage; // to give with de paginate
-
             if (currentPage == 0)
             {
                 currentPage = 1;
@@ -76,12 +75,14 @@ namespace WikiTechWebApp.Controllers
 
             }
 
+
             IEnumerable<Article> artList;
 
             //envoie des données à le vue
             ViewData["CurrentFilter"] = searchString;
             ViewData["CurrentPage"] = currentPage;
             ViewData["sortorder"] = sortorder;
+            ViewData["currentTag"] = idTag;
 
             string chainetest = sortorder + searchString;
 

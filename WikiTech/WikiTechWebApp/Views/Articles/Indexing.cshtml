@@ -11,17 +11,22 @@
 <form asp-action="Indexing" method="get">
     <div class="form-actions no-color">
         <p>
-            Find by name: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
-            <input type="submit" value="Search" class="btn btn-outline-primary" /> |
-            <a class="btn btn-outline-danger" asp-action="Indexing">Clear</a>
+            Find by name: <input type="text" id="SearchString" value="@ViewData["CurrentFilter"]" />
+            @*<input type="submit" value="Search" class="btn btn-outline-primary" /> |*@
+            <a class="btn btn-outline-primary" id="searching"> search</a>
+            <a class="btn btn-outline-danger" asp-action="Indexing">Clear search</a>
         </p>
 
         <select id="sorting">
-            <option value="az" selected>atoz</option>
+            <option value="az">atoz</option>
             <option value="za">ztoa</option>
             <option value="dateasc">dasc</option>
             <option value="datedesc">desc</option>
         </select>
+
+        <input type="hidden" id="hiddensorting" value="@ViewData["sortorder"]">
+        <input type="hidden" id="idTaggin" value="@ViewData["currentTag"]">
+
         <a class="btn btn-outline-primary" id="appySorting"> appySorting</a>
     </div>
 </form>
@@ -118,39 +123,105 @@ Filtre actuel   : @ViewData["sortorder"]
 
         $.each(data, function (key, value) {
             console.log(value);
-            var element = "<a class=\"list-group-item\" onclick=\"tagger('"+value.idTag+"')\"><span class=\"badge\">nb</span>" + value.nomTag + "</a>";
+            var nbarticle = getnbarticlebytag(value.idTag);
+            console.log(value.idTag + " : " + nbarticle);
+            var element = "<a class=\"list-group-item\" onclick=\"tagger('" + value.idTag + "')\"><span class=\"badge\">nb</span>" + value.nomTag + nbarticle + "</a>";
             select.append(element);
         })
     }
 
-    function tagger(id) {
-        var e = document.getElementById("sorting");
-        var strUser = e.options[e.selectedIndex].text;
-        console.log(id)
-        location.href = "/Articles/Indexing?currentPage=@((int)ViewData["currentPage"]+1)&&searchString=@ViewData["CurrentFilter"]&&sortorder=" + strUser + "&&idTag=" + id;
-
+    async function getnbarticlebytag(id) {
+        $.ajax(
+            {
+                url: "http://localhost:59601/Api/Referencers/nbarticlebytag/" + id,
+                type: "GET",
+                dataType: "JSON",
+                contentType: "application/json",
+                headers: { "ApiKey": "61c08ad1-0823-4c38-9853-700675e3c8fc" },
+                success: function (data) {
+                    return (data);
+                }
+            });
     }
 
 
-    $('#Next').click(function () {
-        var e = document.getElementById("sorting");
-        var strUser = e.options[e.selectedIndex].text;
+    function tagger(id) {
+        var hidden = document.getElementById("hiddensorting").value;
+        var selected = document.getElementById("sorting");
+        var selectedstr = selected.options[selected.selectedIndex].text;
 
-        location.href = "/Articles/Indexing?currentPage=@((int)ViewData["currentPage"]+1)&&searchString=@ViewData["CurrentFilter"]&&sortorder=" + strUser;
+        var idTag = document.getElementById("idTaggin").value;
+
+        if (selectedstr == hidden) {
+            location.href = "/Articles/Indexing?currentPage=@((int)ViewData["currentPage"]+1)&&searchString=@ViewData["CurrentFilter"]&&sortorder=" + selectedstr + "&&idTag=" + id;
+        } else
+        {
+            location.href = "/Articles/Indexing?currentPage=@((int)ViewData["currentPage"]+1)&&searchString=@ViewData["CurrentFilter"]&&sortorder=" + hidden + "&&idTag=" + id;
+        }
+
+    }
+
+    $('#Next').click(function () {
+        var hidden = document.getElementById("hiddensorting").value;
+        var selected = document.getElementById("sorting");
+        var selectedstr = selected.options[selected.selectedIndex].text;
+
+        var idTag = document.getElementById("idTaggin").value;
+
+        if (selectedstr == hidden) {
+            location.href = "/Articles/Indexing?currentPage=@((int)ViewData["currentPage"]+1)&&searchString=@ViewData["CurrentFilter"]&&sortorder=" + selectedstr + "&&idTag=" + idTag;
+        } else
+        {
+            location.href = "/Articles/Indexing?currentPage=@((int)ViewData["currentPage"]+1)&&searchString=@ViewData["CurrentFilter"]&&sortorder=" + hidden + "&&idTag=" + idTag;
+        }
     });
 
     $('#Previous').click(function () {
-        var e = document.getElementById("sorting");
-        var strUser = e.options[e.selectedIndex].text;
+        var hidden = document.getElementById("hiddensorting").value;
+        var selected = document.getElementById("sorting");
+        var selectedstr = selected.options[selected.selectedIndex].text;
 
-        location.href = "/Articles/Indexing?currentPage=@((int)ViewData["currentPage"]-1)&&searchString=@ViewData["CurrentFilter"]&&sortorder=" + strUser;
+        var idTag = document.getElementById("idTaggin").value;
+
+        if (selectedstr == hidden) {
+            location.href = "/Articles/Indexing?currentPage=@((int)ViewData["currentPage"]-1)&&searchString=@ViewData["CurrentFilter"]&&sortorder=" + selectedstr + "&&idTag=" + idTag;
+        } else
+        {
+            location.href = "/Articles/Indexing?currentPage=@((int)ViewData["currentPage"]-1)&&searchString=@ViewData["CurrentFilter"]&&sortorder=" + hidden + "&&idTag=" + idTag;
+        }
     });
     $('#appySorting').click(function () {
 
-        var e = document.getElementById("sorting");
-        var strUser = e.options[e.selectedIndex].text;
+        var hidden = document.getElementById("hiddensorting").value;
+        var selected = document.getElementById("sorting");
+        var selectedstr = selected.options[selected.selectedIndex].text;
 
-        location.href = "/Articles/Indexing?currentPage=@((int)ViewData["currentPage"]-1)&&searchString=@ViewData["CurrentFilter"]&&sortorder=" + strUser;
+        var idTag = document.getElementById("idTaggin").value;
+
+        if (selectedstr != hidden) {
+            location.href = "/Articles/Indexing?currentPage=@((int)ViewData["currentPage"]+1)&&searchString=@ViewData["CurrentFilter"]&&sortorder=" + selectedstr + "&&idTag=" + idTag;
+        } else
+        {
+            location.href = "/Articles/Indexing?currentPage=@((int)ViewData["currentPage"]+1)&&searchString=@ViewData["CurrentFilter"]&&sortorder=" + hidden + "&&idTag=" + idTag;
+        }
+    });
+
+    $('#searching').click(function () {
+
+        var hidden = document.getElementById("hiddensorting").value;
+        var selected = document.getElementById("sorting");
+        var selectedstr = selected.options[selected.selectedIndex].text;
+
+        var idTag = document.getElementById("idTaggin").value;
+
+        var search = document.getElementById("SearchString").value;
+
+        if (selectedstr != hidden) {
+            location.href = "/Articles/Indexing?currentPage=@((int)ViewData["currentPage"]+1)&&searchString=" + search + "&&sortorder=" + selectedstr + "&&idTag=" + idTag;
+        } else
+        {
+            location.href = "/Articles/Indexing?currentPage=@((int)ViewData["currentPage"]+1)&&searchString=" + search + "&&sortorder=" + hidden + "&&idTag=" + idTag;
+        }
 });
 
 </script>
