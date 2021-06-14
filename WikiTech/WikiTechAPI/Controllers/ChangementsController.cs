@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WikiTechAPI.Models;
+using WikiTechAPI.Utility;
 
 namespace WikiTechAPI.Controllers
 {
@@ -86,6 +87,10 @@ namespace WikiTechAPI.Controllers
                 articleToModify.TextArticle = changement.TextChangement;
                 articleToModify.DescriptionArticle = changement.DescriptionChangement;
 
+                Logwritter log = new Logwritter("ChangementID : " + changement.IdChangement + " l'etat a été modifié");
+                log.writeLog();
+
+
                 await _context.SaveChangesAsync();
 
             }
@@ -113,6 +118,9 @@ namespace WikiTechAPI.Controllers
             _context.Changement.Add(changement);
             await _context.SaveChangesAsync();
 
+            Logwritter log = new Logwritter("ChangementID : " + changement.IdChangement + " a été ajouté et en attente de validation");
+            log.writeLog();
+
             return CreatedAtAction("GetChangement", new { id = changement.IdChangement }, changement);
         }
 
@@ -128,6 +136,9 @@ namespace WikiTechAPI.Controllers
 
             _context.Changement.Remove(changement);
             await _context.SaveChangesAsync();
+
+            Logwritter log = new Logwritter("ChangementID : " + changement.IdChangement + " a été supprimé");
+            log.writeLog();
 
             return changement;
         }

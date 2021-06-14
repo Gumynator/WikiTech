@@ -13,6 +13,7 @@ using System.IO;
 using WikiTechAPI.Utility;
 using System;
 using System.Runtime.InteropServices;
+using Microsoft.Extensions.Logging;
 
 namespace WikiTechAPI
 {
@@ -30,6 +31,10 @@ namespace WikiTechAPI
         {
             services.AddDbContext<WikiTechDBContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddLogging(loggingBuilder => {
+                loggingBuilder.AddFile("./Logs/app.log", append: true);
+            });
 
             //DinkToPdf
             CustomAssemblyLoadContext context = new CustomAssemblyLoadContext();

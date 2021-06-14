@@ -1,0 +1,8 @@
+﻿
+LOG : 14.06.2021 16:03:15 | Message : ArticleID : 38 est desactivé
+LOG : 14.06.2021 16:04:50 | Message : ArticleID : 63 est desactivé
+LOG : 14.06.2021 16:20:00 | Message : ArticleID : 59d49ec9-3622-4d5c-8e47-8ba7bd0ab15d est ajouté
+LOG : 14.06.2021 16:20:19 | Message : ArticleID : 59d49ec9-3622-4d5c-8e47-8ba7bd0ab15d l'etat a été modifié
+LOG : 14.06.2021 16:20:29 | Message : ArticleID : 00221f02-bfdb-4607-9403-7168e260ea8a l'etat a été modifié
+LOG : 14.06.2021 16:20:31 | Message : ArticleID : 49 est desactivé
+LOG : 14.06.2021 16:20:45 | Message : ArticleID : 54 est supprimé

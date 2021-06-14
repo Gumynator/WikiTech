@@ -27,6 +27,7 @@ using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Processing;
 using System.Dynamic;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using WikiTechAPI.Utility;
 
 namespace WikiTechWebApp.Controllers
 {
@@ -87,6 +88,9 @@ namespace WikiTechWebApp.Controllers
                     List<Referencer> resultReferences = new List<Referencer>();
 
                     resultReferences = await FunctionAPI.AddTagToArticle(idTags, resultarticle.IdArticle);
+
+                    Logwritter log = new Logwritter("Nouvelle article proposé et en attente de validation");
+                    log.writeLog();
 
 
                     return Redirect("/Articles/Index");
@@ -152,6 +156,11 @@ namespace WikiTechWebApp.Controllers
 
 
                     image.Save(saveimg);
+
+                    Logwritter log = new Logwritter("Image Uploadée");
+                    log.writeLog();
+
+
                     return saveimg;
                 }
                 catch (ExceptionImg e)
@@ -212,7 +221,6 @@ namespace WikiTechWebApp.Controllers
                 HttpResponseMessage responsearticle = client.GetAsync("Articles/" + id).Result;
                 article = responsearticle.Content.ReadAsAsync<Article>().Result;
 
-
                 return View(article);
 
             }
@@ -259,9 +267,9 @@ namespace WikiTechWebApp.Controllers
                     //fonction d'ajout de point pour le valideur
                     FunctionAPI.IncreasePointForUser(client, valideurArticle, POINT_VALIDEUR);
                     //fonction d'ajout de point pour l'auteur
-                    FunctionAPI.IncreasePointForUser(client, currentArticle.Id, POINT_CREATEUR); 
+                    FunctionAPI.IncreasePointForUser(client, currentArticle.Id, POINT_CREATEUR);
 
-                    return Redirect("/Articles/Details/" + currentArticle.IdArticle);
+                return Redirect("/Articles/Details/" + currentArticle.IdArticle);
 
                 }
                 catch (ExceptionLiaisonApi e)

@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using WikiTechAPI.Models;
 using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
 using System.Text.Json.Serialization;
+using WikiTechAPI.Utility;
 
 namespace WikiTechAPI.Controllers
 {
@@ -32,8 +33,6 @@ namespace WikiTechAPI.Controllers
         public async Task<ActionResult<IEnumerable<Article>>> GetArticle()
         {
             //return await _context.Article.ToListAsync();
-
-            
             return await _context.Article.Include(p => p.IdNavigation).ToListAsync();
         }
 
@@ -45,7 +44,6 @@ namespace WikiTechAPI.Controllers
         {
 
             var article = await _context.Article.Include(p => p.IdNavigation).Include(r => r.Referencer).Include(c => c.Changement).FirstOrDefaultAsync(i => i.IdArticle == id);
-
 
             if (article == null)
             {
@@ -291,6 +289,9 @@ namespace WikiTechAPI.Controllers
                 }
             }
 
+            Logwritter log = new Logwritter("ArticleID : " + article.Id + " l'etat a été modifié");
+            log.writeLog();
+
             return NoContent();
         }
 
@@ -302,6 +303,9 @@ namespace WikiTechAPI.Controllers
         {
             _context.Article.Add(article);
             await _context.SaveChangesAsync();
+
+            Logwritter log = new Logwritter("ArticleID : " + article.Id + " est ajouté");
+            log.writeLog();
 
             return CreatedAtAction("GetArticle", new { id = article.IdArticle }, article);
         }
@@ -318,6 +322,9 @@ namespace WikiTechAPI.Controllers
 
             _context.Article.Remove(article);
             await _context.SaveChangesAsync();
+
+            Logwritter log = new Logwritter("ArticleID : " + id + " est supprimé");
+            log.writeLog();
 
             return article;
         }
@@ -344,6 +351,9 @@ namespace WikiTechAPI.Controllers
             articleToModify.IsactiveArticle = false;
             await _context.SaveChangesAsync();
 
+            Logwritter log = new Logwritter("ArticleID : " + id + " est desactivé");
+            log.writeLog();
+
             return articleToModify;
         }
 
@@ -361,6 +371,9 @@ namespace WikiTechAPI.Controllers
 
             articleToModify.IsactiveArticle = true;
             await _context.SaveChangesAsync();
+
+            Logwritter log = new Logwritter("ArticleID : " + id + " est activé");
+            log.writeLog();
 
             return articleToModify;
         }

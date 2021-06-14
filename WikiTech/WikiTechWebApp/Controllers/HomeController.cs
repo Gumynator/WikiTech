@@ -12,6 +12,8 @@ using WikiTechWebApp.Models;
 using System.Net.Http;
 using System.Net.Mail;
 using SendGrid.Helpers.Mail;
+using System.IO;
+using WikiTechAPI.Utility;
 
 namespace WikiTechWebApp.Controllers
 {
