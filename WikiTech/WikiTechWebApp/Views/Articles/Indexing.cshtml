@@ -118,19 +118,11 @@ Filtre actuel   : @ViewData["sortorder"]
             });
     }
 
-    function createTagSelect(data) {
-        var select = $("#tags");
+    function getnbarticlebytag(id) {
 
-        $.each(data, function (key, value) {
-            console.log(value);
-            var nbarticle = getnbarticlebytag(value.idTag);
-            console.log(value.idTag + " : " + nbarticle);
-            var element = "<a class=\"list-group-item\" onclick=\"tagger('" + value.idTag + "')\"><span class=\"badge\">nb</span>" + value.nomTag + nbarticle + "</a>";
-            select.append(element);
-        })
-    }
-
-    async function getnbarticlebytag(id) {
+        return new Promise((resolve, reject) => {
+            //here our function should be implemented 
+           
         $.ajax(
             {
                 url: "http://localhost:59601/Api/Referencers/nbarticlebytag/" + id,
@@ -139,10 +131,32 @@ Filtre actuel   : @ViewData["sortorder"]
                 contentType: "application/json",
                 headers: { "ApiKey": "61c08ad1-0823-4c38-9853-700675e3c8fc" },
                 success: function (data) {
-                    return (data);
+                    console.log("ttt" + data)
+                    resolve(data);
                 }
             });
+            setTimeout(() => {
+                reject();
+                ;
+            }, 10000
+            );
+        });
+
     }
+
+     function createTagSelect(data) {
+        var select = $("#tags");
+
+         $.each(data, async function (key, value) {
+            console.log(value);
+             var nbarticle = await getnbarticlebytag(value.idTag)
+            console.log(value.idTag + " : " + nbarticle);
+            var element = "<a class=\"list-group-item\" onclick=\"tagger('" + value.idTag + "')\"><span class=\"badge\">nb</span>" + value.nomTag + nbarticle + "</a>";
+            select.append(element);            
+        })
+    }
+
+
 
 
     function tagger(id) {
