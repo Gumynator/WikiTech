@@ -55,7 +55,7 @@
     {
 
         <li class="nav-item">
-            <a class="nav-link text-white" id="Articles" href="@Url.Action("Index", "Articles", new { area = "Articles" }) title="Articles">Articles</a>
+            <a class="nav-link text-white" asp-controller="Articles" asp-action="Index" asp-route-currentPage="1">Articles</a>
         </li>
         <li class="nav-item">
             <a class="nav-link text-white" id="register" asp-area="Identity" asp-page="/Account/Register">s'inscrire</a>

@@ -36,29 +36,29 @@ namespace WikiTechWebApp.Controllers
         }
 
         // GET: ArticlesController to restor
-       public IActionResult Index()
-        {
+       //public IActionResult Index()
+       // {
 
-            IEnumerable<Article> artList;
+       //     IEnumerable<Article> artList;
 
-            try
-            {
+       //     try
+       //     {
 
-                HttpResponseMessage response = client.GetAsync("Articles/beactive").Result;
-                artList = response.Content.ReadAsAsync<IEnumerable<Article>>().Result;
-                return View(artList);
+       //         HttpResponseMessage response = client.GetAsync("Articles/beactive").Result;
+       //         artList = response.Content.ReadAsAsync<IEnumerable<Article>>().Result;
+       //         return View(artList);
 
-            }
-            catch (ExceptionLiaisonApi e)
-            {
-                Console.WriteLine(e.getMessage());
-                return Redirect("/Home/Index");
-            }
+       //     }
+       //     catch (ExceptionLiaisonApi e)
+       //     {
+       //         Console.WriteLine(e.getMessage());
+       //         return Redirect("/Home/Index");
+       //     }
             
-        }
+       // }
 
         // GET: ArticlesController to restor
-        public IActionResult Indexing(string sortorder, string searchString, int currentPage, int idTag) //passage des super paramètre
+        public IActionResult Index(string sortorder, string searchString, int currentPage, int idTag) //passage des super paramètre
         {
             if (currentPage == 0)
             {
@@ -244,17 +244,6 @@ namespace WikiTechWebApp.Controllers
             }
         }
 
-        /*
-        protected void Like(object sender, EventArgs e)
-        {
-            Console.Write("like");
-        }
-
-        protected void Dislike(object sender, EventArgs e)
-        {
-            Console.Write("dislike");
-        }
-        */
 
         [Authorize]
         // GET: the article detail for decision
