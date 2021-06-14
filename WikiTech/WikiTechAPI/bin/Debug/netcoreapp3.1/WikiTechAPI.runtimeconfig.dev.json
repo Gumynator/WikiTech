@@ -4,16 +4,6 @@
 <<<<<<< main
       "C:\\Users\\loan\\.dotnet\\store\\|arch|\\|tfm|",
       "C:\\Users\\loan\\.nuget\\packages"
-=======
-<<<<<<< Updated upstream
-      "C:\\Users\\Marco\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\Marco\\.nuget\\packages"
-=======
-      "C:\\Users\\loarey\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\loarey\\.nuget\\packages",
-      "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
->>>>>>> Stashed changes
->>>>>>> Réparation
     ]
   }
 }

@@ -1,5 +1,6 @@
 {
   "version": 2,
+<<<<<<< HEAD
 <<<<<<< main
 <<<<<<< main
   "dgSpecHash": "oD7rqKI32Viwq8gVTbFPvsR2s1YOUfuDwJRowUMwA7yRQmBhGLJ0WRpu++U6AEvrr7kF48+R3kaV0bkfcyLP5w==",
@@ -9,6 +10,9 @@
 =======
   "dgSpecHash": "oD7rqKI32Viwq8gVTbFPvsR2s1YOUfuDwJRowUMwA7yRQmBhGLJ0WRpu++U6AEvrr7kF48+R3kaV0bkfcyLP5w==",
 >>>>>>> réparé
+=======
+  "dgSpecHash": "oD7rqKI32Viwq8gVTbFPvsR2s1YOUfuDwJRowUMwA7yRQmBhGLJ0WRpu++U6AEvrr7kF48+R3kaV0bkfcyLP5w==",
+>>>>>>> Loan
   "success": true,
   "projectFilePath": "C:\\loarey\\WikiTech\\WikiTech\\WikiTechWebApp\\WikiTechWebApp.csproj",
   "expectedPackageFiles": [],
