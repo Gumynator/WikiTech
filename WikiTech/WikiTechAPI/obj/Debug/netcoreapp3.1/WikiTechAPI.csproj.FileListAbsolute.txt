@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 C:\GitHub\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\GitHub\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\appsettings.json
@@ -516,3 +517,10 @@ C:\GitHub\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\Assets\PdfStyles.css
 C:\GitHub\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\libs\32 bit\libwkhtmltox.dll
 C:\GitHub\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\libs\64 bit\libwkhtmltox.dll
 C:\GitHub\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\DinkToPdf.dll
+=======
+C:\loarey\WikiTech\WikiTech\WikiTechAPI\obj\Debug\netcoreapp3.1\WikiTechAPI.AssemblyInfoInputs.cache
+C:\loarey\WikiTech\WikiTech\WikiTechAPI\obj\Debug\netcoreapp3.1\WikiTechAPI.AssemblyInfo.cs
+C:\loarey\WikiTech\WikiTech\WikiTechAPI\obj\Debug\netcoreapp3.1\WikiTechAPI.MvcApplicationPartsAssemblyInfo.cache
+C:\loarey\WikiTech\WikiTech\WikiTechAPI\obj\Debug\netcoreapp3.1\WikiTechAPI.RazorAssemblyInfo.cache
+C:\loarey\WikiTech\WikiTech\WikiTechAPI\obj\Debug\netcoreapp3.1\WikiTechAPI.RazorAssemblyInfo.cs
+>>>>>>> Loan
