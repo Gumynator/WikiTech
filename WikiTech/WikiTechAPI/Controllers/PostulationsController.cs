@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WikiTechAPI.Models;
@@ -14,10 +15,14 @@ namespace WikiTechAPI.Controllers
     public class PostulationsController : ControllerBase
     {
         private readonly WikiTechDBContext _context;
+        string rolesArray;
 
         public PostulationsController(WikiTechDBContext context)
         {
+
             _context = context;
+          
+            
         }
 
         
@@ -26,6 +31,11 @@ namespace WikiTechAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Postulation>>> GetPostulation()
         {
+            
+            // Resolve the user via their email
+            var user = await _userManager.FindByEmailAsync(model.Email);
+            // Get the roles for the user
+            var roles = await _userManager.GetRolesAsync(user);
             return await _context.Postulation.Include(p => p.IdNavigation).ToListAsync();
         }
 

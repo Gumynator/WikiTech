@@ -169,5 +169,17 @@ namespace WikiTechWebApp.ApiFunctions
 
 
         }
+
+        internal static async Task<Grade> GetGradesForUser(HttpClient client, int gradeId)
+        {
+            Grade grade = null;
+            HttpResponseMessage response = await client.GetAsync("Grades/GetGrade/" + gradeId);
+            if (response.IsSuccessStatusCode)
+            {
+                grade = await response.Content.ReadAsAsync<Grade>();
+            }
+
+            return grade;
+        }
     }
 }
