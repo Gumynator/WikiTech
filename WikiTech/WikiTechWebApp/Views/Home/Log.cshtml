@@ -1,0 +1,39 @@
+﻿@*
+    //Auteur    : Loris habegger
+    //Date      : 15.06.2021
+    //Fichier   : Log.chtml (Affichage des logs)
+*@
+@model IEnumerable<WikiTechAPI.Models.Logger>
+@{
+}
+
+
+<table id="logs" class="display">
+    <thead>
+        <tr>
+            <th>Log</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewData["logs"] as IEnumerable<String>)
+        {
+            <tr>
+                <td>@item</td>
+            </tr>
+
+        }
+
+    </tbody>
+</table>
+
+<script>
+
+    $(document).ready(function () {
+
+        $('#logs').DataTable({
+
+            "order": [[0, "desc"]]
+        });
+    });
+
+</script>

@@ -68,13 +68,9 @@ namespace WikiTechAPI.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutChangement(int id, [FromBody] Changement changement)
+        public async Task<IActionResult> PutChangement(string id, [FromBody]Changement changement)
         {
-            if (id != changement.IdChangement)
-            {
-                return BadRequest();
-            }
-
+            
             _context.Entry(changement).State = EntityState.Modified;
 
             try
@@ -87,7 +83,7 @@ namespace WikiTechAPI.Controllers
                 articleToModify.TextArticle = changement.TextChangement;
                 articleToModify.DescriptionArticle = changement.DescriptionChangement;
 
-                Logwritter log = new Logwritter("ChangementID : " + changement.IdChangement + " l'etat a été modifié");
+                Logwritter log = new Logwritter("ChangementID : " + changement.IdChangement + " l'etat a été modifié par " + id);
                 log.writeLog();
 
 
@@ -95,15 +91,9 @@ namespace WikiTechAPI.Controllers
 
             }
             catch (DbUpdateConcurrencyException)
-            {
-                if (!ChangementExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+            {                 
+                return NotFound();
+                
             }
 
             return NoContent();
@@ -112,21 +102,21 @@ namespace WikiTechAPI.Controllers
         // POST: api/Changements
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPost]
-        public async Task<ActionResult<Changement>> PostChangement(Changement changement)
+        [HttpPost("{idactionneur}")]
+        public async Task<ActionResult<Changement>> PostChangement(String idactionneur, [FromBody]Changement changement)
         {
             _context.Changement.Add(changement);
             await _context.SaveChangesAsync();
 
-            Logwritter log = new Logwritter("ChangementID : " + changement.IdChangement + " a été ajouté et en attente de validation");
+            Logwritter log = new Logwritter("ChangementID : " + changement.IdChangement + " a été ajouté et en attente de validation par " + idactionneur);
             log.writeLog();
 
             return CreatedAtAction("GetChangement", new { id = changement.IdChangement }, changement);
         }
 
         // DELETE: api/Changements/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<Changement>> DeleteChangement(int id)
+        [HttpDelete("{id}/{idactionneur}")]
+        public async Task<ActionResult<Changement>> DeleteChangement(int id, string idactionneur)
         {
             var changement = await _context.Changement.FindAsync(id);
             if (changement == null)
@@ -137,7 +127,7 @@ namespace WikiTechAPI.Controllers
             _context.Changement.Remove(changement);
             await _context.SaveChangesAsync();
 
-            Logwritter log = new Logwritter("ChangementID : " + changement.IdChangement + " a été supprimé");
+            Logwritter log = new Logwritter("ChangementID : " + changement.IdChangement + " a été supprimé par " + idactionneur);
             log.writeLog();
 
             return changement;

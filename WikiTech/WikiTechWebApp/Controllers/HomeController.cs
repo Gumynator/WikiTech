@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿//Auteur    : Loris habegger
+//Date      : 15.06.2021
+//Fichier   : HomeController.cs
+
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -14,6 +18,8 @@ using System.Net.Mail;
 using SendGrid.Helpers.Mail;
 using System.IO;
 using WikiTechAPI.Utility;
+using Microsoft.AspNetCore.Authorization;
+using WikiTechWebApp.ApiFunctions;
 
 namespace WikiTechWebApp.Controllers
 {
@@ -23,11 +29,15 @@ namespace WikiTechWebApp.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         static IEmailSender _sender;
 
+        static HttpClient client = new HttpClient();
+
         public HomeController(ILogger<HomeController> logger, IEmailSender sender)
         {
             _sender = sender;
             _logger = logger;
-            
+
+            client = ConfigureHttpClient.configureHttpClient(client);
+
         }
 
         public IActionResult Index()
@@ -64,6 +74,18 @@ namespace WikiTechWebApp.Controllers
             await _sender.SendEmailAsync("loris.habegger@eduvaud.ch", "[Formulaire contact] : " + objetContact, messageContact + "\n Soumis par : " + NomContact + "\n tél. " + telContact + "\n email : " + emailContact);
 
             return RedirectToAction(nameof(Index));
+        }
+
+        [Authorize]
+        public IActionResult Log()
+        {
+
+            HttpResponseMessage responsearticle = client.GetAsync("ApiLog").Result;
+            var logs = responsearticle.Content.ReadAsAsync<List<string>>().Result;
+
+            ViewData["logs"] = logs;
+
+            return View();
         }
 
     }

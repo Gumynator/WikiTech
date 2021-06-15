@@ -79,7 +79,7 @@ namespace WikiTechWebApp.Controllers
                     Article resultarticle;
                     StringContent content = new StringContent(JsonConvert.SerializeObject(currentArticle), Encoding.UTF8, "application/json");
 
-                    using var response = await client.PostAsync(ConfigureHttpClient.apiUrl + "Articles", content);
+                    using var response = await client.PostAsync(ConfigureHttpClient.apiUrl + "Articles" + "/" + IdUser, content);
                     string apiResponse = await response.Content.ReadAsStringAsync();
 
                     resultarticle = JsonConvert.DeserializeObject<Article>(apiResponse);
@@ -254,7 +254,7 @@ namespace WikiTechWebApp.Controllers
                 {
                     Article resultarticle;
 
-                    using var response = await client.PutAsJsonAsync(ConfigureHttpClient.apiUrl + "Articles/" + currentArticle.IdArticle, currentArticle);
+                    using var response = await client.PutAsJsonAsync(ConfigureHttpClient.apiUrl + "Articles/" + valideurArticle, currentArticle);
                     string apiResponse = await response.Content.ReadAsStringAsync();
 
                     resultarticle = JsonConvert.DeserializeObject<Article>(apiResponse);
@@ -293,7 +293,7 @@ namespace WikiTechWebApp.Controllers
                 article = responsearticle.Content.ReadAsAsync<Article>().Result;
 
                 //delete the article
-                using var response = await client.DeleteAsync(ConfigureHttpClient.apiUrl + "Articles/" + id);
+                using var response = await client.DeleteAsync(ConfigureHttpClient.apiUrl + "Articles/" + id + "/" + valideurArticle);
                 string apiResponse = await response.Content.ReadAsStringAsync();
 
 
@@ -372,7 +372,7 @@ namespace WikiTechWebApp.Controllers
             {
                 Changement resultatChangement;
 
-                using var response = await client.PutAsJsonAsync(ConfigureHttpClient.apiUrl + "Changements/" + currentchangement.IdChangement, currentchangement);
+                using var response = await client.PutAsJsonAsync(ConfigureHttpClient.apiUrl + "Changements/" + valideurChangement, currentchangement);
                 string apiResponse = await response.Content.ReadAsStringAsync();
 
                 resultatChangement = JsonConvert.DeserializeObject<Changement>(apiResponse);
@@ -412,7 +412,7 @@ namespace WikiTechWebApp.Controllers
                 currentchangement = responsearticle.Content.ReadAsAsync<Changement>().Result;
 
                 //delete the Changement
-                using var response = await client.DeleteAsync(ConfigureHttpClient.apiUrl + "Changements/" + currentchangement.IdChangement);
+                using var response = await client.DeleteAsync(ConfigureHttpClient.apiUrl + "Changements/" + currentchangement.IdChangement + "/" + valideurChangement);
                 string apiResponse = await response.Content.ReadAsStringAsync();
 
 
