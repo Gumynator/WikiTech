@@ -17,6 +17,7 @@ using WikiTechWebApp.Models;
 using WikiTechWebApp.ApiFunctions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using WikiTechAPI.ViewModels;
 
 namespace WikiTechWebApp.Controllers
 {
@@ -40,6 +41,20 @@ namespace WikiTechWebApp.Controllers
             AbonnementList = response.Content.ReadAsAsync<IEnumerable<Abonnement>>().Result;
 
             return View(AbonnementList);
+        }
+
+
+        public async Task<IActionResult> GetAbonnementByUserAsync()
+        {
+            string IdUser = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            IEnumerable<CheckAbonnement> checkAbonnementList = null;
+            HttpResponseMessage response = await client.GetAsync("Abonnements/GetAbonnementByUser/" + IdUser);
+            if (response.IsSuccessStatusCode)
+            {
+                checkAbonnementList = response.Content.ReadAsAsync<IEnumerable<CheckAbonnement>>().Result;
+            }
+
+            return View();
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -144,5 +159,7 @@ namespace WikiTechWebApp.Controllers
                 return View("Erreur");
             }
         }
+
+
     }
 }

@@ -24,18 +24,19 @@ namespace WikiTechAPI.Controllers
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
         //Auteur : Pancini Marco
         //Création : 08.06.2021
-        //Modification : 08.06.2021
-        //Description : Fonction qui permet de récupérer l'abonnement d'un utilisateur
+        //Modification : 15.06.2021
+        //Description : Fonction qui permet de récupérer l'abonnement actif d'un utilisateur
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
         [HttpGet("GetAbonnementByUser/{userID}")]
         public async Task<ActionResult<object>> GetAbonnementByUser(string userID)
         {
-            var currentAbonnement = (from facture in await _context.Facture.ToListAsync()
+            bool expirationAbonnement;
+            CheckAbonnement currentAbonnement = (from facture in await _context.Facture.ToListAsync()
                          where userID.Equals(facture.Id)
                          join user in _context.AspNetUsers
                          on facture.Id equals user.Id
                          orderby facture.DateFacture descending
-                         select new
+                         select new CheckAbonnement
                          {
                              IdAbonnement = user.IdAbonnement,
                              TitreFacture = facture.TitreFacture,
@@ -47,7 +48,24 @@ namespace WikiTechAPI.Controllers
                 return NotFound();
             }
 
-            return currentAbonnement;
+            DateTime expirationDate = currentAbonnement.DateFacture;
+            expirationDate = expirationDate.AddMonths(1);
+            DateTime Today = DateTime.Today;
+            int compareDate = DateTime.Compare(expirationDate, Today);
+            if (compareDate< 0)
+            {
+                expirationAbonnement = false;
+            }
+            else if (compareDate == 0)
+            {
+                expirationAbonnement = true;
+            }
+            else
+            {
+                expirationAbonnement = true;
+            }
+
+            return expirationAbonnement;
         }
 
         // GET: api/Abonnements
