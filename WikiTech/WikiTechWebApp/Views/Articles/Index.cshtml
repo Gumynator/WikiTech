@@ -1,9 +1,7 @@
 ﻿@*
     //Auteur    : Loris habegger
-    //Date      : 01.05.2021
+    //Date      : 14.06.2021
     //Fichier   : Index.chtml (liste d'article)
-    //ToDo     : recherche, click sur tag + auteur, affichage des nombre d'article par tag, pagination
-    //use link  : https://docs.microsoft.com/en-us/aspnet/core/data/ef-mvc/sort-filter-page?view=aspnetcore-5.0
 
 *@
 @using Microsoft.AspNetCore.Identity
@@ -13,39 +11,32 @@
 @inject UserManager<ApplicationUser> UserManager
 
 
-@{ViewData["Title"] = "View";}
+@{
+    ViewData["Title"] = "all article";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
 
-<!--
- <h1>Articles</h1>
 
- <a asp-action="Create">Create New</a>
-</p>
--->
 <body>
     <div class="container">
         <div class="row">
             <div class="col-md-3">
+
                 <h4 class="">Search</h4>
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
-                    <div class="input-group-btn">
-                        <button class="btn btn-default" type="submit">
-                            <i class="glyphicon glyphicon-search"></i>
-                        </button>
-                    </div>
-                </div>
+                    <input type="text" class="form-control" placeholder="Search" name="srch-term" id="SearchString" value="@ViewData["CurrentFilter"]"/>
+                    <a class="btn btn-outline-success" id="searching">search</a>
+                    <a class="btn btn-outline-danger" asp-action="Index">Clear search</a>
 
+                </div>
                 <div>
                     <hr>
                     <div class="list-group list-group">
 
-                        <h4 class="" id="sections">Catégorie</h4>
-                        <!--<a href="#" class="list-group-item"><span class="badge">14</span> Upcoming Sessions</a>-->
 
                         <hr class="">
-                        <h4 class="" id="tags">Tags (all) à devenir TOP 10</h4>
-                        <!--<a href="#" class="list-group-item"><span class="badge">3</span> Second item</a>-->
+                        <h4 class="" id="tags"><b>Tags</b></h4>
 
                     </div>
                 </div>
@@ -59,7 +50,7 @@
                         <hr>
                         @if (!SignInManager.IsSignedIn(User))
                         {
-            <p class="text-center ">Déjà Membre ? <a href="Identity/Account/Login">Connexion</a></p>}
+                            <p class="text-center ">Déjà Membre ? <a href="Identity/Account/Login">Connexion</a></p>}
                     </div>
                 </div>
 
@@ -72,59 +63,70 @@
 
                         <div class="col-xs-4">
 
-                            <select class="form-control">
-                                <option>Ajouté récement</option>
-                                <option>A-Z</option>
-                                <option>Z-A</option>
+                            <select id="sorting">
+                                <option value="az">atoz</option>
+                                <option value="za">ztoa</option>
+                                <option value="dateasc">dasc</option>
+                                <option value="datedesc">desc</option>
                             </select>
+
+                            <input type="hidden" id="hiddensorting" value="@ViewData["sortorder"]">
+                            <input type="hidden" id="idTaggin" value="@ViewData["currentTag"]">
+                            <a class="btn btn-outline-primary" id="appySorting"> appySorting</a>
+                            <p>Filtre actuel   : <b> @ViewData["sortorder"]</b></p>
+
                         </div>
                     </div>
                 </div>
                 <hr>
 
-@foreach (var item in Model)
+                @foreach (var item in Model)
 
-{
-            <div class="row">
-                    <!-- <div class="col-sm-4">
-            <a href="#" class=""><img src="http://placehold.it/1280X720" class="img-responsive"></a>
-        </div>-->
-                <div class="col-sm-8">
-                    <h3 class="title">@Html.DisplayFor(modelItem => item.TitreArticle)</h3>
+                {
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <h3 class="title">@Html.DisplayFor(modelItem => item.TitreArticle)</h3>
 
-                    @if (item.IsqualityArticle == false)
-                    {    // la fonction d'affichage de date sera gérée avec la validation d'article puisque c'est une date de publication
-                <p class="text-muted"><span class="glyphicon glyphicon-calendar"></span> @Html.DisplayFor(modelItem => item.DatepublicationArticle)</p> }
-            else
-            {
-                <p class="text-muted"><span class="glyphicon glyphicon-lock"></span>Contenu réservé au premium</p>}
+                            @if (item.IsqualityArticle == false)
+                            {    // la fonction d'affichage de date sera gérée avec la validation d'article puisque c'est une date de publication
+                                <p class="text-muted"><span class="glyphicon glyphicon-calendar"></span> @Html.DisplayFor(modelItem => item.DatepublicationArticle)</p> }
+                            else
+                            {
+                                <p class="text-muted"><span class="glyphicon glyphicon-lock"></span>Contenu réservé au premium</p>}
 
-                    <p>@Html.DisplayFor(modelItem => item.DescriptionArticle)</p>
-                    <p class="text-muted">Rédigé par <a asp-controller="AspNetUsers" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.IdNavigation.PrenomAspnetuser)</a></p>
-                    
-                    <a asp-action="Details" asp-route-id="@item.IdArticle">->Consulter</a>
-                </div>
+                            <p>@Html.DisplayFor(modelItem => item.DescriptionArticle)</p>
+                            <p class="text-muted">Rédigé par <a asp-controller="AspNetUsers" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.IdNavigation.PrenomAspnetuser)</a></p>
+
+                            <a asp-action="Details" asp-route-id="@item.IdArticle">->Consulter</a>
+                        </div>
+                    </div>
+
+                    <hr>
+                }
+                <a class="btn btn-outline-dark" id="Previous"> Previous</a>
+                <a class="btn btn-outline-dark" id="Next"> Next</a>
             </div>
-
-            <hr>
-}
-
-            </div>
-        </div>
+    </div>
     </div>
 
     <br>
     <br>
+
+    Nb d'article total      : @ViewData["nbArtTotal"]
+    Filtre actuel           : @ViewData["sortorder"]
+
+    
 </body>
 
 <script>
 
     $(document).ready(function () {
-        getTags();
         getSection();
+        getTags();
 
     }
     )
+
     function getTags() {
         $.ajax(
             {
@@ -140,12 +142,40 @@
             });
     }
 
+    function getnbarticlebytag(id) {
+
+        return new Promise((resolve, reject) => {
+            //here our function should be implemented
+
+            $.ajax(
+                {
+                    url: "http://localhost:59601/Api/Referencers/nbarticlebytag/" + id,
+                    type: "GET",
+                    dataType: "JSON",
+                    contentType: "application/json",
+                    headers: { "ApiKey": "61c08ad1-0823-4c38-9853-700675e3c8fc" },
+                    success: function (data) {
+                        console.log("ttt" + data)
+                        resolve(data);
+                    }
+                });
+            setTimeout(() => {
+                reject();
+                ;
+            }, 10000
+            );
+        });
+
+    }
+
     function createTagSelect(data) {
         var select = $("#tags");
 
-        $.each(data, function (key, value) {
+        $.each(data, async function (key, value) {
             console.log(value);
-            var element = "<a href=\"tags/" + value.idTag + "\" class=\"list-group-item\"><span class=\"badge\">nb</span>" + value.nomTag + "</a>";
+            var nbarticle = await getnbarticlebytag(value.idTag)
+            console.log(value.idTag + " : " + nbarticle);
+            var element = "<a class=\"list-group-item\" onclick=\"tagger('" + value.idTag + "')\"><span class=\"badge\">" + nbarticle + "</span>" + value.nomTag + "</a>";
             select.append(element);
         })
     }
@@ -174,4 +204,84 @@
             select.append(element);
         })
     }
+
+    function tagger(id) {
+        var hidden = document.getElementById("hiddensorting").value;
+        var selected = document.getElementById("sorting");
+        var selectedstr = selected.options[selected.selectedIndex].text;
+
+        var idTag = document.getElementById("idTaggin").value;
+
+        if (selectedstr == hidden) {
+            location.href = "/Articles/Index?currentPage=@((int)ViewData["currentPage"]+1)&&searchString=@ViewData["CurrentFilter"]&&sortorder=" + selectedstr + "&&idTag=" + id;
+        } else
+        {
+            location.href = "/Articles/Index?currentPage=@((int)ViewData["currentPage"]+1)&&searchString=@ViewData["CurrentFilter"]&&sortorder=" + hidden + "&&idTag=" + id;
+        }
+
+    }
+
+    $('#Next').click(function () {
+        var hidden = document.getElementById("hiddensorting").value;
+        var selected = document.getElementById("sorting");
+        var selectedstr = selected.options[selected.selectedIndex].text;
+
+        var idTag = document.getElementById("idTaggin").value;
+
+        if (selectedstr == hidden) {
+            location.href = "/Articles/Index?currentPage=@((int)ViewData["currentPage"]+1)&&searchString=@ViewData["CurrentFilter"]&&sortorder=" + selectedstr + "&&idTag=" + idTag;
+        } else
+        {
+            location.href = "/Articles/Index?currentPage=@((int)ViewData["currentPage"]+1)&&searchString=@ViewData["CurrentFilter"]&&sortorder=" + hidden + "&&idTag=" + idTag;
+        }
+    });
+
+    $('#Previous').click(function () {
+        var hidden = document.getElementById("hiddensorting").value;
+        var selected = document.getElementById("sorting");
+        var selectedstr = selected.options[selected.selectedIndex].text;
+
+        var idTag = document.getElementById("idTaggin").value;
+
+        if (selectedstr == hidden) {
+            location.href = "/Articles/Index?currentPage=@((int)ViewData["currentPage"]-1)&&searchString=@ViewData["CurrentFilter"]&&sortorder=" + selectedstr + "&&idTag=" + idTag;
+        } else
+        {
+            location.href = "/Articles/Index?currentPage=@((int)ViewData["currentPage"]-1)&&searchString=@ViewData["CurrentFilter"]&&sortorder=" + hidden + "&&idTag=" + idTag;
+        }
+    });
+    $('#appySorting').click(function () {
+
+        var hidden = document.getElementById("hiddensorting").value;
+        var selected = document.getElementById("sorting");
+        var selectedstr = selected.options[selected.selectedIndex].text;
+
+        var idTag = document.getElementById("idTaggin").value;
+
+        if (selectedstr != hidden) {
+            location.href = "/Articles/Index?currentPage=@((int)ViewData["currentPage"]+1)&&searchString=@ViewData["CurrentFilter"]&&sortorder=" + selectedstr + "&&idTag=" + idTag;
+        } else
+        {
+            location.href = "/Articles/Index?currentPage=@((int)ViewData["currentPage"]+1)&&searchString=@ViewData["CurrentFilter"]&&sortorder=" + hidden + "&&idTag=" + idTag;
+        }
+    });
+
+    $('#searching').click(function () {
+
+        var hidden = document.getElementById("hiddensorting").value;
+        var selected = document.getElementById("sorting");
+        var selectedstr = selected.options[selected.selectedIndex].text;
+
+        var idTag = document.getElementById("idTaggin").value;
+
+        var search = document.getElementById("SearchString").value;
+
+        if (selectedstr != hidden) {
+            location.href = "/Articles/Index?currentPage=@((int)ViewData["currentPage"]+1)&&searchString=" + search + "&&sortorder=" + selectedstr + "&&idTag=" + idTag;
+        } else
+        {
+            location.href = "/Articles/Index?currentPage=@((int)ViewData["currentPage"]+1)&&searchString=" + search + "&&sortorder=" + hidden + "&&idTag=" + idTag;
+        }
+});
+
 </script>
