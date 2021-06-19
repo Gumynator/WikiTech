@@ -1,0 +1,20 @@
+{
+  "version": 2,
+<<<<<<< HEAD
+<<<<<<< main
+<<<<<<< main
+  "dgSpecHash": "GGCfyZwKkeU4cxdBz3iGs9x+9u6ds5gQEtSW5VVl1r2ZGx56aA68ArJXA+CeYgIR8o/YLZgIRfAezxiuN9zLSg==",
+=======
+  "dgSpecHash": "GhlP4cURcQyTWyleLz5l7EryE3r6NN/yhDnEo/d/cruI7iZmc6WP8VTYe6uJtF1IQ1IXIwZ8POmQfOABhAt8rw==",
+>>>>>>> Réparation
+=======
+  "dgSpecHash": "GGCfyZwKkeU4cxdBz3iGs9x+9u6ds5gQEtSW5VVl1r2ZGx56aA68ArJXA+CeYgIR8o/YLZgIRfAezxiuN9zLSg==",
+>>>>>>> réparé
+=======
+  "dgSpecHash": "GGCfyZwKkeU4cxdBz3iGs9x+9u6ds5gQEtSW5VVl1r2ZGx56aA68ArJXA+CeYgIR8o/YLZgIRfAezxiuN9zLSg==",
+>>>>>>> Loan
+  "success": true,
+  "projectFilePath": "C:\\loarey\\WikiTech\\WikiTech\\WikiTechAPI\\WikiTechAPI.csproj",
+  "expectedPackageFiles": [],
+  "logs": []
+}
