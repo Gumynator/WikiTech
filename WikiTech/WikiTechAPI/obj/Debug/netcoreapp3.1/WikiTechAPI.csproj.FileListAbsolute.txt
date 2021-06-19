@@ -515,3 +515,4 @@ C:\GitHub\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\Assets\PdfStyles.css
 C:\GitHub\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\libs\32 bit\libwkhtmltox.dll
 C:\GitHub\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\libs\64 bit\libwkhtmltox.dll
 C:\GitHub\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\DinkToPdf.dll
+C:\GitHub\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\NReco.Logging.File.dll

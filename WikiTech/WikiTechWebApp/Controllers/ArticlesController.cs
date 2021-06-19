@@ -35,27 +35,6 @@ namespace WikiTechWebApp.Controllers
 
         }
 
-        // GET: ArticlesController to restor
-       //public IActionResult Index()
-       // {
-
-       //     IEnumerable<Article> artList;
-
-       //     try
-       //     {
-
-       //         HttpResponseMessage response = client.GetAsync("Articles/beactive").Result;
-       //         artList = response.Content.ReadAsAsync<IEnumerable<Article>>().Result;
-       //         return View(artList);
-
-       //     }
-       //     catch (ExceptionLiaisonApi e)
-       //     {
-       //         Console.WriteLine(e.getMessage());
-       //         return Redirect("/Home/Index");
-       //     }
-            
-       // }
 
         // GET: ArticlesController to restor
         public IActionResult Index(string sortorder, string searchString, int currentPage, int idTag) //passage des super paramètre
@@ -292,7 +271,7 @@ namespace WikiTechWebApp.Controllers
                     Changement resultChangement;
                     StringContent content = new StringContent(JsonConvert.SerializeObject(currentchangement), Encoding.UTF8, "application/json");
 
-                    using var response = await client.PostAsync(ConfigureHttpClient.apiUrl + "Changements", content);
+                    using var response = await client.PostAsync(ConfigureHttpClient.apiUrl + "Changements" + "/" + currentchangement.Id, content);
                     string apiResponse = await response.Content.ReadAsStringAsync();
 
                     resultChangement = JsonConvert.DeserializeObject<Changement>(apiResponse);
@@ -314,43 +293,20 @@ namespace WikiTechWebApp.Controllers
         }
 
 
-        //[Authorize]
-        //// GET: the article detail for decision
-        //public ActionResult disableArticleeeeee(int id)
-        //{
-
-        //    Article article;
-
-        //    try
-        //    {
-        //        HttpResponseMessage responsearticle = client.GetAsync("Articles/" + id).Result;
-        //        article = responsearticle.Content.ReadAsAsync<Article>().Result;
-
-
-        //        return View(article);
-
-
-        //    }
-        //    catch (ExceptionLiaisonApi e)
-        //    {
-        //        Console.WriteLine(e.getMessage());
-        //        return Redirect("/Home/Index");
-        //    }
-        //}
-
         [Authorize]
         // GET: the article detail for decision
         public async Task<ActionResult> disableArticleeeeee(int id)
         {
 
             Article article;
+            string currentid = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             try
             {
 
                 Article resultarticle;
 
-                using var response = await client.PostAsJsonAsync(ConfigureHttpClient.apiUrl + "Articles/" +  id + "/disable", id);
+                using var response = await client.PostAsJsonAsync(ConfigureHttpClient.apiUrl + "Articles/" +  id + "/disable", currentid);
                 string apiResponse = await response.Content.ReadAsStringAsync();
 
                 resultarticle = JsonConvert.DeserializeObject<Article>(apiResponse);
@@ -373,13 +329,14 @@ namespace WikiTechWebApp.Controllers
         {
 
             Article article;
+            string currentid = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             try
             {
 
                 Article resultarticle;
 
-                using var response = await client.PostAsJsonAsync(ConfigureHttpClient.apiUrl + "Articles/" + id + "/enable", id);
+                using var response = await client.PostAsJsonAsync(ConfigureHttpClient.apiUrl + "Articles/" + id + "/enable", currentid);
                 string apiResponse = await response.Content.ReadAsStringAsync();
 
                 resultarticle = JsonConvert.DeserializeObject<Article>(apiResponse);

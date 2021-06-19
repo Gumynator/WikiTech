@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using WikiTechAPI.Models;
 using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
 using System.Text.Json.Serialization;
+using WikiTechAPI.Utility;
 
 namespace WikiTechAPI.Controllers
 {
@@ -32,8 +33,6 @@ namespace WikiTechAPI.Controllers
         public async Task<ActionResult<IEnumerable<Article>>> GetArticle()
         {
             //return await _context.Article.ToListAsync();
-
-            
             return await _context.Article.Include(p => p.IdNavigation).ToListAsync();
         }
 
@@ -45,7 +44,6 @@ namespace WikiTechAPI.Controllers
         {
 
             var article = await _context.Article.Include(p => p.IdNavigation).Include(r => r.Referencer).Include(c => c.Changement).FirstOrDefaultAsync(i => i.IdArticle == id);
-
 
             if (article == null)
             {
@@ -266,13 +264,9 @@ namespace WikiTechAPI.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutArticle(int id, [FromBody]Article article)
+        public async Task<IActionResult> PutArticle(string id, [FromBody]Article article)
         {
-            if (id != article.IdArticle)
-            {
-                return BadRequest();
-            }
-
+           
             _context.Entry(article).State = EntityState.Modified;
 
             try
@@ -281,15 +275,13 @@ namespace WikiTechAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ArticleExists(id))
-                {
+                
                     return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                
             }
+
+            Logwritter log = new Logwritter("ArticleID : " + article.IdArticle + " l'etat a été modifié par " + id);
+            log.writeLog();
 
             return NoContent();
         }
@@ -297,18 +289,21 @@ namespace WikiTechAPI.Controllers
         // POST: api/Articles
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPost]
-        public async Task<ActionResult<Article>> PostArticle(Article article)
+        [HttpPost("{idactionneur}")]
+        public async Task<ActionResult<Article>> PostArticle(String idactionneur,[FromBody]Article article)
         {
             _context.Article.Add(article);
             await _context.SaveChangesAsync();
+
+            Logwritter log = new Logwritter("ArticleID : " + article.IdArticle + " est ajouté par " + idactionneur);
+            log.writeLog();
 
             return CreatedAtAction("GetArticle", new { id = article.IdArticle }, article);
         }
 
         // DELETE: api/Articles/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<Article>> DeleteArticle(int id)
+        [HttpDelete("{id}/{idactionneur}")]
+        public async Task<ActionResult<Article>> DeleteArticle(int id, string idactionneur)
         {
             var article = await _context.Article.FindAsync(id);
             if (article == null)
@@ -318,6 +313,9 @@ namespace WikiTechAPI.Controllers
 
             _context.Article.Remove(article);
             await _context.SaveChangesAsync();
+
+            Logwritter log = new Logwritter("ArticleID : " + id + " est supprimé par " + idactionneur);
+            log.writeLog();
 
             return article;
         }
@@ -330,7 +328,7 @@ namespace WikiTechAPI.Controllers
 
 
         [HttpPost("{id}/disable")]
-        public async Task<ActionResult<Article>> DisableArticle(int id, [FromBody] int _id)
+        public async Task<ActionResult<Article>> DisableArticle(int id, [FromBody]string idactionneur)
         {
 
             Article articleToModify = _context.Article.Find(id);
@@ -344,11 +342,14 @@ namespace WikiTechAPI.Controllers
             articleToModify.IsactiveArticle = false;
             await _context.SaveChangesAsync();
 
+            Logwritter log = new Logwritter("ArticleID : " + id + " est desactivé par " + idactionneur);
+            log.writeLog();
+
             return articleToModify;
         }
 
         [HttpPost("{id}/enable")]
-        public async Task<ActionResult<Article>> enableArticle(int id, [FromBody] int _id)
+        public async Task<ActionResult<Article>> enableArticle(int id, [FromBody]string idactionneur)
         {
 
             Article articleToModify = _context.Article.Find(id);
@@ -361,6 +362,9 @@ namespace WikiTechAPI.Controllers
 
             articleToModify.IsactiveArticle = true;
             await _context.SaveChangesAsync();
+
+            Logwritter log = new Logwritter("ArticleID : " + id + " est activé par " + idactionneur);
+            log.writeLog();
 
             return articleToModify;
         }
