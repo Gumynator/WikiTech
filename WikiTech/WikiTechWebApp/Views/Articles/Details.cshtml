@@ -34,18 +34,19 @@
                 <div class="col-lg-8">
                     <!-- Title-->
                     <h1 class="mt-4">@Model.Article.TitreArticle</h1>
+                    <a asp-action="Discussion" asp-route-id="@Model.Article.IdArticle">Discussion</a>
                     <!-- auteur-->
                     <p class="lead">
                         by
-                        <a asp-controller="AspNetUsers" asp-action="Details" asp-route-id="@ViewBag.id">@Model.Article.IdNavigation.PrenomAspnetuser</a>                       
+                        <a asp-controller="AspNetUsers" asp-action="Details" asp-route-id="@ViewBag.id">@Model.Article.IdNavigation.PrenomAspnetuser</a>
                     </p>
                     <hr />
                     <!-- Date and time-->
                     <p>Posted on @Model.Article.DatepublicationArticle</p>
                     <hr />
                     <!-- image d'article, pas dispo
-                    <img class="img-fluid rounded" src="https://via.placeholder.com/900x300" alt="..." />
-                    <hr />-->
+    <img class="img-fluid rounded" src="https://via.placeholder.com/900x300" alt="..." />
+    <hr />-->
                     <!-- contenu-->
                     <p class="lead">@Model.Article.DescriptionArticle</p>
                     <p>@Html.Raw(Model.Article.TextArticle)</p>

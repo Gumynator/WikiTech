@@ -30,7 +30,6 @@ namespace WikiTechAPI.Controllers
         [HttpGet("GetAbonnementByUser/{userID}")]
         public async Task<ActionResult<object>> GetAbonnementByUser(string userID)
         {
-            bool expirationAbonnement;
             CheckAbonnement currentAbonnement = (from facture in await _context.Facture.ToListAsync()
                          where userID.Equals(facture.Id)
                          join user in _context.AspNetUsers
@@ -42,6 +41,7 @@ namespace WikiTechAPI.Controllers
                              TitreFacture = facture.TitreFacture,
                              DateFacture = facture.DateFacture,
                              Id = user.Id
+                             
                          }).FirstOrDefault();
             if (currentAbonnement == null)
             {
@@ -54,18 +54,14 @@ namespace WikiTechAPI.Controllers
             int compareDate = DateTime.Compare(expirationDate, Today);
             if (compareDate< 0)
             {
-                expirationAbonnement = false;
-            }
-            else if (compareDate == 0)
-            {
-                expirationAbonnement = true;
+                currentAbonnement.Expiration = false;
             }
             else
             {
-                expirationAbonnement = true;
+                currentAbonnement.Expiration = true;
             }
 
-            return expirationAbonnement;
+            return currentAbonnement;
         }
 
         // GET: api/Abonnements

@@ -1,0 +1,49 @@
+﻿@using Microsoft.Extensions.Options
+@model IEnumerable<WikiTechAPI.ViewModels.MessageByArticle>
+
+@{
+    ViewData["Title"] = "Discussion";
+}
+
+<h1>Discussion</h1>
+
+<a asp-action="WriteMessage" asp-route-id="@ViewBag.idArticle">Rédiger un message</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PrenomAspnetuser)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CorpsMessage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateMessage)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrenomAspnetuser)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CorpsMessage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateMessage)
+            </td>
+            @*<td>
+            <a asp-action="Achat" asp-route-id="@item.IdAbonnement">Répondre</a>
+        </td>*@
+        </tr>
+        }
+
+    </tbody>
+</table>
+
+

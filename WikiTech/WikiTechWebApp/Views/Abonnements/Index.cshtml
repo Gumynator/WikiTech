@@ -8,6 +8,12 @@
 
 <h1>Nos Abonnements</h1>
 
+@if (ViewBag.idAbonnement == 3)
+{
+    <h2>Vous possèdez déjà l'abonnement premium.</h2>
+}
+else
+{
     <table class="table">
         <thead>
             <tr>
@@ -23,24 +29,46 @@
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.NomAbonnement)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PrixAbonnement)
-                    </td>
-                    <td>
-                        <a asp-action="Achat" asp-route-id="@item.IdAbonnement">S'abonner</a>
-                        @*<a asp-action="Details" asp-route-id="@item.IdAbonnement">Details</a> |
-                            <a asp-action="Delete" asp-route-id="@item.IdAbonnement">Delete</a>*@
-                    </td>
-                </tr>
+                if (ViewBag.expiration == null || ViewBag.expiration == false)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NomAbonnement)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PrixAbonnement)
+                        </td>
+                        <td>
+                            <a asp-action="Achat" asp-route-id="@item.IdAbonnement">S'abonner</a>
+                        </td>
+                    </tr>
+                }
+                else if (ViewBag.idAbonnement == 1 || ViewBag.idAbonnement == 2 && ViewBag.expiration == true)
+                {
+                    if (item.IdAbonnement == 3)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NomAbonnement)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PrixAbonnement)
+                            </td>
+                            <td>
+                                <a asp-action="Achat" asp-route-id="@item.IdAbonnement">S'abonner</a>
+                                @*<a asp-action="Details" asp-route-id="@item.IdAbonnement">Details</a> |
+                                    <a asp-action="Delete" asp-route-id="@item.IdAbonnement">Delete</a>*@
+                            </td>
+                        </tr>
+                    }
+                }
             }
 
 
 
         </tbody>
     </table>
+}
+
 
 

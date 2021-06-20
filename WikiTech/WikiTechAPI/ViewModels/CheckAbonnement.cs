@@ -13,5 +13,7 @@ namespace WikiTechAPI.ViewModels
 
         public string TitreFacture { get; set; }
 
+        public bool Expiration { get; set; }
+
     }
 }
