@@ -125,9 +125,19 @@ namespace WikiTechWebApp.Controllers
                 HttpResponseMessage responsearticle = client.GetAsync("Articles/" + id).Result;
                 article = responsearticle.Content.ReadAsAsync<Article>().Result;
                 var idArt = article.Id;
+                var idArticle = article.IdArticle;
                 ViewBag.id = idArt;
 
                 dynamicmodel.Article = article;
+
+                string IdUser = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                
+
+                Voir vu = new Voir();
+                vu.Id = IdUser;
+                vu.IdArticle = idArticle;
+
+                
 
                 var listeChangements = article.Changement;
 

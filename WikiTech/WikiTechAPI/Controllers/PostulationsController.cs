@@ -33,9 +33,7 @@ namespace WikiTechAPI.Controllers
         {
             
             // Resolve the user via their email
-            var user = await _userManager.FindByEmailAsync(model.Email);
-            // Get the roles for the user
-            var roles = await _userManager.GetRolesAsync(user);
+            
             return await _context.Postulation.Include(p => p.IdNavigation).ToListAsync();
         }
 

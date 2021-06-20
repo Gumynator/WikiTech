@@ -43,7 +43,7 @@ namespace WikiTechWebApp.Controllers
             var currentUser = FunctionAPI.GetUserByIdAsync(client,IdUser).Result;
             Grade grade = FunctionAPI.GetGradesForUser(client, currentUser.IdGrade).Result;
 
-            roleManager.Get
+            
 
             if (IdUser == null||grade.NomGrade!="user sup")
             {
