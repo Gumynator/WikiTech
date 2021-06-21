@@ -7,10 +7,11 @@
 
 <h1>Discussion</h1>
 
-<a asp-action="WriteMessage" asp-route-id="@ViewBag.idArticle">Rédiger un message</a>
+<a asp-action="WriteMessage" asp-route-id="@ViewBag.idArticle">Rédiger un message</a><br />
+<a asp-action="Details" asp-route-id="@ViewBag.idArticle">Retour à l'article</a>
 
 <table class="table">
-    <thead>
+    @*<thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.PrenomAspnetuser)
@@ -23,18 +24,18 @@
             </th>
             <th></th>
         </tr>
-    </thead>
+    </thead>*@
     <tbody>
         @foreach (var item in Model)
         {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.CorpsMessage)
+                <br />
                 @Html.DisplayFor(modelItem => item.PrenomAspnetuser)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CorpsMessage)
-            </td>
-            <td>
+                <br />
                 @Html.DisplayFor(modelItem => item.DateMessage)
             </td>
             @*<td>

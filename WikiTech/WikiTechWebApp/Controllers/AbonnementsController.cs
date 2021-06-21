@@ -142,7 +142,7 @@ namespace WikiTechWebApp.Controllers
                     HttpResponseMessage postFacture = await client.PostAsJsonAsync("Factures", newFacture);
                     user.IdAbonnement = subscription.IdAbonnement;
                     await _sender.SendEmailAsync(user.Email, "Paiement de l'abonnement " + subscription.NomAbonnement + " confirmé", "Bonjour, votre paiement à l'abonnement " + subscription.NomAbonnement + " pour le prix de " + subscription.PrixAbonnement+"CHF a été fait avec succès");
-                    HttpResponseMessage putUser = await client.PutAsJsonAsync("AspNetUsers/PutAspNetUsers/" + user.Id, user );
+                    HttpResponseMessage putUser = await client.PutAsJsonAsync("AspNetUsers/AspNetUsers/" + user.Id, user );
                     if (putUser.IsSuccessStatusCode)
                     {
 
