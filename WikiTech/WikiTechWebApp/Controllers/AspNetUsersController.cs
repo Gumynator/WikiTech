@@ -177,18 +177,18 @@ namespace WikiTechWebApp.Controllers
                     if (user.LockoutEnd == null)
                     {
                         user.LockoutEnd = DateTime.MaxValue;
-                        Logwritter log = new Logwritter("Utilisateur : " + id + " est bloqué par " + currentUser);
+                        Logwritter log = new Logwritter("Utilisateur : " + id + " a été bloqué par " + currentUser);
                         log.writeLog();
                     }
                     else
                     {
                         user.LockoutEnd = null;
-                        Logwritter log = new Logwritter("Utilisateur : " + id + " est débloqué par " + currentUser);
+                        Logwritter log = new Logwritter("Utilisateur : " + id + " a été débloqué par " + currentUser);
                         log.writeLog();
                     }
                     
                     
-                    HttpResponseMessage response = await client.PutAsJsonAsync("AspNetUsers/active/" + id, user);
+                    HttpResponseMessage response = await client.PutAsJsonAsync("AspNetUsers/AspNetUsers/" + id, user);
                     if (response.IsSuccessStatusCode)
                     {
 

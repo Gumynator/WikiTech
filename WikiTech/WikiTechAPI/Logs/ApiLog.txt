@@ -1,1 +1,5 @@
 ﻿19.06.2021 16:03:39 | Message : ArticleID : 56 l'etat a été modifié par b88c513a-526b-45e1-b670-e6947697a1cc
+21.06.2021 11:32:48 | Message : ArticleID : 74 est ajouté par 59d49ec9-3622-4d5c-8e47-8ba7bd0ab15d
+21.06.2021 11:42:03 | Message : ArticleID : 35 l'etat a été modifié par 59d49ec9-3622-4d5c-8e47-8ba7bd0ab15d
+21.06.2021 11:42:59 | Message : ArticleID : 35 est desactivé par 59d49ec9-3622-4d5c-8e47-8ba7bd0ab15d
+21.06.2021 12:17:56 | Message : ArticleID : 36 l'etat a été modifié par 59d49ec9-3622-4d5c-8e47-8ba7bd0ab15d

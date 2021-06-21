@@ -15,7 +15,6 @@ namespace WikiTechAPI.Controllers
     public class PostulationsController : ControllerBase
     {
         private readonly WikiTechDBContext _context;
-        string rolesArray;
 
         public PostulationsController(WikiTechDBContext context)
         {

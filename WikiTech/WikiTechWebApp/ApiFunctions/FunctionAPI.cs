@@ -163,20 +163,19 @@ namespace WikiTechWebApp.ApiFunctions
         }
         internal static async void IncreasePointForUser(HttpClient client, string _idUser, int _nbPointToAdd)
         {
-
             using var response = await client.PutAsJsonAsync(ConfigureHttpClient.apiUrl + "AspNetUsers/addpoint/" + _idUser, _nbPointToAdd);
             string apiResponse = await response.Content.ReadAsStringAsync();
-
 
         }
 
         internal static async Task<Grade> GetGradesForUser(HttpClient client, int gradeId)
         {
             Grade grade = null;
-            HttpResponseMessage response = await client.GetAsync("Grades/GetGrade/" + gradeId);
+            HttpResponseMessage response = await client.GetAsync("Grades/" + gradeId);
             if (response.IsSuccessStatusCode)
             {
                 grade = await response.Content.ReadAsAsync<Grade>();
+                grade.NomGrade = grade.NomGrade.Trim();
             }
 
             return grade;

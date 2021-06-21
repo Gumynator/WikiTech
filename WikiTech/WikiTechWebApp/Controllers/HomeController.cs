@@ -20,6 +20,8 @@ using System.IO;
 using WikiTechAPI.Utility;
 using Microsoft.AspNetCore.Authorization;
 using WikiTechWebApp.ApiFunctions;
+using System.Security.Claims;
+using WikiTechAPI.Models;
 
 namespace WikiTechWebApp.Controllers
 {
@@ -53,6 +55,10 @@ namespace WikiTechWebApp.Controllers
         {
             return View();
         }
+        public IActionResult Unauthorize()
+        {
+            return View();
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
@@ -79,7 +85,18 @@ namespace WikiTechWebApp.Controllers
         [Authorize]
         public IActionResult Log()
         {
+            string IdUser = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            Grade grade = null;
+            if (IdUser != null)
+            {
+                var currentUser = FunctionAPI.GetUserByIdAsync(client, IdUser).Result;
+                grade = FunctionAPI.GetGradesForUser(client, currentUser.IdGrade).Result;
+            }
 
+            if (IdUser == null || grade.NomGrade != "user sup")
+            {
+                return RedirectToAction("Unauthorize", "Home");
+            }
             HttpResponseMessage responsearticle = client.GetAsync("ApiLog").Result;
             var logs = responsearticle.Content.ReadAsAsync<List<string>>().Result;
 

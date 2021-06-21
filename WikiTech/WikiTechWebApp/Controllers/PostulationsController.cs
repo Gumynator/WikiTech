@@ -23,16 +23,12 @@ namespace WikiTechWebApp.Controllers
     public class PostulationsController : Controller
     {
         static HttpClient client = new HttpClient();
-        static IEmailSender _sender;
-        private RoleManager<IdentityRole> roleManager;
+        static IEmailSender _sender;       
         //static string IdUser;
 
-        public PostulationsController(IHttpContextAccessor httpContextAccessor,IEmailSender sender, RoleManager<IdentityRole> roleMgr)
-        {
-               
+        public PostulationsController(IHttpContextAccessor httpContextAccessor,IEmailSender sender)
+        {            
             client = ConfigureHttpClient.configureHttpClient(client);
-            roleManager = roleMgr;
-
             //client.DefaultRequestHeaders.Add("ApiKey", "61c08ad1-0823-4c38-9853-700675e3c8fc");
             _sender = sender;
         }
@@ -40,14 +36,16 @@ namespace WikiTechWebApp.Controllers
         public ActionResult Index()
         {
             string IdUser = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var currentUser = FunctionAPI.GetUserByIdAsync(client,IdUser).Result;
-            Grade grade = FunctionAPI.GetGradesForUser(client, currentUser.IdGrade).Result;
-
-            
+            Grade grade = null;
+            if (IdUser != null)
+            {
+                var currentUser = FunctionAPI.GetUserByIdAsync(client, IdUser).Result;
+                grade = FunctionAPI.GetGradesForUser(client, currentUser.IdGrade).Result;
+            }
 
             if (IdUser == null||grade.NomGrade!="user sup")
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Unauthorize", "Home");
             }
             return View();
         }
