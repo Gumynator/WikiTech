@@ -89,8 +89,68 @@
         </div>
 
         <p>
-            <a class="btn btn-outline-primary" value="supprimerArticle" asp-action="like"> Jaime </a>
-            <a class="btn btn-outline-danger" value="supprimerArticle" asp-action="dislike"> j'aime pas </a>
+                               
+            <a class="btn btn-outline-primary like" id="like" value="like"> Jaime </a>
+            <a class="btn btn-outline-danger dislike" id="dislike" value="dislike"> j'aime pas </a>
+            <script>
+                getApreciation("c0620c22 - 2895 - 4353 - 9204 - c9fbe754760b");
+
+
+                function getApreciation(id) {
+                    $.ajax(
+                        {
+                            url: "http://localhost:59601/Api/Appreciers/" + id,
+                            type: "GET",
+                            dataType: "JSON",
+                            contentType: "application/json",
+                            headers: { "ApiKey": "61c08ad1-0823-4c38-9853-700675e3c8fc" },
+                            success: function (data) {
+                                colorButton(data);
+                            }
+                        });
+                }
+
+                $(function () {
+                    $('.like').click(function () { likeFunction(this); });
+                    $('.dislike').click(function () { dislikeFunction(this); });
+                });
+
+                
+                
+
+                function colorButton(data) {
+                    if (data.apprecie == true) {
+                        $('.like').css("background-color", 'green');
+                        $('#dislike').css('background-color', "white");
+                    }
+                }
+
+                function likeFunction(caller) {
+                    $('.like').css("background-color", 'green');
+                    $('#dislike').css('background-color', "white");
+                    var Id = Model.Article.Id;
+                    var IdArticle = Model.Article.IdArticle
+                    var obj = { 'Id': Id, 'IdArticle': IdArticle };
+                    $.ajax({
+                        type: "POST",
+                        url: "http://localhost:59601/Api/Appreciers",
+                        data: obj,
+                        headers: { "ApiKey": "61c08ad1-0823-4c38-9853-700675e3c8fc" },
+                        success: function () { }
+                    });
+                }
+                function dislikeFunction(caller) {
+                    $('#dislike').css('background-color', "#FF0000");
+                    $('#like').css('background-color', "white");
+                    $.ajax({
+                        type: "POST",
+                        url: "http://localhost:59601/Api/Appreciers",
+                        data: 'Action=DISLIKE&PostID=' + postId,
+                        headers: { "ApiKey": "61c08ad1-0823-4c38-9853-700675e3c8fc" },
+                        success: function () { }
+                    });
+                }
+            </script>
             <a class="btn btn-outline-warning" value="supprimerArticle" asp-controller="Articles" asp-action="PropositionModification" asp-route-id="@Model.Article.IdArticle"> Proposer une modif!</a>
 
             <a class="btn btn-outline-dark" value="disableArticleeeeee" asp-controller="Articles" asp-action="disableArticleeeeee" asp-route-id="@Model.Article.IdArticle"> Desactiver</a>
