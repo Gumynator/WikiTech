@@ -1585,3 +1585,587 @@ Path '', line 1, position 1.
 >>>>>>> main
 =======
 >>>>>>> main
+2021-06-21T23:47:49.3611453+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2021-06-21T23:47:49.3739035+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Developement
+2021-06-21T23:47:49.3750564+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechWebApp
+2021-06-21T23:47:49.4204207+02:00	WARN	[Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware]	[FailedToDeterminePort]	Failed to determine the https port for redirect.
+2021-06-21T23:48:07.1837676+02:00	FAIL	[Microsoft.AspNetCore.Server.IIS.Core.IISHttpServer]	[ApplicationError]	Connection ID "16429131502387724314", Request ID "80000021-000e-e400-b63f-84710c7967bb": An unhandled exception was thrown by the application.System.Net.Http.UnsupportedMediaTypeException: No MediaTypeFormatter is available to read an object of type 'Article' from content with media type 'application/problem+json'.
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, Type type, IEnumerable`1 formatters, IFormatterLogger formatterLogger, CancellationToken cancellationToken)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, Type type, IEnumerable`1 formatters, IFormatterLogger formatterLogger)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, IEnumerable`1 formatters)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content)
+   at WikiTechWebApp.Controllers.ArticlesController.DetailsAsync(Int32 id) in D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechWebApp\Controllers\ArticlesController.cs:line 184
+   at lambda_method196(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Server.IIS.Core.IISHttpContextOfT`1.ProcessRequestAsync()
+
+2021-06-21T23:48:53.2061485+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2021-06-21T23:48:53.2102231+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Developement
+2021-06-21T23:48:53.2114051+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechWebApp
+2021-06-21T23:48:53.2331494+02:00	WARN	[Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware]	[FailedToDeterminePort]	Failed to determine the https port for redirect.
+2021-06-21T23:49:02.6505534+02:00	FAIL	[Microsoft.AspNetCore.Server.IIS.Core.IISHttpServer]	[ApplicationError]	Connection ID "16501189096425652318", Request ID "80000062-000e-e500-b63f-84710c7967bb": An unhandled exception was thrown by the application.System.Net.Http.UnsupportedMediaTypeException: No MediaTypeFormatter is available to read an object of type 'Article' from content with media type 'application/problem+json'.
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, Type type, IEnumerable`1 formatters, IFormatterLogger formatterLogger, CancellationToken cancellationToken)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, Type type, IEnumerable`1 formatters, IFormatterLogger formatterLogger)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, IEnumerable`1 formatters)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content)
+   at WikiTechWebApp.Controllers.ArticlesController.DetailsAsync(Int32 id) in D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechWebApp\Controllers\ArticlesController.cs:line 184
+   at lambda_method196(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Server.IIS.Core.IISHttpContextOfT`1.ProcessRequestAsync()
+
+2021-06-21T23:49:04.3386547+02:00	FAIL	[Microsoft.AspNetCore.Server.IIS.Core.IISHttpServer]	[ApplicationError]	Connection ID "16501189096425652318", Request ID "80000063-000e-e500-b63f-84710c7967bb": An unhandled exception was thrown by the application.System.Net.Http.UnsupportedMediaTypeException: No MediaTypeFormatter is available to read an object of type 'Article' from content with media type 'application/problem+json'.
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, Type type, IEnumerable`1 formatters, IFormatterLogger formatterLogger, CancellationToken cancellationToken)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, Type type, IEnumerable`1 formatters, IFormatterLogger formatterLogger)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, IEnumerable`1 formatters)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content)
+   at WikiTechWebApp.Controllers.ArticlesController.DetailsAsync(Int32 id) in D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechWebApp\Controllers\ArticlesController.cs:line 184
+   at lambda_method196(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Server.IIS.Core.IISHttpContextOfT`1.ProcessRequestAsync()
+
+2021-06-21T23:49:05.0106594+02:00	FAIL	[Microsoft.AspNetCore.Server.IIS.Core.IISHttpServer]	[ApplicationError]	Connection ID "16501189096425652318", Request ID "80000064-000e-e500-b63f-84710c7967bb": An unhandled exception was thrown by the application.System.Net.Http.UnsupportedMediaTypeException: No MediaTypeFormatter is available to read an object of type 'Article' from content with media type 'application/problem+json'.
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, Type type, IEnumerable`1 formatters, IFormatterLogger formatterLogger, CancellationToken cancellationToken)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, Type type, IEnumerable`1 formatters, IFormatterLogger formatterLogger)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, IEnumerable`1 formatters)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content)
+   at WikiTechWebApp.Controllers.ArticlesController.DetailsAsync(Int32 id) in D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechWebApp\Controllers\ArticlesController.cs:line 184
+   at lambda_method196(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Server.IIS.Core.IISHttpContextOfT`1.ProcessRequestAsync()
+
+2021-06-21T23:49:05.4911262+02:00	FAIL	[Microsoft.AspNetCore.Server.IIS.Core.IISHttpServer]	[ApplicationError]	Connection ID "16501189096425652318", Request ID "80000065-000e-e500-b63f-84710c7967bb": An unhandled exception was thrown by the application.System.Net.Http.UnsupportedMediaTypeException: No MediaTypeFormatter is available to read an object of type 'Article' from content with media type 'application/problem+json'.
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, Type type, IEnumerable`1 formatters, IFormatterLogger formatterLogger, CancellationToken cancellationToken)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, Type type, IEnumerable`1 formatters, IFormatterLogger formatterLogger)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, IEnumerable`1 formatters)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content)
+   at WikiTechWebApp.Controllers.ArticlesController.DetailsAsync(Int32 id) in D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechWebApp\Controllers\ArticlesController.cs:line 184
+   at lambda_method196(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Server.IIS.Core.IISHttpContextOfT`1.ProcessRequestAsync()
+
+2021-06-21T23:49:06.7529360+02:00	FAIL	[Microsoft.AspNetCore.Server.IIS.Core.IISHttpServer]	[ApplicationError]	Connection ID "16501189096425652318", Request ID "80000066-000e-e500-b63f-84710c7967bb": An unhandled exception was thrown by the application.System.Net.Http.UnsupportedMediaTypeException: No MediaTypeFormatter is available to read an object of type 'Article' from content with media type 'application/problem+json'.
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, Type type, IEnumerable`1 formatters, IFormatterLogger formatterLogger, CancellationToken cancellationToken)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, Type type, IEnumerable`1 formatters, IFormatterLogger formatterLogger)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, IEnumerable`1 formatters)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content)
+   at WikiTechWebApp.Controllers.ArticlesController.DetailsAsync(Int32 id) in D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechWebApp\Controllers\ArticlesController.cs:line 184
+   at lambda_method196(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Server.IIS.Core.IISHttpContextOfT`1.ProcessRequestAsync()
+
+2021-06-21T23:49:07.2704795+02:00	FAIL	[Microsoft.AspNetCore.Server.IIS.Core.IISHttpServer]	[ApplicationError]	Connection ID "16501189096425652318", Request ID "80000067-000e-e500-b63f-84710c7967bb": An unhandled exception was thrown by the application.System.Net.Http.UnsupportedMediaTypeException: No MediaTypeFormatter is available to read an object of type 'Article' from content with media type 'application/problem+json'.
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, Type type, IEnumerable`1 formatters, IFormatterLogger formatterLogger, CancellationToken cancellationToken)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, Type type, IEnumerable`1 formatters, IFormatterLogger formatterLogger)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, IEnumerable`1 formatters)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content)
+   at WikiTechWebApp.Controllers.ArticlesController.DetailsAsync(Int32 id) in D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechWebApp\Controllers\ArticlesController.cs:line 184
+   at lambda_method196(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Server.IIS.Core.IISHttpContextOfT`1.ProcessRequestAsync()
+
+2021-06-21T23:50:52.1326963+02:00	FAIL	[Microsoft.AspNetCore.Server.IIS.Core.IISHttpServer]	[ApplicationError]	Connection ID "16501189096425652318", Request ID "80000068-000e-e500-b63f-84710c7967bb": An unhandled exception was thrown by the application.System.Net.Http.UnsupportedMediaTypeException: No MediaTypeFormatter is available to read an object of type 'Article' from content with media type 'application/problem+json'.
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, Type type, IEnumerable`1 formatters, IFormatterLogger formatterLogger, CancellationToken cancellationToken)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, Type type, IEnumerable`1 formatters, IFormatterLogger formatterLogger)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, IEnumerable`1 formatters)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content)
+   at WikiTechWebApp.Controllers.ArticlesController.DetailsAsync(Int32 id) in D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechWebApp\Controllers\ArticlesController.cs:line 184
+   at lambda_method196(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Server.IIS.Core.IISHttpContextOfT`1.ProcessRequestAsync()
+
+2021-06-21T23:50:52.2102808+02:00	FAIL	[Microsoft.AspNetCore.Server.IIS.Core.IISHttpServer]	[ApplicationError]	Connection ID "18230571353335923000", Request ID "80000139-000e-fd00-b63f-84710c7967bb": An unhandled exception was thrown by the application.System.Net.Http.UnsupportedMediaTypeException: No MediaTypeFormatter is available to read an object of type 'Article' from content with media type 'application/problem+json'.
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, Type type, IEnumerable`1 formatters, IFormatterLogger formatterLogger, CancellationToken cancellationToken)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, Type type, IEnumerable`1 formatters, IFormatterLogger formatterLogger)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, IEnumerable`1 formatters)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content)
+   at WikiTechWebApp.Controllers.ArticlesController.DetailsAsync(Int32 id) in D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechWebApp\Controllers\ArticlesController.cs:line 184
+   at lambda_method196(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Server.IIS.Core.IISHttpContextOfT`1.ProcessRequestAsync()
+
+2021-06-21T23:51:17.4695729+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2021-06-21T23:51:17.4742160+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Developement
+2021-06-21T23:51:17.4754602+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechWebApp
+2021-06-21T23:51:17.4982898+02:00	WARN	[Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware]	[FailedToDeterminePort]	Failed to determine the https port for redirect.
+2021-06-21T23:54:01.7627347+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2021-06-21T23:54:01.7668920+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Developement
+2021-06-21T23:54:01.7680561+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechWebApp
+2021-06-21T23:54:01.7901595+02:00	WARN	[Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware]	[FailedToDeterminePort]	Failed to determine the https port for redirect.
+2021-06-21T23:54:33.8677537+02:00	FAIL	[Microsoft.AspNetCore.Server.IIS.Core.IISHttpServer]	[ApplicationError]	Connection ID "18230571353335923006", Request ID "80000140-000e-fd00-b63f-84710c7967bb": An unhandled exception was thrown by the application.System.Net.Http.UnsupportedMediaTypeException: No MediaTypeFormatter is available to read an object of type 'Article' from content with media type 'application/problem+json'.
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, Type type, IEnumerable`1 formatters, IFormatterLogger formatterLogger, CancellationToken cancellationToken)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, Type type, IEnumerable`1 formatters, IFormatterLogger formatterLogger)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, IEnumerable`1 formatters)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content)
+   at WikiTechWebApp.Controllers.ArticlesController.DetailsAsync(Int32 id) in D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechWebApp\Controllers\ArticlesController.cs:line 184
+   at lambda_method196(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Server.IIS.Core.IISHttpContextOfT`1.ProcessRequestAsync()
+
+2021-06-21T23:54:34.9978015+02:00	FAIL	[Microsoft.AspNetCore.Server.IIS.Core.IISHttpServer]	[ApplicationError]	Connection ID "18230571353335923006", Request ID "80000141-000e-fd00-b63f-84710c7967bb": An unhandled exception was thrown by the application.System.Net.Http.UnsupportedMediaTypeException: No MediaTypeFormatter is available to read an object of type 'Article' from content with media type 'application/problem+json'.
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, Type type, IEnumerable`1 formatters, IFormatterLogger formatterLogger, CancellationToken cancellationToken)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, Type type, IEnumerable`1 formatters, IFormatterLogger formatterLogger)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, IEnumerable`1 formatters)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content)
+   at WikiTechWebApp.Controllers.ArticlesController.DetailsAsync(Int32 id) in D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechWebApp\Controllers\ArticlesController.cs:line 184
+   at lambda_method196(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Server.IIS.Core.IISHttpContextOfT`1.ProcessRequestAsync()
+
+2021-06-21T23:54:36.5042843+02:00	FAIL	[Microsoft.AspNetCore.Server.IIS.Core.IISHttpServer]	[ApplicationError]	Connection ID "18230571353335923006", Request ID "80000142-000e-fd00-b63f-84710c7967bb": An unhandled exception was thrown by the application.System.Net.Http.UnsupportedMediaTypeException: No MediaTypeFormatter is available to read an object of type 'Article' from content with media type 'application/problem+json'.
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, Type type, IEnumerable`1 formatters, IFormatterLogger formatterLogger, CancellationToken cancellationToken)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, Type type, IEnumerable`1 formatters, IFormatterLogger formatterLogger)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, IEnumerable`1 formatters)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content)
+   at WikiTechWebApp.Controllers.ArticlesController.DetailsAsync(Int32 id) in D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechWebApp\Controllers\ArticlesController.cs:line 184
+   at lambda_method196(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Server.IIS.Core.IISHttpContextOfT`1.ProcessRequestAsync()
+
+2021-06-21T23:54:37.5403574+02:00	FAIL	[Microsoft.AspNetCore.Server.IIS.Core.IISHttpServer]	[ApplicationError]	Connection ID "18230571353335923006", Request ID "80000143-000e-fd00-b63f-84710c7967bb": An unhandled exception was thrown by the application.System.Net.Http.UnsupportedMediaTypeException: No MediaTypeFormatter is available to read an object of type 'Article' from content with media type 'application/problem+json'.
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, Type type, IEnumerable`1 formatters, IFormatterLogger formatterLogger, CancellationToken cancellationToken)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, Type type, IEnumerable`1 formatters, IFormatterLogger formatterLogger)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, IEnumerable`1 formatters)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content)
+   at WikiTechWebApp.Controllers.ArticlesController.DetailsAsync(Int32 id) in D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechWebApp\Controllers\ArticlesController.cs:line 184
+   at lambda_method196(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Server.IIS.Core.IISHttpContextOfT`1.ProcessRequestAsync()
+
+2021-06-21T23:54:38.0778655+02:00	FAIL	[Microsoft.AspNetCore.Server.IIS.Core.IISHttpServer]	[ApplicationError]	Connection ID "18230571353335923006", Request ID "80000144-000e-fd00-b63f-84710c7967bb": An unhandled exception was thrown by the application.System.Net.Http.UnsupportedMediaTypeException: No MediaTypeFormatter is available to read an object of type 'Article' from content with media type 'application/problem+json'.
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, Type type, IEnumerable`1 formatters, IFormatterLogger formatterLogger, CancellationToken cancellationToken)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, Type type, IEnumerable`1 formatters, IFormatterLogger formatterLogger)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, IEnumerable`1 formatters)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content)
+   at WikiTechWebApp.Controllers.ArticlesController.DetailsAsync(Int32 id) in D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechWebApp\Controllers\ArticlesController.cs:line 184
+   at lambda_method196(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Server.IIS.Core.IISHttpContextOfT`1.ProcessRequestAsync()
+
+2021-06-21T23:54:50.0420738+02:00	FAIL	[Microsoft.AspNetCore.Server.IIS.Core.IISHttpServer]	[ApplicationError]	Connection ID "18230571353335923006", Request ID "80000145-000e-fd00-b63f-84710c7967bb": An unhandled exception was thrown by the application.System.Net.Http.UnsupportedMediaTypeException: No MediaTypeFormatter is available to read an object of type 'Article' from content with media type 'application/problem+json'.
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, Type type, IEnumerable`1 formatters, IFormatterLogger formatterLogger, CancellationToken cancellationToken)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, Type type, IEnumerable`1 formatters, IFormatterLogger formatterLogger)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, IEnumerable`1 formatters)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content)
+   at WikiTechWebApp.Controllers.ArticlesController.DetailsAsync(Int32 id) in D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechWebApp\Controllers\ArticlesController.cs:line 184
+   at lambda_method196(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Server.IIS.Core.IISHttpContextOfT`1.ProcessRequestAsync()
+
+2021-06-21T23:54:50.6845918+02:00	FAIL	[Microsoft.AspNetCore.Server.IIS.Core.IISHttpServer]	[ApplicationError]	Connection ID "18230571353335923006", Request ID "80000146-000e-fd00-b63f-84710c7967bb": An unhandled exception was thrown by the application.System.Net.Http.UnsupportedMediaTypeException: No MediaTypeFormatter is available to read an object of type 'Article' from content with media type 'application/problem+json'.
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, Type type, IEnumerable`1 formatters, IFormatterLogger formatterLogger, CancellationToken cancellationToken)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, Type type, IEnumerable`1 formatters, IFormatterLogger formatterLogger)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, IEnumerable`1 formatters)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content)
+   at WikiTechWebApp.Controllers.ArticlesController.DetailsAsync(Int32 id) in D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechWebApp\Controllers\ArticlesController.cs:line 184
+   at lambda_method196(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Server.IIS.Core.IISHttpContextOfT`1.ProcessRequestAsync()
+
+2021-06-21T23:55:01.8678478+02:00	FAIL	[Microsoft.AspNetCore.Server.IIS.Core.IISHttpServer]	[ApplicationError]	Connection ID "18230571353335923006", Request ID "80000149-000e-fd00-b63f-84710c7967bb": An unhandled exception was thrown by the application.System.Net.Http.UnsupportedMediaTypeException: No MediaTypeFormatter is available to read an object of type 'Article' from content with media type 'application/problem+json'.
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, Type type, IEnumerable`1 formatters, IFormatterLogger formatterLogger, CancellationToken cancellationToken)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, Type type, IEnumerable`1 formatters, IFormatterLogger formatterLogger)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, IEnumerable`1 formatters)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content)
+   at WikiTechWebApp.Controllers.ArticlesController.DetailsAsync(Int32 id) in D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechWebApp\Controllers\ArticlesController.cs:line 184
+   at lambda_method196(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Server.IIS.Core.IISHttpContextOfT`1.ProcessRequestAsync()
+
+2021-06-21T23:55:02.5937869+02:00	FAIL	[Microsoft.AspNetCore.Server.IIS.Core.IISHttpServer]	[ApplicationError]	Connection ID "18230571353335923006", Request ID "8000014a-000e-fd00-b63f-84710c7967bb": An unhandled exception was thrown by the application.System.Net.Http.UnsupportedMediaTypeException: No MediaTypeFormatter is available to read an object of type 'Article' from content with media type 'application/problem+json'.
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, Type type, IEnumerable`1 formatters, IFormatterLogger formatterLogger, CancellationToken cancellationToken)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, Type type, IEnumerable`1 formatters, IFormatterLogger formatterLogger)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content, IEnumerable`1 formatters)
+   at System.Net.Http.HttpContentExtensions.ReadAsAsync[T](HttpContent content)
+   at WikiTechWebApp.Controllers.ArticlesController.DetailsAsync(Int32 id) in D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechWebApp\Controllers\ArticlesController.cs:line 184
+   at lambda_method196(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Server.IIS.Core.IISHttpContextOfT`1.ProcessRequestAsync()
+
+2021-06-22T00:10:26.1208258+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2021-06-22T00:10:26.1263039+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Developement
+2021-06-22T00:10:26.1275412+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechWebApp
+2021-06-22T00:10:26.1553950+02:00	WARN	[Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware]	[FailedToDeterminePort]	Failed to determine the https port for redirect.
+2021-06-22T00:14:30.4444561+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2021-06-22T00:14:30.4495625+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Developement
+2021-06-22T00:14:30.4508295+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechWebApp
+2021-06-22T00:14:30.4751199+02:00	WARN	[Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware]	[FailedToDeterminePort]	Failed to determine the https port for redirect.
+2021-06-22T00:15:36.5951157+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2021-06-22T00:15:36.6000165+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Developement
+2021-06-22T00:15:36.6017185+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechWebApp
+2021-06-22T00:15:36.6261126+02:00	WARN	[Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware]	[FailedToDeterminePort]	Failed to determine the https port for redirect.
+2021-06-22T00:25:52.4551381+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2021-06-22T00:25:52.4597443+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Developement
+2021-06-22T00:25:52.4608070+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechWebApp
+2021-06-22T00:25:52.4865224+02:00	WARN	[Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware]	[FailedToDeterminePort]	Failed to determine the https port for redirect.
+2021-06-22T00:28:33.4478128+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2021-06-22T00:28:33.4521245+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Developement
+2021-06-22T00:28:33.4533813+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechWebApp
+2021-06-22T00:28:33.4761366+02:00	WARN	[Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware]	[FailedToDeterminePort]	Failed to determine the https port for redirect.
+2021-06-22T00:32:06.0657501+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2021-06-22T00:32:06.0706411+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Developement
+2021-06-22T00:32:06.0717940+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechWebApp
+2021-06-22T00:32:06.0964683+02:00	WARN	[Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware]	[FailedToDeterminePort]	Failed to determine the https port for redirect.
+2021-06-22T00:33:29.3068499+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2021-06-22T00:33:29.3112395+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Developement
+2021-06-22T00:33:29.3124973+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechWebApp
+2021-06-22T00:33:29.3360436+02:00	WARN	[Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware]	[FailedToDeterminePort]	Failed to determine the https port for redirect.
+2021-06-22T00:36:25.0547891+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2021-06-22T00:36:25.0600210+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Developement
+2021-06-22T00:36:25.0614476+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechWebApp
+2021-06-22T00:36:25.0879338+02:00	WARN	[Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware]	[FailedToDeterminePort]	Failed to determine the https port for redirect.
+2021-06-22T00:41:23.6699430+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2021-06-22T00:41:23.6745756+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Developement
+2021-06-22T00:41:23.6756472+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechWebApp
+2021-06-22T00:41:23.7040204+02:00	WARN	[Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware]	[FailedToDeterminePort]	Failed to determine the https port for redirect.
+2021-06-22T00:46:53.9187132+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2021-06-22T00:46:53.9233709+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Developement
+2021-06-22T00:46:53.9249091+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechWebApp
+2021-06-22T00:46:53.9478296+02:00	WARN	[Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware]	[FailedToDeterminePort]	Failed to determine the https port for redirect.
+2021-06-22T00:50:16.1395229+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2021-06-22T00:50:16.1437416+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Developement
+2021-06-22T00:50:16.1451560+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechWebApp
+2021-06-22T00:50:16.1683817+02:00	WARN	[Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware]	[FailedToDeterminePort]	Failed to determine the https port for redirect.
+2021-06-22T00:51:40.1033021+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2021-06-22T00:51:40.1077453+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Developement
+2021-06-22T00:51:40.1088834+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechWebApp
+2021-06-22T00:51:40.1351032+02:00	WARN	[Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware]	[FailedToDeterminePort]	Failed to determine the https port for redirect.
+2021-06-22T00:55:01.1156343+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2021-06-22T00:55:01.1198989+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Developement
+2021-06-22T00:55:01.1210116+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechWebApp
+2021-06-22T00:55:01.1443722+02:00	WARN	[Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware]	[FailedToDeterminePort]	Failed to determine the https port for redirect.
+2021-06-22T00:55:49.9286114+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2021-06-22T00:55:49.9332933+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Developement
+2021-06-22T00:55:49.9346862+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechWebApp
+2021-06-22T00:55:49.9584499+02:00	WARN	[Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware]	[FailedToDeterminePort]	Failed to determine the https port for redirect.
+2021-06-22T01:01:52.7057578+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2021-06-22T01:01:52.7098471+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Developement
+2021-06-22T01:01:52.7109530+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechWebApp
+2021-06-22T01:01:52.7334020+02:00	WARN	[Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware]	[FailedToDeterminePort]	Failed to determine the https port for redirect.
+2021-06-22T01:02:31.8339425+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2021-06-22T01:02:31.8385272+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Developement
+2021-06-22T01:02:31.8397278+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechWebApp
+2021-06-22T01:02:31.8626710+02:00	WARN	[Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware]	[FailedToDeterminePort]	Failed to determine the https port for redirect.
+2021-06-22T01:03:11.0354500+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2021-06-22T01:03:11.0399808+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Developement
+2021-06-22T01:03:11.0412832+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechWebApp
+2021-06-22T01:03:11.0641308+02:00	WARN	[Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware]	[FailedToDeterminePort]	Failed to determine the https port for redirect.
+2021-06-22T01:06:59.4483549+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2021-06-22T01:06:59.4531763+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Developement
+2021-06-22T01:06:59.4545786+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechWebApp
+2021-06-22T01:06:59.4787262+02:00	WARN	[Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware]	[FailedToDeterminePort]	Failed to determine the https port for redirect.
+2021-06-22T01:07:58.1579647+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2021-06-22T01:07:58.1623113+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Developement
+2021-06-22T01:07:58.1635540+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechWebApp
+2021-06-22T01:07:58.1860691+02:00	WARN	[Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware]	[FailedToDeterminePort]	Failed to determine the https port for redirect.
+2021-06-22T01:08:34.8094173+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2021-06-22T01:08:34.8141206+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Developement
+2021-06-22T01:08:34.8153954+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechWebApp
+2021-06-22T01:08:34.8401287+02:00	WARN	[Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware]	[FailedToDeterminePort]	Failed to determine the https port for redirect.
+2021-06-22T01:10:17.3249939+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2021-06-22T01:10:17.3298833+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Developement
+2021-06-22T01:10:17.3311666+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechWebApp
+2021-06-22T01:10:17.3541724+02:00	WARN	[Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware]	[FailedToDeterminePort]	Failed to determine the https port for redirect.
+2021-06-22T01:11:29.8149724+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2021-06-22T01:11:29.8194946+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Developement
+2021-06-22T01:11:29.8207287+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechWebApp
+2021-06-22T01:11:29.8436547+02:00	WARN	[Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware]	[FailedToDeterminePort]	Failed to determine the https port for redirect.
+2021-06-22T01:16:42.4414641+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2021-06-22T01:16:42.4457022+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Developement
+2021-06-22T01:16:42.4469499+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechWebApp
+2021-06-22T01:16:42.4693416+02:00	WARN	[Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware]	[FailedToDeterminePort]	Failed to determine the https port for redirect.
+2021-06-22T01:17:43.0586062+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2021-06-22T01:17:43.0628970+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Developement
+2021-06-22T01:17:43.0642112+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechWebApp
+2021-06-22T01:17:43.0887838+02:00	WARN	[Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware]	[FailedToDeterminePort]	Failed to determine the https port for redirect.
+2021-06-22T01:19:56.0375712+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2021-06-22T01:19:56.0426026+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Developement
+2021-06-22T01:19:56.0439632+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechWebApp
+2021-06-22T01:19:56.0670483+02:00	WARN	[Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware]	[FailedToDeterminePort]	Failed to determine the https port for redirect.
