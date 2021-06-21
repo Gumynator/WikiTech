@@ -90,7 +90,6 @@ namespace WikiTechWebApp.Controllers
 
         }
 
-<<<<<<< HEAD
         // GET: ArticlesController to restor
         public async Task<IActionResult> DiscussionAsync(int id)
         {
@@ -132,7 +131,7 @@ namespace WikiTechWebApp.Controllers
             return View("Discussion", listMessage);
         }
 
-=======
+
 
         public IActionResult AllArticle()
         {
@@ -168,7 +167,7 @@ namespace WikiTechWebApp.Controllers
         }
 
 
->>>>>>> main
+
         // GET: ArticleController/Details/5
         public async Task<ActionResult> DetailsAsync(int id)
         {
@@ -217,7 +216,6 @@ namespace WikiTechWebApp.Controllers
                 }
 
                 ///check de l'abonnement
-                string IdUser = User.FindFirstValue(ClaimTypes.NameIdentifier);
                 dynamicmodel.Changement = resultatChangement;
                 CheckAbonnement currentAbonnement;
                 HttpResponseMessage checkAbonnement = await client.GetAsync("Abonnements/GetAbonnementByUser/" + IdUser);

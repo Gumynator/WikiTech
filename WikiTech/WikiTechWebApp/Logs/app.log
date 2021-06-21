@@ -900,3 +900,16 @@ Path '', line 1, position 1.
 2021-06-21T16:25:41.3468808+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\loarey\WikiTech\WikiTech\WikiTechWebApp
 2021-06-21T16:25:41.3780114+02:00	WARN	[Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware]	[FailedToDeterminePort]	Failed to determine the https port for redirect.
 2021-06-21T16:26:35.1817568+02:00	INFO	[WikiTechWebApp.Areas.Identity.Pages.Account.LoginModel]	[0]	User logged in.
+2021-06-21T18:35:12.1476653+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2021-06-21T18:35:12.1511603+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Developement
+2021-06-21T18:35:12.1520447+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\temp\gitkraken\WikiTech-Proto\WikiTech\WikiTechWebApp
+2021-06-21T18:35:12.1721006+02:00	WARN	[Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware]	[FailedToDeterminePort]	Failed to determine the https port for redirect.
+2021-06-21T18:45:31.1925849+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2021-06-21T18:45:31.1966872+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Developement
+2021-06-21T18:45:31.1978097+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\temp\gitkraken\WikiTech-Proto\WikiTech\WikiTechWebApp
+2021-06-21T18:45:31.2181442+02:00	WARN	[Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware]	[FailedToDeterminePort]	Failed to determine the https port for redirect.
+2021-06-21T18:45:40.3195484+02:00	INFO	[WikiTechWebApp.Areas.Identity.Pages.Account.LoginModel]	[0]	User logged in.
+2021-06-21T18:46:38.8681074+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2021-06-21T18:46:38.8720008+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Developement
+2021-06-21T18:46:38.8730614+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\temp\gitkraken\WikiTech-Proto\WikiTech\WikiTechWebApp
+2021-06-21T18:46:38.8940848+02:00	WARN	[Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware]	[FailedToDeterminePort]	Failed to determine the https port for redirect.
