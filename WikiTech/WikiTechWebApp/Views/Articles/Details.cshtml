@@ -22,11 +22,7 @@
     <p><a asp-action="Index">--retour</a></p>
     <hr />
 
-    @if (Model.Article.IsqualityArticle == true)
-    {
-        <p> C'est un article de qualité, vous devez être abonné pour le voir. Cette fonctionnalité est en cours de développement !</p>
-    }
-    else
+    @if (Model.Article.IsqualityArticle == false || Model.Article.IsqualityArticle == true && ViewBag.expiration == true && ViewBag.articleAbonnement == ViewBag.idAbonnement || ViewBag.idAbonnement == 3)
     {
         <!-- Page content-->
         <div class="container">
@@ -34,10 +30,11 @@
                 <div class="col-lg-8">
                     <!-- Title-->
                     <h1 class="mt-4">@Model.Article.TitreArticle</h1>
+                    <a asp-action="Discussion" asp-route-id="@Model.Article.IdArticle">Discussion</a>
                     <!-- auteur-->
                     <p class="lead">
                         by
-                        <a asp-controller="AspNetUsers" asp-action="Details" asp-route-id="@ViewBag.id">@Model.Article.IdNavigation.PrenomAspnetuser</a>                       
+                        <a asp-controller="AspNetUsers" asp-action="Details" asp-route-id="@ViewBag.id">@Model.Article.IdNavigation.PrenomAspnetuser</a>
                     </p>
                     <hr />
                     <!-- Date and time-->
@@ -136,11 +133,15 @@
             </table>
 
         }
-        else 
+        else
         {
             <h2>pas de modification pour cet article</h2>
         }
 
+    }
+    else
+    {
+        <p> C'est un article de qualité, vous devez être abonné à la bonne section pour le voir. Cette fonctionnalité est en cours de développement !</p>
     }
 
 </body>

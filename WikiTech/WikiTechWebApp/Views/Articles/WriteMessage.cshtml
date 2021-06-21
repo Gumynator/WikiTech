@@ -1,0 +1,18 @@
+﻿@model WikiTechWebApp.Views.Articles.SendMessageModel
+
+@{
+    ViewData["Title"] = "SendMessage";
+}
+
+<h1>Rédiger votre message</h1>
+
+<div>
+    <form asp-action="SendMessage" asp-controller="Articles" asp-route-id="@ViewBag.id" method="post" id="message-form">
+        <div>
+            <label for="msg">Message :</label>
+            <textarea id="msg" name="userMessage" rows="10" cols="70"></textarea>
+        </div>
+        <input name="idArticle" value="@ViewBag.idArticle" hidden />
+        <button type="submit" class="btn btn-danger">Envoyer</button>
+    </form>
+</div>

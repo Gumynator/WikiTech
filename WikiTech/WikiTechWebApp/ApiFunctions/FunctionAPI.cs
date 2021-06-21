@@ -169,5 +169,14 @@ namespace WikiTechWebApp.ApiFunctions
 
 
         }
+
+        internal static async void IncreaseCreditForUser(HttpClient client, string _idUser, int Credit)
+        {
+
+            using var response = await client.PutAsJsonAsync(ConfigureHttpClient.apiUrl + "AspNetUsers/addcredit/" + _idUser, Credit);
+            string apiResponse = await response.Content.ReadAsStringAsync();
+
+
+        }
     }
 }

@@ -42,6 +42,42 @@ namespace WikiTechWebApp.Controllers
             return View(userList);
         }
 
+        public async Task<IActionResult> Iban()
+        {
+            string IdUser = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            AspNetUsers user = await FunctionAPI.GetUserByIdAsync(client, IdUser);
+            if (user.ExpirationcarteAspnetuser != null)
+            {
+                ViewBag.Iban = user.ExpirationcarteAspnetuser;
+            }
+            return View();
+        }
+
+        public async Task<IActionResult> SendIban(string iban)
+        {
+            string IdUser = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            AspNetUsers user = await FunctionAPI.GetUserByIdAsync(client, IdUser);
+            user.ExpirationcarteAspnetuser =  iban;
+            HttpResponseMessage putUser = await client.PutAsJsonAsync("AspNetUsers/AspNetUsers/" + user.Id, user);
+            if (putUser.IsSuccessStatusCode)
+            {
+                //user = await putUser.Content.ReadAsAsync<AspNetUsers>();
+                ViewBag.EnregistrementIban = "Votre Iban a été sauvegardé, vous pouvez demander une rémunération";
+            }
+            if (user.ExpirationcarteAspnetuser != null)
+            {
+                ViewBag.Iban = user.ExpirationcarteAspnetuser;
+            }
+            return View("Iban");
+        }
+
+        public async Task<IActionResult> Remunerer()
+        {
+            Remuneration demande = new Remuneration();
+            
+            return View();
+        }
+
         // GET: AspNetUsers/Details/5
         public async Task<IActionResult> Details(string id)
         {

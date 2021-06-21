@@ -17,6 +17,7 @@ using WikiTechWebApp.Models;
 using WikiTechWebApp.ApiFunctions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using WikiTechAPI.ViewModels;
 
 namespace WikiTechWebApp.Controllers
 {
@@ -33,13 +34,36 @@ namespace WikiTechWebApp.Controllers
 
         // GET: Abonnements
         [Authorize]
-        public IActionResult Index()
+        public async Task<IActionResult> IndexAsync()
         {
+            string IdUser = User.FindFirstValue(ClaimTypes.NameIdentifier);
             IEnumerable<Abonnement> AbonnementList;
-            HttpResponseMessage response = client.GetAsync("Abonnements").Result;
-            AbonnementList = response.Content.ReadAsAsync<IEnumerable<Abonnement>>().Result;
-
+            HttpResponseMessage Abonnements = client.GetAsync("Abonnements").Result;
+            AbonnementList = Abonnements.Content.ReadAsAsync<IEnumerable<Abonnement>>().Result;
+            CheckAbonnement currentAbonnement;
+            HttpResponseMessage checkAbonnement = await client.GetAsync("Abonnements/GetAbonnementByUser/" + IdUser);
+            if (checkAbonnement.IsSuccessStatusCode)
+            {
+                currentAbonnement = checkAbonnement.Content.ReadAsAsync<CheckAbonnement>().Result;
+                ViewBag.idAbonnement = currentAbonnement.IdAbonnement;
+                ViewBag.expiration = currentAbonnement.Expiration;
+                ViewBag.dateExpiration = currentAbonnement.DateFacture.AddMonths(1);
+            }
             return View(AbonnementList);
+        }
+
+
+        public async Task<IActionResult> GetAbonnementByUserAsync()
+        {
+            string IdUser = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            IEnumerable<CheckAbonnement> checkAbonnementList = null;
+            HttpResponseMessage response = await client.GetAsync("Abonnements/GetAbonnementByUser/" + IdUser);
+            if (response.IsSuccessStatusCode)
+            {
+                checkAbonnementList = response.Content.ReadAsAsync<IEnumerable<CheckAbonnement>>().Result;
+            }
+
+            return View();
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -119,7 +143,7 @@ namespace WikiTechWebApp.Controllers
                     HttpResponseMessage postFacture = await client.PostAsJsonAsync("Factures", newFacture);
                     user.IdAbonnement = subscription.IdAbonnement;
                     await _sender.SendEmailAsync(user.Email, "Paiement de l'abonnement " + subscription.NomAbonnement + " confirmé", "Bonjour, votre paiement à l'abonnement " + subscription.NomAbonnement + " pour le prix de " + subscription.PrixAbonnement+"CHF a été fait avec succès");
-                    HttpResponseMessage putUser = await client.PutAsJsonAsync("AspNetUsers/" + user.Id, user);
+                    HttpResponseMessage putUser = await client.PutAsJsonAsync("AspNetUsers/AspNetUsers/" + user.Id, user );
                     if (putUser.IsSuccessStatusCode)
                     {
 
@@ -144,5 +168,7 @@ namespace WikiTechWebApp.Controllers
                 return View("Erreur");
             }
         }
+
+
     }
 }

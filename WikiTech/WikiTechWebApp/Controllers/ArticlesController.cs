@@ -17,6 +17,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using WikiTechAPI.Models;
+using WikiTechAPI.ViewModels;
 using WikiTechWebApp.ApiFunctions;
 using WikiTechWebApp.Exceptions;
 
@@ -57,9 +58,49 @@ namespace WikiTechWebApp.Controllers
 
         }
 
-        
+        // GET: ArticlesController to restor
+        public async Task<IActionResult> DiscussionAsync(int id)
+        {
+
+            IEnumerable<MessageByArticle> listMessage;
+            HttpResponseMessage getMessages = await client.GetAsync("Messages/GetMessageByIdArticle/" + id);
+            listMessage = getMessages.Content.ReadAsAsync<IEnumerable<MessageByArticle>>().Result;
+            ViewBag.idArticle = id;
+
+
+            return View(listMessage);
+        }
+
+        public ViewResult WriteMessage(int id)
+        {
+
+            ViewBag.idArticle = id;
+
+
+            return View();
+        }
+
+        public async Task<IActionResult> SendMessageAsync(int idArticle, string userMessage)
+        {
+            string IdUser = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            Message message = new Message();
+            message.CorpsMessage = userMessage;
+            message.DateMessage = DateTime.Now;
+            message.Id = IdUser;
+            message.IdArticle = idArticle;
+            HttpResponseMessage posdtMessage = await client.PostAsJsonAsync("Messages/PostMessage/", message);
+
+            IEnumerable<MessageByArticle> listMessage;
+            HttpResponseMessage getMessages = await client.GetAsync("Messages/GetMessageByIdArticle/" + idArticle);
+            listMessage = getMessages.Content.ReadAsAsync<IEnumerable<MessageByArticle>>().Result;
+            ViewBag.idArticle = idArticle;
+
+
+            return View("Discussion", listMessage);
+        }
+
         // GET: ArticleController/Details/5
-        public ActionResult DetailsAsync(int id)
+        public async Task<ActionResult> DetailsAsync(int id)
         {
 
             //get article with user of article
@@ -92,10 +133,18 @@ namespace WikiTechWebApp.Controllers
 
                 }
 
-
-
+                ///check de l'abonnement
+                string IdUser = User.FindFirstValue(ClaimTypes.NameIdentifier);
                 dynamicmodel.Changement = resultatChangement;
-
+                CheckAbonnement currentAbonnement;
+                HttpResponseMessage checkAbonnement = await client.GetAsync("Abonnements/GetAbonnementByUser/" + IdUser);
+                if (checkAbonnement.IsSuccessStatusCode)
+                {
+                    currentAbonnement = checkAbonnement.Content.ReadAsAsync<CheckAbonnement>().Result;
+                    ViewBag.idAbonnement = currentAbonnement.IdAbonnement;
+                    ViewBag.expiration = currentAbonnement.Expiration;
+                    ViewBag.articleAbonnement = article.IdSection;
+                }
 
                 return View(dynamicmodel);
 

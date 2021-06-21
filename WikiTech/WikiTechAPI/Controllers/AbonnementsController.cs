@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WikiTechAPI.Models;
+using WikiTechAPI.ViewModels;
 
 namespace WikiTechAPI.Controllers
 {
@@ -18,6 +19,49 @@ namespace WikiTechAPI.Controllers
         public AbonnementsController(WikiTechDBContext context)
         {
             _context = context;
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //Auteur : Pancini Marco
+        //Création : 08.06.2021
+        //Modification : 15.06.2021
+        //Description : Fonction qui permet de récupérer l'abonnement actif d'un utilisateur
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////
+        [HttpGet("GetAbonnementByUser/{userID}")]
+        public async Task<ActionResult<object>> GetAbonnementByUser(string userID)
+        {
+            CheckAbonnement currentAbonnement = (from facture in await _context.Facture.ToListAsync()
+                         where userID.Equals(facture.Id)
+                         join user in _context.AspNetUsers
+                         on facture.Id equals user.Id
+                         orderby facture.DateFacture descending
+                         select new CheckAbonnement
+                         {
+                             IdAbonnement = user.IdAbonnement,
+                             TitreFacture = facture.TitreFacture,
+                             DateFacture = facture.DateFacture,
+                             Id = user.Id
+                             
+                         }).FirstOrDefault();
+            if (currentAbonnement == null)
+            {
+                return NotFound();
+            }
+
+            DateTime expirationDate = currentAbonnement.DateFacture;
+            expirationDate = expirationDate.AddMonths(1);
+            DateTime Today = DateTime.Today;
+            int compareDate = DateTime.Compare(expirationDate, Today);
+            if (compareDate< 0)
+            {
+                currentAbonnement.Expiration = false;
+            }
+            else
+            {
+                currentAbonnement.Expiration = true;
+            }
+
+            return currentAbonnement;
         }
 
         // GET: api/Abonnements
