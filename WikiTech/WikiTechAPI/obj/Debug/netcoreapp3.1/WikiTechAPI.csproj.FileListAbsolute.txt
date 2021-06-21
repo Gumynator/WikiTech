@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 C:\ES\WikiTech\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\ES\WikiTech\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\appsettings.json
@@ -689,13 +690,14 @@ C:\Users\M4800\Desktop\GitDesktop\WikiTech\WikiTech\WikiTechAPI\obj\Debug\netcor
 C:\Users\M4800\Desktop\GitDesktop\WikiTech\WikiTech\WikiTechAPI\obj\Debug\netcoreapp3.1\WikiTechAPI.pdb
 C:\Users\M4800\Desktop\GitDesktop\WikiTech\WikiTech\WikiTechAPI\obj\Debug\netcoreapp3.1\WikiTechAPI.genruntimeconfig.cache
 <<<<<<< main
+=======
+>>>>>>> Stashed changes
 D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\appsettings.Development.json
 D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\appsettings.json
 D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\WikiTechAPI.exe
 D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\Assets\PdfStyles.css
-D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\libwkhtmltox.dll
-D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\libwkhtmltox.dylib
-D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\libwkhtmltox.so
+D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\libs\32 bit\libwkhtmltox.dll
+D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\libs\64 bit\libwkhtmltox.dll
 D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\WikiTechAPI.deps.json
 D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\WikiTechAPI.runtimeconfig.json
 D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\WikiTechAPI.runtimeconfig.dev.json
@@ -704,6 +706,9 @@ D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\n
 D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\WikiTechAPI.Views.dll
 D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\WikiTechAPI.Views.pdb
 D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\DinkToPdf.dll
+D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
 D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Razor.Language.dll
@@ -731,6 +736,8 @@ D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\n
 D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
 D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyModel.dll
+D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
 D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.dll
 D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
 D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
@@ -751,6 +758,7 @@ D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\n
 D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
 D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\NReco.Logging.File.dll
 D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\NuGet.Frameworks.dll
 D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\SixLabors.ImageSharp.dll
 D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\SQLitePCLRaw.batteries_v2.dll
@@ -862,6 +870,7 @@ D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\obj\Debug\n
 D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\obj\Debug\netcoreapp3.1\WikiTechAPI.dll
 D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\obj\Debug\netcoreapp3.1\WikiTechAPI.pdb
 D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\obj\Debug\netcoreapp3.1\WikiTechAPI.genruntimeconfig.cache
+<<<<<<< Updated upstream
 C:\Users\M4800\Desktop\GitDesktop\WikiTech\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\Assets\PdfStyles.css
 C:\Users\M4800\Desktop\GitDesktop\WikiTech\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\libs\32 bit\libwkhtmltox.dll
 C:\Users\M4800\Desktop\GitDesktop\WikiTech\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\libs\64 bit\libwkhtmltox.dll
@@ -872,3 +881,5 @@ C:\GitHub\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\libs\64 bit\libwkhtmltox.
 C:\GitHub\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\DinkToPdf.dll
 C:\GitHub\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\NReco.Logging.File.dll
 >>>>>>> main
+=======
+>>>>>>> Stashed changes

@@ -1736,6 +1736,7 @@ Error Number:515,State:2,Class:16
    at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
    at WikiTechAPI.Middleware.ApiKeyMiddleware.InvokeAsync(HttpContext context) in D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\Middleware\ApiKeyMiddleware.cs:line 47
 >>>>>>> Stashed changes
+<<<<<<< HEAD
    at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
    at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
 
@@ -2635,6 +2636,8 @@ Error Number:515,State:2,Class:16
    at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
    at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
    at WikiTechAPI.Middleware.ApiKeyMiddleware.InvokeAsync(HttpContext context) in C:\temp\gitkraken\WikiTech-Proto\WikiTech\WikiTechAPI\Middleware\ApiKeyMiddleware.cs:line 47
+=======
+>>>>>>> main
    at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
    at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
 
