@@ -1,0 +1,57 @@
+﻿@model IEnumerable<WikiTechAPI.Models.AspNetUsers>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Rémunération</h1>
+
+<div>
+    <form asp-action="SendIban" asp-controller="AspNetUsers" method="post" id="message-form">
+        <div>
+            <label for="name">Votre Iban :</label>
+            <input type="text" id="iban" name="iban" value="@ViewBag.Iban">
+        </div>
+        @*<input name="idArticle" value="@ViewBag.idArticle" hidden />*@
+        <button type="submit" class="btn btn-primary" value="update">Enregistrer Iban</button>
+        <a class="btn btn-success" asp-controller="AspNetUsers" asp-action="Remunerer">être rémunéré</a>
+    </form>
+</div>
+    @ViewBag.EnregistrementIban
+
+@*<table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.MontantFacture)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateFacture)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TitreFacture)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MontantFacture)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateFacture)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TitreFacture)
+                    </td>
+                    <td>
+                        <a asp-action="GetPdf" asp-route-id="@item.IdFacture">Pdf</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>*@

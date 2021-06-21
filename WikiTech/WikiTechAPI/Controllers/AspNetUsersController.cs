@@ -100,6 +100,19 @@ namespace WikiTechAPI.Controllers
             return NoContent();
         }
 
+        //used in functionAPI
+        //from body to force search parameter in the body and not in the URL
+        [HttpPut("{id}")]
+        [Route("addcredit/{id}")]
+        public async Task<IActionResult> AddCreditAspnNetUser(string id, int Credit)
+        {
+            var currentAspNetUser = await _context.AspNetUsers.FindAsync(id);
+            currentAspNetUser.CreditAspnetuser += Credit;
+
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
 
         // POST: api/AspNetUsers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for

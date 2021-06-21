@@ -85,7 +85,7 @@ namespace WikiTechWebApp.Controllers
             string IdUser = User.FindFirstValue(ClaimTypes.NameIdentifier);
             Message message = new Message();
             message.CorpsMessage = userMessage;
-            message.DateMessage = DateTime.Today;
+            message.DateMessage = DateTime.Now;
             message.Id = IdUser;
             message.IdArticle = idArticle;
             HttpResponseMessage posdtMessage = await client.PostAsJsonAsync("Messages/PostMessage/", message);

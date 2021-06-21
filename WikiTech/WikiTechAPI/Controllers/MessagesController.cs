@@ -30,12 +30,13 @@ namespace WikiTechAPI.Controllers
 
         // GET: api/Messages
         [HttpGet("GetMessageByIdArticle/{idArticle}")]
-        public async Task<ActionResult<IEnumerable<object>>> GetMessageByIdArticle(int idArticle)
+        public async Task<ActionResult<IEnumerable<MessageByArticle>>> GetMessageByIdArticle(int idArticle)
         {
-            var listMessage = (from message in await _context.Message.ToListAsync()
+            List<MessageByArticle> listMessage = (from message in await _context.Message.ToListAsync()
                                                  where idArticle.Equals(message.IdArticle)
                                                  join user in _context.AspNetUsers
                                                  on message.Id equals user.Id
+                                                 orderby message.DateMessage descending
                                                  select new MessageByArticle
                                                  {
                                                      CorpsMessage = message.CorpsMessage,

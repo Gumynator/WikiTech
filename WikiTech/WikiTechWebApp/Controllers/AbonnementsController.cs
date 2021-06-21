@@ -47,6 +47,7 @@ namespace WikiTechWebApp.Controllers
                 currentAbonnement = checkAbonnement.Content.ReadAsAsync<CheckAbonnement>().Result;
                 ViewBag.idAbonnement = currentAbonnement.IdAbonnement;
                 ViewBag.expiration = currentAbonnement.Expiration;
+                ViewBag.dateExpiration = currentAbonnement.DateFacture.AddMonths(1);
             }
             return View(AbonnementList);
         }
