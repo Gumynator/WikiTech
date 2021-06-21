@@ -36,6 +36,7 @@ namespace WikiTechWebApp.Controllers
 
         const int POINT_VALIDEUR = 2;
         const int POINT_CREATEUR = 5;
+        const int CREDIT = 5;
 
         static HttpClient client = new HttpClient();
         static IEmailSender _sender;
@@ -315,7 +316,11 @@ namespace WikiTechWebApp.Controllers
                 FunctionAPI.IncreasePointForUser(client, valideurArticle, POINT_VALIDEUR);
                 //fonction d'ajout de point pour l'auteur
                 FunctionAPI.IncreasePointForUser(client, currentArticle.Id, POINT_CREATEUR);
-
+                if (currentArticle.IsqualityArticle)
+                {
+                    FunctionAPI.IncreaseCreditForUser(client, currentArticle.Id, CREDIT);
+                }
+                
                 return Redirect("/Articles/Details/" + currentArticle.IdArticle);
 
             }

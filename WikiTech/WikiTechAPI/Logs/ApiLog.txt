@@ -5,3 +5,23 @@
 21.06.2021 12:17:56 | Message : ArticleID : 36 l'etat a été modifié par 59d49ec9-3622-4d5c-8e47-8ba7bd0ab15d
 21.06.2021 18:36:04 | Message : ArticleID : 77 est ajouté par f4818143-c283-40ef-9301-622c8bea03cb
 21.06.2021 18:48:17 | Message : ArticleID : 77 l'etat a été modifié par 1b3a9f58-81d8-48c3-be77-3c157a257549
+21.06.2021 20:06:26 | Message : ArticleID : 78 est ajouté par 1b3a9f58-81d8-48c3-be77-3c157a257549
+21.06.2021 20:27:52 | Message : ArticleID : 78 l'etat a été modifié par f4818143-c283-40ef-9301-622c8bea03cb
+21.06.2021 20:30:12 | Message : ArticleID : 79 est ajouté par f4818143-c283-40ef-9301-622c8bea03cb
+21.06.2021 20:34:17 | Message : ArticleID : 79 l'etat a été modifié par 1b3a9f58-81d8-48c3-be77-3c157a257549
+21.06.2021 20:34:43 | Message : ArticleID : 80 est ajouté par 1b3a9f58-81d8-48c3-be77-3c157a257549
+21.06.2021 20:35:00 | Message : ArticleID : 80 l'etat a été modifié par f4818143-c283-40ef-9301-622c8bea03cb
+21.06.2021 20:36:26 | Message : ArticleID : 81 est ajouté par f4818143-c283-40ef-9301-622c8bea03cb
+21.06.2021 20:36:43 | Message : ArticleID : 81 l'etat a été modifié par 1b3a9f58-81d8-48c3-be77-3c157a257549
+21.06.2021 20:41:39 | Message : ArticleID : 82 est ajouté par 1b3a9f58-81d8-48c3-be77-3c157a257549
+21.06.2021 20:41:58 | Message : ArticleID : 82 l'etat a été modifié par f4818143-c283-40ef-9301-622c8bea03cb
+21.06.2021 20:43:43 | Message : ArticleID : 83 est ajouté par f4818143-c283-40ef-9301-622c8bea03cb
+21.06.2021 20:45:26 | Message : ArticleID : 83 l'etat a été modifié par 1b3a9f58-81d8-48c3-be77-3c157a257549
+21.06.2021 20:46:34 | Message : ArticleID : 84 est ajouté par 1b3a9f58-81d8-48c3-be77-3c157a257549
+21.06.2021 20:46:48 | Message : ArticleID : 84 l'etat a été modifié par f4818143-c283-40ef-9301-622c8bea03cb
+21.06.2021 20:48:22 | Message : ArticleID : 85 est ajouté par f4818143-c283-40ef-9301-622c8bea03cb
+21.06.2021 20:48:37 | Message : ArticleID : 85 l'etat a été modifié par 1b3a9f58-81d8-48c3-be77-3c157a257549
+21.06.2021 20:49:58 | Message : ArticleID : 86 est ajouté par 1b3a9f58-81d8-48c3-be77-3c157a257549
+21.06.2021 20:50:10 | Message : ArticleID : 86 l'etat a été modifié par f4818143-c283-40ef-9301-622c8bea03cb
+21.06.2021 20:52:31 | Message : ArticleID : 87 est ajouté par f4818143-c283-40ef-9301-622c8bea03cb
+21.06.2021 20:52:46 | Message : ArticleID : 87 l'etat a été modifié par 1b3a9f58-81d8-48c3-be77-3c157a257549

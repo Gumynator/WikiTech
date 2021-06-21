@@ -13,3 +13,13 @@ LOG : 14.06.2021 16:20:00 | Message : Nouvelle article proposé et en attente de
 21.06.2021 10:25:09 | Message : Utilisateur : 6bea3333-6e64-4f4d-8837-681800a065f1 est débloqué par 59d49ec9-3622-4d5c-8e47-8ba7bd0ab15d
 21.06.2021 11:32:48 | Message : Nouvelle article proposé et en attente de validation
 21.06.2021 18:36:04 | Message : Nouvelle article proposé et en attente de validation
+21.06.2021 20:06:26 | Message : Nouvelle article proposé et en attente de validation
+21.06.2021 20:30:12 | Message : Nouvelle article proposé et en attente de validation
+21.06.2021 20:34:44 | Message : Nouvelle article proposé et en attente de validation
+21.06.2021 20:36:26 | Message : Nouvelle article proposé et en attente de validation
+21.06.2021 20:41:39 | Message : Nouvelle article proposé et en attente de validation
+21.06.2021 20:43:43 | Message : Nouvelle article proposé et en attente de validation
+21.06.2021 20:46:34 | Message : Nouvelle article proposé et en attente de validation
+21.06.2021 20:48:22 | Message : Nouvelle article proposé et en attente de validation
+21.06.2021 20:49:59 | Message : Nouvelle article proposé et en attente de validation
+21.06.2021 20:52:31 | Message : Nouvelle article proposé et en attente de validation

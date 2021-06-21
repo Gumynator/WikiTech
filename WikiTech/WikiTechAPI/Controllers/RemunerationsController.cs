@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WikiTechAPI.Models;
+using WikiTechAPI.ViewModels;
 
 namespace WikiTechAPI.Controllers
 {
@@ -25,6 +26,24 @@ namespace WikiTechAPI.Controllers
         public async Task<ActionResult<IEnumerable<Remuneration>>> GetRemuneration()
         {
             return await _context.Remuneration.ToListAsync();
+        }
+
+        // GET: api/Messages
+        [HttpGet("GetRemunerationWithUserName/")]
+        public async Task<ActionResult<IEnumerable<AuteurRemunerer>>> GetRemunerationWithUserName()
+        {
+            List<AuteurRemunerer> listRemuneration = (from remuneration in await _context.Remuneration.ToListAsync()
+                                                  join user in _context.AspNetUsers
+                                                  on remuneration.Id equals user.Id
+                                                  select new AuteurRemunerer
+                                                  {
+                                                      MontantRemuneration = remuneration.MontantRemuneration,
+                                                      DateRemuneration = remuneration.DateRemuneration,
+                                                      ExpirationcarteAspnetuser = user.ExpirationcarteAspnetuser,
+                                                      UserName = user.UserName,
+                                                      IdRemuneration = remuneration.IdRemuneration
+                                                  }).ToList<AuteurRemunerer>();
+            return listRemuneration;
         }
 
         // GET: api/Remunerations/5

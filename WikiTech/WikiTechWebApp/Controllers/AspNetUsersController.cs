@@ -15,6 +15,7 @@ using WikiTechAPI.Models;
 using WikiTechWebApp.ApiFunctions;
 using System.Dynamic;
 using WikiTechAPI.Utility;
+using WikiTechAPI.ViewModels;
 
 namespace WikiTechWebApp.Controllers
 {
@@ -47,6 +48,7 @@ namespace WikiTechWebApp.Controllers
         {
             string IdUser = User.FindFirstValue(ClaimTypes.NameIdentifier);
             AspNetUsers user = await FunctionAPI.GetUserByIdAsync(client, IdUser);
+            ViewBag.Credit = user.CreditAspnetuser;
             if (user.ExpirationcarteAspnetuser != null)
             {
                 ViewBag.Iban = user.ExpirationcarteAspnetuser;
@@ -59,26 +61,64 @@ namespace WikiTechWebApp.Controllers
             string IdUser = User.FindFirstValue(ClaimTypes.NameIdentifier);
             AspNetUsers user = await FunctionAPI.GetUserByIdAsync(client, IdUser);
             user.ExpirationcarteAspnetuser =  iban;
-            HttpResponseMessage putUser = await client.PutAsJsonAsync("AspNetUsers/AspNetUsers/" + user.Id, user);
+            HttpResponseMessage putUser = await client.PutAsJsonAsync("AspNetUsers/AspNetUsers/" + IdUser, user);
             if (putUser.IsSuccessStatusCode)
             {
                 //user = await putUser.Content.ReadAsAsync<AspNetUsers>();
-                ViewBag.EnregistrementIban = "Votre Iban a �t� sauvegard�, vous pouvez demander une r�mun�ration";
+                ViewBag.EnregistrementIban = "Votre Iban a été sauvegardé, vous pouvez demander une rémunération";
             }
             if (user.ExpirationcarteAspnetuser != null)
             {
                 ViewBag.Iban = user.ExpirationcarteAspnetuser;
             }
+            ViewBag.Credit = user.CreditAspnetuser;
             return View("Iban");
         }
 
         public async Task<IActionResult> Remunerer()
         {
+            string IdUser = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            AspNetUsers user = await FunctionAPI.GetUserByIdAsync(client, IdUser);
             Remuneration demande = new Remuneration();
-            
+            demande.DateRemuneration = DateTime.Now;
+            demande.Id = IdUser;
+            demande.MontantRemuneration = Convert.ToDecimal(user.CreditAspnetuser);
+            HttpResponseMessage putRemuneration = await client.PostAsJsonAsync("Remunerations/",demande);
+
+            //demande.MontantRemuneration =
+            return View();
+        }
+        
+        public async Task<IActionResult> PaiementAuteur()
+        {
+            IEnumerable<AuteurRemunerer> listRemuneration;
+            HttpResponseMessage requestRemuneration = await client.GetAsync("Remunerations/GetRemunerationWithUserName/");
+            listRemuneration = requestRemuneration.Content.ReadAsAsync<IEnumerable<AuteurRemunerer>>().Result;
+            return View(listRemuneration);
+        }
+
+        public async Task<IActionResult> Valider(int id )
+        {
+            Remuneration currentRemuneration = new Remuneration();
+            HttpResponseMessage requestRemuneration = await client.GetAsync("Remunerations/"+id);
+            if (requestRemuneration.IsSuccessStatusCode)
+            {
+
+                currentRemuneration = await requestRemuneration.Content.ReadAsAsync<Remuneration>();
+            }
+
+            AspNetUsers user = await FunctionAPI.GetUserByIdAsync(client, currentRemuneration.Id);
+            user.CreditAspnetuser = 0;
+            HttpResponseMessage putUser = await client.PutAsJsonAsync("AspNetUsers/AspNetUsers/" + user.Id, user);
+            HttpResponseMessage requetSuppression = await client.DeleteAsync("Remunerations/" + id);
             return View();
         }
 
+        public async Task<IActionResult> Refuser(int id)
+        {
+            HttpResponseMessage requetSuppression = await client.DeleteAsync("Remunerations/"+ id);
+            return View();
+        }
         // GET: AspNetUsers/Details/5
         public async Task<IActionResult> Details(string id)
         {

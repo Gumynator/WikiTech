@@ -181,10 +181,10 @@ namespace WikiTechWebApp.ApiFunctions
             return grade;
         }
 
-        internal static async void IncreaseCreditForUser(HttpClient client, string _idUser, int Credit)
+        internal static async void IncreaseCreditForUser(HttpClient client, string idUser, int credit)
         {
 
-            using var response = await client.PutAsJsonAsync(ConfigureHttpClient.apiUrl + "AspNetUsers/addcredit/" + _idUser, Credit);
+            using var response = await client.PutAsJsonAsync(ConfigureHttpClient.apiUrl + "AspNetUsers/addcredit/" + idUser, credit);
             string apiResponse = await response.Content.ReadAsStringAsync();
 
 
