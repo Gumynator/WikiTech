@@ -1,2 +1,14 @@
 LOG : 14.06.2021 16:20:00 | Message : Nouvelle article proposé et en attente de validation
 15.06.2021 11:13:43 | Message : Nouvelle article proposé et en attente de validation
+19.06.2021 16:11:33 | Message : Utilisateur : 6bea3333-6e64-4f4d-8837-681800a065f1 est bloqué par b88c513a-526b-45e1-b670-e6947697a1cc
+19.06.2021 16:11:39 | Message : Utilisateur : 6bea3333-6e64-4f4d-8837-681800a065f1 est bloqué par b88c513a-526b-45e1-b670-e6947697a1cc
+19.06.2021 16:11:44 | Message : Utilisateur : 6bea3333-6e64-4f4d-8837-681800a065f1 est bloqué par b88c513a-526b-45e1-b670-e6947697a1cc
+19.06.2021 16:11:49 | Message : Utilisateur : 6bea3333-6e64-4f4d-8837-681800a065f1 est bloqué par b88c513a-526b-45e1-b670-e6947697a1cc
+19.06.2021 16:12:43 | Message : Utilisateur : 6bea3333-6e64-4f4d-8837-681800a065f1 est bloqué par b88c513a-526b-45e1-b670-e6947697a1cc
+19.06.2021 16:13:27 | Message : Utilisateur : 6bea3333-6e64-4f4d-8837-681800a065f1 est bloqué par b88c513a-526b-45e1-b670-e6947697a1cc
+19.06.2021 16:13:47 | Message : Utilisateur : 6bea3333-6e64-4f4d-8837-681800a065f1 est bloqué par b88c513a-526b-45e1-b670-e6947697a1cc
+19.06.2021 16:15:29 | Message : Utilisateur : 6bea3333-6e64-4f4d-8837-681800a065f1 est bloqué par b88c513a-526b-45e1-b670-e6947697a1cc
+19.06.2021 16:17:46 | Message : Utilisateur : 6bea3333-6e64-4f4d-8837-681800a065f1 est bloqué par b88c513a-526b-45e1-b670-e6947697a1cc
+21.06.2021 10:25:04 | Message : Utilisateur : 6bea3333-6e64-4f4d-8837-681800a065f1 est bloqué par 59d49ec9-3622-4d5c-8e47-8ba7bd0ab15d
+21.06.2021 10:25:09 | Message : Utilisateur : 6bea3333-6e64-4f4d-8837-681800a065f1 est débloqué par 59d49ec9-3622-4d5c-8e47-8ba7bd0ab15d
+21.06.2021 11:32:48 | Message : Nouvelle article proposé et en attente de validation

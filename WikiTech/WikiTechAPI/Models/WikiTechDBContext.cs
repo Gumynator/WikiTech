@@ -705,10 +705,10 @@ namespace WikiTechAPI.Models
 
             modelBuilder.Entity<Voir>(entity =>
             {
-                entity.HasKey(e => new { e.IdVoir, e.IdArticle })
+                entity.HasKey(e => new { e.Id, e.IdArticle })
                     .HasName("PK_VOIR");
 
-                entity.Property(e => e.IdVoir).HasColumnName("Id_voir");
+                entity.Property(e => e.Id).HasColumnName("Id_voir");
 
                 entity.Property(e => e.IdArticle).HasColumnName("Id_article");
 
@@ -718,9 +718,9 @@ namespace WikiTechAPI.Models
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_VOIR_ARTICLE");
 
-                entity.HasOne(d => d.IdVoirNavigation)
+                entity.HasOne(d => d.IdNavigation)
                     .WithMany(p => p.Voir)
-                    .HasForeignKey(d => d.IdVoir)
+                    .HasForeignKey(d => d.Id)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_VOIR_ASPNETUSERS");
             });

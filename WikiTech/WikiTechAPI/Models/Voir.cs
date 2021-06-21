@@ -9,11 +9,11 @@ namespace WikiTechAPI.Models
 {
     public partial class Voir
     {
-        public string IdVoir { get; set; }
+        public string Id { get; set; }
         public int IdArticle { get; set; }
         public bool? Isread { get; set; }
 
         public virtual Article IdArticleNavigation { get; set; }
-        public virtual AspNetUsers IdVoirNavigation { get; set; }
+        public virtual AspNetUsers IdNavigation { get; set; }
     }
 }

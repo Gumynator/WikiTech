@@ -1,3 +1,12 @@
+<<<<<<< HEAD
+<<<<<<< main
+<<<<<<< main
+=======
+>>>>>>> Réparation
+=======
+<<<<<<< HEAD
+>>>>>>> Loan
+<<<<<<< Updated upstream
 C:\GitHub\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\GitHub\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\appsettings.json
 C:\GitHub\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\WikiTechAPI.exe
@@ -19,7 +28,6 @@ C:\GitHub\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.CS
 C:\GitHub\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.Razor.dll
 C:\GitHub\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.Workspaces.dll
 C:\GitHub\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
-C:\GitHub\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\Microsoft.Data.Sqlite.dll
 C:\GitHub\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\Microsoft.DotNet.PlatformAbstractions.dll
 C:\GitHub\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
 C:\GitHub\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
@@ -334,6 +342,7 @@ C:\Users\M4800\Desktop\GitDesktop\WikiTech\WikiTech\WikiTechAPI\obj\Debug\netcor
 C:\Users\M4800\Desktop\GitDesktop\WikiTech\WikiTech\WikiTechAPI\obj\Debug\netcoreapp3.1\WikiTechAPI.dll
 C:\Users\M4800\Desktop\GitDesktop\WikiTech\WikiTech\WikiTechAPI\obj\Debug\netcoreapp3.1\WikiTechAPI.pdb
 C:\Users\M4800\Desktop\GitDesktop\WikiTech\WikiTech\WikiTechAPI\obj\Debug\netcoreapp3.1\WikiTechAPI.genruntimeconfig.cache
+<<<<<<< main
 D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\appsettings.Development.json
 D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\appsettings.json
 D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechAPI\bin\Debug\netcoreapp3.1\WikiTechAPI.exe

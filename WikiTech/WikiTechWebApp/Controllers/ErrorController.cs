@@ -22,7 +22,7 @@ namespace WikiTechWebApp.Controllers
             {
 
                 case 404:
-                    ViewBag.ErrorMessage = "Erreur 404, la ressource n'est pas trouvée";
+                    ViewBag.ErrorMessage = "Ouuuups, la ressource n'a pas été trouvée | error 404";
                     break;
 
             }

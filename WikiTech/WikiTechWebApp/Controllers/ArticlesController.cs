@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Json;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
@@ -93,6 +94,19 @@ namespace WikiTechWebApp.Controllers
         {
             IEnumerable<Article> artList;
 
+            string IdUser = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            Grade grade = null;
+            if (IdUser != null)
+            {
+                var currentUser = FunctionAPI.GetUserByIdAsync(client, IdUser).Result;
+                grade = FunctionAPI.GetGradesForUser(client, currentUser.IdGrade).Result;
+            }
+
+            if (IdUser == null || grade.NomGrade != "user sup")
+            {
+                return RedirectToAction("Unauthorize", "Home");
+            }
+
             try
             {
 
@@ -125,9 +139,22 @@ namespace WikiTechWebApp.Controllers
                 HttpResponseMessage responsearticle = client.GetAsync("Articles/" + id).Result;
                 article = responsearticle.Content.ReadAsAsync<Article>().Result;
                 var idArt = article.Id;
+                var idArticle = article.IdArticle;
                 ViewBag.id = idArt;
 
                 dynamicmodel.Article = article;
+
+                string IdUser = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                
+
+                Voir vu = new Voir();
+                vu.Id = IdUser;
+                vu.IdArticle = idArticle;
+                vu.Isread = true;
+                var postTask = client.PostAsJsonAsync<Voir>("Voirs", vu);
+                postTask.Wait();
+                var result = postTask.Result;
+
 
                 var listeChangements = article.Changement;
 
@@ -301,6 +328,19 @@ namespace WikiTechWebApp.Controllers
             Article article;
             string currentid = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
+            string IdUser = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            Grade grade = null;
+            if (IdUser != null)
+            {
+                var currentUser = FunctionAPI.GetUserByIdAsync(client, IdUser).Result;
+                grade = FunctionAPI.GetGradesForUser(client, currentUser.IdGrade).Result;
+            }
+
+            if (IdUser == null || grade.NomGrade != "user sup")
+            {
+                return RedirectToAction("Unauthorize", "Home");
+            }
+
             try
             {
 
@@ -327,7 +367,18 @@ namespace WikiTechWebApp.Controllers
         // GET: the article detail for decision
         public async Task<ActionResult> enableArticleeeee(int id)
         {
+            string IdUser = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            Grade grade = null;
+            if (IdUser != null)
+            {
+                var currentUser = FunctionAPI.GetUserByIdAsync(client, IdUser).Result;
+                grade = FunctionAPI.GetGradesForUser(client, currentUser.IdGrade).Result;
+            }
 
+            if (IdUser == null || grade.NomGrade != "user sup")
+            {
+                return RedirectToAction("Unauthorize", "Home");
+            }
             Article article;
             string currentid = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
