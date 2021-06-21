@@ -900,6 +900,7 @@ Path '', line 1, position 1.
 2021-06-21T16:25:41.3468808+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\loarey\WikiTech\WikiTech\WikiTechWebApp
 2021-06-21T16:25:41.3780114+02:00	WARN	[Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware]	[FailedToDeterminePort]	Failed to determine the https port for redirect.
 2021-06-21T16:26:35.1817568+02:00	INFO	[WikiTechWebApp.Areas.Identity.Pages.Account.LoginModel]	[0]	User logged in.
+<<<<<<< Updated upstream
 2021-06-21T18:35:12.1476653+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
 2021-06-21T18:35:12.1511603+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Developement
 2021-06-21T18:35:12.1520447+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\temp\gitkraken\WikiTech-Proto\WikiTech\WikiTechWebApp
@@ -913,6 +914,7 @@ Path '', line 1, position 1.
 2021-06-21T18:46:38.8720008+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Developement
 2021-06-21T18:46:38.8730614+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\temp\gitkraken\WikiTech-Proto\WikiTech\WikiTechWebApp
 2021-06-21T18:46:38.8940848+02:00	WARN	[Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware]	[FailedToDeterminePort]	Failed to determine the https port for redirect.
+<<<<<<< HEAD
 2021-06-21T18:59:08.9860646+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
 2021-06-21T18:59:08.9898132+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Developement
 2021-06-21T18:59:08.9906937+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\temp\gitkraken\WikiTech-Proto\WikiTech\WikiTechWebApp
@@ -1569,3 +1571,11 @@ Path '', line 1, position 1.
 2021-06-21T22:11:53.7559219+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Developement
 2021-06-21T22:11:53.7569344+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\temp\gitkraken\WikiTech-Proto\WikiTech\WikiTechWebApp
 2021-06-21T22:11:53.7856963+02:00	WARN	[Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware]	[FailedToDeterminePort]	Failed to determine the https port for redirect.
+=======
+=======
+2021-06-21T18:39:11.3834458+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2021-06-21T18:39:11.3970339+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Developement
+2021-06-21T18:39:11.3982277+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: D:\ES\2eme\GlobalWiki\Conception\WikiTech-Proto\WikiTech\WikiTechWebApp
+2021-06-21T18:39:11.4336385+02:00	WARN	[Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware]	[FailedToDeterminePort]	Failed to determine the https port for redirect.
+>>>>>>> Stashed changes
+>>>>>>> main
