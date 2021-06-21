@@ -14,6 +14,7 @@ using Newtonsoft.Json;
 using WikiTechAPI.Models;
 using WikiTechWebApp.ApiFunctions;
 using System.Dynamic;
+using WikiTechAPI.Utility;
 
 namespace WikiTechWebApp.Controllers
 {
@@ -208,17 +209,22 @@ namespace WikiTechWebApp.Controllers
                 {
                     HttpResponseMessage responseuser = client.GetAsync("AspNetUsers/" + id).Result;
                     var user = await FunctionAPI.GetUserByIdAsync(client, id);
+                    string currentUser = User.FindFirstValue(ClaimTypes.NameIdentifier);
                     if (user.LockoutEnd == null)
                     {
                         user.LockoutEnd = DateTime.MaxValue;
+                        Logwritter log = new Logwritter("Utilisateur : " + id + " a été bloqué par " + currentUser);
+                        log.writeLog();
                     }
                     else
                     {
                         user.LockoutEnd = null;
+                        Logwritter log = new Logwritter("Utilisateur : " + id + " a été débloqué par " + currentUser);
+                        log.writeLog();
                     }
                     
                     
-                    HttpResponseMessage response = await client.PutAsJsonAsync("AspNetUsers/" + id, user);
+                    HttpResponseMessage response = await client.PutAsJsonAsync("AspNetUsers/AspNetUsers/" + id, user);
                     if (response.IsSuccessStatusCode)
                     {
 

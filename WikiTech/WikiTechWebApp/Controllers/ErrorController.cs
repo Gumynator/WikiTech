@@ -1,4 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿
+//Auteur    : Loris habegger
+//Date      : 26.05.2021
+//Fichier   : errorController.cs (controller d'erreur comme erreur 404)
+
+
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +22,7 @@ namespace WikiTechWebApp.Controllers
             {
 
                 case 404:
-                    ViewBag.ErrorMessage = "Erreur 404, la ressource n'est pas trouvée";
+                    ViewBag.ErrorMessage = "Ouuuups, la ressource n'a pas été trouvée | error 404";
                     break;
 
             }

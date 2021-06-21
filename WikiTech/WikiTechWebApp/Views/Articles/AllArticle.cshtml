@@ -1,0 +1,64 @@
+﻿
+@model IEnumerable<WikiTechAPI.Models.Article>
+
+@{
+    ViewData["Title"] = "all article";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h1>Liste des articles</h1>
+<table id="table_article" class="table">
+    <thead>
+        <tr>
+            <th>
+                ID article
+            </th>
+            <th>
+                Titre article
+            </th>
+            <th>
+                auteur article
+            </th>
+            <th>
+                Etat Article
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdArticle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TitreArticle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdNavigation.PrenomAspnetuser)
+                </td>
+                @if (item.IsactiveArticle == false)
+                {
+
+                    <th>
+                        <a class="btn btn-outline-dark" value="disableArticleeeeee" asp-controller="Articles" asp-action="enableArticleeeee" asp-route-id="@item.IdArticle"> enable</a>
+                    </th>
+                    
+                }
+                else
+                {
+                    <th>
+                        <a class="btn btn-outline-dark" value="disableArticleeeeee" asp-controller="Articles" asp-action="disableArticleeeeee" asp-route-id="@item.IdArticle"> disable</a>
+                    </th>
+                }
+
+            </tr>
+        }
+    </tbody>
+</table>
+<script>
+
+    $(document).ready(function () {
+        $('#table_article').DataTable();
+    });</script>

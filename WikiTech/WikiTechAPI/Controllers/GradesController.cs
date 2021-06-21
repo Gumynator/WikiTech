@@ -105,5 +105,6 @@ namespace WikiTechAPI.Controllers
         {
             return _context.Grade.Any(e => e.IdGrade == id);
         }
+
     }
 }

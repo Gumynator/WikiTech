@@ -45,6 +45,12 @@ namespace WikiTechAPI.Controllers
             return referencer;
         }
 
+        [HttpGet("nbarticlebytag/{id}")]
+        public int nbarticlebytag(int id) // article active 
+        {
+            return _context.Referencer.Include(x => x.IdArticleNavigation).Where(p => p.IdArticleNavigation.IsactiveArticle == true).Where(d => d.IdTag == id).Count();
+        }
+
         // PUT: api/Referencers/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.

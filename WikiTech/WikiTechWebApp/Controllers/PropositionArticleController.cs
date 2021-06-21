@@ -27,11 +27,15 @@ using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Processing;
 using System.Dynamic;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using WikiTechAPI.Utility;
 
 namespace WikiTechWebApp.Controllers
 {
     public class PropositionArticleController : Controller
     {
+
+        const int POINT_VALIDEUR = 2;
+        const int POINT_CREATEUR = 5;
 
         static HttpClient client = new HttpClient();
         static IEmailSender _sender;
@@ -75,7 +79,7 @@ namespace WikiTechWebApp.Controllers
                     Article resultarticle;
                     StringContent content = new StringContent(JsonConvert.SerializeObject(currentArticle), Encoding.UTF8, "application/json");
 
-                    using var response = await client.PostAsync(ConfigureHttpClient.apiUrl + "Articles", content);
+                    using var response = await client.PostAsync(ConfigureHttpClient.apiUrl + "Articles" + "/" + IdUser, content);
                     string apiResponse = await response.Content.ReadAsStringAsync();
 
                     resultarticle = JsonConvert.DeserializeObject<Article>(apiResponse);
@@ -84,6 +88,9 @@ namespace WikiTechWebApp.Controllers
                     List<Referencer> resultReferences = new List<Referencer>();
 
                     resultReferences = await FunctionAPI.AddTagToArticle(idTags, resultarticle.IdArticle);
+
+                    Logwritter log = new Logwritter("Nouvelle article proposé et en attente de validation");
+                    log.writeLog();
 
 
                     return Redirect("/Articles/Index");
@@ -149,6 +156,11 @@ namespace WikiTechWebApp.Controllers
 
 
                     image.Save(saveimg);
+
+                    Logwritter log = new Logwritter("Image Uploadée");
+                    log.writeLog();
+
+
                     return saveimg;
                 }
                 catch (ExceptionImg e)
@@ -172,10 +184,23 @@ namespace WikiTechWebApp.Controllers
 
             dynamic dynamicmodel = new ExpandoObject();
 
+            string IdUser = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            Grade grade = null;
+            if (IdUser != null)
+            {
+                var currentUser = FunctionAPI.GetUserByIdAsync(client, IdUser).Result;
+                grade = FunctionAPI.GetGradesForUser(client, currentUser.IdGrade).Result;               
+            }
+
+            if (IdUser == null || grade.NomGrade != "user sup")
+            {
+                return RedirectToAction("Unauthorize", "Home");
+            }
+
             try
             {
 
-                HttpResponseMessage response = client.GetAsync("Articles/nodate").Result;
+                HttpResponseMessage response = client.GetAsync("Articles/toactive").Result;
                 artList = response.Content.ReadAsAsync<IEnumerable<Article>>().Result;
 
                 dynamicmodel.Article = artList;
@@ -203,12 +228,30 @@ namespace WikiTechWebApp.Controllers
         {
 
             Article article;
+            string IdUser = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            Grade grade = null;
+            if (IdUser != null)
+            {
+                var currentUser = FunctionAPI.GetUserByIdAsync(client, IdUser).Result;
+                grade = FunctionAPI.GetGradesForUser(client, currentUser.IdGrade).Result;
+            }
+
+            if (IdUser == null || grade.NomGrade != "user sup")
+            {
+                return RedirectToAction("Unauthorize", "Home");
+            }
+
           
+
             try
             {
                 HttpResponseMessage responsearticle = client.GetAsync("Articles/" + id).Result;
                 article = responsearticle.Content.ReadAsAsync<Article>().Result;
 
+                if (article.Id == IdUser)
+                {
+                    return RedirectToAction("Unauthorize", "Home");
+                }
 
                 return View(article);
 
@@ -227,49 +270,78 @@ namespace WikiTechWebApp.Controllers
         {
 
             Article currentArticle = _article;
+            string IdUser = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            Grade grade = null;
+            if (IdUser != null)
+            {
+                var currentUser = FunctionAPI.GetUserByIdAsync(client, IdUser).Result;
+                grade = FunctionAPI.GetGradesForUser(client, currentUser.IdGrade).Result;
+            }
 
+            if (IdUser == null || grade.NomGrade != "user sup")
+            {
+                return RedirectToAction("Unauthorize", "Home");
+            }
 
             currentArticle.DatepublicationArticle = DateTime.Now; //^Date de la validation
 
             currentArticle.IdArticle = Int32.Parse(Request.Form["IdArticle"]);
-            currentArticle.IdSection = Int32.Parse(Request.Form["IdSection"]); 
+            currentArticle.IdSection = Int32.Parse(Request.Form["IdSection"]);
             currentArticle.Id = Request.Form["IdAuteur"];
+            currentArticle.IsactiveArticle = true;
 
-           string valideurArticle = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            //get article
+            HttpResponseMessage responsearticle = client.GetAsync("Articles/" + currentArticle.IdArticle).Result;
+            Article currentArticletwin = responsearticle.Content.ReadAsAsync<Article>().Result;
 
+            currentArticle.IsqualityArticle = currentArticletwin.IsqualityArticle;
 
+            string valideurArticle = User.FindFirstValue(ClaimTypes.NameIdentifier);           
             try
-                {
-                    Article resultarticle;
+            {
+                Article resultarticle;
 
-                    using var response = await client.PutAsJsonAsync(ConfigureHttpClient.apiUrl + "Articles/" + currentArticle.IdArticle, currentArticle);
-                    string apiResponse = await response.Content.ReadAsStringAsync();
+                using var response = await client.PutAsJsonAsync(ConfigureHttpClient.apiUrl + "Articles/" + valideurArticle, currentArticle);
+                string apiResponse = await response.Content.ReadAsStringAsync();
 
-                    resultarticle = JsonConvert.DeserializeObject<Article>(apiResponse);
+                resultarticle = JsonConvert.DeserializeObject<Article>(apiResponse);
 
-                    var usernameq = await FunctionAPI.GetUserByIdAsync(client, currentArticle.Id);
+                var usernameq = await FunctionAPI.GetUserByIdAsync(client, currentArticle.Id);
 
-                    //envoie du mail d'état à l'auteur de l'article
-                    await _sender.SendEmailAsync(usernameq.Email, "Article accepté", "Bonjour, votre article ayant pour titre : " + currentArticle.TitreArticle + " a été validé. Vous pourrez le consulter en ligne");
+                //envoie du mail d'état à l'auteur de l'article
+                await _sender.SendEmailAsync(usernameq.Email, "Article accepté", "Bonjour, votre article ayant pour titre : " + currentArticle.TitreArticle + " a été validé. Vous pourrez le consulter en ligne");
 
-                    //fonction d'ajout de point pour le valideur
-                    FunctionAPI.IncreasePointForUser(client, valideurArticle, 2);
-                    //fonction d'ajout de point pour l'auteur
-                    FunctionAPI.IncreasePointForUser(client, currentArticle.Id, 5);
+                //fonction d'ajout de point pour le valideur
+                FunctionAPI.IncreasePointForUser(client, valideurArticle, POINT_VALIDEUR);
+                //fonction d'ajout de point pour l'auteur
+                FunctionAPI.IncreasePointForUser(client, currentArticle.Id, POINT_CREATEUR);
 
-                    return Redirect("/Articles/Details/" + currentArticle.IdArticle);
+                return Redirect("/Articles/Details/" + currentArticle.IdArticle);
 
-                }
-                catch (ExceptionLiaisonApi e)
-                {
-                    Console.WriteLine(e.getMessage());
-                    return RedirectToAction(nameof(Index));
-                }
+            }
+            catch (ExceptionLiaisonApi e)
+            {
+                Console.WriteLine(e.getMessage());
+                return RedirectToAction(nameof(Index));
+            }
         }
 
         [Authorize]
         public async Task<ActionResult> supprimerArticle(int id)
         {
+
+            string IdUser = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            Grade grade = null;
+            if (IdUser != null)
+            {
+                var currentUser = FunctionAPI.GetUserByIdAsync(client, IdUser).Result;
+                grade = FunctionAPI.GetGradesForUser(client, currentUser.IdGrade).Result;
+            }
+
+            if (IdUser == null || grade.NomGrade != "user sup")
+            {
+                return RedirectToAction("Unauthorize", "Home");
+            }
 
             Article article;
             string valideurArticle = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -281,7 +353,7 @@ namespace WikiTechWebApp.Controllers
                 article = responsearticle.Content.ReadAsAsync<Article>().Result;
 
                 //delete the article
-                using var response = await client.DeleteAsync(ConfigureHttpClient.apiUrl + "Articles/" + id);
+                using var response = await client.DeleteAsync(ConfigureHttpClient.apiUrl + "Articles/" + id + "/" + valideurArticle);
                 string apiResponse = await response.Content.ReadAsStringAsync();
 
 
@@ -290,7 +362,7 @@ namespace WikiTechWebApp.Controllers
                 await _sender.SendEmailAsync(usernameq.Email, "Article pas accepté", "Bonjour, votre article ayant pour titre: " + article.TitreArticle + " n'est pas validé. il ne respecte probablement pas la politique de wikitech");
 
                 //fonction d'ajout de point pour le valideur
-                FunctionAPI.IncreasePointForUser(client, valideurArticle, 2);
+                FunctionAPI.IncreasePointForUser(client, valideurArticle, POINT_VALIDEUR);
 
                 //Reference (tags) is deleting by cascade
 
@@ -308,7 +380,18 @@ namespace WikiTechWebApp.Controllers
         // GET: the article detail for decision
         public ActionResult approbationChangementDetail(int id)
         {
+            string IdUser = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            Grade grade = null;
+            if (IdUser != null)
+            {
+                var currentUser = FunctionAPI.GetUserByIdAsync(client, IdUser).Result;
+                grade = FunctionAPI.GetGradesForUser(client, currentUser.IdGrade).Result;
+            }
 
+            if (IdUser == null || grade.NomGrade != "user sup")
+            {
+                return RedirectToAction("Unauthorize", "Home");
+            }
             Article article;
             Changement changement;
             dynamic dynamicmodel = new ExpandoObject();
@@ -342,7 +425,18 @@ namespace WikiTechWebApp.Controllers
         [HttpPost]
         public async Task<ActionResult> validerChangement()
         {
+            string IdUser = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            Grade grade = null;
+            if (IdUser != null)
+            {
+                var currentUser = FunctionAPI.GetUserByIdAsync(client, IdUser).Result;
+                grade = FunctionAPI.GetGradesForUser(client, currentUser.IdGrade).Result;
+            }
 
+            if (IdUser == null || grade.NomGrade != "user sup")
+            {
+                return RedirectToAction("Unauthorize", "Home");
+            }
             Changement currentchangement = new Changement();
 
             currentchangement.DatepublicationChangement = DateTime.Now; //Date de la validation
@@ -355,12 +449,15 @@ namespace WikiTechWebApp.Controllers
             currentchangement.ResumeChangement = Request.Form["resumeChange"];
 
             string valideurChangement = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
+            if (currentchangement.Id== valideurChangement)
+            {
+                return RedirectToAction("Unauthorize", "Home");
+            }
             try
             {
                 Changement resultatChangement;
 
-                using var response = await client.PutAsJsonAsync(ConfigureHttpClient.apiUrl + "Changements/" + currentchangement.IdChangement, currentchangement);
+                using var response = await client.PutAsJsonAsync(ConfigureHttpClient.apiUrl + "Changements/" + valideurChangement, currentchangement);
                 string apiResponse = await response.Content.ReadAsStringAsync();
 
                 resultatChangement = JsonConvert.DeserializeObject<Changement>(apiResponse);
@@ -371,9 +468,9 @@ namespace WikiTechWebApp.Controllers
                 await _sender.SendEmailAsync(usernameq.Email, "Changement accepté", "Bonjour, votre changement ayant pour titre : " + currentchangement.TitreChangement + " a été validé. Vous pourrez le consulter en ligne");
 
                 //fonction d'ajout de point pour le valideur
-                FunctionAPI.IncreasePointForUser(client, valideurChangement, 2);
+                FunctionAPI.IncreasePointForUser(client, valideurChangement, POINT_VALIDEUR); 
                 //fonction d'ajout de point pour l'auteur
-                FunctionAPI.IncreasePointForUser(client, currentchangement.Id, 5);
+                FunctionAPI.IncreasePointForUser(client, currentchangement.Id, POINT_CREATEUR);
 
                 return Redirect("/Articles/Details/" + currentchangement.IdArticle);
 
@@ -388,7 +485,18 @@ namespace WikiTechWebApp.Controllers
         [Authorize]
         public async Task<ActionResult> supprimerChangement(int id)
         {
+            string IdUser = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            Grade grade = null;
+            if (IdUser != null)
+            {
+                var currentUser = FunctionAPI.GetUserByIdAsync(client, IdUser).Result;
+                grade = FunctionAPI.GetGradesForUser(client, currentUser.IdGrade).Result;
+            }
 
+            if (IdUser == null || grade.NomGrade != "user sup")
+            {
+                return RedirectToAction("Unauthorize", "Home");
+            }
             Changement currentchangement = new Changement();
             currentchangement.IdChangement = id;
             string valideurChangement = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -400,7 +508,7 @@ namespace WikiTechWebApp.Controllers
                 currentchangement = responsearticle.Content.ReadAsAsync<Changement>().Result;
 
                 //delete the Changement
-                using var response = await client.DeleteAsync(ConfigureHttpClient.apiUrl + "Changements/" + currentchangement.IdChangement);
+                using var response = await client.DeleteAsync(ConfigureHttpClient.apiUrl + "Changements/" + currentchangement.IdChangement + "/" + valideurChangement);
                 string apiResponse = await response.Content.ReadAsStringAsync();
 
 
@@ -409,7 +517,7 @@ namespace WikiTechWebApp.Controllers
                 await _sender.SendEmailAsync(usernameq.Email, "Changement pas accepté", "Bonjour, votre Changement ayant pour titre: " + currentchangement.TitreChangement + " n'est pas validé. il ne respecte probablement pas la politique de wikitech");
 
                 //fonction d'ajout de point pour le valideur
-                FunctionAPI.IncreasePointForUser(client, valideurChangement, 2);
+                FunctionAPI.IncreasePointForUser(client, valideurChangement, POINT_VALIDEUR);
 
                 //Reference (tags) is deleting by cascade
 

@@ -16,6 +16,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using WikiTechWebApp.services;
 using WikiTechWebApp.Services;
+using NReco.Logging.File;
+using Microsoft.Extensions.Logging;
 
 namespace WikiTechWebApp
 {
@@ -34,6 +36,12 @@ namespace WikiTechWebApp
             services.AddTransient<IEmailSender, EmailSender>();
             services.Configure<AuthMessageSenderOptions>(Configuration);
             services.AddControllersWithViews();
+
+
+            services.AddLogging(loggingBuilder => {
+                loggingBuilder.AddFile("./Logs/app.log", append: true);
+            });
+
 
             services.AddHttpContextAccessor();
 

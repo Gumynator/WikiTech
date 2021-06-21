@@ -23,9 +23,11 @@ namespace WikiTechWebApp.Controllers
     public class PostulationsController : Controller
     {
         static HttpClient client = new HttpClient();
-        static IEmailSender _sender;
+        static IEmailSender _sender;       
+        //static string IdUser;
+
         public PostulationsController(IHttpContextAccessor httpContextAccessor,IEmailSender sender)
-        {
+        {            
             client = ConfigureHttpClient.configureHttpClient(client);
             //client.DefaultRequestHeaders.Add("ApiKey", "61c08ad1-0823-4c38-9853-700675e3c8fc");
             _sender = sender;
@@ -33,6 +35,18 @@ namespace WikiTechWebApp.Controllers
         // GET: PostulationsController
         public ActionResult Index()
         {
+            string IdUser = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            Grade grade = null;
+            if (IdUser != null)
+            {
+                var currentUser = FunctionAPI.GetUserByIdAsync(client, IdUser).Result;
+                grade = FunctionAPI.GetGradesForUser(client, currentUser.IdGrade).Result;
+            }
+
+            if (IdUser == null||grade.NomGrade!="user sup")
+            {
+                return RedirectToAction("Unauthorize", "Home");
+            }
             return View();
         }
 
@@ -46,8 +60,10 @@ namespace WikiTechWebApp.Controllers
         // GET: PostulationsController/Create
         public async Task<IActionResult> CreatePostulation(Postulation postulation)
         {
-           
-            var IdUser = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            string IdUser = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var currentUser = FunctionAPI.GetUserByIdAsync(client, IdUser).Result;
+            Grade grade = FunctionAPI.GetGradesForUser(client, currentUser.IdGrade).Result;
+
             if (IdUser==null)
             {
                 return RedirectToAction("Index", "Home");

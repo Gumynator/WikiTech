@@ -7,12 +7,14 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Json;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,17 +37,48 @@ namespace WikiTechWebApp.Controllers
 
         }
 
+
         // GET: ArticlesController to restor
-       public IActionResult Index()
+        public IActionResult Index(string sortorder, string searchString, int currentPage, int idTag) //passage des super paramètre
         {
+            if (currentPage == 0)
+            {
+                currentPage = 1;
+            }
+            if (sortorder == null)
+            {
+                sortorder = "atoz";
+
+            }
+            if (searchString == null)
+            {
+                searchString = "";
+
+            }
+
 
             IEnumerable<Article> artList;
+
+            //envoie des données à le vue
+            ViewData["CurrentFilter"] = searchString;
+            ViewData["CurrentPage"] = currentPage;
+            ViewData["sortorder"] = sortorder;
+            ViewData["currentTag"] = idTag;
+
+            string chainetest = sortorder + searchString;
 
             try
             {
 
-                HttpResponseMessage response = client.GetAsync("Articles/withdate").Result;
+                HttpResponseMessage response = client.GetAsync("Articles/testing/" + currentPage + "/" + chainetest + "/" + idTag).Result;
                 artList = response.Content.ReadAsAsync<IEnumerable<Article>>().Result;
+
+                HttpResponseMessage respage = client.GetAsync("Articles/nbtot").Result;
+                int nbArtTotal = respage.Content.ReadAsAsync<int>().Result;
+
+                ViewData["nbArtTotal"] = nbArtTotal;
+
+             
                 return View(artList);
 
             }
@@ -54,10 +87,10 @@ namespace WikiTechWebApp.Controllers
                 Console.WriteLine(e.getMessage());
                 return Redirect("/Home/Index");
             }
-            
 
         }
 
+<<<<<<< HEAD
         // GET: ArticlesController to restor
         public async Task<IActionResult> DiscussionAsync(int id)
         {
@@ -99,6 +132,43 @@ namespace WikiTechWebApp.Controllers
             return View("Discussion", listMessage);
         }
 
+=======
+
+        public IActionResult AllArticle()
+        {
+            IEnumerable<Article> artList;
+
+            string IdUser = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            Grade grade = null;
+            if (IdUser != null)
+            {
+                var currentUser = FunctionAPI.GetUserByIdAsync(client, IdUser).Result;
+                grade = FunctionAPI.GetGradesForUser(client, currentUser.IdGrade).Result;
+            }
+
+            if (IdUser == null || grade.NomGrade != "user sup")
+            {
+                return RedirectToAction("Unauthorize", "Home");
+            }
+
+            try
+            {
+
+                HttpResponseMessage response = client.GetAsync("Articles").Result;
+                artList = response.Content.ReadAsAsync<IEnumerable<Article>>().Result;
+                return View(artList);
+
+            }
+            catch (ExceptionLiaisonApi e)
+            {
+                Console.WriteLine(e.getMessage());
+                return Redirect("/Home/Index");
+            }
+
+        }
+
+
+>>>>>>> main
         // GET: ArticleController/Details/5
         public async Task<ActionResult> DetailsAsync(int id)
         {
@@ -114,9 +184,22 @@ namespace WikiTechWebApp.Controllers
                 HttpResponseMessage responsearticle = client.GetAsync("Articles/" + id).Result;
                 article = responsearticle.Content.ReadAsAsync<Article>().Result;
                 var idArt = article.Id;
+                var idArticle = article.IdArticle;
                 ViewBag.id = idArt;
 
                 dynamicmodel.Article = article;
+
+                string IdUser = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                
+
+                Voir vu = new Voir();
+                vu.Id = IdUser;
+                vu.IdArticle = idArticle;
+                vu.Isread = true;
+                var postTask = client.PostAsJsonAsync<Voir>("Voirs", vu);
+                postTask.Wait();
+                var result = postTask.Result;
+
 
                 var listeChangements = article.Changement;
 
@@ -220,17 +303,6 @@ namespace WikiTechWebApp.Controllers
             }
         }
 
-        /*
-        protected void Like(object sender, EventArgs e)
-        {
-            Console.Write("like");
-        }
-
-        protected void Dislike(object sender, EventArgs e)
-        {
-            Console.Write("dislike");
-        }
-        */
 
         [Authorize]
         // GET: the article detail for decision
@@ -279,7 +351,7 @@ namespace WikiTechWebApp.Controllers
                     Changement resultChangement;
                     StringContent content = new StringContent(JsonConvert.SerializeObject(currentchangement), Encoding.UTF8, "application/json");
 
-                    using var response = await client.PostAsync(ConfigureHttpClient.apiUrl + "Changements", content);
+                    using var response = await client.PostAsync(ConfigureHttpClient.apiUrl + "Changements" + "/" + currentchangement.Id, content);
                     string apiResponse = await response.Content.ReadAsStringAsync();
 
                     resultChangement = JsonConvert.DeserializeObject<Changement>(apiResponse);
@@ -298,12 +370,92 @@ namespace WikiTechWebApp.Controllers
             {
                 return RedirectToAction(nameof(Index));
             }
-
-
-
         }
 
 
+        [Authorize]
+        // GET: the article detail for decision
+        public async Task<ActionResult> disableArticleeeeee(int id)
+        {
 
+            Article article;
+            string currentid = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            string IdUser = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            Grade grade = null;
+            if (IdUser != null)
+            {
+                var currentUser = FunctionAPI.GetUserByIdAsync(client, IdUser).Result;
+                grade = FunctionAPI.GetGradesForUser(client, currentUser.IdGrade).Result;
+            }
+
+            if (IdUser == null || grade.NomGrade != "user sup")
+            {
+                return RedirectToAction("Unauthorize", "Home");
+            }
+
+            try
+            {
+
+                Article resultarticle;
+
+                using var response = await client.PostAsJsonAsync(ConfigureHttpClient.apiUrl + "Articles/" +  id + "/disable", currentid);
+                string apiResponse = await response.Content.ReadAsStringAsync();
+
+                resultarticle = JsonConvert.DeserializeObject<Article>(apiResponse);
+
+
+                return RedirectToAction(nameof(Index));
+
+
+            }
+            catch (ExceptionLiaisonApi e)
+            {
+                Console.WriteLine(e.getMessage());
+                return RedirectToAction(nameof(Index));
+            }
+        }
+
+        [Authorize]
+        // GET: the article detail for decision
+        public async Task<ActionResult> enableArticleeeee(int id)
+        {
+            string IdUser = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            Grade grade = null;
+            if (IdUser != null)
+            {
+                var currentUser = FunctionAPI.GetUserByIdAsync(client, IdUser).Result;
+                grade = FunctionAPI.GetGradesForUser(client, currentUser.IdGrade).Result;
+            }
+
+            if (IdUser == null || grade.NomGrade != "user sup")
+            {
+                return RedirectToAction("Unauthorize", "Home");
+            }
+            Article article;
+            string currentid = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            try
+            {
+
+                Article resultarticle;
+
+                using var response = await client.PostAsJsonAsync(ConfigureHttpClient.apiUrl + "Articles/" + id + "/enable", currentid);
+                string apiResponse = await response.Content.ReadAsStringAsync();
+
+                resultarticle = JsonConvert.DeserializeObject<Article>(apiResponse);
+
+
+                return RedirectToAction(nameof(Index));
+
+
+            }
+            catch (ExceptionLiaisonApi e)
+            {
+                Console.WriteLine(e.getMessage());
+                return RedirectToAction(nameof(Index));
+            }
+        }
+        
     }
 }

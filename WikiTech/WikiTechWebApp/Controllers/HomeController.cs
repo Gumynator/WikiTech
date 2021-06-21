@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿//Auteur    : Loris habegger
+//Date      : 15.06.2021
+//Fichier   : HomeController.cs
+
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -12,6 +16,12 @@ using WikiTechWebApp.Models;
 using System.Net.Http;
 using System.Net.Mail;
 using SendGrid.Helpers.Mail;
+using System.IO;
+using WikiTechAPI.Utility;
+using Microsoft.AspNetCore.Authorization;
+using WikiTechWebApp.ApiFunctions;
+using System.Security.Claims;
+using WikiTechAPI.Models;
 
 namespace WikiTechWebApp.Controllers
 {
@@ -21,11 +31,15 @@ namespace WikiTechWebApp.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         static IEmailSender _sender;
 
+        static HttpClient client = new HttpClient();
+
         public HomeController(ILogger<HomeController> logger, IEmailSender sender)
         {
             _sender = sender;
             _logger = logger;
-            
+
+            client = ConfigureHttpClient.configureHttpClient(client);
+
         }
 
         public IActionResult Index()
@@ -38,6 +52,10 @@ namespace WikiTechWebApp.Controllers
             return View();
         }
         public IActionResult Contact()
+        {
+            return View();
+        }
+        public IActionResult Unauthorize()
         {
             return View();
         }
@@ -62,6 +80,29 @@ namespace WikiTechWebApp.Controllers
             await _sender.SendEmailAsync("loris.habegger@eduvaud.ch", "[Formulaire contact] : " + objetContact, messageContact + "\n Soumis par : " + NomContact + "\n tél. " + telContact + "\n email : " + emailContact);
 
             return RedirectToAction(nameof(Index));
+        }
+
+        [Authorize]
+        public IActionResult Log()
+        {
+            string IdUser = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            Grade grade = null;
+            if (IdUser != null)
+            {
+                var currentUser = FunctionAPI.GetUserByIdAsync(client, IdUser).Result;
+                grade = FunctionAPI.GetGradesForUser(client, currentUser.IdGrade).Result;
+            }
+
+            if (IdUser == null || grade.NomGrade != "user sup")
+            {
+                return RedirectToAction("Unauthorize", "Home");
+            }
+            HttpResponseMessage responsearticle = client.GetAsync("ApiLog").Result;
+            var logs = responsearticle.Content.ReadAsAsync<List<string>>().Result;
+
+            ViewData["logs"] = logs;
+
+            return View();
         }
 
     }
