@@ -63,7 +63,7 @@ namespace WikiTechWebApp.Controllers
             if (putUser.IsSuccessStatusCode)
             {
                 //user = await putUser.Content.ReadAsAsync<AspNetUsers>();
-                ViewBag.EnregistrementIban = "Votre Iban a été sauvegardé, vous pouvez demander une rémunération";
+                ViewBag.EnregistrementIban = "Votre Iban a ï¿½tï¿½ sauvegardï¿½, vous pouvez demander une rï¿½munï¿½ration";
             }
             if (user.ExpirationcarteAspnetuser != null)
             {
@@ -213,13 +213,13 @@ namespace WikiTechWebApp.Controllers
                     if (user.LockoutEnd == null)
                     {
                         user.LockoutEnd = DateTime.MaxValue;
-                        Logwritter log = new Logwritter("Utilisateur : " + id + " a été bloqué par " + currentUser);
+                        Logwritter log = new Logwritter("Utilisateur : " + id + " a ï¿½tï¿½ bloquï¿½ par " + currentUser);
                         log.writeLog();
                     }
                     else
                     {
                         user.LockoutEnd = null;
-                        Logwritter log = new Logwritter("Utilisateur : " + id + " a été débloqué par " + currentUser);
+                        Logwritter log = new Logwritter("Utilisateur : " + id + " a ï¿½tï¿½ dï¿½bloquï¿½ par " + currentUser);
                         log.writeLog();
                     }
                     
