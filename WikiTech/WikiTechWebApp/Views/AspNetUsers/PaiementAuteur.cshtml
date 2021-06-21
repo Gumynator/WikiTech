@@ -1,0 +1,51 @@
+﻿@model IEnumerable<WikiTechAPI.ViewModels.AuteurRemunerer>
+
+@{
+    ViewData["Title"] = "AuteurRemunerer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Donateurs</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MontantRemuneration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateRemuneration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpirationcarteAspnetuser)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MontantRemuneration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateRemuneration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExpirationcarteAspnetuser)
+            </td>
+            <td>
+                <a asp-action="Valider" asp-route-id="@item.IdRemuneration">Valider</a> |
+                <a asp-action="Refuser" asp-route-id="@item.IdRemuneration">Refuser</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

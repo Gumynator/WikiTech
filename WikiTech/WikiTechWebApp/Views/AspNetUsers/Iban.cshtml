@@ -6,7 +6,14 @@
 }
 
 <h1>Rémunération</h1>
+@if (ViewBag.Credit == null)
+{
+    <div> Vous n'avez pas de crédit</div>
+}
+else
+{
 
+<div>Vous pouvez être rémunéré à hauteur de: @ViewBag.Credit CHF</div>
 <div>
     <form asp-action="SendIban" asp-controller="AspNetUsers" method="post" id="message-form">
         <div>
@@ -18,7 +25,9 @@
         <a class="btn btn-success" asp-controller="AspNetUsers" asp-action="Remunerer">être rémunéré</a>
     </form>
 </div>
-    @ViewBag.EnregistrementIban
+@ViewBag.EnregistrementIban
+
+}
 
 @*<table class="table">
         <thead>

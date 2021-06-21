@@ -104,10 +104,15 @@ namespace WikiTechAPI.Controllers
         //from body to force search parameter in the body and not in the URL
         [HttpPut("{id}")]
         [Route("addcredit/{id}")]
-        public async Task<IActionResult> AddCreditAspnNetUser(string id, int Credit)
+        public async Task<IActionResult> AddCreditAspnNetUser(string id, [FromBody] int credit)
         {
-            var currentAspNetUser = await _context.AspNetUsers.FindAsync(id);
-            currentAspNetUser.CreditAspnetuser += Credit;
+
+            var User = await _context.AspNetUsers.FindAsync(id);
+            if (User.CreditAspnetuser == null)
+            {
+                User.CreditAspnetuser = 0;
+            }
+            User.CreditAspnetuser += credit;
 
             await _context.SaveChangesAsync();
 

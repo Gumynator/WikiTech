@@ -5,16 +5,15 @@ using System.Threading.Tasks;
 
 namespace WikiTechAPI.ViewModels
 {
-    public class CheckAbonnement
+    public class AuteurRemunerer
     {
-        public DateTime DateFacture { get; set; }
-        public int? IdAbonnement { get; set; }
+        public int IdRemuneration { get; set; }
         public string Id { get; set; }
-
-        public string TitreFacture { get; set; }
-
-        public bool Expiration { get; set; }
+        public decimal MontantRemuneration { get; set; }
+        public DateTime DateRemuneration { get; set; }
+        public string UserName { get; set; }
 
         public string ExpirationcarteAspnetuser { get; set; }
+
     }
 }
